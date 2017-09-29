@@ -15,5 +15,6 @@ public class StartGame {
         Game game = new Game();
         game.play();
         //test
+        // rasmus test
     }
 }
