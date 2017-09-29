@@ -14,5 +14,8 @@ public class StartGame {
         System.out.println("hello");
         Game game = new Game();
         game.play();
+        //sorens test
+        //test
+        // rasmus test
     }
 }
