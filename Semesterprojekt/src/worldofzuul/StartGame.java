@@ -11,9 +11,12 @@ package worldofzuul;
  */
 public class StartGame {
     public static void main(String[] args) {
+        System.out.println("hello");
         Game game = new Game();
         game.play();
+        //sorens test
         //test
         //test magnus123
+
     }
 }
