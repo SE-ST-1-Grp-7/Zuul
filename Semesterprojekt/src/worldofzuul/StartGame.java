@@ -16,6 +16,6 @@ public class StartGame {
         game.play();
         //sorens test
         //test
-        // rasmus test
+        //rasmus test
     }
 }
