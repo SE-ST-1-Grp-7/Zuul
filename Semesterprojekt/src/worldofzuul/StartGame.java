@@ -13,6 +13,7 @@ public class StartGame {
      * 
      */
     public static void main(String[] args) {
+        System.out.println("Hello Søren");
         // Game instantiation
         Game game = new Game();
         // Call play method
