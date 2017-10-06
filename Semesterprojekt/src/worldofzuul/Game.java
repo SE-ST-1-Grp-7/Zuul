@@ -1,8 +1,5 @@
 package worldofzuul;
 
-// Library for scaling coordinate points.
-import javafx.scene.transform.Scale;
-
 /**
  * Game class - most of the game is handled from here.
  * 
