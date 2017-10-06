@@ -2,26 +2,26 @@ package worldofzuul;
 
 /**
  * Game class - most of the game is handled from here.
- * 
- * Contains:
- * - Which rooms are present in the game and their interconnections
- * - Call for user commands
- * - Game messages
- * - Quit game options
- * - Help print
+ *
+ * Contains: 
+ * - Which rooms are present in the game and their interconnections 
+ * - Call for user commands 
+ * - Game messages 
+ * - Quit game options 
+ * - Help print 
  * - Additional class instantiations
  * 
- * 
- * @author  Michael Kolling and David J. Barnes
+ * @author Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
 public class Game {
+
     // Declare private Parser and Room variables. 
     private Parser parser;
     private Room currentRoom;
-    
+
     /**
-     * No-args constructor.
+     * No-args constructor. 
      * Calls for the creation of the rooms and instantiates a Parser.
      */
     public Game() {
@@ -34,44 +34,92 @@ public class Game {
      */
     private void createRooms() {
         // Declare room objects.
-        Room outside, theatre, pub, lab, office, test;
-        
+        Room garden, relaxing_room, teacher_room, pub, outside, hallway_1;
+        Room dininghall, hallway_2, lecturehall_1, hallway_3, lecturehall_2, toilet;
+
         // Instantiate the rooms and their descriptions.
-        outside = new Room("outside the main entrance of the university");
-        theatre = new Room("in a lecture theatre");
+        garden = new Room(" outside in the lovely garden... smells lovely of roses");
+        relaxing_room = new Room("in a nice and cozy relaxing room");
+        teacher_room = new Room("in your own room, finaly some peace...");
         pub = new Room("in the campus pub");
-        lab = new Room("in a computing lab");
-        office = new Room("in the computing admin office");
-        
-        // A special room instantiation intended for testing.
-        test = new Room("in the testRoom");
-        
+        outside = new Room("outside the main entrance of the university");
+        hallway_1 = new Room("you are moving along the hallway");
+        dininghall = new Room("in the dining hall, time to nom!");
+        hallway_2 = new Room("you are moving along the hallway");
+        lecturehall_1 = new Room("in a lecturehall, the lights are flickering...");
+        hallway_3 = new Room("you are moving along the hallway");
+        lecturehall_2 = new Room("in a lecturehall, everything is working... weird...");
+        toilet = new Room("pooping");
+
+        /* Define the exit-waypoints:
+           From 'garden' Room instance. */
+        garden.setExit("east", relaxing_room);
+        garden.setExit("south", outside);
+
+        /* Define the exit-waypoints:
+           From 'relaxing room' Room instance. */
+        relaxing_room.setExit("west", garden);
+        relaxing_room.setExit("south", hallway_1);
+
+        /* Define the exit-waypoints:
+           From 'teachers' room' Room instance. */
+        teacher_room.setExit("south", dininghall);
+        teacher_room.setExit("east", pub);
+
+        /* Define exit-waypoints:
+           From 'pub' Room instance. */
+        pub.setExit("west", teacher_room);
+        pub.setExit("south", hallway_2);
+
         /* Define exit-waypoints:
            From 'outside' Room instance. */
-        outside.setExit("east", theatre);
-        outside.setExit("south", lab);
-        outside.setExit("west", pub);
-        outside.setExit("north", test);
+        outside.setExit("north", garden);
+        outside.setExit("south", lecturehall_1);
 
-        /* Reverse-define the same exit-waypoints:
-           To 'outside' Room instance. */
-        theatre.setExit("west", outside);
-        lab.setExit("north", outside);
-        pub.setExit("east", outside);
-        test.setExit("south", outside);
+        /* Define exit-waypoints:
+           From 'hallway_1' Room instance. */
+        hallway_1.setExit("north", relaxing_room);
+        hallway_1.setExit("east", dininghall);
+
+        /* Define exit-waypoints:
+           From 'dining hall' Room instance. */
+        dininghall.setExit("north", teacher_room);
+        dininghall.setExit("south", lecturehall_2);
+        dininghall.setExit("west", hallway_1);
+
+        /* Define exit-waypoints:
+           From 'hallway 2' Room instance. */
+        hallway_2.setExit("north", pub);
+        hallway_2.setExit("south", toilet);
+
+        /* Define exit-waypoints:
+           From 'lecture hall 1' Room instance. */
+        lecturehall_1.setExit("north", outside);
+        lecturehall_1.setExit("east", hallway_2);
+
+        /* Define exit-waypoints:
+           From 'hallway 3' Room instance. */
+        hallway_3.setExit("west", lecturehall_1);
+        hallway_3.setExit("east", lecturehall_2);
+
+        /* Define exit-waypoints:
+           From 'lecture hall 2' Room instance. */
+        lecturehall_2.setExit("west", hallway_3);
+        lecturehall_2.setExit("north", dininghall);
+        lecturehall_2.setExit("east", toilet);
         
-        // Define exit-waypoints between Room instances inside.
-        lab.setExit("east", office);
-        office.setExit("west", lab);
+        /* Define exit-waypoints:
+           From 'toilet' Room instance. */
+        toilet.setExit("west", lecturehall_2);
+        toilet.setExit("north", hallway_2);
 
-        // Assign the Room object reference 'outside' as the currentRoom object.
-        currentRoom = outside;
+        // Assign the Room object reference 'teachers' room' as the currentRoom object.
+        currentRoom = teacher_room;
     }
 
     /**
-     * The play method is in normal terms how to start the game.
-     * The method calls the welcome message, contains the game loop and exit
-     * message.
+     * The play method is in normal terms how to start the game. The method
+     * calls the welcome message, contains the game loop and exit message.
      */
     public void play() {
         // Call the printout of the welcome message.
@@ -80,7 +128,7 @@ public class Game {
         // Declaring the game continuation variable.
         boolean finished = false;
         // Game loop.
-        while (! finished) {
+        while (!finished) {
             // Get user command input.
             Command command = parser.getCommand();
             // Process user command.
@@ -104,11 +152,11 @@ public class Game {
     }
 
     /**
-     * Method processes user command to action.
-     * If the user wants to get help print, go to a different room or quit.
-     * 
-     * @param command   String argument of user command input.
-     * @return          Boolean return true if user wants to quit.
+     * Method processes user command to action. 
+     * If the user wants to get help printed, go to a different room or quit.
+     *
+     * @param command String argument of user command input.
+     * @return Boolean return true if user wants to quit.
      */
     private boolean processCommand(Command command) {
         boolean wantToQuit = false;
@@ -116,7 +164,7 @@ public class Game {
         CommandWord commandWord = command.getCommandWord();
 
         // If user input is not a defined command.
-        if(commandWord == CommandWord.UNKNOWN) {
+        if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
             return false;
         }
@@ -124,12 +172,10 @@ public class Game {
         // If user input is request for help print.
         if (commandWord == CommandWord.HELP) {
             printHelp();
-        }
-        // Or if user prompts for move to another room.
+        } // Or if user prompts for move to another room.
         else if (commandWord == CommandWord.GO) {
             goRoom(command);
-        }
-        // Or if user prompt to quit.
+        } // Or if user prompt to quit.
         else if (commandWord == CommandWord.QUIT) {
             wantToQuit = quit(command);
         }
@@ -151,12 +197,12 @@ public class Game {
 
     /**
      * Go to a different room and update current room.
-     * 
-     * @param command   String argument of user command input.
+     *
+     * @param command String argument of user command input.
      */
     private void goRoom(Command command) {
         // If no direction after go-command, print line and return. 
-        if(!command.hasSecondWord()) {
+        if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
@@ -171,9 +217,8 @@ public class Game {
         // If there is no such direction print message.
         if (nextRoom == null) {
             System.out.println("There is no door!");
-        }
-        /* Update current room reference and print long description of new
-           current room. */
+        } /* Update current room reference and print long description of new
+           current room. */ 
         else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
@@ -181,19 +226,18 @@ public class Game {
     }
 
     /**
-     * Quit handler method. If the user command isn't just quit, when print 
+     * Quit handler method. If the user command isn't just quit, when print
      * error message and return the quit boolean as false.
-     * 
-     * @param command   String argument of user command input.
-     * @return          Boolean return true if correct quit command, otherwise
-     *                  false.
+     *
+     * @param command String argument of user command input.
+     * @return Boolean return true if correct quit command, otherwise false.
      */
     private boolean quit(Command command) {
         // If user command contain a second word, the boolean return false.
-        if(command.hasSecondWord()) {
+        if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return false;
-        }
+        } 
         // Otherwise return true, intending to quit the game.
         else {
             return true;
