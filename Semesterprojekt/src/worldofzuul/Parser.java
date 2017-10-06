@@ -10,8 +10,7 @@ import java.util.Scanner;
  * @author  Michael Kolling and David J. Barnes
  * @version 2006.03.30
  */
-public class Parser 
-{
+public class Parser {
     // Declare commands as a CommandWords object type.
     private CommandWords commands;
     // Declare reader as a Scanner object type.
@@ -20,8 +19,7 @@ public class Parser
     /**
      * No-args constructor.
      */
-    public Parser() 
-    {
+    public Parser() {
         // Assign instantiation of CommandWords class to variable.
         commands = new CommandWords();
         // Assign instantiation of Scanner class to variable.
@@ -36,8 +34,7 @@ public class Parser
      * 
      * @return      Command object return new instantiation.
      */
-    public Command getCommand() 
-    {
+    public Command getCommand() {
         // Declare inputLine String to contain user input later.
         String inputLine;
         // Declare String to link to first word of user input later.
@@ -72,8 +69,7 @@ public class Parser
     /**
      * Call instance method to print all commands defined in CommandWords class.
      */
-    public void showCommands()
-    {
+    public void showCommands() {
         commands.showAll();
     }
 }
