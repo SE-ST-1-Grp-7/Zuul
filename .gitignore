@@ -1,4 +1,6 @@
+
 nbproject/private/**
 nbproject/build-impl.xml
 .DS_Store
 build/
+\private\
