@@ -1,3 +1,6 @@
-/Semesterprojekt/build/
-/Semesterprojekt/dist/
+nbproject/private/**
+nbproject/build-impl.xml
+.DS_Store
+build/
 \Semesterprojekt\nbproject\private\
+
