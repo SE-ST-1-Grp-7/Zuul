@@ -18,5 +18,6 @@ public class StartGame {
         Game game = new Game();
         // Call play method
         game.play();
+        //test
     }
 }
