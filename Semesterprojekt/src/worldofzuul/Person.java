@@ -1,9 +1,8 @@
-
 package worldofzuul;
 
-/**
+/** Person class - superclass of Student & Player
  *
- * @author J
+ * @author Gruppe 7
  */
 public class Person {
     private String personName;
