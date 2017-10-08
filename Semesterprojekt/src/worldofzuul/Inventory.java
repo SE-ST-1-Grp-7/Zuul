@@ -9,6 +9,8 @@ package worldofzuul;
  *
  * @author niclasjohansen
  */
-public class NewClass {
-    
+public class Inventory {
+    private int capacity;
+    private String containerName;
+    private int contentList;
 }
