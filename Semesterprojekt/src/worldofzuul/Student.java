@@ -24,4 +24,13 @@ public class Student extends Person {
         super.setPersonGender(gender);
         super.setSpeed(speed);
     }
+     /**
+     * Randomly create a name for the student
+     *
+     */
+        String[] names = {"Niclas", "Rasmus", "Søren", "Robin","Jonas","Magnus","Frederik"};
+        int index = (int) (Math.random() * names.length);
+        String name = names[index];
+        
+       
 }
