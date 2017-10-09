@@ -12,10 +12,10 @@ public class Player extends Person {
     private int fatigueCap;
     
 
-    public Player(String personName, int personAge, String personGender, int speed) {
-        super.setPersonName(personName);
-        super.setPersonAge(personAge);
-        super.setPersonGender(personGender);
+    public Player(String name, int age, String gender, int speed) {
+        super.setPersonName(name);
+        super.setPersonAge(age);
+        super.setPersonGender(gender);
         super.setSpeed(speed);
         this.energy = 100;
         this.energyCap = 100;
