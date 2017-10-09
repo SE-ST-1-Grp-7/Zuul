@@ -12,8 +12,15 @@ public class Player extends Person {
     private int fatigueCap;
     
 
-    public Player() {
-        // isnt present on uml diagram but will most likely be implemented
+    public Player(String personName, int personAge, String personGender, int speed) {
+        super.setPersonName(personName);
+        super.setPersonAge(personAge);
+        super.setPersonGender(personGender);
+        super.setSpeed(speed);
+        this.energy = 100;
+        this.energyCap = 100;
+        this.fatigue = 0;
+        this.fatigueCap = 100; 
     }
     public int getEnergy() {
         return this.energy;

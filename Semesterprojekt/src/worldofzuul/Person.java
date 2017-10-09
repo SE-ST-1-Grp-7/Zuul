@@ -1,6 +1,5 @@
 package worldofzuul;
 
-import java.util.Scanner;
 
 /** Person class - superclass of Student & Player
  *
@@ -11,6 +10,9 @@ public abstract class Person {
     private int personAge;
     private String personGender;
     private int speed;
+    //private Inventory inventory;
+    
+    
 
     public String getPersonName() {
         return this.personName;
@@ -46,7 +48,7 @@ public abstract class Person {
 
     
     
-//    private Inventory inventory;
+         
 //    
 //    /**
 //     * One-arg constructor with personName String, personAge int and personGender String.
