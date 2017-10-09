@@ -4,7 +4,7 @@ import worldofzuul.Command;
 
 /**
  *
- * @author Rasmus Willer
+ * @author Rasmus Willer & Soren Bendtsen
  */
 public class RoomManager {
     private Room currentRoom;
