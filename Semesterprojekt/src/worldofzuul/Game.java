@@ -38,7 +38,7 @@ public class Game {
      */
     public void play() {
         // Call the printout of the welcome message.
-        printWelcome();
+        PrintOut.printWelcome();
 
         // Declaring the game continuation variable.
         boolean finished = false;
@@ -51,20 +51,6 @@ public class Game {
         }
         // Quit message
         System.out.println("Thank you for playing.  Good bye.");
-    }
-
-    /**
-     * Print method for providing a welcome message.
-     */
-    private void printWelcome() {
-        Room currentRoom = rooms.getCurrentRoom();
-        System.out.println();
-        System.out.println("Welcome to the World of Zuul!");
-        System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
-        System.out.println();
-        // Finish off with the long description of the current room.
-        System.out.println(currentRoom.getLongDescription());
     }
 
     /**
@@ -87,7 +73,7 @@ public class Game {
 
         // If user input is request for help print.
         if (commandWord == CommandWord.HELP) {
-            printHelp();
+            PrintOut.printHelp(parser);
         } // Or if user prompts for move to another room.
         else if (commandWord == CommandWord.GO) {
             rooms.goRoom(command);
@@ -97,18 +83,6 @@ public class Game {
         }
         // Quit boolean, true if user wants to quit.
         return wantToQuit;
-    }
-
-    /**
-     * Print help method. Writes an explanation of what situation the user is in
-     * and what commands now are available.
-     */
-    private void printHelp() {
-        System.out.println("You are lost. You are alone. You wander");
-        System.out.println("around at the university.");
-        System.out.println();
-        System.out.println("Your command words are:");
-        parser.showCommands();
     }
 
     /**
