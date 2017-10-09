@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import mapAndRooms.RoomManager;
+import mapAndRooms.Room;
 
 /**
  * Game class - most of the game is handled from here.

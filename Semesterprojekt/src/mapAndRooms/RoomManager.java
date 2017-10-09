@@ -1,7 +1,6 @@
 package mapAndRooms;
 
 import worldofzuul.Command;
-import worldofzuul.Room;
 
 /**
  *

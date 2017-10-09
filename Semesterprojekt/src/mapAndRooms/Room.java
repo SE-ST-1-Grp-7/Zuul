@@ -1,18 +1,12 @@
-package worldofzuul;
+package mapAndRooms;
 
 // importing standard libraries for managing datastructures.
 import java.util.Set;
 import java.util.HashMap;
 
-
 /**
- * Class to instantiate rooms from.
- * Each room contains data of the room's description and exit-waypoints.
- * Different getter/setter methods helps assign and retrieve these
- * Strings/objects.
- * 
- * @author  Michael Kolling and David J. Barnes
- * @version 2006.03.30
+ *
+ * @author Rasmus Willer
  */
 public class Room {
     // Declare attributes -section.
@@ -97,4 +91,3 @@ public class Room {
         return exits.get(direction);
     }
 }
-
