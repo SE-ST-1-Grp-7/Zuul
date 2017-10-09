@@ -8,7 +8,6 @@ package worldofzuul;
 public class Player extends Person {
     private int energy;
     private int energyCap;
-    private int speed;
     private int fatigue;
     private int fatigueCap;
     
@@ -25,12 +24,7 @@ public class Player extends Person {
     public int getEnergyCap() {
         return this.energyCap;
     }
-    public int getSpeed() {
-        return this.speed;
-    }
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
+    
     public int getFatigue() {
         return this.fatigue;
     }
