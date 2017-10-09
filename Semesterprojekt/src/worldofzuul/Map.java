@@ -17,6 +17,8 @@ public class Map {
     
     
     public Map(){
+        
+    }
 
     public int item(){
         return this.item;
