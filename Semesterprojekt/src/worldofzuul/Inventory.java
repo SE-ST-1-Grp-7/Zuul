@@ -5,12 +5,37 @@
  */
 package worldofzuul;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  *
- * @author niclasjohansen
+ * @author Jonas Bjørstorp & Frederik Bauer
  */
 public class Inventory {
-    private int capacity;
-    private String containerName;
-    private int contentList;
+
+    private final int CAPACITY = 10;
+    private ArrayList<Item> items = new ArrayList<>(CAPACITY);
+
+    public Inventory(int capacity) {
+
+    }
+/** 
+ * adds an item to the inventory
+ * @param item 
+ */
+    public void addItem(Item item) {
+        if (items.size() < CAPACITY) {
+            items.add(item);
+        } else {
+            System.out.println("Not enough space");
+        }
+    }
+    public Item getItem(int index) {
+        return items.get(index);  
+    }
+    public void removeItem(int index) {
+        items.remove(index);     
+    }
+
 }
