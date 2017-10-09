@@ -15,12 +15,13 @@ public class Student extends Person {
     
     /**
      * This constructor makes a student that has a question for the Player
+     * the student also has a name, age, gender and speed
      */
-    public Student(){
+    public Student(String name, int age, String gender, int speed){
         hasQuestionToPlayer = true;
+        super.setPersonName(name);
+        super.setPersonAge(age);
+        super.setPersonGender(gender);
+        super.setSpeed(speed);
     }
-    
-    
-    
-    
 }
