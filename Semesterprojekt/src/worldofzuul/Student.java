@@ -19,9 +19,9 @@ public class Student extends Person {
      */
     public Student(String name, int age, String gender, int speed){
         hasQuestionToPlayer = true;
-        super.setPersonName(name);
-        super.setPersonAge(age);
-        super.setPersonGender(gender);
+        super.setName(name);
+        super.setAge(age);
+        super.setGender(gender);
         super.setSpeed(speed);
     }
      /**

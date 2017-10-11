@@ -10,22 +10,17 @@ public class Player extends Person {
     private int energyCap;
     private int fatigue;
     private int fatigueCap;
-    private String name;
     
 
     public Player(String name, int age, String gender, int speed) {
-        super.setPersonName(name);
-        super.setPersonAge(age);
-        super.setPersonGender(gender);
+        super.setName(name);
+        super.setAge(age);
+        super.setGender(gender);
         super.setSpeed(speed);
         this.energy = 100;
         this.energyCap = 100;
         this.fatigue = 0;
         this.fatigueCap = 100; 
-    }
-    
-    public String getName() {
-        return this.name;
     }
     
     public int getEnergy() {
@@ -47,7 +42,4 @@ public class Player extends Person {
     public int getFatigueCap() {
         return this.fatigueCap;
     }
-    
-    Player peter = new Player("Hans", 22, "Male", 10);
-    System.out.println(getName(peter));
 }
