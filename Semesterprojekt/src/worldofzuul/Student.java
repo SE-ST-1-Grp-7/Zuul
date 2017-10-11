@@ -10,7 +10,7 @@ package worldofzuul;
  * @author Robin
  */
 public class Student extends Person {
-    boolean hasQuestionToPlayer;
+    boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
     
     /**
      * Constructor that gives a random name

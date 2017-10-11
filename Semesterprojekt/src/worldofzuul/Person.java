@@ -13,35 +13,59 @@ public abstract class Person {
     //private Inventory inventory;
     
     
-
+    /**
+     * getter for the name
+     * @return 
+     */
     public String getName() {
         return this.name;
     }
-
+    /**
+     * setter for the name
+     * @param name 
+     */
     public void setName(String name) {
         this.name = name;
     }
-
+    /**
+     * getter for the age
+     * @return 
+     */
     public int getAge() {
         return this.age;
     }
-
+    /**
+     * setter for the age
+     * @param age 
+     */
     public void setAge(int age) {
         this.age = age;
     }
-
+    /**
+     * getter for the gender
+     * @return 
+     */
     public String getGender() {
         return this.gender;
     }
-
+    /**
+     * setter for the gender
+     * @param gender 
+     */
     public void setGender(String gender) {
         this.gender = gender;
     }
-
+    /**
+     * getter for the speed
+     * @return 
+     */
     public int getSpeed() {
         return this.speed;
     }
-
+    /**
+     * setter for the speed
+     * @param speed 
+     */
     public void setSpeed(int speed) {
         this.speed = speed;
     }
