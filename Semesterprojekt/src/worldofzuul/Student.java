@@ -10,7 +10,7 @@ package worldofzuul;
  * @author Robin
  */
 public class Student extends Person {
-    boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
+    private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
     
     /**
      * Constructor that gives a random name
@@ -53,5 +53,23 @@ public class Student extends Person {
         int index = (int) (Math.random() * names.length);
         return names[index];
     }
+    
+    /**
+     * getter for hasQusetionForPlayer
+     * @return 
+     */
+    public boolean getHasQuestionToPlayer() {
+        return this.hasQuestionToPlayer;
+    }
+    /**
+     * setter for hasQusetionForPlayer
+     * @param hasQuestionToPlayer 
+     */
+    public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
+        this.hasQuestionToPlayer = hasQuestionToPlayer;
+    }
+    
+    
+    
        
 }
