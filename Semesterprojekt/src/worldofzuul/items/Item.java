@@ -18,11 +18,23 @@ public abstract class Item extends Entity {
      * @param itemDescription 
      */
 
-    // abstract methods to be implemented
+    // Getter & Setters
     public String getName() {
         return this.itemName;
     }
+    public String getItemDescription() {
+        return this.itemDescription;
+    }
+    public int getWeight() {
+        return this.weight;
+    }
     public void setName(String itemName) {
         this.itemName = itemName;
+    }
+    public void setDescription(String itemDescription) {
+        this.itemDescription = itemDescription;
+    }
+    public void setWeight(int Weight) {
+        this.weight = weight;
     }
 }

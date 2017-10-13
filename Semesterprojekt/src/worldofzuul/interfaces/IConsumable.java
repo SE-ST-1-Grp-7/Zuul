@@ -9,6 +9,6 @@ package worldofzuul.interfaces;
  *
  * @author J
  */
-public class IConsumeable {
-    
+public interface IConsumable {
+    void consume();
 }
