@@ -51,6 +51,15 @@ public class Player extends Person {
         return this.energyCap;
     }
     /**
+     * setter for energyCap
+     * @param energyCap 
+     */
+    public void setEnergyCap(int energyCap) {
+        this.energyCap = energyCap;
+    }
+    
+    
+    /**
      * getter for the current fatiuge
      * @return 
      */
@@ -71,4 +80,13 @@ public class Player extends Person {
     public int getFatigueCap() {
         return this.fatigueCap;
     }
+    /**
+     * setter for fatiugeCap
+     * @param fatigueCap 
+     */
+    public void setFatigueCap(int fatigueCap) {
+        this.fatigueCap = fatigueCap;
+    }
+    
+    
 }
