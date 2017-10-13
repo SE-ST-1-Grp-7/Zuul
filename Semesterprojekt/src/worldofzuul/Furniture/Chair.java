@@ -9,7 +9,7 @@ package worldofzuul.Furniture;
  *
  * @author Robin
  */
-public class Chair extends Furniture {
+public class Chair extends Furniture /*implements Interactable*/{
     
     /**
      * constructor for a chair
@@ -21,6 +21,18 @@ public class Chair extends Furniture {
         super.setFurnitureDiscription(chairDescription);
     }
     
+    /**
+     * method for sitting in the chair
+     */
+    public void sitInChair(){
+        
+    }
     
+    /**
+     * method for standing up again after sitting in the chair
+     */
+    public void standUp(){
+        
+    }
     
 }
