@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.People;
 
 
 /** Person class - superclass of Student & Player

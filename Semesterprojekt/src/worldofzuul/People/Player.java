@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.People;
 
 /** Player class - subclass the Person class
  * Used to instantiate a Player
