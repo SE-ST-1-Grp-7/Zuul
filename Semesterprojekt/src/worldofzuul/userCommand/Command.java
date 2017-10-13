@@ -1,4 +1,4 @@
-package userCommand;
+package worldofzuul.userCommand;
 
 /** 
  * This class handles user-given commands. Contains methods to determine:

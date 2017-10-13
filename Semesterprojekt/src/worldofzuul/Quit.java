@@ -1,6 +1,6 @@
 package worldofzuul;
 
-import userCommand.Command;
+import worldofzuul.userCommand.Command;
 
 /**
  *

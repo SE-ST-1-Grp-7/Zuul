@@ -1,6 +1,6 @@
 package worldofzuul;
 
-import userCommand.ProcessCommand;
+import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
 
 /**

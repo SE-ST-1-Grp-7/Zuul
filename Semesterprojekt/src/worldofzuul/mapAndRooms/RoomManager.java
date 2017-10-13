@@ -1,6 +1,6 @@
 package worldofzuul.mapAndRooms;
 
-import userCommand.Command;
+import worldofzuul.userCommand.Command;
 
 /**
  *

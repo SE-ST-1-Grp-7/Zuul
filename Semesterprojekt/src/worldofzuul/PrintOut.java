@@ -1,7 +1,7 @@
 package worldofzuul;
 
-import userCommand.Parser;
-import userCommand.CommandWord;
+import worldofzuul.userCommand.Parser;
+import worldofzuul.userCommand.CommandWord;
 import worldofzuul.mapAndRooms.Room;
 import worldofzuul.mapAndRooms.RoomManager;
 

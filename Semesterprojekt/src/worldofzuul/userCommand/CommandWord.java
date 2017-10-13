@@ -1,4 +1,4 @@
-package userCommand;
+package worldofzuul.userCommand;
 
 /**
  * Enum type for commands assigned as constants.

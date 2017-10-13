@@ -1,4 +1,4 @@
-package userCommand;
+package worldofzuul.userCommand;
 
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.PrintOut;
