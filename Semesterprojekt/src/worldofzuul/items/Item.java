@@ -8,7 +8,9 @@ import worldofzuul.Entity;
  * @author Gruppe 7
  */
 public abstract class Item extends Entity {
-    
+    private String itemName;
+    private String itemDescription;
+    private int weight;
     /**
      * Two-arg constructor
      * 
@@ -17,7 +19,10 @@ public abstract class Item extends Entity {
      */
 
     // abstract methods to be implemented
-    public abstract String getName();
-    public abstract String getDescription();
-    public abstract int getWeight();
+    public String getName() {
+        return this.itemName;
+    }
+    public void setName(String itemName) {
+        this.itemName = itemName;
+    }
 }
