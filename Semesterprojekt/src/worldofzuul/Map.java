@@ -18,23 +18,25 @@ public class Map {
     
     public Map(){
 
-    public int item(){
-        return this.item;
     }
-    
-    public int exit(){
-        return this.exit;
-    }
-    
-    public String description(){
-        return this.description;
-    }
-    
-    public boolean locked() {
-        return this.locked;
-    }
+//    public int item(){
+//        return this.item;
+//    }
+//    
+//    public int exit(){
+//        return this.exit;
+//    }
+//    
+//    public String description(){
+//        return this.description;
+//    }
+//    
+//    public boolean locked() {
+//        return this.locked;
+//    }
 
 }
+
 
    
 

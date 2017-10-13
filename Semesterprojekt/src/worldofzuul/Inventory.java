@@ -5,6 +5,7 @@
  */
 package worldofzuul;
 
+import worldofzuul.items.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,9 +18,6 @@ public class Inventory {
     private final int CAPACITY = 10;
     private ArrayList<Item> items = new ArrayList<>(CAPACITY);
 
-    public Inventory(int capacity) {
-
-    }
 /** 
  * adds an item to the inventory
  * @param item 
