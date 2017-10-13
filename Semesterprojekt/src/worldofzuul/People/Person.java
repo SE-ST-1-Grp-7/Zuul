@@ -1,16 +1,15 @@
 package worldofzuul.People;
-
+import worldofzuul.Inventory;
 
 /** Person class - superclass of Student & Player
  *
- * @author Gruppe 7, Robin & Niclas
+ * @author Gruppe 7, Robin & Niclas & soren
  */
 public abstract class Person {
     private String name;
     private String gender;
     private int speed;
-    //private Inventory inventory;
-    
+    Inventory inventory = new Inventory();
     
     /**
      * getter for the name
