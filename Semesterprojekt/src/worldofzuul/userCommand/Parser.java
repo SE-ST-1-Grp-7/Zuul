@@ -1,4 +1,4 @@
-package worldofzuul;
+package worldofzuul.userCommand;
 
 // Import Scanner so we can get user inputs.
 import java.util.Scanner;
