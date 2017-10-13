@@ -7,7 +7,7 @@ package worldofzuul.Furniture;
 
 import java.util.ArrayList;
 import java.util.List;
-import worldofzuul.Item;
+import worldofzuul.items.Item;
 
 /**
  *
