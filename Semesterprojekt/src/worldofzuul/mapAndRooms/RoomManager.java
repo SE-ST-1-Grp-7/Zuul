@@ -1,4 +1,4 @@
-package mapAndRooms;
+package worldofzuul.mapAndRooms;
 
 import userCommand.Command;
 
@@ -7,12 +7,13 @@ import userCommand.Command;
  * @author Rasmus Willer & Soren Bendtsen
  */
 public class RoomManager {
+
     private Room currentRoom;
-    
+
     public RoomManager() {
         createRooms();
     }
-    
+
     /**
      * Method declares and configure the rooms of the game.
      */
@@ -91,7 +92,7 @@ public class RoomManager {
         lecturehall_2.setExit("west", hallway_3);
         lecturehall_2.setExit("north", dininghall);
         lecturehall_2.setExit("east", toilet);
-        
+
         /* Define exit-waypoints:
            From 'toilet' Room instance. */
         toilet.setExit("west", lecturehall_2);
@@ -100,11 +101,11 @@ public class RoomManager {
         // Assign the Room object reference 'teachers' room' as the currentRoom object.
         currentRoom = teacher_room;
     }
-    
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
-    
+
     /**
      * Go to a different room and update current room.
      *
@@ -128,8 +129,7 @@ public class RoomManager {
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } /* Update current room reference and print long description of new
-           current room. */ 
-        else {
+           current room. */ else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
         }

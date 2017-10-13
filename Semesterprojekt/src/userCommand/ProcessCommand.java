@@ -1,6 +1,6 @@
 package userCommand;
 
-import mapAndRooms.RoomManager;
+import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.PrintOut;
 import worldofzuul.Quit;
 
