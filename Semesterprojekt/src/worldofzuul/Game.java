@@ -1,21 +1,17 @@
 package worldofzuul;
 
 import mapAndRooms.RoomManager;
-import mapAndRooms.Room;
 
 /**
  * Game class - most of the game is handled from here.
  *
  * Contains: 
- * - Which rooms are present in the game and their interconnections 
+ * - Instantiation of RoomManager 
  * - Call for user commands 
- * - Game messages 
  * - Quit game options 
- * - Help print 
  * - Additional class instantiations
  * 
- * @author Michael Kolling and David J. Barnes
- * @version 2006.03.30
+ * @author Rasmus Willer & Søren Bendtzen
  */
 public class Game {
 
