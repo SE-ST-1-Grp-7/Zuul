@@ -1,4 +1,4 @@
-package worldofzuul;
+package userCommand;
 
 // imported for declaring and assigning 'key:value' pairs.
 import java.util.HashMap;

@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul;
+
+import userCommand.Command;
 
 /**
  *
- * @author magnusmortensen
+ * @author Magnus Mortensen & Rasmus Willer
  */
 public class Quit {
       /**
@@ -17,7 +14,7 @@ public class Quit {
      * @param command String argument of user command input.
      * @return Boolean return true if correct quit command, otherwise false.
      */
-    private boolean quit(Command command) {
+    public static boolean quit(Command command) {
         // If user command contain a second word, the boolean return false.
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
