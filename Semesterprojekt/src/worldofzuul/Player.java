@@ -3,7 +3,7 @@ package worldofzuul;
 /** Player class - subclass the Person class
  * Used to instantiate a Player
  *
- * @author Gruppe 7
+ * @author Gruppe 7, Robin & Niclas
  */
 public class Player extends Person {
     private int energy; //current energy level

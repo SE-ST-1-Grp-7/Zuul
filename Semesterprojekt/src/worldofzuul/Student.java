@@ -7,7 +7,7 @@ package worldofzuul;
 
 /**
  *
- * @author Robin
+ * @author Robin & Niclas
  */
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player

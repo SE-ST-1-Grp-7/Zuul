@@ -3,7 +3,7 @@ package worldofzuul;
 
 /** Person class - superclass of Student & Player
  *
- * @author Gruppe 7
+ * @author Gruppe 7, Robin & Niclas
  */
 public abstract class Person {
     private String name;
