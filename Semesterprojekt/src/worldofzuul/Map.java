@@ -10,6 +10,7 @@ package worldofzuul;
  * @author niclasjohansen
  */
 public class Map {
+    MapCoord mapcords = new MapCoord();
     private int item;
     private int exit;
     private String description;

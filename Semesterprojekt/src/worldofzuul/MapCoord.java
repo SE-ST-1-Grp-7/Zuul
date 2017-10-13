@@ -20,16 +20,16 @@ public class MapCoord{
         this.X = X;
         this.Y = Y;
     }
-    public int getX() {
+    public int getMapX() {
         return X;
     }
-    public int getY() {
+    public int getMapY() {
         return Y;
     }
-    public void setX(int X) {
+    public void setMapX(int X) {
         this.X = X;
     }
-    public void setY(int Y) {
+    public void setMapY(int Y) {
         this.Y = Y;
     }
 }
