@@ -2,7 +2,7 @@ package worldofzuul.mapAndRooms;
 
 /**
  *
- * @author Niclas Johansen & Rasmus WIller
+ * @author Niclas Johansen & Rasmus WIller & Søren Bendtsen
  */
 public class Map {
     MapCoord mapcords = new MapCoord();

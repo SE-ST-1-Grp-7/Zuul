@@ -7,7 +7,7 @@ package worldofzuul.mapAndRooms;
 
 /**
  *
- * @author Soren
+ * @author Søren Bendtsen
  */
 public class RoomCoord {
 

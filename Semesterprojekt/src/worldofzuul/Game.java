@@ -11,7 +11,7 @@ import worldofzuul.mapAndRooms.RoomManager;
  * - Quit game options 
  * - Additional class instantiations
  * 
- * @author Rasmus Willer & Søren Bendtzen
+ * @author Rasmus Willer & Søren Bendtsen
  */
 public class Game {
 
