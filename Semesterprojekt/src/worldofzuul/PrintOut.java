@@ -1,7 +1,7 @@
 package worldofzuul;
 
-import mapAndRooms.Room;
-import mapAndRooms.RoomManager;
+import worldofzuul.mapAndRooms.Room;
+import worldofzuul.mapAndRooms.RoomManager;
 
 /**
  *

@@ -1,4 +1,4 @@
-package mapAndRooms;
+package worldofzuul.mapAndRooms;
 
 // importing standard libraries for managing datastructures.
 import java.util.Set;
@@ -11,9 +11,10 @@ import java.util.HashMap;
 public class Room {
 
     // instantiates room coordinates to set and get.
-    RoomCoord roomcords = new RoomCoord();
+
     // Declare attributes -section.
     private String description;
+    RoomCoord roomcords = new RoomCoord();
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 

@@ -1,4 +1,4 @@
-package mapAndRooms;
+package worldofzuul.mapAndRooms;
 
 import worldofzuul.Command;
 

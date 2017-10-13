@@ -3,45 +3,45 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mapAndRooms;
+package worldofzuul.mapAndRooms;
 
 /**
  *
  * @author Soren
  */
-public class RoomCoord {
+public class MapCoord {
 
     private int X;
     private int Y;
 
-    // no-arg constructor to set a standard room to 0,0 coordinates.
-    public RoomCoord() {
+    // no-arg constructor to set a standard map to 0,0 coordinates.
+    public MapCoord() {
         this(0, 0);
     }
 
-    // x y constructor for room coordinates
-    public RoomCoord(int X, int Y) {
+    // x y constructor for map coordinates
+    public MapCoord(int X, int Y) {
         this.X = X;
         this.Y = Y;
     }
 
-    // getter for the rooms x-value
-    public int getRoomX() {
+    // getter for the maps x-value
+    public int getMapX() {
         return X;
     }
 
-    // getter for the rooms Y-value
-    public int getRoomY() {
+    // getter for the map y-value
+    public int getMapY() {
         return Y;
     }
 
-    // setter for the rooms x-value
-    public void setRoomX(int X) {
+    // setter for the map x-value
+    public void setMapX(int X) {
         this.X = X;
     }
 
     // setter for the rooms y-value
-    public void setRoomY(int Y) {
+    public void setMapY(int Y) {
         this.Y = Y;
     }
 }
