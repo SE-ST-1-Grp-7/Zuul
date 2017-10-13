@@ -16,6 +16,8 @@ import java.util.HashMap;
 public class Inventory {
 
     private final int CAPACITY = 10;
+    private final int MAX_WEIGHT = 200;
+    private int currentWeight;
     private ArrayList<Item> items = new ArrayList<>(CAPACITY);
 
 /** 
@@ -23,16 +25,23 @@ public class Inventory {
  * @param item 
  */
     public void addItem(Item item) {
-        if (items.size() < CAPACITY) {
+        // check if theres less than 10 items & less than 200 weight in the inventory
+        if (items.size() < CAPACITY 
+                && 
+                (currentWeight + item.getWeight() <= MAX_WEIGHT)) {
             items.add(item);
-        } else {
+            currentWeight += item.getWeight();
+        } else if(items.size() < CAPACITY){ // checks if theres less than 10 items
             System.out.println("Not enough space");
+        } else {
+            System.out.println("The item is too heavy");
         }
     }
     public Item getItem(int index) {
         return items.get(index);  
     }
     public void removeItem(int index) {
+        currentWeight-= items.get(index).getWeight();
         items.remove(index);     
     }
 
