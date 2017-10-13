@@ -14,14 +14,12 @@ public class Student extends Person {
     
     /**
      * Constructor that gives a random name
-     * @param age
      * @param gender
      * @param speed 
      */
-    public Student(int age, String gender, int speed){
+    public Student(String gender, int speed){
         hasQuestionToPlayer = true;
         super.setName(getRandomName());
-        super.setAge(age);
         super.setGender(gender);
         super.setSpeed(speed);
 
@@ -32,14 +30,12 @@ public class Student extends Person {
      * This constructor makes a student that has a question for the Player
      * the student also has a name, age, gender and speed
      * @param name
-     * @param age
      * @param gender
      * @param speed
      */
-    public Student(String name, int age, String gender, int speed){
+    public Student(String name, String gender, int speed){
         hasQuestionToPlayer = true;
         super.setName(name);
-        super.setAge(age);
         super.setGender(gender);
         super.setSpeed(speed);
     }

@@ -14,13 +14,11 @@ public class Player extends Person {
 /**
  * a constructor for making a player
  * @param name
- * @param age
  * @param gender
  * @param speed 
  */
-    public Player(String name, int age, String gender, int speed) {
+    public Player(String name, String gender, int speed) {
         super.setName(name);
-        super.setAge(age);
         super.setGender(gender);
         super.setSpeed(speed);
         this.energy = 100;

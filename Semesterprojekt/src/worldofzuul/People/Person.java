@@ -7,7 +7,6 @@ package worldofzuul.People;
  */
 public abstract class Person {
     private String name;
-    private int age;
     private String gender;
     private int speed;
     //private Inventory inventory;
@@ -26,20 +25,6 @@ public abstract class Person {
      */
     public void setName(String name) {
         this.name = name;
-    }
-    /**
-     * getter for the age
-     * @return 
-     */
-    public int getAge() {
-        return this.age;
-    }
-    /**
-     * setter for the age
-     * @param age 
-     */
-    public void setAge(int age) {
-        this.age = age;
     }
     /**
      * getter for the gender
