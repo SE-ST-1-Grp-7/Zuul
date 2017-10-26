@@ -21,4 +21,9 @@ public class Adderall extends Item implements IConsumable {
         p.setEnergy(energyRestore + p.getEnergy());
         p.setEnergyCap(p.getEnergyCap() + energyCapIncrease);
     }
+
+    @Override
+    public void use(Player p) {
+        consume(p);
+    }
 }
