@@ -5,10 +5,12 @@
  */
 package worldofzuul.interfaces;
 
+import worldofzuul.People.Player;
+
 /**
  *
  * @author J
  */
 public interface IConsumable {
-    void consume();
+    void consume(Player p);
 }
