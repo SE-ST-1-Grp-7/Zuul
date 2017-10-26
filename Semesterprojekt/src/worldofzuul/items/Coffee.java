@@ -1,5 +1,6 @@
 
 package worldofzuul.items;
+import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 
 /**
@@ -14,8 +15,8 @@ public class Coffee extends Item implements IConsumable {
         super.setWeight(5);
     }
     @Override
-    public void consume() {
-        System.out.println("help");
+    public void consume(Player p) {
+        p.setEnergy(energyRestore + p.getEnergy());
     }
 
 }

@@ -1,6 +1,7 @@
 package worldofzuul.items;
 
 import worldofzuul.Entity;
+import worldofzuul.People.Player;
 
 /**
  * Item class - the class used to instantiate an item in the game
@@ -37,4 +38,5 @@ public abstract class Item extends Entity {
     public void setWeight(int Weight) {
         this.weight = weight;
     }
+    public abstract void use(Player p);
 }
