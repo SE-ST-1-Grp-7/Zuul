@@ -15,6 +15,9 @@ public abstract class Furniture extends Entity {
     private String furnitureName;
     private String furnitureDiscription;
     
+  //lav constructor
+    
+    
     /**
      * getter for furnitureName
      * @return 

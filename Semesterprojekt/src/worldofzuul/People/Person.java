@@ -7,9 +7,9 @@ import worldofzuul.Inventory;
  */
 public abstract class Person {
     private String name;
-    private String gender;
+    private String gender; //skal nok slettes
     private int speed;
-    Inventory inventory = new Inventory();
+    Inventory inventory = new Inventory(); // skal rykkes ned til player
     
     /**
      * getter for the name
