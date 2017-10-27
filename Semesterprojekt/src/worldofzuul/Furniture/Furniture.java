@@ -10,8 +10,10 @@ public abstract class Furniture extends Entity {
     private String furnitureName;
     private String furnitureDiscription;
     
-  //lav constructor
-    
+    public Furniture(String furnitureName, String furnitureDiscription){
+        this.furnitureName = furnitureName;
+        this.furnitureDiscription = furnitureDiscription;
+    }
     
     /**
      * getter for furnitureName
