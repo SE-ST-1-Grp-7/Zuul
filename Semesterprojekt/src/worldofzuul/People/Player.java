@@ -1,6 +1,8 @@
 package worldofzuul.People;
 
+import java.util.ArrayList;
 import worldofzuul.items.Inventory;
+import worldofzuul.items.Item;
 
 /** Player class - subclass the Person class
  * Used to instantiate a Player
@@ -28,6 +30,10 @@ public class Player extends Person {
         inventory = new Inventory();
     }
     
+    
+    public ArrayList<Item> getInventory(){
+        return inventory.getInventory();
+    }
     /**
      * getter for the current energy level
      * @return 
@@ -56,8 +62,6 @@ public class Player extends Person {
     public void setEnergyCap(int energyCap) {
         this.energyCap = energyCap;
     }
-    
-    
     /**
      * getter for the current fatiuge
      * @return 
