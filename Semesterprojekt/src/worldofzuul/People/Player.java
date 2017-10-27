@@ -1,5 +1,7 @@
 package worldofzuul.People;
 
+import worldofzuul.Inventory;
+
 /** Player class - subclass the Person class
  * Used to instantiate a Player
  *
@@ -10,17 +12,15 @@ public class Player extends Person {
     private int energyCap; //the max amount of energy
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
+    Inventory inventory = new Inventory();
     
 /**
  * a constructor for making a player
  * @param name
- * @param gender
  * @param speed 
  */
-    public Player(String name, String gender, int speed) {
-        super.setName(name);
-        super.setGender(gender);
-        super.setSpeed(speed);
+    public Player(String name, int speed) {
+        super(name, speed);
         this.energy = 100;
         this.energyCap = 100;
         this.fatigue = 0;
