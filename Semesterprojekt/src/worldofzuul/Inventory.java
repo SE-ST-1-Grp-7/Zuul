@@ -31,7 +31,7 @@ public class Inventory {
                 (currentWeight + item.getWeight() <= MAX_WEIGHT)) {
             items.add(item);
             currentWeight += item.getWeight();
-        } else if(items.size() < CAPACITY){ // checks if theres less than 10 items
+        } else if(items.size() == CAPACITY){ // checks if theres less than 10 items
             System.out.println("Not enough space");
         } else {
             System.out.println("The item is too heavy");
