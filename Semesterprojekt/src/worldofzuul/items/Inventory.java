@@ -5,9 +5,7 @@
  */
 package worldofzuul.items;
 
-import worldofzuul.items.Item;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  *
