@@ -18,5 +18,9 @@ public class Coffee extends Item implements IConsumable {
     public void consume(Player p) {
         p.setEnergy(energyRestore + p.getEnergy());
     }
+    @Override
+    public void use(Player p) {
+        consume(p);
+    }
 
 }
