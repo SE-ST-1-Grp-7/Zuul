@@ -1,6 +1,6 @@
 package worldofzuul.People;
 
-import worldofzuul.Inventory;
+import worldofzuul.items.Inventory;
 
 /** Player class - subclass the Person class
  * Used to instantiate a Player
