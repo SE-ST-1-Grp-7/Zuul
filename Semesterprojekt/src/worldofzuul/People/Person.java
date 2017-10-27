@@ -1,5 +1,4 @@
 package worldofzuul.People;
-import worldofzuul.Inventory;
 
 /** Person class - superclass of Student & Player
  *
@@ -7,10 +6,18 @@ import worldofzuul.Inventory;
  */
 public abstract class Person {
     private String name;
-    private String gender;
     private int speed;
-    Inventory inventory = new Inventory();
     
+    
+    public Person(int speed){
+        this.name = getRandomName();
+        this.speed = speed;
+    }
+    
+    public Person(String name, int speed){
+        this.name = name;
+        this.speed = speed;
+    }
     /**
      * getter for the name
      * @return 
@@ -26,20 +33,6 @@ public abstract class Person {
         this.name = name;
     }
     /**
-     * getter for the gender
-     * @return 
-     */
-    public String getGender() {
-        return this.gender;
-    }
-    /**
-     * setter for the gender
-     * @param gender 
-     */
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-    /**
      * getter for the speed
      * @return 
      */
@@ -52,7 +45,17 @@ public abstract class Person {
      */
     public void setSpeed(int speed) {
         this.speed = speed;
-    } 
+    }
+         /**
+     * Randomly create a (predefined)name
+     *
+     * @return 
+     */
+    public String getRandomName(){
+        String[] names = {"Niclas", "Rasmus", "Søren", "Robin","Jonas","Magnus","Frederik"};
+        int index = (int) (Math.random() * names.length);
+        return names[index];
+    }
 }
 
         

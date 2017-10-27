@@ -27,8 +27,7 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param maxAmountOfItems 
      */
     public Table(String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
-        super.setFurnitureName(tableName);
-        super.setFurnitureDiscription(tableDescription);
+        super(tableName, tableDescription);
         this.canHaveItems = canHaveItems;
         this.maxAmountOfItems = maxAmountOfItems;
         this.currentAmountOfItems = 0;

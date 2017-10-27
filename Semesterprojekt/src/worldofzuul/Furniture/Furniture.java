@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul.Furniture;
 
 import worldofzuul.Entity;
@@ -14,6 +9,11 @@ import worldofzuul.Entity;
 public abstract class Furniture extends Entity {
     private String furnitureName;
     private String furnitureDiscription;
+    
+    public Furniture(String furnitureName, String furnitureDiscription){
+        this.furnitureName = furnitureName;
+        this.furnitureDiscription = furnitureDiscription;
+    }
     
     /**
      * getter for furnitureName

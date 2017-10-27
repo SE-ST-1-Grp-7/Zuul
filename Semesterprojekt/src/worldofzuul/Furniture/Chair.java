@@ -17,8 +17,7 @@ public class Chair extends Furniture /*implements Interactable*/{
      * @param chairDescription 
      */
     public Chair(String chairName, String chairDescription){
-        super.setFurnitureName(chairName);
-        super.setFurnitureDiscription(chairDescription);
+        super(chairName, chairDescription);
     }
     
     /**
