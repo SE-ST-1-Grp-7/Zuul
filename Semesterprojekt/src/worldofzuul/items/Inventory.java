@@ -42,5 +42,9 @@ public class Inventory {
         currentWeight-= items.get(index).getWeight();
         items.remove(index);     
     }
+    
+    public ArrayList<Item> getInventory(){
+        return items;
+    }
 
 }

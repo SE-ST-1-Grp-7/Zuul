@@ -12,7 +12,7 @@ public class Player extends Person {
     private int energyCap; //the max amount of energy
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
-    static Inventory inventory = new Inventory();
+    private Inventory inventory = new Inventory();
     
 /**
  * a constructor for making a player
@@ -85,6 +85,7 @@ public class Player extends Person {
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
     }
+    
     
     
 }
