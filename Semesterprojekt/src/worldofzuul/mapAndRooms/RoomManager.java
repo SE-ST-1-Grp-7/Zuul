@@ -24,17 +24,17 @@ public class RoomManager {
         // Declare room objects.
 
         // Instantiate the rooms and their descriptions
-        roomlist= new HashMap<String, Room>();
+        roomlist = new HashMap<String, Room>();
         roomlist.put("garden",new Room("outside in the lovely garden... smells lovely of roses"));
         roomlist.put("relaxing room",new Room("in a nice and cozy relaxing room"));
         roomlist.put("teacher room", new Room("in your own room, finaly some peace..."));
         roomlist.put("pub", new Room("in the campus pub"));
         roomlist.put("outside", new Room("outside the main entrance of the university"));
-        roomlist.put("hallway 1", new Room("you are moving along the hallway"));
+        roomlist.put("hallway 1", new Room("moving along the hallway"));
         roomlist.put("dininghall", new Room("in the dining hall, time to nom!"));
-        roomlist.put("hallway 2", new Room("you are moving along the hallway"));
+        roomlist.put("hallway 2", new Room("moving along the hallway"));
         roomlist.put("lecturehall 1", new Room("in a lecturehall, the lights are flickering..."));
-        roomlist.put("hallway 3", new Room("you are moving along the hallway"));
+        roomlist.put("hallway 3", new Room("moving along the hallway"));
         roomlist.put("lecturehall 2", new Room("in a lecturehall, everything is working... weird..."));
         roomlist.put("toilet", new Room("pooping"));
         
