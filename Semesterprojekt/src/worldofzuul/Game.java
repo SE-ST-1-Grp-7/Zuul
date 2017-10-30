@@ -50,4 +50,9 @@ public class Game {
         // Quit message
         System.out.println("Thank you for playing.  Good bye.");
     }
+    
+    public RoomManager getRoomManager() {
+        return rooms;
+    }
+    
 }
