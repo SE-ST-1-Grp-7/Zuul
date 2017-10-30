@@ -18,11 +18,11 @@ public class Quit {
         // If user command contain a second word, the boolean return false.
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
-            return false;
+            return true;
         } 
         // Otherwise return true, intending to quit the game.
         else {
-            return true;
+            return false;
         }
     }
 }
