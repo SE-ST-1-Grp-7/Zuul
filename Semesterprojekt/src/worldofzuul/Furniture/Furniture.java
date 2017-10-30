@@ -3,14 +3,20 @@ package worldofzuul.Furniture;
 import worldofzuul.Entity;
 
 /**
- * A superclass
+ * a class for all furniture
  * @author Robin
  */
 public abstract class Furniture extends Entity {
-    private String furnitureName;
-    private String furnitureDiscription;
+    private String furnitureName; //name of the furniture
+    private String furnitureDiscription; //description for the furniture
     
+    /**
+     * constructor that sets the name and description for the furniture
+     * @param furnitureName
+     * @param furnitureDiscription 
+     */
     public Furniture(String furnitureName, String furnitureDiscription){
+        //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
         this.furnitureDiscription = furnitureDiscription;
     }
