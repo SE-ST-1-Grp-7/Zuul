@@ -29,7 +29,7 @@ public abstract class Person {
      * @param y 
      */
     public Person(String name, int speed, int x, int y){
-        //the parameters are set equal to the attributes
+        //the attributes are set equal to the parimeters
         this.name = name;
         this.speed = speed;
         this.x = x;
