@@ -35,6 +35,13 @@ public class Game implements Runnable {
     
     public void tick() {
         // GAME LOGIC UPDATING
+        
+        // Get user command input.
+        command.getCommand();
+        // Process user command.
+        running = command.process(rooms);
+        // Update rooms object
+        rooms = command.getRooms();
     }
     
     public void render() {
@@ -84,30 +91,31 @@ public class Game implements Runnable {
             // Update last tick time to this tick time.
             timeThen        = timeNow;
             
+            /* If time difference percentage accumulates to 1:
+             * Tick and render, and decrease time diff factor.
+             */
             if (timeDiffFactor >= 1) {
+                // Tick update.
                 tick();
+                // Render update.
                 render();
+                // Tick count increase.
                 tickCount++;
+                // Substract 1 from time difference percentage.
                 timeDiffFactor--;
             }
             
+            // If a second or more has passed reset counts.
             if (secondKeeper >= 1000000000) {
-                System.out.println("Ticks and frames: " + tickCount);
+                // Printout frame rate.
+                //System.out.println("Ticks and frames: " + tickCount);
+                
                 tickCount       = 0;
                 secondKeeper    = 0;
             }
-            
-            // LEGACY CODE -section - DO NOT LET BE ACTIVE HERE!
-            // (Use tick and render methods now.)
-            /*
-            // Get user command input.
-            command.getCommand();
-            // Process user command.
-            running = command.process(rooms);
-            // Update rooms object
-            rooms = command.getRooms();*/
         }
         
+        // Stop thread.
         stop();
         
         // Quit message
