@@ -27,14 +27,14 @@ public class ProcessCommand {
     public boolean process(RoomManager rooms) {
         this.parser = parser;
         this.rooms = rooms;
-        boolean wantToQuit = false;
+        boolean gameLoop = true;
 
         CommandWord commandWord = command.getCommandWord();
 
         // If user input is not a defined command.
         if (commandWord == CommandWord.UNKNOWN) {
             System.out.println("I don't know what you mean...");
-            return false;
+            return true;
         }
 
         if (null != commandWord) { // If user input is request for help print.
@@ -48,7 +48,7 @@ public class ProcessCommand {
                     rooms.goRoom(command);
                     break;
                 case QUIT:
-                    wantToQuit = Quit.quit(command);
+                    gameLoop = Quit.quit(command);
                     break;
                 default:
                     break;
@@ -56,7 +56,7 @@ public class ProcessCommand {
         }
         
         // Quit boolean, true if user wants to quit.
-        return wantToQuit;
+        return gameLoop;
     }
     
     public void getCommand() {
