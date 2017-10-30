@@ -12,8 +12,8 @@ public class Student extends Person {
 
      * @param speed 
      */
-    public Student(int speed){
-        super(speed);
+    public Student(int speed, int x, int y){
+        super(speed, x, y);
         hasQuestionToPlayer = true;
     }
     
@@ -23,9 +23,11 @@ public class Student extends Person {
      * the student also has a name, age, gender and speed
      * @param name
      * @param speed
+     * @param x
+     * @param y
      */
-    public Student(String name, int speed){
-        super(name, speed);
+    public Student(String name, int speed, int x, int y){
+        super(name, speed, x, y);
         hasQuestionToPlayer = true;
     }
     
