@@ -16,18 +16,22 @@ public class Player extends Person {
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory;
     
+    
 /**
  * a constructor for making a player
  * @param name
  * @param speed 
+     * @param x 
+     * @param y 
  */
-    public Player(String name, int speed) {
-        super(name, speed);
+    public Player(String name, int speed, int x, int y) {
+        super(name, speed, x, y);
         this.energy = 100;
         this.energyCap = 100;
         this.fatigue = 0;
         this.fatigueCap = 100; 
         inventory = new Inventory();
+        
     }
     
     
