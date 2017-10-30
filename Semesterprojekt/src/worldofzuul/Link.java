@@ -4,7 +4,7 @@ import worldofzuul.mapAndRooms.RoomManager;
 
 /**
  *
- * @author Rasmus Willer
+ * @author Rasmus Willer & Søren Bendtsen & Magnus Mortensen
  */
 public class Link {
     private Game game;
@@ -17,5 +17,7 @@ public class Link {
     public RoomManager getRoomManager() {
         return game.getRoomManager();
     }
-    
+    /*Der skal tilføjes flere getter og setter metoder, som kan få returneret deres kald i Link.
+      På den måde forlænger Link de informationer vi kan få fat i.
+     */
 }
