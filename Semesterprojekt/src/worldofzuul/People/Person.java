@@ -11,10 +11,7 @@ public abstract class Person {
     
     
     public Person(int speed, int x, int y){
-        this.name = getRandomName();
-        this.speed = speed;
-        this.x = x;
-        this.y = y;
+        this(getRandomName(), speed, x, y);
     }
     
     public Person(String name, int speed, int x, int y){
@@ -56,7 +53,7 @@ public abstract class Person {
      *
      * @return 
      */
-    public String getRandomName(){
+    public static String getRandomName(){
         String[] names = {"Niclas", "Rasmus", "Søren", "Robin","Jonas","Magnus","Frederik"};
         int index = (int) (Math.random() * names.length);
         return names[index];
