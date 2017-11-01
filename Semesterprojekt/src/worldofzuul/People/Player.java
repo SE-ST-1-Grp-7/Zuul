@@ -17,8 +17,8 @@ public class Player extends Person {
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
-    private int x = 0;
-    private int y = 0;
+    public int x = 0;
+    public int y = 0;
     
     
 /**
@@ -151,5 +151,9 @@ public class Player extends Person {
         System.out.flush(); 
         System.out.println(room.getLongDescription());
         PrintOut.displayRoom(room);
+    }
+    public void lootItem(Item i) {
+        inventory.addItem(i);
+        System.out.println(i.getName() + " added to inventory!");
     }
 }

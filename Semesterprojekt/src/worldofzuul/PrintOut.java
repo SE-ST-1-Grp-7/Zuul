@@ -1,6 +1,8 @@
 package worldofzuul;
 
 import worldofzuul.People.Player;
+import worldofzuul.items.Coffee;
+import worldofzuul.items.Item;
 import worldofzuul.userCommand.Parser;
 import worldofzuul.userCommand.CommandWord;
 import worldofzuul.mapAndRooms.Room;
@@ -23,6 +25,7 @@ public class PrintOut {
         System.out.println();
         // Finish off with the long description of the current room.
         System.out.println(currentRoom.getLongDescription());
+        displayRoom(currentRoom);
     }
     
     /**
@@ -48,8 +51,10 @@ public class PrintOut {
             for(int j = 0; j< 10; j++) {
                 if(currentRoom.roomArray[i][j] instanceof Player) {
                     System.out.print("|" + "p");
+                } else if(currentRoom.roomArray[i][j] instanceof Coffee) {
+                    System.out.print("l" + "i");
                 } else {
-                    System.out.print("l ");
+                  System.out.print("l ");  
                 }
             }
             System.out.println("");

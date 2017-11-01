@@ -4,6 +4,7 @@ import worldofzuul.People.Player;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.PrintOut;
 import worldofzuul.Quit;
+import worldofzuul.items.Item;
 
 /**
  *
@@ -51,6 +52,14 @@ public class ProcessCommand {
                 case MOVE:
                     p.move(rooms.getCurrentRoom(), command);
                     break;
+                case LOOT:
+                    if(rooms.getCurrentRoom().roomArray[p.x][p.y-1] != null) {
+                        p.lootItem((Item) rooms.getCurrentRoom().roomArray[p.x][p.y-1]);
+                    } else {
+                        System.out.println("no item found :(");
+                    }
+                    break;
+                    
                 case QUIT:
                     gameLoop = Quit.quit(command);
                     break;
