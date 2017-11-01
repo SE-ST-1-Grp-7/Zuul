@@ -1,5 +1,6 @@
 package worldofzuul;
 
+import worldofzuul.People.Player;
 import worldofzuul.userCommand.Parser;
 import worldofzuul.userCommand.CommandWord;
 import worldofzuul.mapAndRooms.Room;
@@ -34,5 +35,24 @@ public class PrintOut {
         System.out.println();
         System.out.println("Your command words are:");
         parser.showCommands();
+    }
+    /** --for testing purposes, can & should be refined later--
+     * displays the room in a 10x10, 2d space
+     * objects in the room are displayed by the first
+     * letter of the objects type.
+     * empty space equals null - aka no object is in that location
+     * @param currentRoom 
+     */
+    public static void displayRoom(Room currentRoom) {
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j< 10; j++) {
+                if(currentRoom.roomArray[i][j] instanceof Player) {
+                    System.out.print("|" + "p");
+                } else {
+                    System.out.print("l ");
+                }
+            }
+            System.out.println("");
+        }
     }
 }

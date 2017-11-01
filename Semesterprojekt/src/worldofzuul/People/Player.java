@@ -1,8 +1,11 @@
 package worldofzuul.People;
 
 import java.util.ArrayList;
+import worldofzuul.PrintOut;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
+import worldofzuul.mapAndRooms.Room;
+import worldofzuul.userCommand.Command;
 
 /** Player class - subclass of the Person class
  * Used to instantiate a Player
@@ -14,6 +17,8 @@ public class Player extends Person {
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
+    private int x = 0;
+    private int y = 0;
     
     
 /**
@@ -104,4 +109,47 @@ public class Player extends Person {
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
     } 
+    public void move(Room room, Command command) {
+        System.out.println("hello");
+                if (!command.hasSecondWord()) {
+            System.out.println("Go where?");
+            return;
+        }
+
+        // Get second parsed command word and assign it to String variable.
+        String direction = command.getSecondWord();
+
+        /* Assign next room according to matching direction defined in the
+           createRooms method */
+        switch(direction) {
+            case "left":
+                // move the player one space to the left in the 2d array
+                room.roomArray[x][y-1] = this;
+                // remove player from the previous location
+                room.roomArray[x][y] = null;
+                // set new values
+                y -= 1;
+                break;
+            case "right":
+                room.roomArray[x][y+1] = this;
+                room.roomArray[x][y] = null;
+                y += 1;
+                break;
+            case "down":
+                room.roomArray[x+1][y] = this;
+                room.roomArray[x][y] = null;
+                x += 1;
+                break;
+            case "up":
+                room.roomArray[x-1][y] = this;
+                room.roomArray[x][y] = null;
+                x -= 1;
+                break;
+                    
+        }
+        // clear the console
+        System.out.flush(); 
+        System.out.println(room.getLongDescription());
+        PrintOut.displayRoom(room);
+    }
 }

@@ -3,6 +3,8 @@ package worldofzuul.mapAndRooms;
 // importing standard libraries for managing datastructures.
 import java.util.Set;
 import java.util.HashMap;
+import worldofzuul.People.Player;
+import worldofzuul.items.Coffee;
 
 /**
  *
@@ -15,6 +17,7 @@ public class Room {
     // Declare attributes -section.
     private String description;
     RoomCoord roomcords = new RoomCoord();
+    public Object[][] roomArray = new Object[10][10];
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
@@ -29,6 +32,7 @@ public class Room {
         /* Instantiating map object with key of String type and
            value as Room object. */
         exits = new HashMap<String, Room>();
+        fillArray();
     }
 
     /**
@@ -93,5 +97,13 @@ public class Room {
      */
     public Room getExit(String direction) {
         return exits.get(direction);
+    }
+    private void fillArray() {
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++) {
+                roomArray[i][j] = null;
+            }
+        }
+        roomArray[0][0] = new Player("john",10,5,12);
     }
 }

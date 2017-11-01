@@ -10,7 +10,7 @@ package worldofzuul.userCommand;
 public enum CommandWord
 {
     // commands to check for.
-    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?");
+    GO("go"), QUIT("quit"), HELP("help"), UNKNOWN("?"), MOVE("move");
     
     private String commandString;
     

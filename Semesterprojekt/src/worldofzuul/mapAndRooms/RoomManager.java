@@ -2,15 +2,16 @@ package worldofzuul.mapAndRooms;
 
 import worldofzuul.userCommand.Command;
 import java.util.HashMap;
+import worldofzuul.PrintOut;
 
 /**
  *
  * @author Rasmus Willer & Søren Bendtsen
  */
-public class RoomManager {
+public  class RoomManager {
 
     private Room currentRoom;
-    private HashMap<String, Room> roomlist;
+    private static HashMap<String, Room> roomlist;
     
     public RoomManager() {
         createRooms();
@@ -138,6 +139,7 @@ public class RoomManager {
            current room. */ else {
             currentRoom = nextRoom;
             System.out.println(currentRoom.getLongDescription());
+            PrintOut.displayRoom(currentRoom);
         }
     }
 }
