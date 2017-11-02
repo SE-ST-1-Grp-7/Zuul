@@ -109,8 +109,8 @@ public class Room {
             }
         }
         Coffee c = new Coffee();
-        c.setX(2);
-        c.setY(4);
+        c.setX(3);
+        c.setY(0);
         itemsInRoom.add(c);
         
         for( Item i : itemsInRoom) {
@@ -120,5 +120,11 @@ public class Room {
     }
     public ArrayList<Item> getItemList() {
         return this.itemsInRoom;
+    }
+    public boolean hasLoot(int x, int y) {
+        return roomArray[y][x] instanceof Item;
+    }
+    public void removeItem(Item i) {
+        itemsInRoom.remove(i);
     }
 }

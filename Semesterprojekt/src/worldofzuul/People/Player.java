@@ -121,36 +121,39 @@ public class Player extends Person {
            createRooms method */
         switch(direction) {
             case "left":
+                // check if theres a lootable item
+                // if true, cast the object to Item and loot it
+                if(room.hasLoot(getX()-1, getY()))
+                    lootItem((Item) room.roomArray[getY()][getX()-1]);
                 // move the player one space to the left in the 2d array
-                room.roomArray[getX()][getY()-1] = this;
+                room.roomArray[getY()][getX()-1] = this;
                 // remove player from the previous location
-                room.roomArray[getX()][getY()] = null;
+                room.roomArray[getY()][getX()] = null;
                 // set new values
-                setY(getY()-1);
-                break;
-            case "right":
-                room.roomArray[getX()][getY()+1] = this;
-                room.roomArray[getX()][getY()] = null;
-                setY(getY()+1);
-                break;
-            case "down":
-                room.roomArray[getX()+1][getY()] = this;
-                room.roomArray[getX()][getY()] = null;
-                setX(getX()+1);
-                break;
-            case "up":
-                room.roomArray[getX()-1][getY()] = this;
-                room.roomArray[getX()][getY()] = null;
                 setX(getX()-1);
                 break;
+            case "right":
+                if(room.hasLoot(getX()+1, getY()))
+                    lootItem((Item) room.roomArray[getY()][getX()+1]);
+                room.roomArray[getY()][getX()+1] = this;
+                room.roomArray[getY()][getX()] = null;
+                setX(getX()+1);
+                break;
+            case "down":
+                if(room.hasLoot(getX(), getY()+1))
+                    lootItem((Item) room.roomArray[getY()+1][getX()]);
+                room.roomArray[getY()+1][getX()] = this;
+                room.roomArray[getY()][getX()] = null;
+                setY(getY()+1);
+                break;
+            case "up":
+                if(room.hasLoot(getX(), getY()-1))
+                    lootItem((Item) room.roomArray[getY()-1][getX()]);
+                room.roomArray[getY()-1][getX()] = this;
+                room.roomArray[getY()][getX()] = null;
+                setY(getY()-1);
+                break;
                     
-        }
-        for(Item i : room.getItemList()) {
-            System.out.println(getDistance(i));
-            if(getDistance(i) <= 1) {
-                lootItem(i);
-                room.getItemList().remove(i);
-            }
         }
         System.out.println(room.getLongDescription());
         PrintOut.displayRoom(room);
@@ -159,12 +162,5 @@ public class Player extends Person {
         inventory.addItem(i);
         System.out.println(i.getName() + " added to inventory!");
         
-    }
-    // get distance between player and an item
-    public double getDistance(Item i) {
-        int x = i.getX();
-        int y = i.getY();
-        double distance = Math.sqrt(Math.pow(getX() - i.getX(),2) + Math.pow(getY() - i.getY(),2));
-        return distance;
     }
 }
