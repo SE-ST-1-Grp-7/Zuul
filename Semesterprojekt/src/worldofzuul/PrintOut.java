@@ -52,12 +52,13 @@ public class PrintOut {
                 if(currentRoom.roomArray[i][j] instanceof Player) {
                     System.out.print("|" + "p");
                 } else if(currentRoom.roomArray[i][j] instanceof Coffee) {
-                    System.out.print("l" + "i");
+                    System.out.print("|" + "i");
                 } else {
-                  System.out.print("l ");  
+                  System.out.print("| ");  
                 }
             }
             System.out.println("");
         }
+        
     }
 }

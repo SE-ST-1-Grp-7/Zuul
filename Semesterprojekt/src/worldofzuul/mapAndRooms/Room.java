@@ -104,7 +104,7 @@ public class Room {
                 roomArray[i][j] = null;
             }
         }
-        roomArray[0][0] = new Player("john",10,5,12);
+        
         roomArray[4][7] = new Coffee();
     }
 }

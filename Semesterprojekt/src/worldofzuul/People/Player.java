@@ -17,8 +17,7 @@ public class Player extends Person {
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
-    public int x = 0;
-    public int y = 0;
+
     
     
 /**
@@ -124,26 +123,26 @@ public class Player extends Person {
         switch(direction) {
             case "left":
                 // move the player one space to the left in the 2d array
-                room.roomArray[x][y-1] = this;
+                room.roomArray[getX()][getY()-1] = this;
                 // remove player from the previous location
-                room.roomArray[x][y] = null;
+                room.roomArray[getX()][getY()] = null;
                 // set new values
-                y -= 1;
+                setY(getY()-1);
                 break;
             case "right":
-                room.roomArray[x][y+1] = this;
-                room.roomArray[x][y] = null;
-                y += 1;
+                room.roomArray[getX()][getY()+1] = this;
+                room.roomArray[getX()][getY()] = null;
+                setY(getY()+1);
                 break;
             case "down":
-                room.roomArray[x+1][y] = this;
-                room.roomArray[x][y] = null;
-                x += 1;
+                room.roomArray[getX()+1][getY()] = this;
+                room.roomArray[getX()][getY()] = null;
+                setX(getX()+1);
                 break;
             case "up":
-                room.roomArray[x-1][y] = this;
-                room.roomArray[x][y] = null;
-                x -= 1;
+                room.roomArray[getX()-1][getY()] = this;
+                room.roomArray[getX()][getY()] = null;
+                setX(getX()-1);
                 break;
                     
         }
