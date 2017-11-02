@@ -12,6 +12,8 @@ public abstract class Item extends Entity {
     private String itemName;
     private String itemDescription;
     private int weight;
+    int x;
+    int y;
     /**
      * Two-arg constructor
      * 
@@ -37,6 +39,18 @@ public abstract class Item extends Entity {
     }
     public void setWeight(int Weight) {
         this.weight = weight;
+    }
+    public int getX() {
+        return this.x;
+    }
+    public int getY() {
+        return this.y;
+    }
+    public void setX(int x) {
+        this.x = x;
+    }
+    public void setY(int y) {
+        this.y = y;
     }
     public abstract void use(Player p);
 }

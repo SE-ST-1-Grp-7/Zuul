@@ -109,7 +109,6 @@ public class Player extends Person {
         this.fatigueCap = fatigueCap;
     } 
     public void move(Room room, Command command) {
-        System.out.println("hello");
                 if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
@@ -146,13 +145,26 @@ public class Player extends Person {
                 break;
                     
         }
-        // clear the console
-        System.out.flush(); 
+        for(Item i : room.getItemList()) {
+            System.out.println(getDistance(i));
+            if(getDistance(i) <= 1) {
+                lootItem(i);
+                room.getItemList().remove(i);
+            }
+        }
         System.out.println(room.getLongDescription());
         PrintOut.displayRoom(room);
     }
     public void lootItem(Item i) {
         inventory.addItem(i);
         System.out.println(i.getName() + " added to inventory!");
+        
+    }
+    // get distance between player and an item
+    public double getDistance(Item i) {
+        int x = i.getX();
+        int y = i.getY();
+        double distance = Math.sqrt(Math.pow(getX() - i.getX(),2) + Math.pow(getY() - i.getY(),2));
+        return distance;
     }
 }
