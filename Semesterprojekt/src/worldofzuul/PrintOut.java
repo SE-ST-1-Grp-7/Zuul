@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import worldofzuul.People.Player;
+import worldofzuul.People.Student;
 import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
 import worldofzuul.userCommand.Parser;
@@ -53,7 +54,11 @@ public class PrintOut {
                     System.out.print("|" + "p");
                 } else if(currentRoom.roomArray[i][j] instanceof Coffee) {
                     System.out.print("|" + "i");
-                } else {
+                }
+                 else if(currentRoom.roomArray[i][j] instanceof Student) {
+                    System.out.print("|" + "s");
+                }
+                 else {
                   System.out.print("| ");  
                 }
             }

@@ -70,7 +70,17 @@ public class Room {
     public String getLongDescription() {
         return "You are " + description + ".\n" + getExitString();
     }
-
+    
+    /**
+     * Getter method for extended description of room with room descriptions and
+     * exit-waypoints from room.
+     *
+     * @return Returns String with description and exit-description.
+     */
+    public String getStudentDescription() {
+        return "Student is " + description;
+    }
+    
     /**
      * Getter method for String description of exit routes from room instance.
      *
@@ -101,6 +111,9 @@ public class Room {
      */
     public Room getExit(String direction) {
         return exits.get(direction);
+    }
+    public HashMap<String,Room> getExits() {
+        return this.exits;
     }
     private void fillArray() {
         for(int i = 0; i < 10; i++) {  
