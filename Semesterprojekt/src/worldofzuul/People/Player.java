@@ -14,6 +14,8 @@ public class Player extends Person {
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
+    private int gradedAssignments;
+    private int assignmentProgress;
     
     
 /**
@@ -30,6 +32,8 @@ public class Player extends Person {
         this.fatigue = 0; //the current amount of fatigue
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
+        this.gradedAssignments = 0;
+        this.assignmentProgress = 0;
         
     }
     
@@ -104,4 +108,23 @@ public class Player extends Person {
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
     } 
+    
+    public int getGradedAssignments(){
+        return this.gradedAssignments;
+    }
+    
+    public void setGradedAssignments(int assignment){
+        this.gradedAssignments = assignment;
+    }
+
+    public int getAssignmentProgress() {
+        return this.assignmentProgress;
+    }
+
+    public void setAssignmentProgress(int assignmentProgress) {
+        this.assignmentProgress = assignmentProgress;
+    }
+    
+    
+    
 }
