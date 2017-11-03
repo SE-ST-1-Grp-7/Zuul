@@ -37,8 +37,8 @@ public class Game implements Runnable {
         rooms = new RoomManager();
         command = new ProcessCommand();
 
-        student = new Student(5,5,5, rooms.getCurrentRoom(), 3, rooms);
-
+        student = new Student(5,5,5, rooms.getCurrentRoom(), 3);
+        student.place();
         player = new Player("Johammed",14,0,0,rooms.getCurrentRoom());
     }
     
