@@ -7,9 +7,9 @@ import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
 import worldofzuul.userCommand.Command;
 
-
-/** Player class - subclass of the Person class
- * Used to instantiate a Player
+/**
+ * Player class - subclass of the Pemson class Used to instantiate a Player
+ *
  * @author Gruppe 7, Robin, Niclas, Søren & Jonas
  */
 public class Player extends Person {
@@ -20,6 +20,8 @@ public class Player extends Person {
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
     private Room currentRoom;
+    private int gradedAssignments; //the amount of graded assignments
+    private int assignmentProgress; //the progress of grading an assignment
 
     /**
      * a constructor for making a player
@@ -31,18 +33,23 @@ public class Player extends Person {
      * @param currentRoom
      */
     public Player(String name, int speed, int x, int y, Room currentRoom) {
-    super(name, speed, x, y); //a call to the super constructor (in Person)
-      private int gradedAssignments; //the amount of graded assignments
-    private int assignmentProgress; //the progress of grading an assignment
+        super(name, speed, x, y); //a call to the super constructor (in Person)
+
         this.energy = 100; //the current energy level
+
         this.energyCap = 100; // the energy cap
+
         this.fatigue = 0; //the current amount of fatigue
+
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
+
         this.currentRoom = currentRoom;
+
         this.gradedAssignments = 0; //the amount of graded assignments is set to 0
+
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
-        
+
     }
 
     /**
@@ -56,12 +63,13 @@ public class Player extends Person {
 
     /**
      * remove an item from the inventory
-     * @param item 
+     *
+     * @param item
      */
-    public void removeItemFromIntevtory(Item item){
+    public void removeItemFromIntevtory(Item item) {
         inventory.removeItem(item);
     }
-    
+
     /**
      * getter for the current energy level
      *
@@ -147,16 +155,16 @@ public class Player extends Person {
            createRooms method */
         switch (direction) {
             case "left":
-                move(getX()-1,'x');
+                move(getX() - 1, 'x');
                 break;
             case "right":
-                move(getX()+1,'x');
+                move(getX() + 1, 'x');
                 break;
             case "down":
-                move(getY()+1,'y');
+                move(getY() + 1, 'y');
                 break;
             case "up":
-                move(getY()-1,'y');
+                move(getY() - 1, 'y');
                 break;
 
         }
@@ -165,21 +173,21 @@ public class Player extends Person {
     }
 
     public void move(int num, char c) {
-        if (c == 'x' && !checkCollision(num,getY())) { // c = x && theres no collision occurring
+        if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
             if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
                 lootItem((Item) currentRoom.roomArray[getY()][num]);
             }
             currentRoom.roomArray[getY()][num] = this; // move the player to another location
             currentRoom.roomArray[getY()][getX()] = null; // reset current position
             setX(num); // set player x
-        } else if(c == 'y' && !checkCollision(getX(),num)) {
-            if(currentRoom.hasLoot(getX(), num)) {
+        } else if (c == 'y' && !checkCollision(getX(), num)) {
+            if (currentRoom.hasLoot(getX(), num)) {
                 lootItem((Item) currentRoom.roomArray[getY()][num]);
             }
             currentRoom.roomArray[num][getX()] = this;
             currentRoom.roomArray[getY()][getX()] = null;
             setY(num);
-            
+
         }
         System.out.println("OW");
     }
@@ -193,13 +201,6 @@ public class Player extends Person {
     public boolean checkCollision(int x, int y) {
         return currentRoom.roomArray[y][x] != null;
     }
-
-    } 
-    
-    /**
-     * getter for gradedAssignments
-     * @return 
-     */
     public int getGradedAssignments(){
         return this.gradedAssignments;
     }
@@ -231,3 +232,12 @@ public class Player extends Person {
     
 
 }
+
+/**
+ * getter for gradedAssignments
+ *
+ * @return
+ */
+
+
+
