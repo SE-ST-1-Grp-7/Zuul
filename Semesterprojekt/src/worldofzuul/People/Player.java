@@ -7,10 +7,10 @@ import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
 import worldofzuul.userCommand.Command;
 
-/**
- * Player class - subclass of the Person class Used to instantiate a Player
- *
- * @author Gruppe 7, Robin & Niclas
+
+/** Player class - subclass of the Person class
+ * Used to instantiate a Player
+ * @author Gruppe 7, Robin, Niclas, Søren & Jonas
  */
 public class Player extends Person {
 
@@ -31,14 +31,18 @@ public class Player extends Person {
      * @param currentRoom
      */
     public Player(String name, int speed, int x, int y, Room currentRoom) {
-        super(name, speed, x, y); //a call to the super constructor (in Person)
+    super(name, speed, x, y); //a call to the super constructor (in Person)
+      private int gradedAssignments; //the amount of graded assignments
+    private int assignmentProgress; //the progress of grading an assignment
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
         this.fatigue = 0; //the current amount of fatigue
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
         this.currentRoom = currentRoom;
-
+        this.gradedAssignments = 0; //the amount of graded assignments is set to 0
+        this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
+        
     }
 
     /**
@@ -50,6 +54,14 @@ public class Player extends Person {
         return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
     }
 
+    /**
+     * remove an item from the inventory
+     * @param item 
+     */
+    public void removeItemFromIntevtory(Item item){
+        inventory.removeItem(item);
+    }
+    
     /**
      * getter for the current energy level
      *
@@ -120,6 +132,7 @@ public class Player extends Person {
      */
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
+
     }
 
     public void move(Command command) {
@@ -180,4 +193,41 @@ public class Player extends Person {
     public boolean checkCollision(int x, int y) {
         return currentRoom.roomArray[y][x] != null;
     }
+
+    } 
+    
+    /**
+     * getter for gradedAssignments
+     * @return 
+     */
+    public int getGradedAssignments(){
+        return this.gradedAssignments;
+    }
+    
+    /**
+     * setter for gradedAssignments
+     * @param assignment 
+     */
+    public void setGradedAssignments(int assignment){
+        this.gradedAssignments = assignment;
+    }
+    
+    /**
+     * getter for assignmentProgress
+     * @return 
+     */
+    public int getAssignmentProgress() {
+        return this.assignmentProgress;
+    }
+    
+    /**
+     * setter for assignmentProgress
+     * @param assignmentProgress 
+     */
+    public void setAssignmentProgress(int assignmentProgress) {
+        this.assignmentProgress = assignmentProgress;
+    }
+    
+    
+
 }

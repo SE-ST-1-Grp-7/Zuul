@@ -1,6 +1,7 @@
 package worldofzuul.userCommand;
 
 import worldofzuul.People.Player;
+import worldofzuul.People.Student;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.PrintOut;
 import worldofzuul.Quit;
@@ -26,7 +27,7 @@ public class ProcessCommand {
      * @param rooms     Room Manager object with room definitions.
      * @return          Boolean return true if user wants to quit.
      */
-    public boolean process(RoomManager rooms, Player p) {
+    public boolean process(RoomManager rooms, Player p, Student s) {
         this.parser = parser;
         this.rooms = rooms;
         boolean gameLoop = true;
@@ -48,8 +49,10 @@ public class ProcessCommand {
             // Or if user prompt to quit.
                 case GO:
                     rooms.goRoom(command);
+                    s.move();
                     break;
                 case MOVE:
+                    s.move();
                     p.move(command);
                     break;
                 case LOOT:

@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Inventory {
 
-    private final int CAPACITY = 10;
+    private final int CAPACITY = 5;
     private final int MAX_WEIGHT = 200;
     private int currentWeight;
     private ArrayList<Item> items = new ArrayList<>(CAPACITY);
@@ -38,9 +38,9 @@ public class Inventory {
     public Item getItem(int index) {
         return items.get(index);  
     }
-    public void removeItem(int index) {
-        currentWeight-= items.get(index).getWeight();
-        items.remove(index);     
+    public void removeItem(Item item) {
+        currentWeight-= item.getWeight();
+        items.remove(item);     
     }
     
     public ArrayList<Item> getInventory(){
