@@ -128,6 +128,10 @@ public class Room {
         a.setX(3);
         a.setY(0);
         itemsInRoom.add(a);
+        Assignment b = new Assignment();
+        b.setX(3);
+        b.setY(1);
+        itemsInRoom.add(b);
         for (Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
         }
