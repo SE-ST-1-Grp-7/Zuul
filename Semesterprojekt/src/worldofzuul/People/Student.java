@@ -14,6 +14,7 @@ public class Student extends Person {
     private Room room;
     private int ogX;
     private int ogY;
+    private int leash;
 
     /**
      * Constructor that gives a random name
@@ -22,7 +23,7 @@ public class Student extends Person {
      * @param x
      * @param y
      */
-    public Student(int speed, int x, int y, Room room) {
+    public Student(int speed, int x, int y, Room room, int leash) {
         super(speed, x, y); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
         // original position of student - use for idle moving
@@ -30,6 +31,7 @@ public class Student extends Person {
         this.ogY = y;
         // the room the student resides in
         this.room = room; 
+        this.leash = leash;
     }
 
     /**
@@ -70,6 +72,7 @@ public class Student extends Person {
         if(rand.nextInt(10) != 1 ) {
             return; 
         }
+        // step 2
         // roll student should move in the x or y axis
         if(rand.nextBoolean()) { // if true, move in the x axis
             // roll left or right
@@ -78,6 +81,17 @@ public class Student extends Person {
                 room.roomArray[getY()][getX()+1] = this;
                 setX(getX()+1);
             }
+            else {
+                room.roomArray[getY()][getX()-1] = this;
+                setX(getX()-1);
+            }
+        } else {
+            
         }
     }
+    // checks if a movement is can be made
+    public boolean isLegal(int newX) {
+        return true;
+    }
 }
+
