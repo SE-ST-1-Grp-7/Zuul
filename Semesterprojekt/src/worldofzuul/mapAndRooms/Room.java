@@ -15,7 +15,6 @@ import worldofzuul.items.Item;
 public class Room {
 
     // instantiates room coordinates to set and get.
-
     // Declare attributes -section.
     private String description;
     RoomCoord roomcords = new RoomCoord();
@@ -36,8 +35,7 @@ public class Room {
            value as Room object. */
         exits = new HashMap<String, Room>();
         fillArray();
-        
-        
+
     }
 
     /**
@@ -71,7 +69,7 @@ public class Room {
     public String getLongDescription() {
         return "You are " + description + ".\n" + getExitString();
     }
-    
+
     /**
      * Getter method for extended description of room with room descriptions and
      * exit-waypoints from room.
@@ -81,7 +79,7 @@ public class Room {
     public String getStudentDescription() {
         return "Student is " + description;
     }
-    
+
     /**
      * Getter method for String description of exit routes from room instance.
      *
@@ -113,34 +111,36 @@ public class Room {
     public Room getExit(String direction) {
         return exits.get(direction);
     }
-    public HashMap<String,Room> getExits() {
+
+    public HashMap<String, Room> getExits() {
         return this.exits;
     }
+
     private void fillArray() {
-        for(int i = 0; i < 10; i++) {  
-            for(int j = 0; j < 10; j++) {
-                if(roomArray[i][j] instanceof Player == false) {
-                    roomArray[i][j] = null;
-                    System.out.println("HEY");
-                }
-                
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                roomArray[i][j] = null;
+
             }
         }
         Coffee c = new Coffee();
         c.setX(3);
         c.setY(0);
         itemsInRoom.add(c);
-        for( Item i : itemsInRoom) {
+        for (Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
         }
-        
+
     }
+
     public ArrayList<Item> getItemList() {
         return this.itemsInRoom;
     }
+
     public boolean hasLoot(int x, int y) {
         return roomArray[y][x] instanceof Item;
     }
+
     public void removeItem(Item i) {
         itemsInRoom.remove(i);
     }

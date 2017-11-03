@@ -52,5 +52,9 @@ public abstract class Item extends Entity {
     public void setY(int y) {
         this.y = y;
     }
+    @Override
+    public String toString() {
+        return this.getName();
+    }
     public abstract void use(Player p);
 }
