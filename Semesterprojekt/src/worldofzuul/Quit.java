@@ -7,7 +7,8 @@ import worldofzuul.userCommand.Command;
  * @author Magnus Mortensen & Rasmus Willer
  */
 public class Quit {
-      /**
+
+    /**
      * Quit handler method. If the user command isn't just quit, when print
      * error message and return the quit boolean as false.
      *
@@ -19,10 +20,13 @@ public class Quit {
         if (command.hasSecondWord()) {
             System.out.println("Quit what?");
             return true;
-        } 
-        // Otherwise return true, intending to quit the game.
+        } // Otherwise return true, intending to quit the game.
         else {
             return false;
         }
+    }
+
+    public static boolean quit() {
+        return false;
     }
 }
