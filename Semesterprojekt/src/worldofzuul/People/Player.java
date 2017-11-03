@@ -245,6 +245,14 @@ public class Player extends Person {
     public void printInventory() {
         System.out.println(getInventory());
     }
+    public void use(Command command) {
+                if (!command.hasSecondWord()) {
+            System.out.println("Use what?");
+            return;
+        }
+        int index = Integer.parseInt(command.getSecondWord());
+        inventory.getItem(index).use(this);
+    }
 
 }
 

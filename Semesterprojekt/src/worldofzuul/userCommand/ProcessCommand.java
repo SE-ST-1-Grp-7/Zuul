@@ -62,7 +62,9 @@ public class ProcessCommand {
                         System.out.println("no item found :(");
                     }
                     break;
-                    
+                case USE:
+                     p.use(command);
+                     break;
                 case QUIT:
                     gameLoop = Quit.quit(command);
                     break;

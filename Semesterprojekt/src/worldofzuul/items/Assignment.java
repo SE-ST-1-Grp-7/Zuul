@@ -22,6 +22,8 @@ public class Assignment extends Item implements IConsumable {
 
     @Override
     public void use(Player p) {
+        consume(p);
+        
     }
     
     /**

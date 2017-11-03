@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
 import worldofzuul.People.Player;
+import worldofzuul.items.Assignment;
 import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
 
@@ -123,10 +124,10 @@ public class Room {
 
             }
         }
-        Coffee c = new Coffee();
-        c.setX(3);
-        c.setY(0);
-        itemsInRoom.add(c);
+        Assignment a = new Assignment();
+        a.setX(3);
+        a.setY(0);
+        itemsInRoom.add(a);
         for (Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
         }
