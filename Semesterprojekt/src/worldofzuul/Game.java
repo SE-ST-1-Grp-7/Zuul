@@ -1,6 +1,7 @@
 package worldofzuul;
 
 import worldofzuul.People.Player;
+import worldofzuul.People.Student;
 import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
 
@@ -22,6 +23,7 @@ public class Game implements Runnable {
     // Declare private RoomManager & ProcessCommand variables. 
     private RoomManager rooms;
     private ProcessCommand command;
+    private Student student;
     private Player player;
     
     
@@ -33,6 +35,9 @@ public class Game implements Runnable {
     public Game() {
         rooms = new RoomManager();
         command = new ProcessCommand();
+
+        student = new Student(5,5,5, rooms.getCurrentRoom(), 3, rooms);
+
         player = new Player("Johammed",14,0,0,rooms.getCurrentRoom());
     }
     
@@ -42,7 +47,7 @@ public class Game implements Runnable {
         // Get user command input.
         command.getCommand();
         // Process user command.
-        running = command.process(rooms, player);
+        running = command.process(rooms, player, student);
         // Update rooms object
         rooms = command.getRooms();
     }
