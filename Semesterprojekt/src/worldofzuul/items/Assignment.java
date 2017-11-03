@@ -24,7 +24,14 @@ public class Assignment extends Item implements IConsumable{
     @Override
     public void consume(Player p) {
         if(p.getEnergy() >= 20){
-        p.setEnergy(p.getEnergy()-20);
+            p.setEnergy(p.getEnergy()-20);
+            p.setAssignmentProgress(p.getAssignmentProgress()+20);
+                if (p.getAssignmentProgress()>=100)
+                    p.setAssignmentProgress(0);
+                    p.setGradedAssignments(p.getGradedAssignments()+1);
+                        
+                }
+        
         p.setGradedAssignments(p.getGradedAssignments()+1);
         }
     }
