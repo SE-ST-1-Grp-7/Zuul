@@ -2,6 +2,7 @@ package worldofzuul;
 
 import worldofzuul.People.Player;
 import worldofzuul.People.Student;
+import static worldofzuul.PrintOut.printWelcome;
 import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
 
@@ -84,7 +85,8 @@ public class Game implements Runnable {
         
         
         // Call the printout of the welcome message.
-        PrintOut.printWelcome();
+     //   PrintOut.printWelcome();
+        printWelcome(rooms.getCurrentRoom());
         
         // GAME LOOP
         while (running) {
