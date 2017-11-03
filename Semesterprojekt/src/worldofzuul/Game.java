@@ -22,7 +22,7 @@ public class Game implements Runnable {
     // Declare private RoomManager & ProcessCommand variables. 
     private RoomManager rooms;
     private ProcessCommand command;
-    private Player player = new Player("Johammed",14,0,0);
+    private Player player;
     
     
 
@@ -33,6 +33,7 @@ public class Game implements Runnable {
     public Game() {
         rooms = new RoomManager();
         command = new ProcessCommand();
+        player = new Player("Johammed",14,0,0,rooms.getCurrentRoom());
     }
     
     public void tick() {
