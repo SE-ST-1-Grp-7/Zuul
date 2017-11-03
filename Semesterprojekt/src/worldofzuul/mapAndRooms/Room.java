@@ -35,8 +35,9 @@ public class Room {
         /* Instantiating map object with key of String type and
            value as Room object. */
         exits = new HashMap<String, Room>();
-        
         fillArray();
+        
+        
     }
 
     /**
@@ -125,7 +126,6 @@ public class Room {
         c.setX(3);
         c.setY(0);
         itemsInRoom.add(c);
-        
         for( Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
         }

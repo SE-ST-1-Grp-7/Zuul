@@ -52,8 +52,8 @@ public class ProcessCommand {
                     s.move();
                     break;
                 case MOVE:
-                    p.move(rooms.getCurrentRoom(), command);
                     s.move();
+                    p.move(command);
                     break;
                 case LOOT:
                     if(rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1] != null) {

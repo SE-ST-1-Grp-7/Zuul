@@ -52,7 +52,7 @@ public class PrintOut {
             for(int j = 0; j< 10; j++) {
                 if(currentRoom.roomArray[i][j] instanceof Player) {
                     System.out.print("|" + "p");
-                } else if(currentRoom.roomArray[i][j] instanceof Coffee) {
+                } else if(currentRoom.roomArray[i][j] instanceof Item) {
                     System.out.print("|" + "i");
                 }
                  else if(currentRoom.roomArray[i][j] instanceof Student) {
