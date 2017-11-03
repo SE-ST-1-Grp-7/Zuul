@@ -6,7 +6,7 @@ import worldofzuul.items.Item;
 
 /** Player class - subclass of the Person class
  * Used to instantiate a Player
- * @author Gruppe 7, Robin & Niclas
+ * @author Gruppe 7, Robin & Niclas & Søren
  */
 public class Player extends Person {
     private int energy; //current energy level
@@ -43,6 +43,14 @@ public class Player extends Person {
      */
     public ArrayList<Item> getInventory(){
         return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
+    }
+    
+    /**
+     * 
+     * @param item 
+     */
+    public void removeItemFromIntevtory(int item){
+        inventory.removeItem(item);
     }
     
     /**
