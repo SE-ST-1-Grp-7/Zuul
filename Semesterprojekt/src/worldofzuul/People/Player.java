@@ -49,7 +49,7 @@ public class Player extends Person {
      * 
      * @param item 
      */
-    public void removeItemFromIntevtory(int item){
+    public void removeItemFromIntevtory(Item item){
         inventory.removeItem(item);
     }
     

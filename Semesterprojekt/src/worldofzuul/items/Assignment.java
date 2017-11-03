@@ -32,7 +32,7 @@ public class Assignment extends Item implements IConsumable {
                 p.setAssignmentProgress(0);
                 p.setGradedAssignments(p.getGradedAssignments() + 1);
                 System.out.println("Assignment graded");
-                //needs to be removed from inventory
+                p.removeItemFromIntevtory(this);
 
             }
         }else{
