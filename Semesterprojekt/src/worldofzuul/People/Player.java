@@ -14,8 +14,8 @@ public class Player extends Person {
     private int fatigue; //the current fatiuge level
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
-    private int gradedAssignments;
-    private int assignmentProgress;
+    private int gradedAssignments; //the amount of graded assignments
+    private int assignmentProgress; //the progress of grading an assignment
     
     
 /**
@@ -32,8 +32,8 @@ public class Player extends Person {
         this.fatigue = 0; //the current amount of fatigue
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
-        this.gradedAssignments = 0;
-        this.assignmentProgress = 0;
+        this.gradedAssignments = 0; //the amount of graded assignments is set to 0
+        this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
         
     }
     
@@ -46,7 +46,7 @@ public class Player extends Person {
     }
     
     /**
-     * 
+     * remove an item from the inventory
      * @param item 
      */
     public void removeItemFromIntevtory(Item item){
@@ -117,18 +117,34 @@ public class Player extends Person {
         this.fatigueCap = fatigueCap;
     } 
     
+    /**
+     * getter for gradedAssignments
+     * @return 
+     */
     public int getGradedAssignments(){
         return this.gradedAssignments;
     }
     
+    /**
+     * setter for gradedAssignments
+     * @param assignment 
+     */
     public void setGradedAssignments(int assignment){
         this.gradedAssignments = assignment;
     }
-
+    
+    /**
+     * getter for assignmentProgress
+     * @return 
+     */
     public int getAssignmentProgress() {
         return this.assignmentProgress;
     }
-
+    
+    /**
+     * setter for assignmentProgress
+     * @param assignmentProgress 
+     */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
     }
