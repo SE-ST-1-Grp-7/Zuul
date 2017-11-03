@@ -34,21 +34,15 @@ public class Player extends Person {
      */
     public Player(String name, int speed, int x, int y, Room currentRoom) {
         super(name, speed, x, y); //a call to the super constructor (in Person)
-
         this.energy = 100; //the current energy level
-
         this.energyCap = 100; // the energy cap
-
         this.fatigue = 0; //the current amount of fatigue
-
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
-
         this.currentRoom = currentRoom;
-
         this.gradedAssignments = 0; //the amount of graded assignments is set to 0
-
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
+        spawnPlayer();
 
     }
 
@@ -59,6 +53,9 @@ public class Player extends Person {
      */
     public ArrayList<Item> getInventory() {
         return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
+    }
+    public void spawnPlayer() {
+        currentRoom.roomArray[getY()][getX()] = this;
     }
 
     /**
@@ -148,6 +145,7 @@ public class Player extends Person {
             System.out.println("Go where?");
             return;
         }
+        printInventory();
 
         // Get second parsed command word and assign it to String variable.
         String direction = command.getSecondWord();
@@ -173,23 +171,29 @@ public class Player extends Person {
     }
 
     public void move(int num, char c) {
-        if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
-            if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
-                lootItem((Item) currentRoom.roomArray[getY()][num]);
-            }
-            currentRoom.roomArray[getY()][num] = this; // move the player to another location
-            currentRoom.roomArray[getY()][getX()] = null; // reset current position
-            setX(num); // set player x
-        } else if (c == 'y' && !checkCollision(getX(), num)) {
-            if (currentRoom.hasLoot(getX(), num)) {
-                lootItem((Item) currentRoom.roomArray[getY()][num]);
-            }
-            currentRoom.roomArray[num][getX()] = this;
-            currentRoom.roomArray[getY()][getX()] = null;
-            setY(num);
+        try {
+            if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
+                if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
+                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                }
+                currentRoom.roomArray[getY()][num] = this; // move the player to another location
+                currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                setX(num); // set player x
+            } else if (c == 'y' && !checkCollision(getX(), num)) {
+                if (currentRoom.hasLoot(getX(), num)) {
+                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                }
+                currentRoom.roomArray[num][getX()] = this;
+                currentRoom.roomArray[getY()][getX()] = null;
+                setY(num);
 
+            } else {
+                System.out.println("Collissioned occurred, ouch!!");
+            }
+        } catch (Exception ex) {
+            System.out.println("You hit the wall. Ouch.");
         }
-        System.out.println("OW");
+
     }
 
     public void lootItem(Item i) {
@@ -199,37 +203,56 @@ public class Player extends Person {
     }
 
     public boolean checkCollision(int x, int y) {
-        return currentRoom.roomArray[y][x] != null;
+        if (currentRoom.roomArray[y][x] instanceof Item) {
+            return false;
+        } else {
+            return currentRoom.roomArray[y][x] != null;
+        }
+
     }
-    public int getGradedAssignments(){
+
+    public int getGradedAssignments() {
         return this.gradedAssignments;
     }
-    
+
     /**
      * setter for gradedAssignments
-     * @param assignment 
+     *
+     * @param assignment
      */
-    public void setGradedAssignments(int assignment){
+    public void setGradedAssignments(int assignment) {
         this.gradedAssignments = assignment;
     }
-    
+
     /**
      * getter for assignmentProgress
-     * @return 
+     *
+     * @return
      */
     public int getAssignmentProgress() {
         return this.assignmentProgress;
     }
-    
+
     /**
      * setter for assignmentProgress
-     * @param assignmentProgress 
+     *
+     * @param assignmentProgress
      */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
     }
-    
-    
+
+    public void printInventory() {
+        System.out.println(getInventory());
+    }
+    public void use(Command command) {
+                if (!command.hasSecondWord()) {
+            System.out.println("Use what?");
+            return;
+        }
+        int index = Integer.parseInt(command.getSecondWord());
+        inventory.getItem(index).use(this);
+    }
 
 }
 
@@ -238,6 +261,3 @@ public class Player extends Person {
  *
  * @return
  */
-
-
-

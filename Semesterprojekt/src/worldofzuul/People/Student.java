@@ -30,7 +30,7 @@ public class Student extends Person {
      * @param x
      * @param y
      */
-    public Student(int speed, int x, int y, Room room, int leash, RoomManager rm) {
+    public Student(int speed, int x, int y, Room room, int leash) {
         super(speed, x, y); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
         // original position of student - use for idle moving
@@ -39,10 +39,9 @@ public class Student extends Person {
         // the room the student resides in
         this.room = room;
         this.leash = leash;
-        this.rm = rm;
+//        this.rm = rm;
         place();
-        move();
-        System.out.println("x");
+        System.out.println(room.getStudentDescription());
     }
 
     /**
@@ -54,15 +53,14 @@ public class Student extends Person {
      * @param x
      * @param y
      */
-    public Student(String name, int speed, int x, int y, RoomManager rm) {
-        super(name, speed, x, y); //a call to the super constructor
-        hasQuestionToPlayer = true; //the player has a question to the player
-        this.rm = rm;
-        place();
-        move();
-        System.out.println("y");
-    }
-
+//    public Student(String name, int speed, int x, int y, RoomManager rm) {
+//        super(name, speed, x, y); //a call to the super constructor
+//        hasQuestionToPlayer = true; //the player has a question to the player
+//        this.rm = rm;
+//        place();
+//        move();
+//        System.out.println("y");
+//    }
     /**
      * getter for hasQusetionForPlayer
      *
@@ -92,7 +90,7 @@ public class Student extends Person {
 //        if(rand.nextInt(10) != 11 ) {
 //            return; 
 //        }
-        System.out.println(room.getStudentDescription());
+
         Command c;
         switch (rand.nextInt(3)) {
             case 0:
@@ -100,6 +98,7 @@ public class Student extends Person {
                     room.roomArray[getY()][getX()] = null;
                     room = room.getExit("east");
                     place();
+                    System.out.println(room.getStudentDescription());
                 }
                 break;
             case 1:
@@ -107,6 +106,7 @@ public class Student extends Person {
                     room.roomArray[getY()][getX()] = null;
                     room = room.getExit("south");
                     place();
+                    System.out.println(room.getStudentDescription());
                 }
                 break;
             case 2:
@@ -114,6 +114,7 @@ public class Student extends Person {
                     room.roomArray[getY()][getX()] = null;
                     room = room.getExit("west");
                     place();
+                    System.out.println(room.getStudentDescription());
                 }
                 break;
             case 3:
@@ -121,10 +122,12 @@ public class Student extends Person {
                     room.roomArray[getY()][getX()] = null;
                     room = room.getExit("north");
                     place();
+                    System.out.println(room.getStudentDescription());
                 }
                 break;
             default:
                 place();
+                System.out.println(room.getStudentDescription());
                 break;
 
         }
@@ -147,8 +150,6 @@ public class Student extends Person {
 //            
 //        }
     }
-
-   
 
     // checks if a movement is can be made
     public boolean isLegal(int newX) {

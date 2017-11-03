@@ -22,6 +22,8 @@ public class Assignment extends Item implements IConsumable {
 
     @Override
     public void use(Player p) {
+        consume(p);
+        
     }
     
     /**
@@ -48,7 +50,7 @@ public class Assignment extends Item implements IConsumable {
                 p.removeItemFromIntevtory(this);//removes this assignment from the player's inventory
                 
                 //if you have graded 10 assignments; you win and quit the game
-                if(p.getGradedAssignments() >= 10){
+                if(p.getGradedAssignments() >= 2){
                     System.out.println("you won");
                     //quit game
                     Quit.quit(); //quit the game
