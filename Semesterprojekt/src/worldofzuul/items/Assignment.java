@@ -1,7 +1,10 @@
 package worldofzuul.items;
 
 import worldofzuul.People.Player;
+import worldofzuul.Quit;
+import static worldofzuul.Quit.quit;
 import worldofzuul.interfaces.IConsumable;
+import worldofzuul.userCommand.Command;
 
 /**
  *
@@ -33,6 +36,12 @@ public class Assignment extends Item implements IConsumable {
                 p.setGradedAssignments(p.getGradedAssignments() + 1);
                 System.out.println("Assignment graded");
                 p.removeItemFromIntevtory(this);
+                
+                if(p.getGradedAssignments() >= 10){
+                    System.out.println("you won");
+                    //quit game
+                    Quit.quit();
+                }
 
             }
         }else{
