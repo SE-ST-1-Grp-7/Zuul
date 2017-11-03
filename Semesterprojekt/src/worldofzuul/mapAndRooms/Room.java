@@ -119,7 +119,11 @@ public class Room {
     private void fillArray() {
         for(int i = 0; i < 10; i++) {  
             for(int j = 0; j < 10; j++) {
-                roomArray[i][j] = null;
+                if(roomArray[i][j] instanceof Player == false) {
+                    roomArray[i][j] = null;
+                    System.out.println("HEY");
+                }
+                
             }
         }
         Coffee c = new Coffee();
