@@ -2,9 +2,7 @@ package worldofzuul.items;
 
 import worldofzuul.People.Player;
 import worldofzuul.Quit;
-import static worldofzuul.Quit.quit;
 import worldofzuul.interfaces.IConsumable;
-import worldofzuul.userCommand.Command;
 
 /**
  *
