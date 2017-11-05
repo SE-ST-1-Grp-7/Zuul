@@ -63,16 +63,8 @@ public class Game implements Runnable {
         
         keyManager.tick();
         
-        /*if (State.getState() != null)
-            State.getState().tick();*/
-        
-        
-        // Get user command input.
-        command.getCommand();
-        // Process user command.
-        running = command.process(rooms);
-        // Update rooms object
-        rooms = command.getRooms();
+        if (State.getState() != null)
+            State.getState().tick();
     }
     
     public void render() {
@@ -87,8 +79,8 @@ public class Game implements Runnable {
         // Clear Screen
         g.clearRect(0, 0, width, height);
         
-        /*if (State.getState() != null)
-            State.getState().render(g);*/
+        if (State.getState() != null)
+            State.getState().render(g);
         
         bs.show();
         g.dispose();
