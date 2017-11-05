@@ -15,6 +15,10 @@ public class MouseManager implements MouseListener, MouseMotionListener {
     private int mouseX, mouseY;
     private UIManager uiManager;
     
+    public void setUIManager(UIManager uiManager) {
+        this.uiManager = uiManager;
+    }
+    
     @Override
     public void mousePressed(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) // left mouse button

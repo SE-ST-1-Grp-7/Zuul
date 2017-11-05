@@ -1,11 +1,9 @@
 package worldofzuul;
 
-import worldofzuul.items.*;
-
 /**
  * This class instantiates the game and is the starting point of the project.
  * 
- * @author Robin
+ * @author Robin & Rasmus Willer
  */
 public class StartGame {
     /**
@@ -15,12 +13,9 @@ public class StartGame {
      * 
      */
     public static void main(String[] args) {
-        Coffee coffee = new Coffee();
-        System.out.println(coffee.getName());
-        System.out.println("Hello Søren");
         // Game instantiation
-        Game game = new Game();
-        // Call play method
+        Game game = new Game("Professor Game!", 1920, 1080);
+        // Start game thread
         game.start();
     }
 }

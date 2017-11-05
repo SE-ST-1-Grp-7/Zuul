@@ -8,6 +8,10 @@ import java.awt.image.BufferedImage;
  */
 public class Assets {
     private static final int p_width = 40, p_height = 40;
+    private static final int b_width = 256, b_height = 128;
+    
+    // Declare UI elements
+    public static BufferedImage[] bt_start;
     
     // Declare arrays to contain animations for player
     public static BufferedImage[] player_down,
@@ -18,6 +22,12 @@ public class Assets {
     public static void init() {
         SpriteSheet player_sheet = new SpriteSheet(
                 ImageLoading.loadImage("/textures/player.png"));
+        SpriteSheet ui_sheet = new SpriteSheet(
+                ImageLoading.loadImage("/textures/ButtonUI.png"));
+        
+        bt_start = new BufferedImage[2];
+        bt_start[0] = ui_sheet.crop(0, 0, b_width, b_height);
+        bt_start[1] = ui_sheet.crop(0, b_height, b_width, b_height);
         
         // index is length of animation
         player_down     = new BufferedImage[4];

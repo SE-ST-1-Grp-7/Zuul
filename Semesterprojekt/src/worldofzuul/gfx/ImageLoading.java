@@ -13,6 +13,11 @@ public class ImageLoading {
         try {
             return ImageIO.read(ImageLoading.class.getResource(path));
         } catch (IOException e) {
+            System.out.println("IO error");
+            e.printStackTrace();
+            System.exit(1);
+        } catch (Exception e) {
+            System.out.println("There was an error");
             e.printStackTrace();
             System.exit(1);
         }
