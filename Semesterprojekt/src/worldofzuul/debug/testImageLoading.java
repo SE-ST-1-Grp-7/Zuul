@@ -1,9 +1,10 @@
-package worldofzuul.gfx;
+package worldofzuul.debug;
 
 import java.awt.image.BufferedImage;
+import worldofzuul.gfx.ImageLoading;
 
 /**
- *
+ * Debugging image loading without thread or GUI.
  * @author Rasmus Willer
  */
 public class testImageLoading {
