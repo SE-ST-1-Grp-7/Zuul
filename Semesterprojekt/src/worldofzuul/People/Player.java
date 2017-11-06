@@ -131,7 +131,11 @@ public class Player extends Person {
         this.fatigueCap = fatigueCap;
 
     }
-
+    
+    /**
+     * a method to move the player inside rooms
+     * @param command 
+     */
     public void move(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
@@ -161,7 +165,12 @@ public class Player extends Person {
         System.out.println(currentRoom.getLongDescription());
         PrintOut.displayRoom(currentRoom);
     }
-
+    
+    /**
+     * controlls the move method
+     * @param num
+     * @param c 
+     */
     public void move(int num, char c) {
         try {
             if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
@@ -187,6 +196,12 @@ public class Player extends Person {
         }
     }
 
+    /**
+     * method for collision check
+     * @param x
+     * @param y
+     * @return 
+     */
     public boolean checkCollision(int x, int y) {
         if (currentRoom.roomArray[y][x] instanceof Item) {
             return false;
@@ -232,6 +247,10 @@ public class Player extends Person {
         this.assignmentProgress = assignmentProgress;
     }
 
+    /**
+     * method to use things
+     * @param command 
+     */
     public void use(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Use what?");
