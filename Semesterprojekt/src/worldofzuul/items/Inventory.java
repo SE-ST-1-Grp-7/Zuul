@@ -47,5 +47,13 @@ public class Inventory {
         return items;
     }
 
+    public void printInventory() {
+        System.out.println(getInventory());
+    }
+    
+    public void lootItem(Item i) {
+        addItem(i);
+        System.out.println(i.getName() + " added to inventory!");
+    }
 
 }
