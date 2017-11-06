@@ -22,6 +22,7 @@ public class Player extends Person {
     private Room currentRoom;
     private int gradedAssignments; //the amount of graded assignments
     private int assignmentProgress; //the progress of grading an assignment
+    private Item tempItem;
 
     /**
      * a constructor for making a player
@@ -54,6 +55,7 @@ public class Player extends Person {
     public ArrayList<Item> getInventory() {
         return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
     }
+
     public void spawnPlayer() {
         currentRoom.roomArray[getY()][getX()] = this;
     }
@@ -65,6 +67,10 @@ public class Player extends Person {
      */
     public void removeItemFromIntevtory(Item item) {
         inventory.removeItem(item);
+    }
+
+    public void setCurrentRoom(Room room) {
+        this.currentRoom = room;
     }
 
     /**
@@ -177,7 +183,13 @@ public class Player extends Person {
                     lootItem((Item) currentRoom.roomArray[getY()][num]);
                 }
                 currentRoom.roomArray[getY()][num] = this; // move the player to another location
-                currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                if (tempItem != null) { // player has a temp item
+                    currentRoom.roomArray[getY()][getX()] = tempItem; // place it in previous position
+                    tempItem = null;
+                } else {
+                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                }
+
                 setX(num); // set player x
             } else if (c == 'y' && !checkCollision(getX(), num)) {
                 if (currentRoom.hasLoot(getX(), num)) {
@@ -245,8 +257,9 @@ public class Player extends Person {
     public void printInventory() {
         System.out.println(getInventory());
     }
+
     public void use(Command command) {
-                if (!command.hasSecondWord()) {
+        if (!command.hasSecondWord()) {
             System.out.println("Use what?");
             return;
         }
