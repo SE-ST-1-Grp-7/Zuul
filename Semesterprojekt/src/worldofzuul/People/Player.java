@@ -22,6 +22,8 @@ public class Player extends Person {
     private Room currentRoom;
     private int gradedAssignments; //the amount of graded assignments
     private int assignmentProgress; //the progress of grading an assignment
+    private Item tempItem;
+    private boolean dont = false;
 
     /**
      * a constructor for making a player
@@ -57,6 +59,10 @@ public class Player extends Person {
      */
     public Inventory inventory() {
         return this.inventory;
+    }
+
+    public void setCurrentRoom(Room room) {
+        this.currentRoom = room;
     }
 
     /**
@@ -165,35 +171,67 @@ public class Player extends Person {
         System.out.println(currentRoom.getLongDescription());
         PrintOut.displayRoom(currentRoom);
     }
-    
+
     /**
-     * controlls the move method
-     * @param num
-     * @param c 
+     * places the item referenced by tempItem in the room
      */
+    public void placeItem() {
+        if (tempItem != null) { // if tempItem exists
+            currentRoom.roomArray[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            dont = true; // dont set previous field to null
+        }
+    }
+
     public void move(int num, char c) {
         try {
             if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
-                if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
-                    this.inventory.lootItem((Item) currentRoom.roomArray[getY()][num]);
+                placeItem(); // places tempItem if it exists
+                if (currentRoom.hasLoot(num, getY())) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) currentRoom.roomArray[getY()][num])) { // if addItem was successful
+                        System.out.println("YOU LOOTED IT"); // print loot message
+                    } else { // if not
+                        tempItem = (Item) currentRoom.roomArray[getY()][num]; // set temp item to be whatevers in pos x & y
+
+                    }
                 }
                 currentRoom.roomArray[getY()][num] = this; // move the player to another location
-                currentRoom.roomArray[getY()][getX()] = null; // reset current position
-                setX(num); // set player x
-            } else if (c == 'y' && !checkCollision(getX(), num)) {
-                if (currentRoom.hasLoot(getX(), num)) {
-                    this.inventory.lootItem((Item) currentRoom.roomArray[num][getX()]);
+                if (!dont) {
+                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                } else {
+                    dont = false;
+                    tempItem = null;
                 }
-                currentRoom.roomArray[num][getX()] = this;
-                currentRoom.roomArray[getY()][getX()] = null;
-                setY(num);
 
+                setX(num);
+
+                // set player x
+            } else if (c == 'y' && !checkCollision(getX(), num)) { // c = x && theres no collision occurring
+                placeItem(); // places tempItem if it exists
+                if (currentRoom.hasLoot(getX(), num)) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) currentRoom.roomArray[num][getX()])) { // if addItem was successful
+                        System.out.println("YOU LOOTED IT"); // print loot message
+                    } else { // if not
+                        tempItem = (Item) currentRoom.roomArray[num][getX()]; // set temp item to be whatevers in pos x & y
+
+                    }
+                }
+                currentRoom.roomArray[num][getX()] = this; // move the player to another location
+                if (!dont) {
+                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                } else {
+                    dont = false;
+                    tempItem = null;
+                }
+
+                setY(num);
+                
             } else {
                 System.out.println("Collissioned occurred, ouch!!");
             }
         } catch (Exception ex) {
             System.out.println("You hit the wall. Ouch.");
         }
+
     }
 
     /**
@@ -251,6 +289,7 @@ public class Player extends Person {
      * method to use things
      * @param command 
      */
+
     public void use(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Use what?");

@@ -22,17 +22,20 @@ public class Inventory {
  * adds an item to the inventory
  * @param item 
  */
-    public void addItem(Item item) {
+    public boolean addItem(Item item) {
         // check if theres less than 10 items & less than 200 weight in the inventory
         if (items.size() < CAPACITY 
                 && 
                 (currentWeight + item.getWeight() <= MAX_WEIGHT)) {
             items.add(item);
             currentWeight += item.getWeight();
+            return true;
         } else if(items.size() == CAPACITY){ // checks if theres less than 10 items
             System.out.println("Not enough space");
+            return false;
         } else {
             System.out.println("The item is too heavy");
+            return false;
         }
     }
     

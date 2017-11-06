@@ -48,7 +48,7 @@ public class ProcessCommand {
                     break;
             // Or if user prompt to quit.
                 case GO:
-                    rooms.goRoom(command);
+                    rooms.goRoom(command,p);
                     s.move();
                     break;
                 case MOVE:
