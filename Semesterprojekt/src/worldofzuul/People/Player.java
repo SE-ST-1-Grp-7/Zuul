@@ -23,6 +23,7 @@ public class Player extends Person {
     private int gradedAssignments; //the amount of graded assignments
     private int assignmentProgress; //the progress of grading an assignment
     private Item tempItem;
+    private boolean dont = false;
 
     /**
      * a constructor for making a player
@@ -175,30 +176,59 @@ public class Player extends Person {
         System.out.println(currentRoom.getLongDescription());
         PrintOut.displayRoom(currentRoom);
     }
+    /**
+     * places the item referenced by tempItem in the room
+     */
+    public void placeItem() {
+        if (tempItem != null) { // if tempItem exists
+            currentRoom.roomArray[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            dont = true; // dont set previous field to null
+        }
+    }
 
     public void move(int num, char c) {
         try {
             if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
-                if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
-                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                placeItem(); // places tempItem if it exists
+                if (currentRoom.hasLoot(num, getY())) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) currentRoom.roomArray[getY()][num])) { // if addItem was successful
+                        System.out.println("YOU LOOTED IT"); // print loot message
+                    } else { // if not
+                        tempItem = (Item) currentRoom.roomArray[getY()][num]; // set temp item to be whatevers in pos x & y
+
+                    }
                 }
                 currentRoom.roomArray[getY()][num] = this; // move the player to another location
-                if (tempItem != null) { // player has a temp item
-                    currentRoom.roomArray[getY()][getX()] = tempItem; // place it in previous position
-                    tempItem = null;
-                } else {
+                if (!dont) {
                     currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                } else {
+                    dont = false;
+                    tempItem = null;
                 }
 
-                setX(num); // set player x
-            } else if (c == 'y' && !checkCollision(getX(), num)) {
-                if (currentRoom.hasLoot(getX(), num)) {
-                    lootItem((Item) currentRoom.roomArray[num][getX()]);
+                setX(num);
+
+                // set player x
+            } else if (c == 'y' && !checkCollision(getX(), num)) { // c = x && theres no collision occurring
+                placeItem(); // places tempItem if it exists
+                if (currentRoom.hasLoot(getX(), num)) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) currentRoom.roomArray[num][getX()])) { // if addItem was successful
+                        System.out.println("YOU LOOTED IT"); // print loot message
+                    } else { // if not
+                        tempItem = (Item) currentRoom.roomArray[num][getX()]; // set temp item to be whatevers in pos x & y
+
+                    }
                 }
-                currentRoom.roomArray[num][getX()] = this;
-                currentRoom.roomArray[getY()][getX()] = null;
+                currentRoom.roomArray[num][getX()] = this; // move the player to another location
+                if (!dont) {
+                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                } else {
+                    dont = false;
+                    tempItem = null;
+                }
+
                 setY(num);
-
+                
             } else {
                 System.out.println("Collissioned occurred, ouch!!");
             }
@@ -209,8 +239,11 @@ public class Player extends Person {
     }
 
     public void lootItem(Item i) {
-        inventory.addItem(i);
-        System.out.println(i.getName() + " added to inventory!");
+        if (inventory.addItem(i)) {
+            System.out.println(i.getName() + " added to inventory!");
+        } else {
+
+        }
 
     }
 
