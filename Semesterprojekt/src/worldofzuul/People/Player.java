@@ -48,26 +48,17 @@ public class Player extends Person {
 
     }
 
-    /**
-     * getter for the inventory
-     *
-     * @return
-     */
-    public ArrayList<Item> getInventory() {
-        return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
-    }
-
     public void spawnPlayer() {
         currentRoom.roomArray[getY()][getX()] = this;
     }
 
     /**
-     * remove an item from the inventory
+     * a method to call/get the player's inventory (getter)
      *
-     * @param item
+     * @return
      */
-    public void removeItemFromIntevtory(Item item) {
-        inventory.removeItem(item);
+    public Inventory inventory() {
+        return this.inventory;
     }
 
     public void setCurrentRoom(Room room) {
@@ -146,13 +137,17 @@ public class Player extends Person {
         this.fatigueCap = fatigueCap;
 
     }
-
+    
+    /**
+     * a method to move the player inside rooms
+     * @param command 
+     */
     public void move(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
-        printInventory();
+        this.inventory.printInventory();
 
         // Get second parsed command word and assign it to String variable.
         String direction = command.getSecondWord();
@@ -176,6 +171,7 @@ public class Player extends Person {
         System.out.println(currentRoom.getLongDescription());
         PrintOut.displayRoom(currentRoom);
     }
+
     /**
      * places the item referenced by tempItem in the room
      */
@@ -238,15 +234,12 @@ public class Player extends Person {
 
     }
 
-    public void lootItem(Item i) {
-        if (inventory.addItem(i)) {
-            System.out.println(i.getName() + " added to inventory!");
-        } else {
-
-        }
-
-    }
-
+    /**
+     * method for collision check
+     * @param x
+     * @param y
+     * @return 
+     */
     public boolean checkCollision(int x, int y) {
         if (currentRoom.roomArray[y][x] instanceof Item) {
             return false;
@@ -256,6 +249,11 @@ public class Player extends Person {
 
     }
 
+    /**
+     * getter for gradedAssignments
+     *
+     * @return
+     */
     public int getGradedAssignments() {
         return this.gradedAssignments;
     }
@@ -287,9 +285,10 @@ public class Player extends Person {
         this.assignmentProgress = assignmentProgress;
     }
 
-    public void printInventory() {
-        System.out.println(getInventory());
-    }
+    /**
+     * method to use things
+     * @param command 
+     */
 
     public void use(Command command) {
         if (!command.hasSecondWord()) {
@@ -301,9 +300,3 @@ public class Player extends Person {
     }
 
 }
-
-/**
- * getter for gradedAssignments
- *
- * @return
- */
