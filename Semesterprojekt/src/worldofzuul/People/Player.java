@@ -51,13 +51,12 @@ public class Player extends Person {
     }
     
     /**
-     * a method to get the player's inventory (getter)
-     * this might not be needed
+     * a method to call/get the player's inventory (getter)
      * @return 
      */
-//    public Inventory getInventory(){
-//        return this.inventory;
-//    }
+    public Inventory inventory(){
+        return this.inventory;
+    }
 
     /**
      * getter for the current energy level

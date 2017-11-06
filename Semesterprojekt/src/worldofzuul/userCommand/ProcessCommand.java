@@ -57,7 +57,7 @@ public class ProcessCommand {
                     break;
                 case LOOT:
                     if(rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1] != null) {
-                        p.lootItem((Item) rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1]);
+                        p.inventory().lootItem((Item) rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1]);
                     } else {
                         System.out.println("no item found :(");
                     }

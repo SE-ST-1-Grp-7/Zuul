@@ -47,7 +47,7 @@ public class Assignment extends Item implements IConsumable {
                 p.setAssignmentProgress(0); //set the progress back to 0
                 p.setGradedAssignments(p.getGradedAssignments() + 1); //add 1 to the total amount of graded assignments
                 System.out.println("Assignment graded");
-                p.removeItemFromIntevtory(this);//removes this assignment from the player's inventory
+                p.inventory().removeItem(this);//removes this assignment from the player's inventory
                 
                 //if you have graded 10 assignments; you win and quit the game
                 if(p.getGradedAssignments() >= 2){
