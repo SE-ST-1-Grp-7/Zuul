@@ -171,7 +171,7 @@ public class Player extends Person {
     }
 
     public void move(int num, char c) {
-        try {
+//        try {
             if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
                 if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
                     lootItem((Item) currentRoom.roomArray[getY()][num]);
@@ -181,7 +181,7 @@ public class Player extends Person {
                 setX(num); // set player x
             } else if (c == 'y' && !checkCollision(getX(), num)) {
                 if (currentRoom.hasLoot(getX(), num)) {
-                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                    lootItem((Item) currentRoom.roomArray[num][getX()]);
                 }
                 currentRoom.roomArray[num][getX()] = this;
                 currentRoom.roomArray[getY()][getX()] = null;
@@ -190,9 +190,9 @@ public class Player extends Person {
             } else {
                 System.out.println("Collissioned occurred, ouch!!");
             }
-        } catch (Exception ex) {
-            System.out.println("You hit the wall. Ouch.");
-        }
+//        } catch (Exception ex) {
+//            System.out.println("You hit the wall. Ouch.");
+//        }
 
     }
 
