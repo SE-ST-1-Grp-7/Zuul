@@ -181,7 +181,7 @@ public class Player extends Person {
                 setX(num); // set player x
             } else if (c == 'y' && !checkCollision(getX(), num)) {
                 if (currentRoom.hasLoot(getX(), num)) {
-                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                    lootItem((Item) currentRoom.roomArray[num][getX()]);
                 }
                 currentRoom.roomArray[num][getX()] = this;
                 currentRoom.roomArray[getY()][getX()] = null;
