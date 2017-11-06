@@ -8,17 +8,17 @@ import worldofzuul.Entity;
  */
 public abstract class Furniture extends Entity {
     private String furnitureName; //name of the furniture
-    private String furnitureDiscription; //description for the furniture
+    private String furnitureDescription; //description for the furniture
     
     /**
      * constructor that sets the name and description for the furniture
      * @param furnitureName
-     * @param furnitureDiscription 
+     * @param furnitureDescription 
      */
-    public Furniture(String furnitureName, String furnitureDiscription){
+    public Furniture(String furnitureName, String furnitureDescription){
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
-        this.furnitureDiscription = furnitureDiscription;
+        this.furnitureDescription = furnitureDescription;
     }
     
     /**
@@ -41,16 +41,16 @@ public abstract class Furniture extends Entity {
      * getter for furnitureDesciption
      * @return 
      */
-    public String getFurnitureDiscription() {
-        return this.furnitureDiscription;
+    public String getFurnitureDescription() {
+        return this.furnitureDescription;
     }
     
     /**
      * setter for furnitureDesciption
      * @param furnitureDiscription 
      */
-    public void setFurnitureDiscription(String furnitureDiscription) {
-        this.furnitureDiscription = furnitureDiscription;
+    public void setFurnitureDescription(String furnitureDiscription) {
+        this.furnitureDescription = furnitureDiscription;
     }
 
     
