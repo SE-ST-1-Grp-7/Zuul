@@ -49,12 +49,13 @@ public class Player extends Person {
     public void spawnPlayer() {
         currentRoom.roomArray[getY()][getX()] = this;
     }
-    
+
     /**
      * a method to call/get the player's inventory (getter)
-     * @return 
+     *
+     * @return
      */
-    public Inventory inventory(){
+    public Inventory inventory() {
         return this.inventory;
     }
 
@@ -195,7 +196,7 @@ public class Player extends Person {
 
     }
 
-        /**
+    /**
      * getter for gradedAssignments
      *
      * @return
@@ -232,7 +233,7 @@ public class Player extends Person {
     }
 
     public void use(Command command) {
-                if (!command.hasSecondWord()) {
+        if (!command.hasSecondWord()) {
             System.out.println("Use what?");
             return;
         }
