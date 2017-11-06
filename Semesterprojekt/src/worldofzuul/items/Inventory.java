@@ -35,17 +35,47 @@ public class Inventory {
             System.out.println("The item is too heavy");
         }
     }
+    
+    /**
+     * get an item from an indexnumber
+     * @param index
+     * @return 
+     */
     public Item getItem(int index) {
         return items.get(index);  
     }
+    
+    /**
+     * remove an item from the inventory
+     * @param item 
+     */
     public void removeItem(Item item) {
         currentWeight-= item.getWeight();
         items.remove(item);     
     }
     
+    /**
+     * getter for the inventory
+     * @return 
+     */
     public ArrayList<Item> getInventory(){
         return items;
     }
-
+    
+    /**
+     * prints the inventory list to the console
+     */
+    public void printInventory() {
+        System.out.println(getInventory());
+    }
+    
+    /**
+     * a method to loot items on the ground
+     * @param i 
+     */
+    public void lootItem(Item i) {
+        addItem(i);
+        System.out.println(i.getName() + " added to inventory!");
+    }
 
 }

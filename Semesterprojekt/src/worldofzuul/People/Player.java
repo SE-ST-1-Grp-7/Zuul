@@ -46,25 +46,17 @@ public class Player extends Person {
 
     }
 
-    /**
-     * getter for the inventory
-     *
-     * @return
-     */
-    public ArrayList<Item> getInventory() {
-        return inventory.getInventory(); //we call the getInventory() method from the inventory object and return it to the player
-    }
     public void spawnPlayer() {
         currentRoom.roomArray[getY()][getX()] = this;
     }
 
     /**
-     * remove an item from the inventory
+     * a method to call/get the player's inventory (getter)
      *
-     * @param item
+     * @return
      */
-    public void removeItemFromIntevtory(Item item) {
-        inventory.removeItem(item);
+    public Inventory inventory() {
+        return this.inventory;
     }
 
     /**
@@ -139,13 +131,17 @@ public class Player extends Person {
         this.fatigueCap = fatigueCap;
 
     }
-
+    
+    /**
+     * a method to move the player inside rooms
+     * @param command 
+     */
     public void move(Command command) {
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
             return;
         }
-        printInventory();
+        this.inventory.printInventory();
 
         // Get second parsed command word and assign it to String variable.
         String direction = command.getSecondWord();
@@ -169,19 +165,24 @@ public class Player extends Person {
         System.out.println(currentRoom.getLongDescription());
         PrintOut.displayRoom(currentRoom);
     }
-
+    
+    /**
+     * controlls the move method
+     * @param num
+     * @param c 
+     */
     public void move(int num, char c) {
         try {
             if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
                 if (currentRoom.hasLoot(num, getY())) { // if theres loot, then loot it
-                    lootItem((Item) currentRoom.roomArray[getY()][num]);
+                    this.inventory.lootItem((Item) currentRoom.roomArray[getY()][num]);
                 }
                 currentRoom.roomArray[getY()][num] = this; // move the player to another location
                 currentRoom.roomArray[getY()][getX()] = null; // reset current position
                 setX(num); // set player x
             } else if (c == 'y' && !checkCollision(getX(), num)) {
                 if (currentRoom.hasLoot(getX(), num)) {
-                    lootItem((Item) currentRoom.roomArray[num][getX()]);
+                    this.inventory.lootItem((Item) currentRoom.roomArray[num][getX()]);
                 }
                 currentRoom.roomArray[num][getX()] = this;
                 currentRoom.roomArray[getY()][getX()] = null;
@@ -193,15 +194,14 @@ public class Player extends Person {
         } catch (Exception ex) {
             System.out.println("You hit the wall. Ouch.");
         }
-
     }
 
-    public void lootItem(Item i) {
-        inventory.addItem(i);
-        System.out.println(i.getName() + " added to inventory!");
-
-    }
-
+    /**
+     * method for collision check
+     * @param x
+     * @param y
+     * @return 
+     */
     public boolean checkCollision(int x, int y) {
         if (currentRoom.roomArray[y][x] instanceof Item) {
             return false;
@@ -211,6 +211,11 @@ public class Player extends Person {
 
     }
 
+    /**
+     * getter for gradedAssignments
+     *
+     * @return
+     */
     public int getGradedAssignments() {
         return this.gradedAssignments;
     }
@@ -242,11 +247,12 @@ public class Player extends Person {
         this.assignmentProgress = assignmentProgress;
     }
 
-    public void printInventory() {
-        System.out.println(getInventory());
-    }
+    /**
+     * method to use things
+     * @param command 
+     */
     public void use(Command command) {
-                if (!command.hasSecondWord()) {
+        if (!command.hasSecondWord()) {
             System.out.println("Use what?");
             return;
         }
@@ -255,9 +261,3 @@ public class Player extends Person {
     }
 
 }
-
-/**
- * getter for gradedAssignments
- *
- * @return
- */
