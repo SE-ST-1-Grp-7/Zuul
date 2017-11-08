@@ -1,12 +1,16 @@
 package worldofzuul.People;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
+import worldofzuul.Link;
+import worldofzuul.gfx.Animate;
+import worldofzuul.gfx.Assets;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 
 /** Player class - subclass of the Person class
  * Used to instantiate a Player
- * @author Gruppe 7, Robin & Niclas
+ * @author Gruppe 7
  */
 public class Player extends Person {
     private int energy; //current energy level
@@ -15,23 +19,44 @@ public class Player extends Person {
     private int fatigueCap; //the max amount of fatiuge
     private Inventory inventory; // the player's inventory
     
+    // Animations
+    private Animate animDown, animUp, animRight, animLeft;
     
-/**
- * a constructor for making a player
- * @param name
- * @param speed 
-     * @param x 
-     * @param y 
- */
-    public Player(String name, int speed, int x, int y) {
-        super(name, speed, x, y); //a call to the super constructor (in Person)
+    /**
+     * Constructor for player.
+     * @param link
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param name 
+     */
+    public Player(Link link, float x, float y, int width, int height, String name) {
+        super(link, x, y, width, height, name); //a call to the super constructor (in Person)
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
         this.fatigue = 0; //the current amount of fatigue
         this.fatigueCap = 100; //the fatigue cap
         inventory = new Inventory(); //instanciate the inventory
         
+        // Animations
+        animDown = new Animate(250, Assets.player_down);
+        animUp = new Animate(250, Assets.player_up);
+        animRight = new Animate(250, Assets.player_right);
+        animLeft = new Animate(250, Assets.player_left);
     }
+    
+    // GAME LOOP METHODS
+    
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
+    }
+    
+    // GETTERS & SETTERS
     
     /**
      * getter for the inventory
@@ -103,5 +128,5 @@ public class Player extends Person {
      */
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
-    } 
+    }
 }

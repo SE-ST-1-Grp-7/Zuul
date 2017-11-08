@@ -5,19 +5,17 @@
  */
 package worldofzuul.Furniture;
 
+import java.awt.Graphics;
+import worldofzuul.Link;
+
 /**
  *a subclass of furniture that makes a chair
- * @author Robin
+ * @author Robin & Rasmus Willer
  */
 public class Chair extends Furniture /*implements Interactable*/{
     
-    /**
-     * constructor for a chair
-     * @param chairName
-     * @param chairDescription 
-     */
-    public Chair(String chairName, String chairDescription){
-        super(chairName, chairDescription);//a call to the super constructor - sets the name and description
+    public Chair(Link link, float x, float y, int width, int height, String chairName, String chairDescription){
+        super(link, x, y, width, height, chairName, chairDescription);//a call to the super constructor - sets the name and description
     }
     
     /**
@@ -32,6 +30,16 @@ public class Chair extends Furniture /*implements Interactable*/{
      */
     public void standUp(){
         //not implementet yet
+    }
+    
+    // GETTERS & SETTERS
+    
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
     }
     
 }

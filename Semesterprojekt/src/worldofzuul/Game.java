@@ -7,7 +7,6 @@ import worldofzuul.gfx.Assets;
 import worldofzuul.gfx.Display;
 import worldofzuul.input.KeyManager;
 import worldofzuul.input.MouseManager;
-import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.states.GameState;
 import worldofzuul.states.MainMenuState;
@@ -35,7 +34,6 @@ public class Game implements Runnable {
     private Link link;
     private Display display;
     private RoomManager rooms;
-    private ProcessCommand command;
     private KeyManager keyManager;
     private MouseManager mouseManager;
     

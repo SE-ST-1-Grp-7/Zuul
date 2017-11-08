@@ -1,5 +1,6 @@
 package worldofzuul.items;
 
+import java.awt.Graphics;
 import worldofzuul.People.Player;
 
 /**
@@ -7,7 +8,7 @@ import worldofzuul.People.Player;
  * @author J
  */
 public class Key extends Item{
-
+    public Key
     @Override
     public void use(Player p) {
         /*
@@ -17,6 +18,16 @@ public class Key extends Item{
         unlock the exit if so
         else do nothing
         */
+    }
+    
+    // GAME LOOP METHODS
+    
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
     }
     
     

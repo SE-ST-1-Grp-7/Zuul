@@ -1,36 +1,31 @@
 package worldofzuul.People;
 
+import java.awt.Graphics;
+import worldofzuul.Link;
+
 /**
  *A student class that extends person
- * @author Robin & Niclas
+ * @author Robin & Niclas & Rasmus Willer
  */
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
     
-    /**
-     * Constructor that gives a random name
-     * @param speed 
-     * @param x 
-     * @param y 
-     */
-    public Student(int speed, int x, int y){
-        super(speed, x, y); //a call to the super constructor
+    public Student(Link link, float x, float y, int width, int height){
+        super(link, x, y, width, height); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
     }
     
+    // GAME LOOP METHODS
     
-    /**
-     * This constructor makes a student that has a question for the Player
-     * the student also has a name, speed and position
-     * @param name
-     * @param speed
-     * @param x
-     * @param y
-     */
-    public Student(String name, int speed, int x, int y){
-        super(name, speed, x, y); //a call to the super constructor
-        hasQuestionToPlayer = true; //the player has a question to the player
+    @Override
+    public void tick() {
     }
+
+    @Override
+    public void render(Graphics g) {
+    }
+    
+    // GETTERS & SETTERS
     
     /**
      * getter for hasQusetionForPlayer
@@ -46,5 +41,4 @@ public class Student extends Person {
     public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
         this.hasQuestionToPlayer = hasQuestionToPlayer;
     }
-   
 }

@@ -1,39 +1,30 @@
 package worldofzuul.People;
 
+import worldofzuul.Link;
+import worldofzuul.entities.Entity;
+
 /** Person class - superclass of Student & Player
  *
- * @author Gruppe 7, Robin & Niclas & soren
+ * @author Gruppe 7
  */
-public abstract class Person {
-    private String name; // name for the person
-    private int speed; // speed of the person
-    private int x,y; // x and y coordinates for the person
+public abstract class Person extends Entity {
+    protected static final float DEFAULT_SPEED = 5.0f;
+    protected static final int DEFAULT_PERSON_WIDTH = 64,
+                               DEFAULT_PERSON_HEIGHT = 64;
+    protected float speed;
+    protected String name; // Person name
+    private Link link; // link handler
     
-    
-    /**
-     * a constructor that gives a random name
-     * @param speed
-     * @param x
-     * @param y 
-     */
-    public Person(int speed, int x, int y){
-        //the other constructor is called with these arguments
-        this(getRandomName(), speed, x, y);
+    public Person(Link link, float x, float y, int width, int height) {
+        super(link, x, y, width, height);
+        speed = DEFAULT_SPEED;
+        name = getRandomName();
     }
     
-    /**
-     * constructor where you can specify the name, speed and position
-     * @param name
-     * @param speed
-     * @param x
-     * @param y 
-     */
-    public Person(String name, int speed, int x, int y){
-        //the attributes are set equal to the parimeters
+    public Person(Link link, float x, float y, int width, int height, String name) {
+        super(link, x, y, width, height);
+        speed = DEFAULT_SPEED;
         this.name = name;
-        this.speed = speed;
-        this.x = x;
-        this.y = y;
     }
     
     /**
@@ -56,7 +47,7 @@ public abstract class Person {
      * getter for the speed
      * @return 
      */
-    public int getSpeed() {
+    public float getSpeed() {
         return this.speed;
     }
     
@@ -64,7 +55,7 @@ public abstract class Person {
      * setter for the speed
      * @param speed 
      */
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
     
@@ -76,38 +67,6 @@ public abstract class Person {
         String[] names = {"Niclas", "Rasmus", "Søren", "Robin","Jonas","Magnus","Frederik"};
         int index = (int) (Math.random() * names.length);
         return names[index];
-    }
-    
-    /**
-     * getter for x
-     * @return 
-     */
-    public int getX(){
-        return this.x;
-    }
-    
-    /**
-     * getter for y
-     * @return 
-     */
-    public int getY(){
-        return this.y;
-    }
-    
-    /**
-     * setter for x
-     * @param x 
-     */
-    public void setX(int x){
-        this.x = x;
-    }
-    
-    /**
-     * setter for y
-     * @param y 
-     */
-    public void setY(int y){
-        this.y = y;
     }
 }
 
