@@ -12,6 +12,8 @@ import worldofzuul.states.GameState;
 import worldofzuul.states.MainMenuState;
 import worldofzuul.states.SettingState;
 import worldofzuul.states.State;
+import worldofzuul.entities.EntityManager;
+import worldofzuul.People.Player;
 
 /**
  * Game class - most of the game is handled from here.
@@ -100,6 +102,7 @@ public class Game implements Runnable {
         link    = new Link(this);
         Assets.init();
         
+        
         // STATE INSTANTIATION & SETTING
         
         mainMenuState   = new MainMenuState(link);
@@ -130,7 +133,7 @@ public class Game implements Runnable {
         
         
         // Call the printout of the welcome message.
-        PrintOut.printWelcome();
+        PrintOut.printWelcome(link);
         
         // GAME LOOP
         while (running) {
@@ -174,10 +177,6 @@ public class Game implements Runnable {
     }
     
     // GETTERS
-    
-    public RoomManager getRoomManager() {
-        return rooms;
-    }
     
     public KeyManager getKeyManager() {
         return keyManager;

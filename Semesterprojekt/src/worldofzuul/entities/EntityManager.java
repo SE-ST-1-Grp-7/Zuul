@@ -21,7 +21,10 @@ public class EntityManager {
         addEntity(player);
     }
     
+    // GAME LOOP METHODS
+    
     public void tick() {
+        // for loop to have the option to implement sorting of list later.
         for (int i = 0; i < entities.size(); i++) {
             entities.get(i).tick();
         }
@@ -32,6 +35,8 @@ public class EntityManager {
             e.render(g);
         }
     }
+    
+    // ENTITY MANAMENT METHODS
     
     public void addEntity(Entity e) {
         entities.add(e);

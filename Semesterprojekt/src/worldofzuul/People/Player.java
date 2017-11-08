@@ -1,6 +1,7 @@
 package worldofzuul.People;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import worldofzuul.Link;
 import worldofzuul.gfx.Animate;
@@ -31,8 +32,13 @@ public class Player extends Person {
      * @param height
      * @param name 
      */
-    public Player(Link link, float x, float y, int width, int height, String name) {
-        super(link, x, y, width, height, name); //a call to the super constructor (in Person)
+    public Player(Link link, float x, float y, String name) {
+        super(link,
+                x,
+                y,
+                Person.DEFAULT_PERSON_WIDTH,
+                Person.DEFAULT_PERSON_HEIGHT,
+                name); //a call to the super constructor (in Person)
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
         this.fatigue = 0; //the current amount of fatigue
@@ -50,10 +56,54 @@ public class Player extends Person {
     
     @Override
     public void tick() {
+        // Animations
+        animDown.tick();
+        animUp.tick();
+        animRight.tick();
+        animLeft.tick();
+        // Movement
+        getInput();
+        move();
     }
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(getCurrentAnimationFrame(),
+                    (int)(x),
+                    (int)(y),
+                    width,
+                    height,
+                    null);
+    }
+    
+    // INPUT & MOVEMENT
+    
+    private void getInput() {
+        xMove = 0;
+        yMove = 0;
+        
+        if(link.getKeyManager().up)
+            yMove = -speed;
+        if(link.getKeyManager().down)
+            yMove = speed;
+        if(link.getKeyManager().left)
+            xMove = -speed;
+        if(link.getKeyManager().right)
+            xMove = speed;
+    }
+    
+    private BufferedImage getCurrentAnimationFrame() {
+        if (xMove < 0) {
+            return animLeft.getCurrentFrame();
+        } else if (xMove > 0) {
+            return animRight.getCurrentFrame();
+        } else if (yMove < 0) {
+            return animUp.getCurrentFrame();
+        } else if (yMove > 0) {
+            return animDown.getCurrentFrame();
+        } else { // Default picture for standing still.
+            return Assets.player_down[0];
+        }
     }
     
     // GETTERS & SETTERS

@@ -23,11 +23,20 @@ public abstract class Item extends Entity {
      * @param height
      * @param itemName
      * @param itemDescription 
+     * @param weight 
      */
-    public Item(Link link, float x, float y, int width, int height, String itemName, String itemDescription) {
+    public Item(Link link,
+                float x,
+                float y,
+                int width,
+                int height,
+                String itemName,
+                String itemDescription,
+                int weight) {
         super(link, x, y, width, height);
         this.itemName = itemName;
         this.itemDescription = itemDescription;
+        this.weight = weight;
     }
     
     public abstract void use(Player p);

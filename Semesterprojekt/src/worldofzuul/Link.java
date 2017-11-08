@@ -3,7 +3,7 @@ package worldofzuul;
 import worldofzuul.input.KeyManager;
 import worldofzuul.input.MouseManager;
 import worldofzuul.mapAndRooms.RoomManager;
-import worldofzuul.world.World;
+import worldofzuul.states.State;
 
 /**
  *
@@ -11,7 +11,8 @@ import worldofzuul.world.World;
  */
 public class Link {
     private Game game;
-    private World world;
+    private State gameState;
+    private RoomManager rooms;
     
     public Link(Game game) {
         this.game = game;
@@ -19,8 +20,12 @@ public class Link {
     
     // SETTERS & GETTERS
     
-    public RoomManager getRoomManager() {
-        return game.getRoomManager();
+    public void setGameState(State gameState) {
+        this.gameState = gameState;
+    }
+    
+    public void setRoomManager(RoomManager rooms) {
+        this.rooms = rooms;
     }
     
     public KeyManager getKeyManager() {
@@ -45,13 +50,5 @@ public class Link {
 
     public void setGame(Game game) {
         this.game = game;
-    }
-    
-    public World getWorld() {
-        return world;
-    }
-    
-    public void setWorld(World world) {
-        this.world = world;
     }
 }

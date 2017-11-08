@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
  * @author Rasmus Willer
  */
 public class UIImageButton extends UIObject {
-    
     private BufferedImage[] images;
     private ClickListener clicker;
     

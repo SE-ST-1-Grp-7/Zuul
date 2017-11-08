@@ -2,8 +2,6 @@ package worldofzuul.states;
 
 import worldofzuul.gfx.Assets;
 import java.awt.Graphics;
-import java.util.HashSet;
-import java.util.Set;
 import worldofzuul.Link;
 import worldofzuul.ui.ClickListener;
 import worldofzuul.ui.UIImageButton;
