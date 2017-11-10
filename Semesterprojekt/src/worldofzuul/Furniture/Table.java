@@ -5,13 +5,15 @@
  */
 package worldofzuul.Furniture;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
+import worldofzuul.Link;
 import worldofzuul.items.Item;
 
 /**
  *a subclass of furniture that makes a table
- * @author Robin
+ * @author Robin & Rasmus Willer
  */
 public class Table extends Furniture /*implements Inspectable*/{
     private boolean canHaveItems; //a boolean value that indicates weather the table can have items or not
@@ -26,8 +28,8 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param canHaveItems
      * @param maxAmountOfItems 
      */
-    public Table(String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
-        super(tableName, tableDescription); //a call to the super constructor - sets the name and description
+    public Table(Link link, float x, float y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
+        super(link, x, y, width, height, tableName, tableDescription); //a call to the super constructor - sets the name and description
         //the attributes are set equal to the parimeters
         this.canHaveItems = canHaveItems; 
         this.maxAmountOfItems = maxAmountOfItems;
@@ -53,6 +55,16 @@ public class Table extends Furniture /*implements Inspectable*/{
     public Item takeItem(Item item){
         //not yet fully implementet - need code to remove the item from the table list
         return item; 
+    }
+    
+    // GAME LOOP METHODS
+    
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
     }
     
 }

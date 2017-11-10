@@ -1,6 +1,7 @@
 package worldofzuul.items;
 
-import worldofzuul.Entity;
+import worldofzuul.Link;
+import worldofzuul.entities.Entity;
 import worldofzuul.People.Player;
 
 /**
@@ -12,16 +13,36 @@ public abstract class Item extends Entity {
     private String itemName;
     private String itemDescription;
     private int weight;
-    int x;
-    int y;
+
     /**
-     * Two-arg constructor
-     * 
+     * Item constructor with super class arguments.
+     * @param link
+     * @param x
+     * @param y
+     * @param width
+     * @param height
      * @param itemName
      * @param itemDescription 
+     * @param weight 
      */
-
-    // Getter & Setters
+    public Item(Link link,
+                float x,
+                float y,
+                int width,
+                int height,
+                String itemName,
+                String itemDescription,
+                int weight) {
+        super(link, x, y, width, height);
+        this.itemName = itemName;
+        this.itemDescription = itemDescription;
+        this.weight = weight;
+    }
+    
+    public abstract void use(Player p);
+    
+    // GETTERS & SETTERS
+    
     public String getName() {
         return this.itemName;
     }
@@ -40,21 +61,6 @@ public abstract class Item extends Entity {
     public void setWeight(int Weight) {
         this.weight = weight;
     }
-    public int getX() {
-        return this.x;
-    }
-    public int getY() {
-        return this.y;
-    }
-    public void setX(int x) {
-        this.x = x;
-    }
-    public void setY(int y) {
-        this.y = y;
-    }
-    @Override
-    public String toString() {
-        return this.getName();
-    }
+
     public abstract void use(Player p);
 }

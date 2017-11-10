@@ -1,5 +1,8 @@
 package worldofzuul.People;
 
+
+import java.awt.Graphics;
+import worldofzuul.Link;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -10,28 +13,14 @@ import worldofzuul.userCommand.Command;
 import worldofzuul.userCommand.CommandWord;
 
 /**
- * A student class that extends person
- *
- * @author Robin & Niclas
+ *A student class that extends person
+ * @author Robin & Niclas & Rasmus Willer
  */
 public class Student extends Person {
-
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
-    private Room room;
-    private int ogX;
-    private int ogY;
-    private int leash;
-    private RoomManager rm;
 
-    /**
-     * Constructor that gives a random name
-     *
-     * @param speed
-     * @param x
-     * @param y
-     */
-    public Student(int speed, int x, int y, Room room, int leash) {
-        super(speed, x, y); //a call to the super constructor
+    public Student(Link link, float x, float y, int width, int height){
+        super(link, x, y, width, height); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
         // original position of student - use for idle moving
         this.ogX = x;
@@ -44,23 +33,18 @@ public class Student extends Person {
         System.out.println(room.getStudentDescription());
     }
 
-    /**
-     * This constructor makes a student that has a question for the Player the
-     * student also has a name, speed and position
-     *
-     * @param name
-     * @param speed
-     * @param x
-     * @param y
-     */
-//    public Student(String name, int speed, int x, int y, RoomManager rm) {
-//        super(name, speed, x, y); //a call to the super constructor
-//        hasQuestionToPlayer = true; //the player has a question to the player
-//        this.rm = rm;
-//        place();
-//        move();
-//        System.out.println("y");
-//    }
+    // GAME LOOP METHODS
+    
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
+    }
+    
+    // GETTERS & SETTERS
+    
     /**
      * getter for hasQusetionForPlayer
      *
@@ -77,82 +61,5 @@ public class Student extends Person {
      */
     public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
         this.hasQuestionToPlayer = hasQuestionToPlayer;
-    }
-
-    public void place() {
-        room.roomArray[getY()][getX()] = this;
-    }
-
-    public void move() {
-        // Step 1 to fase 1
-        //roll if the student should move
-        Random rand = new Random();
-//        if(rand.nextInt(10) != 11 ) {
-//            return; 
-//        }
-
-        Command c;
-        switch (rand.nextInt(3)) {
-            case 0:
-                if (room.getExit("east") != null) {
-                    room.roomArray[getY()][getX()] = null;
-                    room = room.getExit("east");
-                    place();
-                    System.out.println(room.getStudentDescription());
-                }
-                break;
-            case 1:
-                if (room.getExit("south") != null) {
-                    room.roomArray[getY()][getX()] = null;
-                    room = room.getExit("south");
-                    place();
-                    System.out.println(room.getStudentDescription());
-                }
-                break;
-            case 2:
-                if (room.getExit("west") != null) {
-                    room.roomArray[getY()][getX()] = null;
-                    room = room.getExit("west");
-                    place();
-                    System.out.println(room.getStudentDescription());
-                }
-                break;
-            case 3:
-                if (room.getExit("north") != null) {
-                    room.roomArray[getY()][getX()] = null;
-                    room = room.getExit("north");
-                    place();
-                    System.out.println(room.getStudentDescription());
-                }
-                break;
-            default:
-                place();
-                System.out.println(room.getStudentDescription());
-                break;
-
-        }
-        // Step 2
-        // Roll what room the student should go to.
-//        // step 2
-//        // roll student should move in the x or y axis
-//        if(rand.nextBoolean()) { // if true, move in the x axis
-//            // roll left or right
-//            if(rand.nextBoolean()) {
-//                // move right
-//                room.roomArray[getY()][getX()+1] = this;
-//                setX(getX()+1);
-//            }
-//            else {
-//                room.roomArray[getY()][getX()-1] = this;
-//                setX(getX()-1);
-//            }
-//        } else {
-//            
-//        }
-    }
-
-    // checks if a movement is can be made
-    public boolean isLegal(int newX) {
-        return true;
     }
 }

@@ -1,10 +1,23 @@
 package worldofzuul;
 
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+
+import worldofzuul.gfx.Assets;
+import worldofzuul.gfx.Display;
+import worldofzuul.input.KeyManager;
+import worldofzuul.input.MouseManager;
 import worldofzuul.People.Player;
 import worldofzuul.People.Student;
 import static worldofzuul.PrintOut.printWelcome;
 import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
+import worldofzuul.states.GameState;
+import worldofzuul.states.MainMenuState;
+import worldofzuul.states.SettingState;
+import worldofzuul.states.State;
+import worldofzuul.entities.EntityManager;
+import worldofzuul.People.Player;
 
 /**
  * Game class - most of the game is handled from here.
@@ -19,49 +32,87 @@ import worldofzuul.mapAndRooms.RoomManager;
 public class Game implements Runnable {
     // Game loop variable, initially as not running.
     private boolean running = false;
-    // Game process thread.
-    private Thread thread;
-    // Declare private RoomManager & ProcessCommand variables. 
+    private int width, height;
+    public String title;
+    
+    // OBJECT DECLERATION
+    
+    private Link link;
+    private Display display;
     private RoomManager rooms;
-    private ProcessCommand command;
-    private Student student;
-    private Player player;
+    private KeyManager keyManager;
+    private MouseManager mouseManager;
     
+    private BufferStrategy bs;
+    private Graphics g;
+    private Thread thread;
     
+    // STATES
+    
+    public State gameState;
+    public State settingsState;
+    public State mainMenuState;
 
-    /**
-     * No-args constructor. 
-     * Calls for the creation of the rooms and instantiates a Parser.
-     */
-    public Game() {
-        rooms = new RoomManager();
-        command = new ProcessCommand();
-
-        student = new Student(5,5,5, rooms.getCurrentRoom(), 3);
-        student.place();
-        player = new Player("Johammed",14,0,0,rooms.getCurrentRoom());
+    public Game(String title, int width, int height) {
+        this.width = width;
+        this.height = height;
+        this.title = title;
+        keyManager = new KeyManager();
+        mouseManager = new MouseManager();
     }
     
     public void tick() {
         // GAME LOGIC UPDATING
         
-        // Get user command input.
-        command.getCommand();
-        // Process user command.
-        running = command.process(rooms, player, student);
-        // Update rooms object
-        rooms = command.getRooms();
+        keyManager.tick();
+        
+        if (State.getState() != null)
+            State.getState().tick();
     }
     
     public void render() {
         // GAME GRAPHIC UPDATING
+        
+        bs = display.getCanvas().getBufferStrategy();
+        if(bs == null) {
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        g = bs.getDrawGraphics();
+        // Clear Screen
+        g.clearRect(0, 0, width, height);
+        
+        if (State.getState() != null)
+            State.getState().render(g);
+        
+        bs.show();
+        g.dispose();
     }
     
-    /**
-     * The play method is in normal terms how to start the game. The method
-     * calls the welcome message, contains the game loop and exit message.
-     */
     public void run() {
+        // DISPLAY -section
+        
+        display = new Display(title, width, height);
+        display.getFrame().addKeyListener(keyManager);
+        display.getFrame().addMouseListener(mouseManager);
+        display.getFrame().addMouseMotionListener(mouseManager);
+        // same for canvas, so it will be handled no matter which is in focus
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+        
+        // INITS & INSTANTIATIONS
+        
+        link    = new Link(this);
+        Assets.init();
+        
+        
+        // STATE INSTANTIATION & SETTING
+        
+        mainMenuState   = new MainMenuState(link);
+        gameState       = new GameState(link);
+        settingsState    = new SettingState(link);
+        State.setState(mainMenuState);
+        
         // GAME TIME -section
         
         // Defining what the game's frames per second should strive for.
@@ -85,8 +136,7 @@ public class Game implements Runnable {
         
         
         // Call the printout of the welcome message.
-     //   PrintOut.printWelcome();
-        printWelcome(rooms.getCurrentRoom());
+        PrintOut.printWelcome(link);
         
         // GAME LOOP
         while (running) {
@@ -127,14 +177,27 @@ public class Game implements Runnable {
         
         // Stop thread.
         stop();
-        
-        // Quit message
-        System.out.println("Thank you for playing.  Good bye.");
     }
     
-    public RoomManager getRoomManager() {
-        return rooms;
+    // GETTERS
+    
+    public KeyManager getKeyManager() {
+        return keyManager;
     }
+    
+    public MouseManager getMouseManager() {
+        return mouseManager;
+    }
+    
+    public int getWidth() {
+        return width;
+    }
+    
+    public int getHeight() {
+        return height;
+    }
+    
+    // THREAD
     
     /**
      * Start thread.

@@ -1,20 +1,24 @@
 package worldofzuul.mapAndRooms;
 
+import java.awt.Graphics;
 import worldofzuul.userCommand.Command;
 import java.util.HashMap;
+import worldofzuul.Link;
 import worldofzuul.People.Player;
 import worldofzuul.PrintOut;
+
 
 /**
  *
  * @author Rasmus Willer & Søren Bendtsen
  */
-public  class RoomManager {
-
+public class RoomManager {
+    private Link link;
     private Room currentRoom;
     private static HashMap<String, Room> roomlist;
     
-    public RoomManager() {
+    public RoomManager(Link link) {
+        this.link = link;
         createRooms();
         
     }
@@ -106,7 +110,7 @@ public  class RoomManager {
         // Assign the Room object reference 'teachers' room' as the currentRoom object.
         currentRoom = roomlist.get("teacher room");
     }
-    public HashMap getRoomlist(){
+    public HashMap getRoomlist() {
         return roomlist;
     }
 
@@ -146,5 +150,15 @@ public  class RoomManager {
             System.out.println(currentRoom.getLongDescription());
             PrintOut.displayRoom(currentRoom);
         }
+    }
+    
+    // GAME LOOP METHODS
+    
+    public void tick() {
+        
+    }
+    
+    public void render(Graphics g) {
+        
     }
 }

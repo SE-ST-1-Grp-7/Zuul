@@ -1,6 +1,9 @@
 package worldofzuul;
 
+import worldofzuul.input.KeyManager;
+import worldofzuul.input.MouseManager;
 import worldofzuul.mapAndRooms.RoomManager;
+import worldofzuul.states.State;
 
 /**
  *
@@ -8,16 +11,44 @@ import worldofzuul.mapAndRooms.RoomManager;
  */
 public class Link {
     private Game game;
-    private RoomManager roomManager;
+    private State gameState;
+    private RoomManager rooms;
     
     public Link(Game game) {
         this.game = game;
     }
     
-    public RoomManager getRoomManager() {
-        return game.getRoomManager();
+    // SETTERS & GETTERS
+    
+    public void setGameState(State gameState) {
+        this.gameState = gameState;
     }
-    /*Der skal tilføjes flere getter og setter metoder, som kan få returneret deres kald i Link.
-      På den måde forlænger Link de informationer vi kan få fat i.
-     */
+    
+    public void setRoomManager(RoomManager rooms) {
+        this.rooms = rooms;
+    }
+    
+    public KeyManager getKeyManager() {
+        return game.getKeyManager();
+    }
+    
+    public MouseManager getMouseManager() {
+        return game.getMouseManager();
+    }
+    
+    public int getWidth() {
+        return game.getWidth();
+    }
+    
+    public int getHeight() {
+        return game.getHeight();
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
 }
