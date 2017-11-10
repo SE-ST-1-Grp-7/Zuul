@@ -13,7 +13,7 @@ public abstract class Item extends Entity {
     private String itemName;
     private String itemDescription;
     private int weight;
-    
+
     /**
      * Item constructor with super class arguments.
      * @param link
@@ -61,4 +61,6 @@ public abstract class Item extends Entity {
     public void setWeight(int Weight) {
         this.weight = weight;
     }
+
+    public abstract void use(Player p);
 }

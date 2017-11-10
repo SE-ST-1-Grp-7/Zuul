@@ -4,6 +4,9 @@ import java.awt.Graphics;
 import worldofzuul.userCommand.Command;
 import java.util.HashMap;
 import worldofzuul.Link;
+import worldofzuul.People.Player;
+import worldofzuul.PrintOut;
+
 
 /**
  *
@@ -12,7 +15,7 @@ import worldofzuul.Link;
 public class RoomManager {
     private Link link;
     private Room currentRoom;
-    private HashMap<String, Room> roomlist;
+    private static HashMap<String, Room> roomlist;
     
     public RoomManager(Link link) {
         this.link = link;
@@ -120,7 +123,7 @@ public class RoomManager {
      *
      * @param command String argument of user command input.
      */
-    public void goRoom(Command command) {
+    public void goRoom(Command command, Player p) {
         // If no direction after go-command, print line and return. 
         if (!command.hasSecondWord()) {
             System.out.println("Go where?");
@@ -140,7 +143,12 @@ public class RoomManager {
         } /* Update current room reference and print long description of new
            current room. */ else {
             currentRoom = nextRoom;
+            p.setX(0);
+            p.setY(0);
+            p.setCurrentRoom(nextRoom);
+            p.spawnPlayer();
             System.out.println(currentRoom.getLongDescription());
+            PrintOut.displayRoom(currentRoom);
         }
     }
     

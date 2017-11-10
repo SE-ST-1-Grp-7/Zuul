@@ -17,5 +17,6 @@ public class StartGame {
         Game game = new Game("Professor Game!", 1920, 1080);
         // Start game thread
         game.start();
+        
     }
 }

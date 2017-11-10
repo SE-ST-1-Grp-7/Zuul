@@ -23,6 +23,7 @@ public abstract class Furniture extends Entity {
      */
     public Furniture(Link link, float x, float y, int width, int height, String furnitureName, String furnitureDescription) {
         super(link, x, y, width, height);
+
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
         this.furnitureDescription = furnitureDescription;

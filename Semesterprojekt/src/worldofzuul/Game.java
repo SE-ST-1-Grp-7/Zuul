@@ -7,6 +7,10 @@ import worldofzuul.gfx.Assets;
 import worldofzuul.gfx.Display;
 import worldofzuul.input.KeyManager;
 import worldofzuul.input.MouseManager;
+import worldofzuul.People.Player;
+import worldofzuul.People.Student;
+import static worldofzuul.PrintOut.printWelcome;
+import worldofzuul.userCommand.ProcessCommand;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.states.GameState;
 import worldofzuul.states.MainMenuState;
@@ -49,7 +53,6 @@ public class Game implements Runnable {
     public State settingsState;
     public State mainMenuState;
 
-    
     public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;

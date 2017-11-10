@@ -1,8 +1,13 @@
 package worldofzuul.mapAndRooms;
 
 // importing standard libraries for managing datastructures.
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
+import worldofzuul.People.Player;
+import worldofzuul.items.Assignment;
+import worldofzuul.items.Coffee;
+import worldofzuul.items.Item;
 
 /**
  *
@@ -11,10 +16,11 @@ import java.util.HashMap;
 public class Room {
 
     // instantiates room coordinates to set and get.
-
     // Declare attributes -section.
     private String description;
     RoomCoord roomcords = new RoomCoord();
+    private ArrayList<Item> itemsInRoom = new ArrayList<>();
+    public Object[][] roomArray = new Object[10][10];
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
@@ -29,6 +35,8 @@ public class Room {
         /* Instantiating map object with key of String type and
            value as Room object. */
         exits = new HashMap<String, Room>();
+        fillArray();
+
     }
 
     /**
@@ -64,6 +72,16 @@ public class Room {
     }
 
     /**
+     * Getter method for extended description of room with room descriptions and
+     * exit-waypoints from room.
+     *
+     * @return Returns String with description and exit-description.
+     */
+    public String getStudentDescription() {
+        return "Student is " + description;
+    }
+
+    /**
      * Getter method for String description of exit routes from room instance.
      *
      * @return Returns String describing exit routes from room.
@@ -93,5 +111,42 @@ public class Room {
      */
     public Room getExit(String direction) {
         return exits.get(direction);
+    }
+
+    public HashMap<String, Room> getExits() {
+        return this.exits;
+    }
+
+    private void fillArray() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                roomArray[i][j] = null;
+
+            }
+        }
+        Assignment a = new Assignment();
+        a.setX(3);
+        a.setY(0);
+        itemsInRoom.add(a);
+        Assignment b = new Assignment();
+        b.setX(3);
+        b.setY(1);
+        itemsInRoom.add(b);
+        for (Item i : itemsInRoom) {
+            roomArray[i.getY()][i.getX()] = i;
+        }
+
+    }
+
+    public ArrayList<Item> getItemList() {
+        return this.itemsInRoom;
+    }
+
+    public boolean hasLoot(int x, int y) {
+        return roomArray[y][x] instanceof Item;
+    }
+
+    public void removeItem(Item i) {
+        itemsInRoom.remove(i);
     }
 }

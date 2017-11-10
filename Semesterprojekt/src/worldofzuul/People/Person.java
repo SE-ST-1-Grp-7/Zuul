@@ -122,6 +122,7 @@ public abstract class Person extends Entity {
         int index = (int) (Math.random() * names.length);
         return names[index];
     }
+    
 }
 
         
