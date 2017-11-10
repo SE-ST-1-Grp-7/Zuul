@@ -61,6 +61,4 @@ public abstract class Item extends Entity {
     public void setWeight(int Weight) {
         this.weight = weight;
     }
-
-    public abstract void use(Player p);
 }

@@ -53,17 +53,17 @@ public class ProcessCommand {
                     break;
                 case MOVE:
                     s.move();
-                    p.move(command);
+                    //p.move(command);
                     break;
                 case LOOT:
-                    if(rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1] != null) {
+                    /*if(rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1] != null) {
                         p.inventory().lootItem((Item) rooms.getCurrentRoom().roomArray[p.getX()][p.getY()-1]);
                     } else {
                         System.out.println("no item found :(");
-                    }
+                    }*/
                     break;
                 case USE:
-                     p.use(command);
+                     //p.use(command);
                      break;
                 case QUIT:
                     gameLoop = Quit.quit(command);

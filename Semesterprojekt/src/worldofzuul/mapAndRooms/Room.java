@@ -11,7 +11,7 @@ import worldofzuul.items.Item;
 
 /**
  *
- * @author Rasmus Willer
+ * @author Rasmus Willer & Jonas
  */
 public class Room {
 
@@ -124,7 +124,7 @@ public class Room {
 
             }
         }
-        Assignment a = new Assignment();
+        /*Assignment a = new Assignment();
         a.setX(3);
         a.setY(0);
         itemsInRoom.add(a);
@@ -134,7 +134,7 @@ public class Room {
         itemsInRoom.add(b);
         for (Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
-        }
+        }*/
 
     }
 

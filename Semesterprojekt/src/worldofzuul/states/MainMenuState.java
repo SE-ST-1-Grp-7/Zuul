@@ -12,7 +12,6 @@ import worldofzuul.ui.UIManager;
  * @author Rasmus Willer
  */
 public class MainMenuState extends State {
-    
     private UIManager uiManager;
     
     public MainMenuState(Link link) {

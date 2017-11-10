@@ -1,5 +1,7 @@
 package worldofzuul.items;
 
+import java.awt.Graphics;
+import worldofzuul.Link;
 import worldofzuul.People.Player;
 import worldofzuul.Quit;
 import worldofzuul.interfaces.IConsumable;
@@ -12,8 +14,17 @@ public class Assignment extends Item implements IConsumable {
     
     /**
      * (no-args)constructor for an assignment
+     * @param link
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param itemName
+     * @param itemDescription
+     * @param weight 
      */
-    public Assignment() {
+    public Assignment(Link link, float x, float y, int width, int height, String itemName, String itemDescription, int weight) {
+        super(link, x, y, width, height, itemName, itemDescription, weight);
         super.setName("Assignment"); //sets the name - calls the set name in Item super class
         //set a discription for the assignment item
         super.setDescription("An assignment you can gr - calls the set name in Item super classade");
@@ -61,6 +72,14 @@ public class Assignment extends Item implements IConsumable {
             //this will be printed if you don't have enough energy
             System.out.println("You do not have enough energy");
         }
+    }
+
+    @Override
+    public void tick() {
+    }
+
+    @Override
+    public void render(Graphics g) {
     }
 
 }

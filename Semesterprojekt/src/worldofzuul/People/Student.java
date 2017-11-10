@@ -23,14 +23,14 @@ public class Student extends Person {
         super(link, x, y, width, height); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
         // original position of student - use for idle moving
-        this.ogX = x;
+        /*this.ogX = x;
         this.ogY = y;
         // the room the student resides in
         this.room = room;
         this.leash = leash;
 //        this.rm = rm;
         place();
-        System.out.println(room.getStudentDescription());
+        System.out.println(room.getStudentDescription());*/
     }
 
     // GAME LOOP METHODS

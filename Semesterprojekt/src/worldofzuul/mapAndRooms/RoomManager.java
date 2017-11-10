@@ -146,7 +146,7 @@ public class RoomManager {
             p.setX(0);
             p.setY(0);
             p.setCurrentRoom(nextRoom);
-            p.spawnPlayer();
+            //p.spawnPlayer();
             System.out.println(currentRoom.getLongDescription());
             PrintOut.displayRoom(currentRoom);
         }
