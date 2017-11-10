@@ -8,7 +8,7 @@ import worldofzuul.Link;
  * @author Group 7
  */
 public abstract class Entity {
-    protected Link link;
+    public Link link;
     protected float x, y;
     protected int width, height;
     
