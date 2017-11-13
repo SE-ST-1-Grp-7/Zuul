@@ -9,7 +9,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
-import worldofzuul.Game;
 import worldofzuul.Highscore.Highscore;
 
 /**

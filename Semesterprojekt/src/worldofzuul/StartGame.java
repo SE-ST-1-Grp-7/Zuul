@@ -20,7 +20,7 @@ public class StartGame {
         // Start game thread
         game.start();
         //Create highscores
-         Highscore high = new Highscore();
+        Highscore high = new Highscore();
         high.add("Niclas", 5000);
         high.add("Søren", 6000);
         high.add("Rasmus", 10000);
