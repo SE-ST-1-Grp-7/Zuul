@@ -35,7 +35,7 @@ public class Player extends Person {
      * @param height
      * @param name 
      */
-    public Player(float x, float y, String name) {
+    public Player(int x, int y, String name) {
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,

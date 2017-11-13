@@ -10,7 +10,7 @@ import java.awt.Graphics;
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
 
-    public Student(float x, float y, int width, int height){
+    public Student(int x, int y, int width, int height){
         super(x, y, width, height); //a call to the super constructor
         hasQuestionToPlayer = true; //the player has a question to the player
     }

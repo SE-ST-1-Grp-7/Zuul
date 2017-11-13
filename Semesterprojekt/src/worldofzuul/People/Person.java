@@ -11,12 +11,12 @@ public abstract class Person extends Entity {
                                DEFAULT_PERSON_HEIGHT = 64;
     protected String name; // Person name
     
-    public Person(float x, float y, int width, int height) {
+    public Person(int x, int y, int width, int height) {
         super(x, y, width, height);
         name = getRandomName();
     }
     
-    public Person(float x, float y, int width, int height, String name) {
+    public Person(int x, int y, int width, int height, String name) {
         super(x, y, width, height);
         this.name = name;
     }
