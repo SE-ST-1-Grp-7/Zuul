@@ -8,6 +8,7 @@ package zuulgui;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,6 +18,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +27,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import worldofzuul.Game;
+import worldofzuul.Highscore.Highscore;
 import worldofzuul.People.Player;
 import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
@@ -106,6 +109,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Tooltip tooltip = new Tooltip("Exit the game");
+        Tooltip save = new Tooltip("Save the game");
         g = new Player(0,0, "mango");
         rm = new RoomManager();
         g.setCurrentRoom(rm.getCurrentRoom());
@@ -123,13 +128,20 @@ public class FXMLDocumentController implements Initializable {
         g.getCurrentRoom().roomArray[e.getY()][e.getX()] = e;
         g.getCurrentRoom().roomArray[f.getY()][f.getX()] = f;
         System.out.println("hello");
+        
+        //Set text on exit button
+        quitGameButton.setText("Exit");
+        
+        //Creating tooltips on buttons
+        Tooltip.install(quitGameButton, tooltip);
+        Tooltip.install(buttonSavePressed, save);
     }
 
     public void drawImages(GraphicsContext gc) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 // render floor
-                Image tile = new Image("testSquare.png");
+                Image tile = new Image("Floor.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
                 if (g.getCurrentRoom().roomArray[i][j] != null) {
@@ -145,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
         // magic
 
         if (g.getCurrentRoom().roomArray[row][col] == null) {
-            return "testSquare.png";
+            return "tFloor.png";
         } else if (g.getCurrentRoom().roomArray[row][col] instanceof Item) {
             return "500.png";
         } else {
@@ -155,10 +167,13 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void highscoreButtonPressed(ActionEvent event) {
+        Highscore high = new Highscore();
+        high.printHighscore();
     }
 
     @FXML
     private void quitGameButton(ActionEvent event) {
+        Platform.exit();
     }
 
 }
