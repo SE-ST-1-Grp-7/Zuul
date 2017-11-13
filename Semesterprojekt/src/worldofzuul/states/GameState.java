@@ -22,7 +22,7 @@ public class GameState extends State {
         link.setGameState(this);
         player = new Player(10, 10, "Random");
         entityManager = new EntityManager(link, player);
-        rooms = new RoomManager(link);
+        rooms = new RoomManager();
         link.setRoomManager(rooms);
 
         // order of the following is important

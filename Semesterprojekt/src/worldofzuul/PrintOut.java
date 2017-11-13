@@ -18,7 +18,7 @@ public class PrintOut {
      * Print constructor for providing a welcome message.
      */
     public static void printWelcome(Link link) {
-        Room currentRoom = new RoomManager(link).getCurrentRoom();
+        Room currentRoom = new RoomManager().getCurrentRoom();
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");

@@ -27,6 +27,7 @@ import javafx.scene.layout.StackPane;
 import worldofzuul.Game;
 import worldofzuul.People.Player;
 import worldofzuul.items.Item;
+import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.userCommand.Command;
 import worldofzuul.userCommand.CommandWord;
 
@@ -37,6 +38,7 @@ import worldofzuul.userCommand.CommandWord;
 public class FXMLDocumentController implements Initializable {
 
     private Player g = new Player(0,0, "mango");
+    private RoomManager rm = new RoomManager();
     private final int X = 64;
     private final int Y = 64;
     private Pane pane;
@@ -103,6 +105,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        g.setCurrentRoom(rm.getCurrentRoom());
         System.out.println("hello");
     }
 
