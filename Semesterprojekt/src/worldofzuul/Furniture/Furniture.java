@@ -19,7 +19,7 @@ public abstract class Furniture extends Entity {
      * @param furnitureName
      * @param furnitureDescription 
      */
-    public Furniture(float x, float y, int width, int height, String furnitureName, String furnitureDescription) {
+    public Furniture(int x, int y, int width, int height, String furnitureName, String furnitureDescription) {
         super(x, y, width, height);
 
         //the attributes are set equal to the parimeters

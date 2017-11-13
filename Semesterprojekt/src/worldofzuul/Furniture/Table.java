@@ -22,7 +22,7 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param canHaveItems
      * @param maxAmountOfItems 
      */
-    public Table(float x, float y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
+    public Table(int x, int y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
         super(x, y, width, height, tableName, tableDescription); //a call to the super constructor - sets the name and description
         //the attributes are set equal to the parimeters
         this.canHaveItems = canHaveItems; 

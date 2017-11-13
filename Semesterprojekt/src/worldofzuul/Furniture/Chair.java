@@ -8,7 +8,7 @@ import java.awt.Graphics;
  */
 public class Chair extends Furniture /*implements Interactable*/{
     
-    public Chair(float x, float y, int width, int height, String chairName, String chairDescription){
+    public Chair(int x, int y, int width, int height, String chairName, String chairDescription){
         super(x, y, width, height, chairName, chairDescription);//a call to the super constructor - sets the name and description
     }
     

@@ -9,8 +9,8 @@ import worldofzuul.People.Player;
  */
 public class Key extends Item {
     
-    public Key(float x,
-                float y,
+    public Key(int x,
+                int y,
                 int width,
                 int height,
                 String itemName,

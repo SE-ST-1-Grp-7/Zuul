@@ -23,8 +23,8 @@ public abstract class Item extends Entity {
      * @param itemDescription 
      * @param weight 
      */
-    public Item(float x,
-                float y,
+    public Item(int x,
+                int y,
                 int width,
                 int height,
                 String itemName,

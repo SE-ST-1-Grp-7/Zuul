@@ -11,8 +11,8 @@ import worldofzuul.interfaces.IConsumable;
 public class Adderall extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 70;
     private final int ENERGY_CAP_INCREASE = 20;
-    public Adderall(float x,
-                       float y,
+    public Adderall(int x,
+                       int y,
                        int width,
                        int height) {
         super(x,

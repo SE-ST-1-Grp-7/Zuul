@@ -12,8 +12,8 @@ public class EnergyDrink extends Item implements IConsumable {
 
     private final int ENERGY_RESTORE = 40;
 
-    public EnergyDrink(float x,
-                       float y,
+    public EnergyDrink(int x,
+                       int y,
                        int width,
                        int height) {
         super(x,

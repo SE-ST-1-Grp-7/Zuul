@@ -21,7 +21,7 @@ public class Assignment extends Item implements IConsumable {
      * @param itemDescription
      * @param weight 
      */
-    public Assignment(float x, float y, int width, int height, String itemName, String itemDescription, int weight) {
+    public Assignment(int x, int y, int width, int height, String itemName, String itemDescription, int weight) {
         super(x, y, width, height, itemName, itemDescription, weight);
         super.setName("Assignment"); //sets the name - calls the set name in Item super class
         //set a discription for the assignment item

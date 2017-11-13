@@ -10,8 +10,8 @@ import worldofzuul.interfaces.IConsumable;
  */
 public class Coffee extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 15;
-    public Coffee(float x,
-                    float y,
+    public Coffee(int x,
+                    int y,
                     int width,
                     int height) {
         super(x,
