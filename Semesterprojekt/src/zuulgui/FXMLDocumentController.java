@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import worldofzuul.Game;
 import worldofzuul.People.Player;
+import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.userCommand.Command;
@@ -37,8 +38,8 @@ import worldofzuul.userCommand.CommandWord;
  */
 public class FXMLDocumentController implements Initializable {
 
-    private Player g = new Player(0,0, "mango");
-    private RoomManager rm = new RoomManager();
+    private Player g;
+    private RoomManager rm;
     private final int X = 64;
     private final int Y = 64;
     private Pane pane;
@@ -105,7 +106,22 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        g = new Player(0,0, "mango");
+        rm = new RoomManager();
         g.setCurrentRoom(rm.getCurrentRoom());
+        g.getCurrentRoom().roomArray[0][0] = g;
+        Coffee a = new Coffee(0,1,64,64);
+        Coffee b = new Coffee(1,2,64,64);
+        Coffee c = new Coffee(2,3,64,64);
+        Coffee d = new Coffee(3,4,64,64);
+        Coffee e = new Coffee(4,5,64,64);
+        Coffee f = new Coffee(5,6,64,64);
+        g.getCurrentRoom().roomArray[a.getY()][a.getX()] = a;
+        g.getCurrentRoom().roomArray[b.getY()][b.getX()] = b;
+        g.getCurrentRoom().roomArray[c.getY()][c.getX()] = c;
+        g.getCurrentRoom().roomArray[d.getY()][d.getX()] = d;
+        g.getCurrentRoom().roomArray[e.getY()][e.getX()] = e;
+        g.getCurrentRoom().roomArray[f.getY()][f.getX()] = f;
         System.out.println("hello");
     }
 
@@ -116,9 +132,9 @@ public class FXMLDocumentController implements Initializable {
                 Image tile = new Image("testSquare.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
-                if(g.getCurrentRoom().roomArray[i][j] != null) {
-                    Image entity = new Image(choosePic(i,j));
-                    gc.drawImage(entity, X * j , Y * i );
+                if (g.getCurrentRoom().roomArray[i][j] != null) {
+                    Image entity = new Image(choosePic(i, j));
+                    gc.drawImage(entity, X * j, Y * i);
                 }
             }
         }
@@ -130,13 +146,12 @@ public class FXMLDocumentController implements Initializable {
 
         if (g.getCurrentRoom().roomArray[row][col] == null) {
             return "testSquare.png";
-        } else if(g.getCurrentRoom().roomArray[row][col] instanceof Item) {
+        } else if (g.getCurrentRoom().roomArray[row][col] instanceof Item) {
             return "500.png";
         } else {
             return "boi.png";
         }
     }
-
 
     @FXML
     private void highscoreButtonPressed(ActionEvent event) {
