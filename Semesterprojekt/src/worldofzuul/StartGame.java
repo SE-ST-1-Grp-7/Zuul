@@ -17,8 +17,9 @@ public class StartGame {
     public static void main(String[] args) {
         // Game instantiation
         Game game = new Game("Professor Game!", 1920, 1080);
+        
         // Start game thread
-        game.start();
+//        game.start();
         //Create highscores
         Highscore high = new Highscore();
         high.add("Niclas", 5000);

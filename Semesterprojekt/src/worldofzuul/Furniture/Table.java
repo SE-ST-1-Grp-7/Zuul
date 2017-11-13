@@ -1,14 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package worldofzuul.Furniture;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-import worldofzuul.Link;
 import worldofzuul.items.Item;
 
 /**
@@ -28,8 +22,8 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param canHaveItems
      * @param maxAmountOfItems 
      */
-    public Table(Link link, float x, float y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
-        super(link, x, y, width, height, tableName, tableDescription); //a call to the super constructor - sets the name and description
+    public Table(int x, int y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
+        super(x, y, width, height, tableName, tableDescription); //a call to the super constructor - sets the name and description
         //the attributes are set equal to the parimeters
         this.canHaveItems = canHaveItems; 
         this.maxAmountOfItems = maxAmountOfItems;

@@ -20,9 +20,9 @@ public class GameState extends State {
         super(link);
         this.link = link;
         link.setGameState(this);
-        player = new Player(link, 10, 10, "Random");
+        player = new Player(10, 10, "Random");
         entityManager = new EntityManager(link, player);
-        rooms = new RoomManager(link);
+        rooms = new RoomManager();
         link.setRoomManager(rooms);
 
         // order of the following is important

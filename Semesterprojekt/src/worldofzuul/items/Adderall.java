@@ -1,7 +1,6 @@
 package worldofzuul.items;
 
 import java.awt.Graphics;
-import worldofzuul.Link;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 
@@ -12,13 +11,11 @@ import worldofzuul.interfaces.IConsumable;
 public class Adderall extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 70;
     private final int ENERGY_CAP_INCREASE = 20;
-    public Adderall(Link link,
-                       float x,
-                       float y,
+    public Adderall(int x,
+                       int y,
                        int width,
                        int height) {
-        super(link,
-                x,
+        super(x,
                 y,
                 width,
                 height,
