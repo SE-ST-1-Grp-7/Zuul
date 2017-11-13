@@ -3,7 +3,6 @@ package worldofzuul.mapAndRooms;
 import java.awt.Graphics;
 import worldofzuul.userCommand.Command;
 import java.util.HashMap;
-import worldofzuul.Link;
 import worldofzuul.People.Player;
 import worldofzuul.PrintOut;
 
@@ -13,12 +12,10 @@ import worldofzuul.PrintOut;
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class RoomManager {
-    private Link link;
     private Room currentRoom;
     private static HashMap<String, Room> roomlist;
     
-    public RoomManager(Link link) {
-        this.link = link;
+    public RoomManager() {
         createRooms();
         
     }
