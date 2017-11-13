@@ -1,7 +1,6 @@
 
 package worldofzuul.items;
 import java.awt.Graphics;
-import worldofzuul.Link;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 
@@ -11,13 +10,11 @@ import worldofzuul.interfaces.IConsumable;
  */
 public class Coffee extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 15;
-    public Coffee(Link link,
-                    float x,
+    public Coffee(float x,
                     float y,
                     int width,
                     int height) {
-        super(link,
-                x,
+        super(x,
                 y,
                 width,
                 height,

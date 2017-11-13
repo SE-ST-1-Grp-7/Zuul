@@ -1,6 +1,5 @@
 package worldofzuul.Furniture;
 
-import worldofzuul.Link;
 import worldofzuul.entities.Entity;
 
 /**
@@ -13,7 +12,6 @@ public abstract class Furniture extends Entity {
     
     /**
      * Constructor that sets the name and description for the furniture.
-     * @param link
      * @param x
      * @param y
      * @param width
@@ -21,8 +19,8 @@ public abstract class Furniture extends Entity {
      * @param furnitureName
      * @param furnitureDescription 
      */
-    public Furniture(Link link, float x, float y, int width, int height, String furnitureName, String furnitureDescription) {
-        super(link, x, y, width, height);
+    public Furniture(float x, float y, int width, int height, String furnitureName, String furnitureDescription) {
+        super(x, y, width, height);
 
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
@@ -57,7 +55,7 @@ public abstract class Furniture extends Entity {
     
     /**
      * setter for furnitureDesciption
-     * @param furnitureDiscription 
+     * @param furnitureDescription 
      */
     public void setFurnitureDescription(String furnitureDescription) {
         this.furnitureDescription = furnitureDescription;
