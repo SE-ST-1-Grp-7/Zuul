@@ -1,7 +1,9 @@
 package worldofzuul.items;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import worldofzuul.People.Player;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *
@@ -13,10 +15,12 @@ public class Key extends Item {
                 int y,
                 int width,
                 int height,
+                Room currentRoom,
+                BufferedImage graphics,
                 String itemName,
                 String itemDescription,
                 int weight) {
-        super(x, y, width, height, itemName, itemDescription, weight);
+        super(x, y, width, height, currentRoom, graphics, itemName, itemDescription, weight);
     }
     
     @Override
