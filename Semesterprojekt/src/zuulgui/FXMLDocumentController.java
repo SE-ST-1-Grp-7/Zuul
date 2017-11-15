@@ -23,8 +23,6 @@ import javafx.scene.layout.Pane;
 import worldofzuul.People.Player;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.RoomManager;
-import worldofzuul.userCommand.Command;
-import worldofzuul.userCommand.CommandWord;
 
 /**
  *
@@ -61,17 +59,17 @@ public class FXMLDocumentController implements Initializable {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case D:
-                        g.move(new Command(CommandWord.MOVE, "right"));
+                        g.move("right");
                         System.out.println("hello");
                         break;
                     case A:
-                        g.move(new Command(CommandWord.MOVE, "left"));
+                        g.move("left");
                         break;
                     case W:
-                        g.move(new Command(CommandWord.MOVE, "up"));
+                        g.move("up");
                         break;
                     case S:
-                        g.move(new Command(CommandWord.MOVE, "down"));
+                        g.move("down");
                         break;
                     case SPACE:
                         // do stuff
