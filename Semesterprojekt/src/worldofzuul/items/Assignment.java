@@ -91,10 +91,7 @@ public class Assignment extends Item implements IConsumable {
                 //if you have graded 10 assignments; you win and quit the game
                 if(p.getGradedAssignments() >= 2){
                     System.out.println("you won");
-<<<<<<< HEAD
                     //quit game
-=======
->>>>>>> asset-room_to_entities
                 }
 
             }
@@ -103,9 +100,4 @@ public class Assignment extends Item implements IConsumable {
             System.out.println("You do not have enough energy");
         }
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> asset-room_to_entities
 }

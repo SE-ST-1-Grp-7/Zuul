@@ -23,14 +23,6 @@ public class Link {
     public RoomManager getRoomManager() {
         return rooms;
     }
-    
-    public int getWidth() {
-        return game.getWidth();
-    }
-    
-    public int getHeight() {
-        return game.getHeight();
-    }
 
     public Game getGame() {
         return game;
