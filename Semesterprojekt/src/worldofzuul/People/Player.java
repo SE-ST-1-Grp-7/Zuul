@@ -1,9 +1,7 @@
 package worldofzuul.People;
 
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import worldofzuul.PrintOut;
-import worldofzuul.gfx.Animate;
-import worldofzuul.gfx.Assets;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
@@ -27,24 +25,22 @@ public class Player extends Person {
     private Item tempItem;
     private boolean dont = false;
 
-    // Animations
-    private Animate animDown, animUp, animRight, animLeft;
-
     /**
      * Constructor for player.
      *
      * @param x
      * @param y
-     * @param width
-     * @param height
+     * @param currentRoom
+     * @param graphics
      * @param name
      */
-    public Player(int x, int y, String name) {
+    public Player(int x, int y, String name, Room currentRoom, BufferedImage graphics) {
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                name); //a call to the super constructor (in Person)
+                currentRoom,
+                graphics); //a call to the super constructor (in Person)
 
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
@@ -53,21 +49,6 @@ public class Player extends Person {
         inventory = new Inventory(); //instanciate the inventory
         this.gradedAssignments = 0; //the amount of graded assignments is set to 0
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
-
-        // Animations
-        animDown = new Animate(250, Assets.player_down);
-        animUp = new Animate(250, Assets.player_up);
-        animRight = new Animate(250, Assets.player_right);
-        animLeft = new Animate(250, Assets.player_left);
-    }
-
-    // GAME LOOP METHODS
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    public void render(Graphics g) {
     }
 
     public void move(Command command) {
