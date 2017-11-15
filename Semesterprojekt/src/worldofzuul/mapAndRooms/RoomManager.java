@@ -134,17 +134,6 @@ public class RoomManager {
             p.setCurrentRoom(nextRoom);
             //p.spawnPlayer();
             System.out.println(currentRoom.getLongDescription());
-            PrintOut.displayRoom(currentRoom);
         }
-    }
-    
-    // GAME LOOP METHODS
-    
-    public void tick() {
-        
-    }
-    
-    public void render(Graphics g) {
-        
     }
 }
