@@ -2,7 +2,6 @@ package worldofzuul.items;
 
 import java.awt.Graphics;
 import worldofzuul.People.Player;
-import worldofzuul.Quit;
 import worldofzuul.interfaces.IConsumable;
 
 /**
@@ -62,7 +61,6 @@ public class Assignment extends Item implements IConsumable {
                 if(p.getGradedAssignments() >= 2){
                     System.out.println("you won");
                     //quit game
-                    Quit.quit(); //quit the game
                 }
 
             }
@@ -72,12 +70,5 @@ public class Assignment extends Item implements IConsumable {
         }
     }
 
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    public void render(Graphics g) {
-    }
 
 }

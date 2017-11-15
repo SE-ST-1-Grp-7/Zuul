@@ -1,7 +1,6 @@
 package worldofzuul.mapAndRooms;
 
 import java.awt.Graphics;
-import worldofzuul.userCommand.Command;
 import java.util.HashMap;
 import worldofzuul.People.Player;
 import worldofzuul.PrintOut;
@@ -120,15 +119,7 @@ public class RoomManager {
      *
      * @param command String argument of user command input.
      */
-    public void goRoom(Command command, Player p) {
-        // If no direction after go-command, print line and return. 
-        if (!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
-        }
-
-        // Get second parsed command word and assign it to String variable.
-        String direction = command.getSecondWord();
+    public void goRoom(String direction, Player p) {
 
         /* Assign next room according to matching direction defined in the
            createRooms method */

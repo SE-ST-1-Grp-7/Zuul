@@ -5,7 +5,6 @@ import worldofzuul.PrintOut;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
-import worldofzuul.userCommand.Command;
 
 /**
  * Player class - subclass of the Person class Used to instantiate a Player
@@ -51,15 +50,10 @@ public class Player extends Person {
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
     }
 
-    public void move(Command command) {
-        if (!command.hasSecondWord()) {
-            System.out.println("Go where?");
-            return;
-        }
+    public void move(String direction) {
         this.inventory.printInventory();
 
         // Get second parsed command word and assign it to String variable.
-        String direction = command.getSecondWord();
         /* Assign next room according to matching direction defined in the
            createRooms method */
         switch (direction) {
