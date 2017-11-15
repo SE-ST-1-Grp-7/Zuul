@@ -1,7 +1,11 @@
 package worldofzuul;
 
+<<<<<<< HEAD
 import worldofzuul.input.KeyManager;
 import worldofzuul.input.MouseManager;
+=======
+import worldofzuul.gfx.Assets;
+>>>>>>> asset-room_to_entities
 import worldofzuul.mapAndRooms.RoomManager;
 
 /**
@@ -22,8 +26,11 @@ public class Game {
     // OBJECT DECLERATION
     private Link link;
     private RoomManager rooms;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> asset-room_to_entities
 
     public Game(String title, int width, int height) {
         this.width = width;
@@ -31,6 +38,7 @@ public class Game {
         this.title = title;
     }
 
+<<<<<<< HEAD
 
     public int getWidth() {
         return width;
@@ -40,4 +48,12 @@ public class Game {
         return height;
     }
 
+=======
+    public void init() {
+
+        // INITS & INSTANTIATIONS
+        link = new Link(this);
+        Assets.init();
+    }
+>>>>>>> asset-room_to_entities
 }

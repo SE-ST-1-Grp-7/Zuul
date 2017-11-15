@@ -1,31 +1,55 @@
 package worldofzuul.items;
 
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *
- * @author Robin & Søren
+ * @author Robin & Søren & Rasmus Willer
  */
 public class Assignment extends Item implements IConsumable {
-    
     /**
-     * (no-args)constructor for an assignment
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param itemName
-     * @param itemDescription
-     * @param weight 
+     * Constructor with all the necessary parameters for the class
+     * @param x                 x coordinate
+     * @param y                 y coordinate
+     * @param width             pixel width
+     * @param height            pixel height
+     * @param currentRoom       currently in room ...
+     * @param graphics          graphic image
+     * @param itemName          name of the item
+     * @param itemDescription   item description
+     * @param weight            designated inventory weight
      */
-    public Assignment(int x, int y, int width, int height, String itemName, String itemDescription, int weight) {
-        super(x, y, width, height, itemName, itemDescription, weight);
-        super.setName("Assignment"); //sets the name - calls the set name in Item super class
+    public Assignment(int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom,
+            BufferedImage graphics,
+            String itemName,
+            String itemDescription,
+            int weight) {
+        
+        // Pass arguments to superclass
+        super(x,
+                y,
+                width,
+                height,
+                currentRoom,
+                graphics,
+                itemName,
+                itemDescription,
+                weight);
+        
+        //sets the name - calls the set name in Item super class
+        super.setName("Assignment"); 
         //set a discription for the assignment item
-        super.setDescription("An assignment you can gr - calls the set name in Item super classade");
+        super.setDescription("An assignment you can gr - " +
+                "calls the set name in Item super classade");
         super.setWeight(1); //set the weight for the assignment
+        this.graphics = graphics;
     }
 
     @Override
@@ -35,7 +59,7 @@ public class Assignment extends Item implements IConsumable {
     }
     
     /**
-     * the consume method will grade the assignment and remove it from the inventory
+     * consume method grades the assignment and remove it from inventory.
      * @param p 
      */
     @Override
@@ -44,23 +68,33 @@ public class Assignment extends Item implements IConsumable {
         if (p.getEnergy() >= 20) {
             //we remove energy and add assignment progress 5 times
             for (int i = 0; i < 5; i++) {
-                p.setEnergy(p.getEnergy() - (20 / 5)); //we remove the required amount of energy/5 so it will be 20 when it's done
-                p.setAssignmentProgress(p.getAssignmentProgress() + 20); // we add 20 to the progress
+                //we remove the required amount of energy/5 so it will be 20
+                p.setEnergy(p.getEnergy() - (20 / 5));
+                // we add 20 to the progress
+                p.setAssignmentProgress(p.getAssignmentProgress() + 20);
                 
                 //we print the progress
-                System.out.println("Energy = " + p.getEnergy() + " and assignmentProgress = " + p.getAssignmentProgress());
+                System.out.println("Energy = " + p.getEnergy() +
+                        " and assignmentProgress = " +
+                        p.getAssignmentProgress());
             }
-            //if the progress is 100 we set the progress to 0 and add 1 to the gradedAssignments and removes it from the inventory
+            /*if the progress is 100 we set the progress to 0 and add 1 to the
+            gradedAssignments and removes it from the inventory*/
             if (p.getAssignmentProgress() >= 100) {
                 p.setAssignmentProgress(0); //set the progress back to 0
-                p.setGradedAssignments(p.getGradedAssignments() + 1); //add 1 to the total amount of graded assignments
+                //add 1 to the total amount of graded assignments
+                p.setGradedAssignments(p.getGradedAssignments() + 1); 
                 System.out.println("Assignment graded");
-                p.inventory().removeItem(this);//removes this assignment from the player's inventory
+                //removes this assignment from the player's inventory
+                p.inventory().removeItem(this);
                 
                 //if you have graded 10 assignments; you win and quit the game
                 if(p.getGradedAssignments() >= 2){
                     System.out.println("you won");
+<<<<<<< HEAD
                     //quit game
+=======
+>>>>>>> asset-room_to_entities
                 }
 
             }
@@ -69,6 +103,9 @@ public class Assignment extends Item implements IConsumable {
             System.out.println("You do not have enough energy");
         }
     }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> asset-room_to_entities
 }

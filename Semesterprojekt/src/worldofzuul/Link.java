@@ -1,7 +1,5 @@
 package worldofzuul;
 
-import worldofzuul.input.KeyManager;
-import worldofzuul.input.MouseManager;
 import worldofzuul.mapAndRooms.RoomManager;
 
 /**
@@ -18,17 +16,25 @@ public class Link {
     
     // SETTERS & GETTERS
     
+<<<<<<< HEAD
     
+=======
+>>>>>>> asset-room_to_entities
     public void setRoomManager(RoomManager rooms) {
         this.rooms = rooms;
     }
     
+<<<<<<< HEAD
     public int getWidth() {
         return game.getWidth();
     }
     
     public int getHeight() {
         return game.getHeight();
+=======
+    public RoomManager getRoomManager() {
+        return rooms;
+>>>>>>> asset-room_to_entities
     }
 
     public Game getGame() {

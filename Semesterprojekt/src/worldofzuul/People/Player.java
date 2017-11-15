@@ -1,7 +1,6 @@
 package worldofzuul.People;
 
 import java.awt.image.BufferedImage;
-import worldofzuul.PrintOut;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
@@ -72,7 +71,6 @@ public class Player extends Person {
 
         }
         System.out.println(currentRoom.getLongDescription());
-        PrintOut.displayRoom(currentRoom);
     }
 
     /**
@@ -161,14 +159,6 @@ public class Player extends Person {
      */
     public Inventory inventory() {
         return this.inventory;
-    }
-    
-    public Room getCurrentRoom() {
-        return this.currentRoom;
-    }
-
-    public void setCurrentRoom(Room room) {
-        this.currentRoom = room;
     }
 
     /**

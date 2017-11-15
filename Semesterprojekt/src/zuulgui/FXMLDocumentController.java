@@ -15,18 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import worldofzuul.Game;
 import worldofzuul.People.Player;
-import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.RoomManager;
 import worldofzuul.userCommand.Command;
@@ -106,23 +100,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        g = new Player(0,0, "mango");
-        rm = new RoomManager();
-        g.setCurrentRoom(rm.getCurrentRoom());
-        g.getCurrentRoom().roomArray[0][0] = g;
-        Coffee a = new Coffee(0,1,64,64);
-        Coffee b = new Coffee(1,2,64,64);
-        Coffee c = new Coffee(2,3,64,64);
-        Coffee d = new Coffee(3,4,64,64);
-        Coffee e = new Coffee(4,5,64,64);
-        Coffee f = new Coffee(5,6,64,64);
-        g.getCurrentRoom().roomArray[a.getY()][a.getX()] = a;
-        g.getCurrentRoom().roomArray[b.getY()][b.getX()] = b;
-        g.getCurrentRoom().roomArray[c.getY()][c.getX()] = c;
-        g.getCurrentRoom().roomArray[d.getY()][d.getX()] = d;
-        g.getCurrentRoom().roomArray[e.getY()][e.getX()] = e;
-        g.getCurrentRoom().roomArray[f.getY()][f.getX()] = f;
-        System.out.println("hello");
     }
 
     public void drawImages(GraphicsContext gc) {
