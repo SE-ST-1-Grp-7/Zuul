@@ -1,6 +1,7 @@
 package worldofzuul.entities;
 
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *
@@ -9,17 +10,17 @@ import java.awt.Graphics;
 public abstract class Entity {
     protected int x, y;
     protected int width, height;
+    protected Room currentRoom;
+    protected BufferedImage graphics;
     
-    public Entity(int x, int y, int width, int height) {
+    public Entity(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
+        this.currentRoom = currentRoom;
+        this.graphics = graphics;
     }
-    
-    public abstract void tick();
-    
-    public abstract void render(Graphics g);
     
     // GETTERS & SETTERS
     
@@ -53,5 +54,21 @@ public abstract class Entity {
 
     public void setHeight(int height) {
         this.height = height;
+    }
+    
+    public Room getCurrentRoom() {
+        return currentRoom;
+    }
+
+    public void setCurrentRoom(Room currentRoom) {
+        this.currentRoom = currentRoom;
+    }
+
+    public BufferedImage getGraphics() {
+        return graphics;
+    }
+
+    public void setGraphics(BufferedImage graphics) {
+        this.graphics = graphics;
     }
 }
