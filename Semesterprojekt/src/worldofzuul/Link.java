@@ -16,25 +16,20 @@ public class Link {
     
     // SETTERS & GETTERS
     
-<<<<<<< HEAD
-    
-=======
->>>>>>> asset-room_to_entities
     public void setRoomManager(RoomManager rooms) {
         this.rooms = rooms;
     }
     
-<<<<<<< HEAD
+    public RoomManager getRoomManager() {
+        return rooms;
+    }
+    
     public int getWidth() {
         return game.getWidth();
     }
     
     public int getHeight() {
         return game.getHeight();
-=======
-    public RoomManager getRoomManager() {
-        return rooms;
->>>>>>> asset-room_to_entities
     }
 
     public Game getGame() {
