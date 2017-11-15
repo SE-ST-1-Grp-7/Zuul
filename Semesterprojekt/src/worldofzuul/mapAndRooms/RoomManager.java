@@ -1,11 +1,8 @@
 package worldofzuul.mapAndRooms;
 
 import java.awt.Graphics;
-import worldofzuul.userCommand.Command;
 import java.util.HashMap;
 import worldofzuul.People.Player;
-import worldofzuul.PrintOut;
-
 
 /**
  *

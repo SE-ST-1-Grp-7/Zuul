@@ -16,16 +16,16 @@ public abstract class Item extends Entity {
     private int weight;
 
     /**
-     * Item constructor with super class arguments.
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param currentRoom
-     * @param graphics
-     * @param itemName
-     * @param itemDescription 
-     * @param weight 
+     * Constructor with all the necessary parameters for the class
+     * @param x                 x coordinate
+     * @param y                 y coordinate
+     * @param width             pixel width
+     * @param height            pixel height
+     * @param currentRoom       currently in room ...
+     * @param graphics          graphic image
+     * @param itemName          name of the item
+     * @param itemDescription   item description
+     * @param weight            designated inventory weight
      */
     public Item(int x,
                 int y,

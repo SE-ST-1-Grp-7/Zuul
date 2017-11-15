@@ -1,9 +1,10 @@
 package worldofzuul.Furniture;
 
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import worldofzuul.items.Item;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *a subclass of furniture that makes a table
@@ -16,14 +17,39 @@ public class Table extends Furniture /*implements Inspectable*/{
     private List<Item> itemsOnTable = new ArrayList<>(); // a list to hold the items on the table
     
     /**
-     * constructor for a table
-     * @param tableName
-     * @param tableDescription
-     * @param canHaveItems
-     * @param maxAmountOfItems 
+     * Constructor with all the necessary parameters for the class
+     * @param x                     int x coordinate
+     * @param y                     int y coordinate
+     * @param width                 int pixel width
+     * @param height                int pixel height
+     * @param currentRoom           Room currently in room ...
+     * @param graphics              BufferedImage graphic image
+     * @param tableName             String Name of furniture
+     * @param tableDescription      String Description of furniture
+     * @param canHaveItems          boolean Can furniture contain items
+     * @param maxAmountOfItems      int number of items it can contain
      */
-    public Table(int x, int y, int width, int height, String tableName, String tableDescription, boolean canHaveItems, int maxAmountOfItems){
-        super(x, y, width, height, tableName, tableDescription); //a call to the super constructor - sets the name and description
+    public Table(int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom,
+            BufferedImage graphics,
+            String tableName,
+            String tableDescription,
+            boolean canHaveItems,
+            int maxAmountOfItems){
+        
+        // Pass arguments for superclass
+        super(x,
+                y,
+                width,
+                height,
+                currentRoom,
+                graphics,
+                tableName,
+                tableDescription);
+        
         //the attributes are set equal to the parimeters
         this.canHaveItems = canHaveItems; 
         this.maxAmountOfItems = maxAmountOfItems;
@@ -50,15 +76,4 @@ public class Table extends Furniture /*implements Inspectable*/{
         //not yet fully implementet - need code to remove the item from the table list
         return item; 
     }
-    
-    // GAME LOOP METHODS
-    
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    public void render(Graphics g) {
-    }
-    
 }

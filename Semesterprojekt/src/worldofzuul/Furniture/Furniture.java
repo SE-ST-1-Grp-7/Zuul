@@ -1,6 +1,8 @@
 package worldofzuul.Furniture;
 
+import java.awt.image.BufferedImage;
 import worldofzuul.entities.Entity;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  * a class for all furniture
@@ -11,16 +13,27 @@ public abstract class Furniture extends Entity {
     private String furnitureDescription; //description for the furniture
     
     /**
-     * Constructor that sets the name and description for the furniture.
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param furnitureName
-     * @param furnitureDescription 
+     * Constructor with all the necessary parameters for the class
+     * @param x                     x coordinate
+     * @param y                     y coordinate
+     * @param width                 pixel width
+     * @param height                pixel height
+     * @param currentRoom           currently in room ...
+     * @param graphics              graphic image
+     * @param furnitureName         name of furniture
+     * @param furnitureDescription  description of the furniture
      */
-    public Furniture(int x, int y, int width, int height, String furnitureName, String furnitureDescription) {
-        super(x, y, width, height);
+    public Furniture(int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom,
+            BufferedImage graphics,
+            String furnitureName,
+            String furnitureDescription) {
+        
+        // Pass arguments to superclass
+        super(x, y, width, height, currentRoom, graphics);
 
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
