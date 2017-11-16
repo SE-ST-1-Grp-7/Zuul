@@ -85,8 +85,10 @@ public class Inventory {
     public void dropItem(int index, Player p){
         if(p.getTempItem() == null){ //if the player has no tempItem
             removeItem(getItem(index)); //remove the item from the inventory list
+            getItem(index).setX(p.getX());//set the item's x to where the player is standing when dropping the item
+            getItem(index).setY(p.getY());//sets the item's y just like with x
             p.setTempItem(getItem(index)); //set the item you want to drop at the temp item
-            p.placeItem(); //call the placeItem that places the tempItem
+            //p.placeItem(); //call the placeItem that places the tempItem
         }else{
             System.out.println("You can't drop here");
         }
