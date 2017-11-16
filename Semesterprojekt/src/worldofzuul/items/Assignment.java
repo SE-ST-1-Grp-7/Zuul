@@ -1,6 +1,6 @@
 package worldofzuul.items;
 
-import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 import worldofzuul.mapAndRooms.Room;
@@ -10,6 +10,7 @@ import worldofzuul.mapAndRooms.Room;
  * @author Robin & Søren & Rasmus Willer
  */
 public class Assignment extends Item implements IConsumable {
+    private Image assignmentImage = new Image("/texture/assignment.png");
     /**
      * Constructor with all the necessary parameters for the class
      * @param x                 x coordinate
@@ -27,7 +28,6 @@ public class Assignment extends Item implements IConsumable {
             int width,
             int height,
             Room currentRoom,
-            BufferedImage graphics,
             String itemName,
             String itemDescription,
             int weight) {
@@ -38,7 +38,6 @@ public class Assignment extends Item implements IConsumable {
                 width,
                 height,
                 currentRoom,
-                graphics,
                 itemName,
                 itemDescription,
                 weight);
@@ -49,7 +48,7 @@ public class Assignment extends Item implements IConsumable {
         super.setDescription("An assignment you can gr - " +
                 "calls the set name in Item super classade");
         super.setWeight(1); //set the weight for the assignment
-        this.graphics = graphics;
+        super.setEntityImage(assignmentImage);
     }
 
     @Override

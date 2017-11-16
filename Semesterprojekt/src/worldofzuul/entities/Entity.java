@@ -1,6 +1,7 @@
 package worldofzuul.entities;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.mapAndRooms.Room;
 
 /**
@@ -11,15 +12,14 @@ public abstract class Entity {
     protected int x, y;
     protected int width, height;
     protected Room currentRoom;
-    protected BufferedImage graphics;
+    protected Image entityImage;
     
-    public Entity(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics) {
+    public Entity(int x, int y, int width, int height, Room currentRoom) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.currentRoom = currentRoom;
-        this.graphics = graphics;
     }
     
     // GETTERS & SETTERS
@@ -64,11 +64,19 @@ public abstract class Entity {
         this.currentRoom = currentRoom;
     }
 
-    public BufferedImage getGraphics() {
-        return graphics;
+    public Image getEntityImage() {
+        return entityImage;
     }
 
-    public void setGraphics(BufferedImage graphics) {
-        this.graphics = graphics;
+    public void setEntityImage(Image entityImage) {
+        this.entityImage = entityImage;
     }
 }
+//    public BufferedImage getGraphics() {
+//        return graphics;
+//    }
+//
+//    public void setGraphics(BufferedImage graphics) {
+//        this.graphics = graphics;
+//    }
+//}

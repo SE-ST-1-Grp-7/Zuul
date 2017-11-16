@@ -1,6 +1,7 @@
 package worldofzuul.items;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.People.Player;
 import worldofzuul.mapAndRooms.Room;
 
@@ -9,6 +10,7 @@ import worldofzuul.mapAndRooms.Room;
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
+    private Image keyImage = new Image("/texture/key.png");
     /**
      * Constructor with all the necessary parameters for the class
      * @param x                 x coordinate
@@ -16,7 +18,6 @@ public class Key extends Item {
      * @param width             pixel width
      * @param height            pixel height
      * @param currentRoom       currently in room ...
-     * @param graphics          graphic image
      * @param itemName          name of the item
      * @param itemDescription   item description
      * @param weight            designated inventory weight
@@ -26,7 +27,6 @@ public class Key extends Item {
                 int width,
                 int height,
                 Room currentRoom,
-                BufferedImage graphics,
                 String itemName,
                 String itemDescription,
                 int weight) {
@@ -37,10 +37,10 @@ public class Key extends Item {
                 width,
                 height,
                 currentRoom,
-                graphics,
                 itemName,
                 itemDescription,
                 weight);
+        super.setEntityImage(keyImage);
     }
     
     @Override
