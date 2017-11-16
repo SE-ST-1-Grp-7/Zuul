@@ -279,21 +279,21 @@ public class EntityManager {
         }
     }
 
-    public void loadFurniture() {
-        try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveFurnitureTest.txt")));
-            furniturelist.clear();
-            String line;
-            while ((line = fileReader.readLine()) != null) {
-                //Get all tokens available in line
-                String[] tokens = line.split(",");
-                if (tokens.length > 0) {
-                    Furniture furniture = new Furniture(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, rm.getCurrentRoom().get(tokens[3]), String.valueOf(tokens[4]));
-                    furniturelist.add(furniture);
-                }
-            }
-        } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... please check the save directory in the code.");
-        }
-    }
+//    public void loadFurniture() {
+//        try {
+//            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveFurnitureTest.txt")));
+//            furniturelist.clear();
+//            String line;
+//            while ((line = fileReader.readLine()) != null) {
+//                //Get all tokens available in line
+//                String[] tokens = line.split(",");
+//                if (tokens.length > 0) {
+//                    Furniture furniture = new Furniture(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, rm.getCurrentRoom().get(tokens[3]), String.valueOf(tokens[4]));
+//                    furniturelist.add(furniture);
+//                }
+//            }
+//        } catch (IOException e) {
+//            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... please check the save directory in the code.");
+//        }
+//    }
 }
