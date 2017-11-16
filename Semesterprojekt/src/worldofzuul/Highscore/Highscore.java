@@ -8,6 +8,7 @@ package worldofzuul.Highscore;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -47,7 +48,7 @@ public class Highscore {
      * first.
      */
     private void sort() {
-        ScoreComparator comparator = new ScoreComparator();
+        Score comparator = new Score();
         Collections.sort(highScore, comparator);
     }
 
@@ -58,14 +59,17 @@ public class Highscore {
      */
     public String toString() {
         String text = "";
+        int i = 1;
         for (Score score : highScore) {
-            text += score.getName() + score.getScore() + "\n";
+            text += i + ".\t" + score.getName() + "\t  " + score.getScore() + "\n";
+            i++;
         }
         return text;
     }
 
     /**
-     * This method makes our highScore into an XML file.
+     * This method creates a XML file with our highScores and place it in the
+     * root dir.
      */
     public void createXML() {
         try {
@@ -98,8 +102,10 @@ public class Highscore {
         }
     }
 
-
-    public void printHighscore() {
+    /**
+     * This method loads the XML file highscore.xml.
+     */
+    public void loadXML() {
         try {
 
             File fXmlFile = new File("highscore.xml");
@@ -107,15 +113,10 @@ public class Highscore {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
-            System.out.println("The " + doc.getDocumentElement().getNodeName() + " list for World of SDU");
 
             NodeList nList = doc.getElementsByTagName("Highscore");
             Node child = nList.item(0);
             NodeList nL = child.getChildNodes();
-            System.out.println("----------------------------");
-            System.out.printf("%-5s %-14s %-12s", "NO.", "NAME", "SCORE");
-            System.out.println("");
-            int i = 1;
             for (int temp = 0; temp < nL.getLength(); temp++) {
 
                 Node nNode = nL.item(temp);
@@ -123,13 +124,48 @@ public class Highscore {
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
                     Element eElement = (Element) nNode;
-
-                    System.out.printf("%-1d%-4s %-14s %-12s\n", i, ".", eElement.getAttribute("name"), eElement.getAttribute("score"));
-                    i++;
+                    this.add(eElement.getAttribute("name"), Integer.parseInt(eElement.getAttribute("score")));
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+
         }
     }
+
+    public void saveHighscore() {
+        long startTime = System.currentTimeMillis() / 1000L;
+        long startPoint = 10000;
+
+        loadXML();
+
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("Do you want to save your score? (Yes or no)");
+        String s = input.nextLine();
+        if (s.equalsIgnoreCase("Yes")) {
+
+            long playedTime = System.currentTimeMillis() / 1000L;
+            long elapsedTime = playedTime - startTime;
+            long finalScore = startPoint - elapsedTime;
+            System.out.println("Please enter your name to save your score: ");
+            String playerName = input.nextLine();
+            add(playerName, (int) finalScore);
+            createXML();
+
+        } else {
+            System.out.println("You didn't save your score!");
+
+        }
+        printHighscore();
+
+    }
+
+    public void printHighscore() {
+
+        System.out.println("The highscore list for World of SDU");
+        System.out.println("----------------------------");
+        System.out.println("NO.\tNAME\t SCORE");
+        System.out.println(this.toString());
+    }
+
 }

@@ -1,7 +1,9 @@
 package worldofzuul.items;
 
+import java.awt.image.BufferedImage;
 import worldofzuul.entities.Entity;
 import worldofzuul.People.Player;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  * Item class - the class used to instantiate an item in the game
@@ -14,23 +16,27 @@ public abstract class Item extends Entity {
     private int weight;
 
     /**
-     * Item constructor with super class arguments.
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param itemName
-     * @param itemDescription 
-     * @param weight 
+     * Constructor with all the necessary parameters for the class
+     * @param x                 x coordinate
+     * @param y                 y coordinate
+     * @param width             pixel width
+     * @param height            pixel height
+     * @param currentRoom       currently in room ...
+     * @param graphics          graphic image
+     * @param itemName          name of the item
+     * @param itemDescription   item description
+     * @param weight            designated inventory weight
      */
     public Item(int x,
                 int y,
                 int width,
                 int height,
+                Room currentRoom,
+                BufferedImage graphics,
                 String itemName,
                 String itemDescription,
                 int weight) {
-        super(x, y, width, height);
+        super(x, y, width, height, currentRoom, graphics);
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.weight = weight;
@@ -55,7 +61,7 @@ public abstract class Item extends Entity {
     public void setDescription(String itemDescription) {
         this.itemDescription = itemDescription;
     }
-    public void setWeight(int Weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 }

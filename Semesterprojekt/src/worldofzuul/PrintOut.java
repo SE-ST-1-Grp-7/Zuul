@@ -4,8 +4,6 @@ import worldofzuul.People.Player;
 import worldofzuul.People.Student;
 import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
-import worldofzuul.userCommand.Parser;
-import worldofzuul.userCommand.CommandWord;
 import worldofzuul.mapAndRooms.Room;
 import worldofzuul.mapAndRooms.RoomManager;
 
@@ -22,9 +20,6 @@ public class PrintOut {
         System.out.println();
         System.out.println("Welcome to the World of Zuul!");
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
-        System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
-        System.out.println();
-        // Finish off with the long description of the current room.
         System.out.println(currentRoom.getLongDescription());
         displayRoom(currentRoom);
     }
@@ -33,12 +28,12 @@ public class PrintOut {
      * Print help method. Writes an explanation of what situation the user is in
      * and what commands now are available.
      */
-    public static void printHelp(Parser parser) {
+    public static void printHelp() {
         System.out.println("You are lost. You are alone. You wander");
         System.out.println("around at the university.");
         System.out.println();
         System.out.println("Your command words are:");
-        parser.showCommands();
+        System.out.println("hello");
     }
     /** --for testing purposes, can & should be refined later--
      * displays the room in a 10x10, 2d space

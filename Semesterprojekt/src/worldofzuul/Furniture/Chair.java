@@ -1,6 +1,8 @@
 package worldofzuul.Furniture;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *a subclass of furniture that makes a chair
@@ -8,8 +10,35 @@ import java.awt.Graphics;
  */
 public class Chair extends Furniture /*implements Interactable*/{
     
-    public Chair(int x, int y, int width, int height, String chairName, String chairDescription){
-        super(x, y, width, height, chairName, chairDescription);//a call to the super constructor - sets the name and description
+    /**
+     * Constructor with all the necessary parameters for the class
+     * @param x                     int x coordinate
+     * @param y                     int y coordinate
+     * @param width                 int pixel width
+     * @param height                int pixel height
+     * @param currentRoom           Room currently in room ...
+     * @param graphics              BufferedImage graphic image
+     * @param chairName             String Name of furniture
+     * @param chairDescription      String Description of furniture
+     */
+    public Chair(int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom,
+            BufferedImage graphics,
+            String chairName,
+            String chairDescription){
+        
+        // Pass arguments to superclass
+        super(x,
+                y,
+                width,
+                height,
+                currentRoom,
+                graphics,
+                chairName,
+                chairDescription);
     }
     
     /**
@@ -25,15 +54,4 @@ public class Chair extends Furniture /*implements Interactable*/{
     public void standUp(){
         //not implementet yet
     }
-    
-    // GETTERS & SETTERS
-    
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    public void render(Graphics g) {
-    }
-    
 }

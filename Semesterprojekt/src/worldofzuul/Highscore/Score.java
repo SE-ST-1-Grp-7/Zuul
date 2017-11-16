@@ -5,13 +5,15 @@
  */
 package worldofzuul.Highscore;
 
+import java.util.Comparator;
+
 /**
  *
  * @author niclasjohansen
  */
 
-public class Score {
-
+public class Score implements Comparator<Score> {
+    
     /**
      * Name of player.
      */
@@ -70,6 +72,23 @@ public class Score {
      */
     public void setScore(int score) {
         this.score = score;
+    }
+    
+    @Override
+    public int compare(Score score1, Score score2) {
+        int a = score1.getScore();
+        int b = score2.getScore();
+
+        if (a > b) {
+            return -1;
+        }
+        else if( a < b){
+            return +1;
+        }
+        else {
+            return 0;
+        }
+
     }
 
 }

@@ -1,7 +1,8 @@
 package worldofzuul.People;
 
 
-import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import worldofzuul.mapAndRooms.Room;
 
 /**
  *A student class that extends person
@@ -10,19 +11,9 @@ import java.awt.Graphics;
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
 
-    public Student(int x, int y, int width, int height){
-        super(x, y, width, height); //a call to the super constructor
-        hasQuestionToPlayer = true; //the player has a question to the player
-    }
-
-    // GAME LOOP METHODS
-    
-    @Override
-    public void tick() {
-    }
-
-    @Override
-    public void render(Graphics g) {
+    public Student(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics, Boolean hasQ){
+        super(x, y, width, height, currentRoom, graphics); //a call to the super constructor
+        this.hasQuestionToPlayer = hasQ; //the player has a question to the player
     }
     
     // GETTERS & SETTERS
