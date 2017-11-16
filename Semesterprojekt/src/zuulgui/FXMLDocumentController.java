@@ -8,7 +8,6 @@ package zuulgui;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,24 +15,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import worldofzuul.Game;
-import worldofzuul.Highscore.Highscore;
 import worldofzuul.People.Player;
-import worldofzuul.items.Coffee;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.RoomManager;
-import worldofzuul.userCommand.Command;
-import worldofzuul.userCommand.CommandWord;
 
 /**
  *
@@ -70,17 +59,17 @@ public class FXMLDocumentController implements Initializable {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case D:
-                        g.move(new Command(CommandWord.MOVE, "right"));
+                        g.move("right");
                         System.out.println("hello");
                         break;
                     case A:
-                        g.move(new Command(CommandWord.MOVE, "left"));
+                        g.move("left");
                         break;
                     case W:
-                        g.move(new Command(CommandWord.MOVE, "up"));
+                        g.move("up");
                         break;
                     case S:
-                        g.move(new Command(CommandWord.MOVE, "down"));
+                        g.move("down");
                         break;
                     case SPACE:
                         // do stuff
@@ -109,39 +98,13 @@ public class FXMLDocumentController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Tooltip tooltip = new Tooltip("Exit the game");
-        Tooltip save = new Tooltip("Save the game");
-        g = new Player(0,0, "mango");
-        rm = new RoomManager();
-        g.setCurrentRoom(rm.getCurrentRoom());
-        g.getCurrentRoom().roomArray[0][0] = g;
-        Coffee a = new Coffee(0,1,64,64);
-        Coffee b = new Coffee(1,2,64,64);
-        Coffee c = new Coffee(2,3,64,64);
-        Coffee d = new Coffee(3,4,64,64);
-        Coffee e = new Coffee(4,5,64,64);
-        Coffee f = new Coffee(5,6,64,64);
-        g.getCurrentRoom().roomArray[a.getY()][a.getX()] = a;
-        g.getCurrentRoom().roomArray[b.getY()][b.getX()] = b;
-        g.getCurrentRoom().roomArray[c.getY()][c.getX()] = c;
-        g.getCurrentRoom().roomArray[d.getY()][d.getX()] = d;
-        g.getCurrentRoom().roomArray[e.getY()][e.getX()] = e;
-        g.getCurrentRoom().roomArray[f.getY()][f.getX()] = f;
-        System.out.println("hello");
-        
-        //Set text on exit button
-        quitGameButton.setText("Exit");
-        
-        //Creating tooltips on buttons
-        Tooltip.install(quitGameButton, tooltip);
-        Tooltip.install(buttonSavePressed, save);
     }
 
     public void drawImages(GraphicsContext gc) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 // render floor
-                Image tile = new Image("Floor.png");
+                Image tile = new Image("testSquare.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
                 if (g.getCurrentRoom().roomArray[i][j] != null) {
@@ -157,7 +120,7 @@ public class FXMLDocumentController implements Initializable {
         // magic
 
         if (g.getCurrentRoom().roomArray[row][col] == null) {
-            return "tFloor.png";
+            return "testSquare.png";
         } else if (g.getCurrentRoom().roomArray[row][col] instanceof Item) {
             return "500.png";
         } else {
@@ -167,13 +130,10 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void highscoreButtonPressed(ActionEvent event) {
-        Highscore high = new Highscore();
-        high.printHighscore();
     }
 
     @FXML
     private void quitGameButton(ActionEvent event) {
-        Platform.exit();
     }
 
 }

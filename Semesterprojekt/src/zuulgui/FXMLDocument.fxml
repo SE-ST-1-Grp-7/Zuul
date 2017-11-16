@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="gp" gridLinesVisible="true" style="-fx-background-position: center; -fx-background-image: url('wow2.jpg'); -fx-background-size: cover;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulgui.FXMLDocumentController">
+<GridPane fx:id="gp" gridLinesVisible="true" style="-fx-background-position: center; -fx-background-image: url('wow2.jpg'); -fx-background-size: cover;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulgui.FXMLDocumentController">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
@@ -72,7 +72,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </HBox>
-            <TextArea fx:id="textArea" disable="true" opacity="1" prefHeight="200.0" prefWidth="200.0" styleClass="text-area" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextArea fx:id="textArea" disable="true" opacity="1" prefHeight="200.0" prefWidth="200.0" styleClass="text-area" GridPane.rowSpan="3" />
          </children>
       </GridPane>
    </children>
