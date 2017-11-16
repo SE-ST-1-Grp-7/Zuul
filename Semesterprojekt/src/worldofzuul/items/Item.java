@@ -32,7 +32,6 @@ public abstract class Item extends Entity {
                 int width,
                 int height,
                 Room currentRoom,
-                BufferedImage graphics,
                 String itemName,
                 String itemDescription,
                 int weight) {

@@ -18,7 +18,6 @@ public class Assignment extends Item implements IConsumable {
      * @param width             pixel width
      * @param height            pixel height
      * @param currentRoom       currently in room ...
-     * @param graphics          graphic image
      * @param itemName          name of the item
      * @param itemDescription   item description
      * @param weight            designated inventory weight
