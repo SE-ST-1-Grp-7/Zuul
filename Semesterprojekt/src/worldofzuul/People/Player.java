@@ -137,7 +137,23 @@ public class Player extends Person {
     public Inventory inventory() {
         return this.inventory;
     }
-
+    
+    /**
+     * getter for tempItem - used to drop an item
+     * @return 
+     */
+    public Item getTempItem(){
+        return this.tempItem;
+    }
+    
+    /**
+     * setter for tempItem - used to set the tempitem to be dropped
+     * @param i
+     */
+    public void setTempItem(Item i){
+        this.tempItem = i;
+    }
+    
     /**
      * getter for the current energy level
      *
