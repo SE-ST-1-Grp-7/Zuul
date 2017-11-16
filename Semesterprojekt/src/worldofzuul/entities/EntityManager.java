@@ -146,7 +146,6 @@ public class EntityManager {
                 fileWriter.append(",");
                 fileWriter.append(player.getCurrentRoom().getName());
                 fileWriter.append("\n");
-                //fileWriter.append(player.getCurrentRoom()); getCurrentRoom skal laves om til streng her.
 
                 System.out.println("Saved Player");
             }
@@ -168,8 +167,9 @@ public class EntityManager {
                 fileWriter.append(student.getCurrentRoom().getName());
                 fileWriter.append(",");
                 fileWriter.append(String.valueOf(student.getHasQuestionToPlayer()));
+                fileWriter.append(",");
+                fileWriter.append(student.getCurrentRoom().getName());
                 fileWriter.append("\n");
-                //fileWriter.append(student.getCurrentRoom());
 
                 System.out.println("Saved Students");
             }
@@ -189,11 +189,10 @@ public class EntityManager {
                 fileWriter.append(",");
                 fileWriter.append(String.valueOf(furniture.getY()));
                 fileWriter.append(",");
-
-                fileWriter.append(",");
                 fileWriter.append(furniture.getFurnitureName());
+                fileWriter.append(",");
+                fileWriter.append(furniture.getCurrentRoom().getName());
                 fileWriter.append("\n");
-                //furniture.getCurrentRoom();
                 System.out.println("Saved Furniture");
             }
             fileWriter.flush();
