@@ -107,7 +107,7 @@ public class RoomManager {
         currentRoom = roomlist.get("teacher room");
     }
 
-    public HashMap<String,Room> getRoomlist() {
+    public HashMap getRoomlist() {
         return roomlist;
     }
 
