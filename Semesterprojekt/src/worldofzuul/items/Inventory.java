@@ -1,6 +1,7 @@
 package worldofzuul.items;
 
 import java.util.ArrayList;
+import worldofzuul.People.Player;
 
 /**
  *
@@ -75,5 +76,19 @@ public class Inventory {
         addItem(i);
         System.out.println(i.getName() + " added to inventory!");
     }
-
+    
+    /**
+     * method to drop an item
+     * @param index
+     * @param p 
+     */
+    public void dropItem(int index, Player p){
+        if(p.getTempItem() == null){ //if the player has no tempItem
+            removeItem(getItem(index)); //remove the item from the inventory list
+            p.setTempItem(getItem(index)); //set the item you want to drop at the temp item
+            p.placeItem(); //call the placeItem that places the tempItem
+        }else{
+            System.out.println("You can't drop here");
+        }
+    }
 }
