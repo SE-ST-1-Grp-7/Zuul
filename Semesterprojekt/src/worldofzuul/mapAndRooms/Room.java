@@ -18,6 +18,7 @@ public class Room {
     // instantiates room coordinates to set and get.
     // Declare attributes -section.
     private String description;
+    private String name;
     RoomCoord roomcords = new RoomCoord();
     private ArrayList<Item> itemsInRoom = new ArrayList<>();
     public Object[][] roomArray = new Object[10][10];
@@ -29,9 +30,10 @@ public class Room {
      *
      * @param description Passed string argument providing room description.
      */
-    public Room(String description) {
+    public Room(String description,String name) {
         // Assigning description argument to instance attribute.
         this.description = description;
+        this.name = name;
         /* Instantiating map object with key of String type and
            value as Room object. */
         exits = new HashMap<String, Room>();
@@ -59,6 +61,9 @@ public class Room {
      */
     public String getShortDescription() {
         return description;
+    }
+    public String getName(){
+        return name;
     }
 
     /**
