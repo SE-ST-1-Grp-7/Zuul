@@ -1,6 +1,7 @@
 
 package worldofzuul.items;
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 import worldofzuul.mapAndRooms.Room;
@@ -11,6 +12,7 @@ import worldofzuul.mapAndRooms.Room;
  */
 public class Coffee extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 15;
+    private Image coffeeImage = new Image("/texture/coffee.png");
     
     /**
      * Constructor with all the necessary parameters for the class
@@ -19,14 +21,12 @@ public class Coffee extends Item implements IConsumable {
      * @param width             pixel width
      * @param height            pixel height
      * @param currentRoom       currently in room ...
-     * @param graphics          graphic image
      */
     public Coffee(int x,
                     int y,
                     int width,
                     int height,
-                    Room currentRoom,
-                    BufferedImage graphics) {
+                    Room currentRoom) {
         
         // Pass arguments to superclass
         super(x,
@@ -34,10 +34,10 @@ public class Coffee extends Item implements IConsumable {
                 width,
                 height,
                 currentRoom,
-                graphics,
                 "Coffee",
                 "A cup of coffee. Yum!",
                 5);
+        super.setEntityImage(coffeeImage);
     }
     
     /**

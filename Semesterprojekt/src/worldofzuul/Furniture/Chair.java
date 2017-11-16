@@ -2,6 +2,7 @@ package worldofzuul.Furniture;
 
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.mapAndRooms.Room;
 
 /**
@@ -9,7 +10,8 @@ import worldofzuul.mapAndRooms.Room;
  * @author Robin & Rasmus Willer
  */
 public class Chair extends Furniture /*implements Interactable*/{
-    
+    private Image chairImage = new Image("/texture/chair.png");  
+
     /**
      * Constructor with all the necessary parameters for the class
      * @param x                     int x coordinate
@@ -17,7 +19,6 @@ public class Chair extends Furniture /*implements Interactable*/{
      * @param width                 int pixel width
      * @param height                int pixel height
      * @param currentRoom           Room currently in room ...
-     * @param graphics              BufferedImage graphic image
      * @param chairName             String Name of furniture
      * @param chairDescription      String Description of furniture
      */
@@ -26,19 +27,18 @@ public class Chair extends Furniture /*implements Interactable*/{
             int width,
             int height,
             Room currentRoom,
-            BufferedImage graphics,
             String chairName,
             String chairDescription){
-        
+            
         // Pass arguments to superclass
         super(x,
                 y,
                 width,
                 height,
                 currentRoom,
-                graphics,
                 chairName,
                 chairDescription);
+        super.setEntityImage(chairImage);
     }
     
     /**

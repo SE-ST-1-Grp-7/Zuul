@@ -32,11 +32,10 @@ public abstract class Item extends Entity {
                 int width,
                 int height,
                 Room currentRoom,
-                BufferedImage graphics,
                 String itemName,
                 String itemDescription,
                 int weight) {
-        super(x, y, width, height, currentRoom, graphics);
+        super(x, y, width, height, currentRoom);
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.weight = weight;

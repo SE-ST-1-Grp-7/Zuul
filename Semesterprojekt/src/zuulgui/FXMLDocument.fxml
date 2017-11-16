@@ -35,7 +35,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="3">
                <children>
-                  <Button fx:id="buttonSavePressed" mnemonicParsing="false" onAction="#handleButtonAction" text="SAVE" HBox.hgrow="ALWAYS">
+                  <Button fx:id="buttonSavePressed" mnemonicParsing="false" onAction="#buttonSavePressed" text="SAVE" HBox.hgrow="ALWAYS">
                      <padding>
                         <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                      </padding>

@@ -19,7 +19,6 @@ public abstract class Furniture extends Entity {
      * @param width                 pixel width
      * @param height                pixel height
      * @param currentRoom           currently in room ...
-     * @param graphics              graphic image
      * @param furnitureName         name of furniture
      * @param furnitureDescription  description of the furniture
      */
@@ -28,12 +27,11 @@ public abstract class Furniture extends Entity {
             int width,
             int height,
             Room currentRoom,
-            BufferedImage graphics,
             String furnitureName,
             String furnitureDescription) {
         
         // Pass arguments to superclass
-        super(x, y, width, height, currentRoom, graphics);
+        super(x, y, width, height, currentRoom);
 
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;

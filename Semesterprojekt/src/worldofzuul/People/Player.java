@@ -1,6 +1,7 @@
 package worldofzuul.People;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
@@ -22,6 +23,7 @@ public class Player extends Person {
     private int assignmentProgress; //the progress of grading an assignment
     private Item tempItem;
     private boolean dont = false;
+    private Image playerImage = new Image("/texture/player.png");
 
     /**
      * Constructor for player.
@@ -32,14 +34,14 @@ public class Player extends Person {
      * @param graphics
      * @param name
      */
-    public Player(int x, int y, String name, Room currentRoom, BufferedImage graphics) {
+    public Player(int x, int y, String name, Room currentRoom) {
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                currentRoom,
-                graphics); //a call to the super constructor (in Person)
-
+                currentRoom);
+        super.setEntityImage(playerImage);
+        
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
         this.fatigue = 0; //the current amount of fatigue
@@ -57,16 +59,16 @@ public class Player extends Person {
            createRooms method */
         switch (direction) {
             case "left":
-                move((int) getX() - 1, 'x');
+                move(getX() - 1, getY());
                 break;
             case "right":
-                move((int) getX() + 1, 'x');
+                move(getX() + 1, getY());
                 break;
             case "down":
-                move((int) getY() + 1, 'y');
+                move(getX(), getY() + 1);
                 break;
             case "up":
-                move((int) getY() - 1, 'y');
+                move(getX(), getY() - 1);
                 break;
 
         }
@@ -83,53 +85,30 @@ public class Player extends Person {
         }
     }
 
-    public void move(int num, char c) {
+    public void move(int newX, int newY) {
         try {
-            if (c == 'x' && !checkCollision(num, getY())) { // c = x && theres no collision occurring
+            if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
                 placeItem(); // places tempItem if it exists
-                if (currentRoom.hasLoot(num, (int) getY())) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) currentRoom.roomArray[getY()][num])) { // if addItem was successful
+                if (currentRoom.hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) currentRoom.roomArray[newY][newX])) { // if addItem was successful
                         System.out.println("YOU LOOTED IT"); // print loot message
                     } else { // if not
-                        tempItem = (Item) currentRoom.roomArray[getY()][num]; // set temp item to be whatevers in pos x & y
-
+                        tempItem = (Item) currentRoom.roomArray[newY][newX]; // set temp item to be whatevers in pos x & y
                     }
                 }
-                currentRoom.roomArray[getY()][num] = this; // move the player to another location
+                currentRoom.roomArray[newY][newX] = this; // move the player to another location
                 if (!dont) {
                     currentRoom.roomArray[getY()][getX()] = null; // reset current position
                 } else {
                     dont = false;
                     tempItem = null;
                 }
-
-                setX(num);
-
-                // set player x
-            } else if (c == 'y' && !checkCollision(getX(), num)) { // c = x && theres no collision occurring
-                placeItem(); // places tempItem if it exists
-                if (currentRoom.hasLoot(getX(), num)) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) currentRoom.roomArray[num][getX()])) { // if addItem was successful
-                        System.out.println("YOU LOOTED IT"); // print loot message
-                    } else { // if not
-                        tempItem = (Item) currentRoom.roomArray[num][getX()]; // set temp item to be whatevers in pos x & y
-
-                    }
-                }
-                currentRoom.roomArray[num][getX()] = this; // move the player to another location
-                if (!dont) {
-                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
-                } else {
-                    dont = false;
-                    tempItem = null;
-                }
-
-                setY(num);
-
-            } else {
+                setX(newX);
+                setY(newY);
+            } else { // if a collision is detected
                 System.out.println("Collissioned occurred, ouch!!");
             }
-        } catch (Exception ex) {
+        } catch (Exception ex) { // catches the out of bounds exception that occurs when you try to move outside the limits of the array
             System.out.println("You hit the wall. Ouch.");
         }
 
@@ -160,7 +139,23 @@ public class Player extends Person {
     public Inventory inventory() {
         return this.inventory;
     }
-
+    
+    /**
+     * getter for tempItem - used to drop an item
+     * @return 
+     */
+    public Item getTempItem(){
+        return this.tempItem;
+    }
+    
+    /**
+     * setter for tempItem - used to set the tempitem to be dropped
+     * @param i
+     */
+    public void setTempItem(Item i){
+        this.tempItem = i;
+    }
+    
     /**
      * getter for the current energy level
      *
