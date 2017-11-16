@@ -10,7 +10,7 @@ import worldofzuul.mapAndRooms.Room;
  * @author Robin & Rasmus Willer
  */
 public class Chair extends Furniture /*implements Interactable*/{
-    private Image chairImage = new Image("/texture/chair.png");    
+    private Image chairImage = new Image("/texture/chair.png");  
 
     /**
      * Constructor with all the necessary parameters for the class
@@ -29,7 +29,7 @@ public class Chair extends Furniture /*implements Interactable*/{
             Room currentRoom,
             String chairName,
             String chairDescription){
-        
+            
         // Pass arguments to superclass
         super(x,
                 y,

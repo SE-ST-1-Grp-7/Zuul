@@ -11,10 +11,12 @@ import worldofzuul.mapAndRooms.Room;
  */
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
-    private Image studentImage = new Image("/texture/student.png");
+    private Image studentImage;
 
-    public Student(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics, Boolean hasQ){
+    public Student(int x, int y, int width, int height, Room currentRoom, Boolean hasQ){
         super(x, y, width, height, currentRoom); //a call to the super constructor
+        int number = (1 + (int) (Math.random()*12));
+        studentImage = new Image("/texture/student"+number+".png");
         super.setEntityImage(studentImage);
         this.hasQuestionToPlayer = hasQ; //the player has a question to the player
     }
