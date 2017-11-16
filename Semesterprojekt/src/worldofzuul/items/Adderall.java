@@ -1,6 +1,7 @@
 package worldofzuul.items;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.People.Player;
 import worldofzuul.interfaces.IConsumable;
 import worldofzuul.mapAndRooms.Room;
@@ -12,6 +13,7 @@ import worldofzuul.mapAndRooms.Room;
 public class Adderall extends Item implements IConsumable {
     private final int ENERGY_RESTORE = 70;
     private final int ENERGY_CAP_INCREASE = 20;
+    private Image adderallImage = new Image("/texture/adderall.png");
     
     /**
      * Constructor with all the necessary parameters for the class
@@ -26,8 +28,7 @@ public class Adderall extends Item implements IConsumable {
             int y,
             int width,
             int height,
-            Room currentRoom,
-            BufferedImage graphics) {
+            Room currentRoom) {
         
         // Pass arguments to superclass
         super(x,
@@ -35,10 +36,10 @@ public class Adderall extends Item implements IConsumable {
                 width,
                 height,
                 currentRoom,
-                graphics,
                 "Adderall",
                 "Adderall - Energy restore and cap increase. Yay!",
                 1);
+        super.setEntityImage(adderallImage);
     }
 
     @Override

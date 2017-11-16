@@ -3,6 +3,7 @@ package worldofzuul.Furniture;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.Image;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
 
@@ -15,6 +16,7 @@ public class Table extends Furniture /*implements Inspectable*/{
     private int currentAmountOfItems; // the current amount of items on the table
     private int maxAmountOfItems; // the max amount of items on the table
     private List<Item> itemsOnTable = new ArrayList<>(); // a list to hold the items on the table
+    private Image tableImage = new Image("/texture/table.png");
     
     /**
      * Constructor with all the necessary parameters for the class
@@ -23,7 +25,6 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param width                 int pixel width
      * @param height                int pixel height
      * @param currentRoom           Room currently in room ...
-     * @param graphics              BufferedImage graphic image
      * @param tableName             String Name of furniture
      * @param tableDescription      String Description of furniture
      * @param canHaveItems          boolean Can furniture contain items
@@ -34,7 +35,6 @@ public class Table extends Furniture /*implements Inspectable*/{
             int width,
             int height,
             Room currentRoom,
-            BufferedImage graphics,
             String tableName,
             String tableDescription,
             boolean canHaveItems,
@@ -46,9 +46,9 @@ public class Table extends Furniture /*implements Inspectable*/{
                 width,
                 height,
                 currentRoom,
-                graphics,
                 tableName,
                 tableDescription);
+        super.setEntityImage(tableImage);
         
         //the attributes are set equal to the parimeters
         this.canHaveItems = canHaveItems; 

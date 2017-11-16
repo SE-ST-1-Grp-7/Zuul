@@ -1,6 +1,7 @@
 package worldofzuul.People;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.items.Inventory;
 import worldofzuul.items.Item;
 import worldofzuul.mapAndRooms.Room;
@@ -22,6 +23,7 @@ public class Player extends Person {
     private int assignmentProgress; //the progress of grading an assignment
     private Item tempItem;
     private boolean dont = false;
+    private Image playerImage = new Image("/texture/player.png");
 
     /**
      * Constructor for player.
@@ -32,14 +34,14 @@ public class Player extends Person {
      * @param graphics
      * @param name
      */
-    public Player(int x, int y, String name, Room currentRoom, BufferedImage graphics) {
+    public Player(int x, int y, String name, Room currentRoom) {
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                currentRoom,
-                graphics); //a call to the super constructor (in Person)
-
+                currentRoom);
+        super.setEntityImage(playerImage);
+        
         this.energy = 100; //the current energy level
         this.energyCap = 100; // the energy cap
         this.fatigue = 0; //the current amount of fatigue

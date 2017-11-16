@@ -1,6 +1,5 @@
 package worldofzuul;
 
-import worldofzuul.gfx.Assets;
 import worldofzuul.mapAndRooms.RoomManager;
 
 /**
@@ -28,6 +27,5 @@ public class Game {
 
         // INITS & INSTANTIATIONS
         link = new Link(this);
-        Assets.init();
     }
 }

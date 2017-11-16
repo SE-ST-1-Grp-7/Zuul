@@ -1,20 +1,23 @@
 package worldofzuul.People;
 
-
-import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import java.util.Random;
 import worldofzuul.mapAndRooms.Room;
 
 /**
  *A student class that extends person
- * @author Robin & Niclas & Rasmus Willer
+ * @author Robin & Niclas & Rasmus Willer & Magnus Mortensen
  */
 public class Student extends Person {
     private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
-    Random rand = new Random(); // used for randomization of move()
+    private Image studentImage;
+    private Random rand = new Random(); // used for randomization of move()
 
-    public Student(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics, Boolean hasQ){
-        super(x, y, width, height, currentRoom, graphics); //a call to the super constructor
+    public Student(int x, int y, int width, int height, Room currentRoom, Boolean hasQ){
+        super(x, y, width, height, currentRoom); //a call to the super constructor
+        int number = (1 + (int) (Math.random()*12));
+        studentImage = new Image("/texture/student"+number+".png");
+        super.setEntityImage(studentImage);
         this.hasQuestionToPlayer = hasQ; //the player has a question to the player
     }
     /**

@@ -1,6 +1,7 @@
 package worldofzuul.People;
 
 import java.awt.image.BufferedImage;
+import javafx.scene.image.Image;
 import worldofzuul.entities.Entity;
 import worldofzuul.mapAndRooms.Room;
 
@@ -13,13 +14,13 @@ public abstract class Person extends Entity {
                                DEFAULT_PERSON_HEIGHT = 64;
     protected String name; // Person name
     
-    public Person(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics) {
-        super(x, y, width, height, currentRoom, graphics);
+    public Person(int x, int y, int width, int height, Room currentRoom) {
+        super(x, y, width, height, currentRoom);
         name = getRandomName();
     }
     
-    public Person(int x, int y, int width, int height, Room currentRoom, BufferedImage graphics, String name) {
-        super(x, y, width, height, currentRoom, graphics);
+    public Person(int x, int y, int width, int height, Room currentRoom, String name) {
+        super(x, y, width, height, currentRoom);
         this.name = name;
     }
     
