@@ -47,7 +47,6 @@ public class FXMLDocumentController implements Initializable, IUI {
     @FXML
     private GridPane gp;
 
-    @FXML
     private void handleButtonAction(ActionEvent event) {
         GraphicsContext gc = c.getGraphicsContext2D();
         // set focus on canvas
@@ -128,6 +127,10 @@ public class FXMLDocumentController implements Initializable, IUI {
     @Override
     public void injectBusiness(IBusiness businessFacade) {
         this.ib = businessFacade;
+    }
+
+    @FXML
+    private void buttonSavePressed(ActionEvent event) {
     }
 
 }
