@@ -5,6 +5,8 @@
  */
 package zuulgui;
 
+import Acq.IBusiness;
+import Acq.IUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
@@ -20,18 +22,15 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import worldofzuul.People.Player;
-import worldofzuul.items.Item;
-import worldofzuul.mapAndRooms.RoomManager;
 
 /**
  *
  * @author J
  */
-public class FXMLDocumentController implements Initializable {
+public class FXMLDocumentController implements Initializable, IUI {
 
-    private Player g;
-    private RoomManager rm;
+    // business facade
+    private IBusiness ib;
     private final int X = 64;
     private final int Y = 64;
     private Pane pane;
@@ -59,20 +58,19 @@ public class FXMLDocumentController implements Initializable {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case D:
-                        g.move("right");
-                        System.out.println("hello");
+                        ib.playerMove("right");
                         break;
                     case A:
-                        g.move("left");
+                        ib.playerMove("left");
                         break;
                     case W:
-                        g.move("up");
+                        ib.playerMove("up");
                         break;
                     case S:
-                        g.move("down");
+                        ib.playerMove("down");
                         break;
                     case SPACE:
-                        // do stuff
+                        ib.playerInteract("idk");
                         break;
                 }
             }
@@ -107,25 +105,16 @@ public class FXMLDocumentController implements Initializable {
                 Image tile = new Image("testSquare.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
-                if (g.getCurrentRoom().roomArray[i][j] != null) {
-                    Image entity = new Image(choosePic(i, j));
-                    gc.drawImage(entity, X * j, Y * i);
-                }
+                gc.drawImage(choosePic(i,j), X * j, Y * i);
+
             }
         }
 
     }
 
-    public String choosePic(int row, int col) {
+    public Image choosePic(int row, int col) {
         // magic
-
-        if (g.getCurrentRoom().roomArray[row][col] == null) {
-            return "testSquare.png";
-        } else if (g.getCurrentRoom().roomArray[row][col] instanceof Item) {
-            return "500.png";
-        } else {
-            return "boi.png";
-        }
+        return ib.entityGetImage(row, col);
     }
 
     @FXML
@@ -134,6 +123,11 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void quitGameButton(ActionEvent event) {
+    }
+
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+        this.ib = businessFacade;
     }
 
 }

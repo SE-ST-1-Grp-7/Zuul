@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 import worldofzuul.items.Adderall;
 import worldofzuul.items.Assignment;
 import worldofzuul.items.Coffee;
@@ -101,6 +102,7 @@ public class EntityManager {
     public void setItem(ArrayList<Item> item) {
         this.itemlist = item;
     }
+    
 
     public void saveGame() {
         saveItems();
