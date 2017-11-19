@@ -24,21 +24,30 @@ public class BusinessFacade {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
     }
-    // GETTERS && SETTERS
-    public RoomManager getRoomManager() {
-        return this.roomManager;
-    }
-    public EntityManager getEntityManager() {
-        return this.entityManager;
-    }
     /**
      * calls .move on player
      * @param direction 
      */
-    public void movePlayer(String direction) {
+    public void playerMove(String direction) {
         // player currently saved in an arraylist - might/should be changed
         entityManager.getPlayer().get(0).move(direction);
     }
-    
+    /**
+     * calls .interact on player
+     * player interacts with the object in x direction
+     * @param direction 
+     */
+    public void playerInteract(String direction) {
+        entityManager.getPlayer().get(0).interact(direction);
+    }
+    /**
+     * calls .dropItem on player's inventory
+     * drops the item located at index i
+     * @param index 
+     */
+    public void playerDropItem(int index) {
+        // note to self: move dropItem to player
+         entityManager.getPlayer().get(0).inventory().dropItem(index, entityManager.getPlayer().get(0));
+    }
     
 }

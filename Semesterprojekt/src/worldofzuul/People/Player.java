@@ -52,8 +52,9 @@ public class Player extends Person {
     }
     /**
      * interacts with nearby interactable object
+     * @param direction
      */
-    public void interact() {
+    public void interact(String direction) {
         // check if square next to player != null
         // if true - call .interact on the entity
         
