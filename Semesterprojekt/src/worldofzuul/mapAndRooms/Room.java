@@ -17,7 +17,6 @@ public class Room {
     // Declare attributes -section.
     private String description;
     private String name;
-    RoomCoord roomcords = new RoomCoord();
     private ArrayList<Item> itemsInRoom = new ArrayList<>();
     public Entity[][] roomArray = new Entity[10][10];
     // Map type (key/value -pairs data structure)

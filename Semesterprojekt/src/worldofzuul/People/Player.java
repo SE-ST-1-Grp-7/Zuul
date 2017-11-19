@@ -51,6 +51,14 @@ public class Player extends Person {
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
     }
     /**
+     * interacts with nearby interactable object
+     */
+    public void interact() {
+        // check if square next to player != null
+        // if true - call .interact on the entity
+        
+    }
+    /**
      * moves in a given direction
      * @param direction 
      */

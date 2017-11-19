@@ -40,4 +40,5 @@ public class BusinessFacade {
         entityManager.getPlayer().get(0).move(direction);
     }
     
+    
 }
