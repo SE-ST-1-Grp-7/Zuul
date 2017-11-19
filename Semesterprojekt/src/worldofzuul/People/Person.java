@@ -1,7 +1,5 @@
 package worldofzuul.People;
 
-import java.awt.image.BufferedImage;
-import javafx.scene.image.Image;
 import worldofzuul.entities.Entity;
 import worldofzuul.mapAndRooms.Room;
 

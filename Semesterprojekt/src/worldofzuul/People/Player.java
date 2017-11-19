@@ -274,4 +274,11 @@ public class Player extends Person {
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
     }
+
+    @Override
+    public void onInteract() {
+        System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
+        // this gets called when an "evil" student interacts with the player
+        // needs to pop up window/something to get input from the player
+    }
 }

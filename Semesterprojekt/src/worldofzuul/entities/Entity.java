@@ -71,6 +71,12 @@ public abstract class Entity {
     public void setEntityImage(Image entityImage) {
         this.entityImage = entityImage;
     }
+    
+    /**
+     * abstact method - gets called when entity is interacted with
+     */
+    public abstract void onInteract();    
+    
 }
 //    public BufferedImage getGraphics() {
 //        return graphics;

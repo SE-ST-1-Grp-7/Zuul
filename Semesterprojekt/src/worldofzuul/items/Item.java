@@ -63,4 +63,8 @@ public abstract class Item extends Entity {
     public void setWeight(int weight) {
         this.weight = weight;
     }
+    @Override
+    public void onInteract() {
+        System.out.println("this is a " + getName());
+    }
 }

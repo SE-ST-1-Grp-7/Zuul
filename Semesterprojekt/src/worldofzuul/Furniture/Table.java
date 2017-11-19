@@ -76,4 +76,12 @@ public class Table extends Furniture /*implements Inspectable*/{
         //not yet fully implementet - need code to remove the item from the table list
         return item; 
     }
+    @Override
+    public void onInteract() {
+        System.out.println("this is a table");
+        if(currentAmountOfItems > 0) {
+            System.out.println("this is what is on it ;)");
+            System.out.println(itemsOnTable);
+        }
+    }
 }
