@@ -31,8 +31,11 @@ public class EntityManager {
     private ArrayList<Player> playerlist = new ArrayList<>();
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
-    private RoomManager rm = new RoomManager();
+    private RoomManager rm;
     
+    public EntityManager(RoomManager rm) {
+        this.rm = rm;
+    }
     // ENTITY MANAGMENT METHODS
     public void addPlayer(Player p) {
         playerlist.add(p);

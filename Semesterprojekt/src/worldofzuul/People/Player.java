@@ -50,7 +50,10 @@ public class Player extends Person {
         this.gradedAssignments = 0; //the amount of graded assignments is set to 0
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
     }
-
+    /**
+     * moves in a given direction
+     * @param direction 
+     */
     public void move(String direction) {
         this.inventory.printInventory();
 
