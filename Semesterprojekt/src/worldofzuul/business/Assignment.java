@@ -2,14 +2,13 @@ package worldofzuul.business;
 
 import javafx.scene.image.Image;
 import worldofzuul.business.Player;
-import worldofzuul.interfaces.IConsumable;
 import worldofzuul.business.Room;
 
 /**
  *
  * @author Robin & Søren & Rasmus Willer
  */
-public class Assignment extends Item implements IConsumable {
+public class Assignment extends Item {
     private Image assignmentImage = new Image("/texture/assignment.png");
     /**
      * Constructor with all the necessary parameters for the class
@@ -52,16 +51,6 @@ public class Assignment extends Item implements IConsumable {
 
     @Override
     public void use(Player p) {
-        consume(p);
-        
-    }
-    
-    /**
-     * consume method grades the assignment and remove it from inventory.
-     * @param p 
-     */
-    @Override
-    public void consume(Player p) {
         //if you have more than or equal to 20 energy
         if (p.getEnergy() >= 20) {
             //we remove energy and add assignment progress 5 times
@@ -97,5 +86,6 @@ public class Assignment extends Item implements IConsumable {
             //this will be printed if you don't have enough energy
             System.out.println("You do not have enough energy");
         }
+        
     }
 }

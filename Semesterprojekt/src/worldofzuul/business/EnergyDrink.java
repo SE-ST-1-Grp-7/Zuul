@@ -3,14 +3,13 @@ package worldofzuul.business;
 import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
 import worldofzuul.business.Player;
-import worldofzuul.interfaces.IConsumable;
 import worldofzuul.business.Room;
 
 /**
  *
  * @author Jonas Bjørstorp & Frederik Bauer & Rasmus Willer
  */
-public class EnergyDrink extends Item implements IConsumable {
+public class EnergyDrink extends Item {
     private final int ENERGY_RESTORE = 40;
     private Image energydrinkImage = new Image("/texture/energydrik.png");
     
@@ -41,20 +40,11 @@ public class EnergyDrink extends Item implements IConsumable {
     }
     
     /**
-     * Override consume to increase player energy
-     * @param p     Player object
-     */
-    @Override
-    public void consume(Player  p) {
-        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
-    }
-    
-    /**
      * Override use to let player use item.
      * @param p 
      */
     @Override
     public void use(Player p) {
-        consume(p);
+        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
     }
 }
