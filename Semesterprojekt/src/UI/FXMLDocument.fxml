@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 
 
-<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulgui.FXMLDocumentController">
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
    <children>
       <GridPane fx:id="gp" gridLinesVisible="true" layoutX="0.5" layoutY="0.5" style="-fx-background-position: center; -fx-background-image: url('wow2.jpg'); -fx-background-size: cover;" stylesheets="@style.css">
          <columnConstraints>
