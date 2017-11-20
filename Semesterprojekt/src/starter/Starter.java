@@ -10,7 +10,7 @@ import UI.NewFXMain;
  *
  * @author J
  */
-public class glueCode {
+public class Starter {
     public static void main(String[] args) {
         IBusiness business = new BusinessFacade();
         IUI ui = new NewFXMain();
