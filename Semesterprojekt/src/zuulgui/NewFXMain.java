@@ -16,7 +16,7 @@ import worldofzuul.business.BusinessFacade;
  *
  * @author Søren Bendtsen
  */
-public class NewFXMain extends Application {
+public class NewFXMain extends Application implements IUI {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -31,11 +31,14 @@ public class NewFXMain extends Application {
         primaryStage.show();
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
+    @Override
+    public void injectBusiness(IBusiness businessFacade) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void openUI() {
+        launch();
     }
     
 }

@@ -133,4 +133,9 @@ public class FXMLDocumentController implements Initializable, IUI {
     private void buttonSavePressed(ActionEvent event) {
     }
 
+    @Override
+    public void openUI() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
