@@ -1,11 +1,4 @@
-package worldofzuul;
-
-import worldofzuul.People.Player;
-import worldofzuul.People.Student;
-import worldofzuul.items.Coffee;
-import worldofzuul.items.Item;
-import worldofzuul.mapAndRooms.Room;
-import worldofzuul.mapAndRooms.RoomManager;
+package worldofzuul.business;
 
 /**
  *

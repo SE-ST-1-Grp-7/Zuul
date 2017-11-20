@@ -1,8 +1,4 @@
-package worldofzuul.Furniture;
-
-import java.awt.image.BufferedImage;
-import worldofzuul.entities.Entity;
-import worldofzuul.mapAndRooms.Room;
+package worldofzuul.business;
 
 /**
  * a class for all furniture

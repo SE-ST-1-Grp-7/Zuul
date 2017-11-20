@@ -1,9 +1,4 @@
-package worldofzuul.items;
-
-import java.awt.image.BufferedImage;
-import worldofzuul.entities.Entity;
-import worldofzuul.People.Player;
-import worldofzuul.mapAndRooms.Room;
+package worldofzuul.business;
 
 /**
  * Item class - the class used to instantiate an item in the game
