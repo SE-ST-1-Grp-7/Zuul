@@ -268,7 +268,8 @@ public class EntityManager {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    Student student = new Student(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room)rm.getRoomlist().get(tokens[3]),(tokens[4]));
+                    Student student = new Student(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, 
+                            (Room)rm.getRoomlist().get(tokens[3]),Boolean.parseBoolean(tokens[4]));
                     studentlist.add(student);
                 }
 
