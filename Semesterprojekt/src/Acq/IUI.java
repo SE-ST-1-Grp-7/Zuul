@@ -11,4 +11,5 @@ package Acq;
  */
 public interface IUI {
     void injectBusiness(IBusiness businessFacade);
+    void openUI();
 }
