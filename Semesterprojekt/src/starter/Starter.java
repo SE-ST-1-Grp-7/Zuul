@@ -14,6 +14,7 @@ public class Starter {
     public static void main(String[] args) {
         IBusiness business = new BusinessFacade();
         IUI ui = new NewFXMain();
+        ui.injectBusiness(business);
         ui.openUI();
         
 
