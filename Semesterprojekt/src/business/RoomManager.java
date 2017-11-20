@@ -7,13 +7,11 @@ import java.util.HashMap;
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class RoomManager {
-
     private Room currentRoom;
     private static HashMap<String, Room> roomlist;
 
     public RoomManager() {
         createRooms();
-
     }
 
     /**

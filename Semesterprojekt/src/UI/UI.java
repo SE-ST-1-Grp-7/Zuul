@@ -11,31 +11,43 @@ import javafx.stage.Stage;
 
 /**
  *
+
  * @author Søren Bendtsen & Niclas Johansen
  */
+
 public class UI extends Application implements IUI {
+
     private IBusiness ib;
+    private static UI ui;
+    public static UI getUI() {
+        return ui;
+    }
+    public IBusiness getBusiness() {
+        return this.ib;
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent p = loader.load();
-	IUI controller = (IUI)loader.getController();
-	controller.injectBusiness(ib);
+
         Scene scene = new Scene(p);
-        
+
         primaryStage.setScene(scene);
         primaryStage.show();
-        primaryStage.setTitle("World of SDU");
+
     }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
+
+        this.ib = businessFacade;
+
     }
 
     @Override
     public void openUI() {
+        ui = this;
         launch();
-    }
-    
+
 }
