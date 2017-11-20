@@ -1,4 +1,4 @@
-package zuulgui;
+package UI;
 
 import Acq.IBusiness;
 import Acq.IUI;

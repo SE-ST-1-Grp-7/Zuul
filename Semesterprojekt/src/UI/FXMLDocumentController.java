@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package zuulgui;
+package UI;
 
 import Acq.IBusiness;
 import Acq.IUI;
