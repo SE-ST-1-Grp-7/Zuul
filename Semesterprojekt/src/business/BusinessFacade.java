@@ -24,9 +24,6 @@ public class BusinessFacade implements IBusiness {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
     }
-    public Image entityGetImage(Entity e) {
-        return e.getEntityImage();
-    }
     /**
      * calls .move on player
      * @param direction 
@@ -71,5 +68,6 @@ public class BusinessFacade implements IBusiness {
             return i;
         }
     }
+    
     
 }
