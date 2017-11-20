@@ -17,14 +17,13 @@ import worldofzuul.business.BusinessFacade;
  * @author Søren Bendtsen
  */
 public class NewFXMain extends Application implements IUI {
-    
+    private IBusiness ib;
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent p = loader.load();
-        IBusiness business = new BusinessFacade();
 	IUI controller = (IUI)loader.getController();
-	controller.injectBusiness(business);
+	controller.injectBusiness(ib);
         Scene scene = new Scene(p);
         
         primaryStage.setScene(scene);
@@ -33,7 +32,7 @@ public class NewFXMain extends Application implements IUI {
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ib = businessFacade;
     }
 
     @Override

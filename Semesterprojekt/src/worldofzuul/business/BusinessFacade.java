@@ -9,7 +9,6 @@ import Acq.IBusiness;
 import javafx.scene.image.Image;
 import worldofzuul.entities.Entity;
 import worldofzuul.entities.EntityManager;
-import worldofzuul.mapAndRooms.Room;
 import worldofzuul.mapAndRooms.RoomManager;
 
 /**
@@ -47,7 +46,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void playerInteract(String direction) {
-        entityManager.getPlayer().get(0).interact(direction);
+        entityManager.getPlayer().get(0).interact();
     }
     /**
      * calls .dropItem on player's inventory

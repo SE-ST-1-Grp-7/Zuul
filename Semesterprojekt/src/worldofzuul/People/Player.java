@@ -24,6 +24,7 @@ public class Player extends Person {
     private Item tempItem;
     private boolean dont = false;
     private Image playerImage = new Image("/texture/player.png");
+    private String facing;
 
     /**
      * Constructor for player.
@@ -54,7 +55,21 @@ public class Player extends Person {
      * interacts with nearby interactable object
      * @param direction
      */
-    public void interact(String direction) {
+    public void interact() {
+        switch(facing) {
+            case "right":
+                getCurrentRoom().roomArray[getY()][getX()+1].onInteract();
+                break;
+            case "left":
+                getCurrentRoom().roomArray[getY()][getX()-1].onInteract();
+                break;
+            case "up":
+                getCurrentRoom().roomArray[getY()-1][getX()].onInteract();
+                break;
+            case "down":
+                getCurrentRoom().roomArray[getY()+1][getX()].onInteract();
+                break;
+        }
         // check if square next to player != null
         // if true - call .interact on the entity
         
@@ -71,15 +86,19 @@ public class Player extends Person {
            createRooms method */
         switch (direction) {
             case "left":
+                facing = "left";
                 move(getX() - 1, getY());
                 break;
             case "right":
+                facing = "right";
                 move(getX() + 1, getY());
                 break;
             case "down":
+                facing = "down";
                 move(getX(), getY() + 1);
                 break;
             case "up":
+                facing = "up";
                 move(getX(), getY() - 1);
                 break;
 
