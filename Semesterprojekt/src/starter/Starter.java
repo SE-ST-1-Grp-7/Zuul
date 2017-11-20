@@ -3,7 +3,7 @@ package starter;
 import Acq.IBusiness;
 import Acq.IUI;
 import business.BusinessFacade;
-import UI.NewFXMain;
+import UI.UI;
 
 
 /**
@@ -13,7 +13,7 @@ import UI.NewFXMain;
 public class Starter {
     public static void main(String[] args) {
         IBusiness business = new BusinessFacade();
-        IUI ui = new NewFXMain();
+        IUI ui = new UI();
         ui.injectBusiness(business);
         ui.openUI();
         

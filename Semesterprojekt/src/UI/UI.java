@@ -7,37 +7,45 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import business.BusinessFacade;
 
 /**
  *
  * @author Søren Bendtsen
  */
-public class NewFXMain extends Application implements IUI {
+public class UI extends Application implements IUI {
+
     private IBusiness ib;
+    private static UI ui;
+    public static UI getUI() {
+        return ui;
+    }
+    public IBusiness getBusiness() {
+        return this.ib;
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent p = loader.load();
-	IUI controller = (IUI)loader.getController();
-	controller.injectBusiness(ib);
         Scene scene = new Scene(p);
-        
+
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        ib = businessFacade;
+        System.out.println("ass");
+        this.ib = businessFacade;
+        System.out.println(ib.toString());
     }
 
     @Override
     public void openUI() {
+        System.out.println(ib.toString());
+        ui = this;
         launch();
     }
-    
+
 }
