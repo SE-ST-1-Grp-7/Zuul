@@ -1,4 +1,4 @@
-package worldofzuul.business;
+package business;
 
 // importing standard libraries for managing datastructures.
 import java.util.ArrayList;

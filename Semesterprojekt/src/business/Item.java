@@ -1,4 +1,4 @@
-package worldofzuul.business;
+package business;
 
 /**
  * Item class - the class used to instantiate an item in the game

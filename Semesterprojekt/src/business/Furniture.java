@@ -1,4 +1,4 @@
-package worldofzuul.business;
+package business;
 
 /**
  * a class for all furniture

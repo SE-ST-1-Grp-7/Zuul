@@ -1,4 +1,4 @@
-package worldofzuul.business;
+package business;
 
 /**
  * Game class - most of the game is handled from here.

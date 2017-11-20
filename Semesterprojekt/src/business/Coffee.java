@@ -1,5 +1,5 @@
 
-package worldofzuul.business;
+package business;
 import javafx.scene.image.Image;
 
 /**

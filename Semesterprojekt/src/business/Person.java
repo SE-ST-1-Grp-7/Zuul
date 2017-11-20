@@ -1,4 +1,4 @@
-package worldofzuul.business;
+package business;
 
 /** Person class - superclass of Student & Player
  *
