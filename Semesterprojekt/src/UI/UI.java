@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  *
  * @author Søren Bendtsen & Niclas Johansen
  */
-public class NewFXMain extends Application implements IUI {
+public class UI extends Application implements IUI {
     private IBusiness ib;
     @Override
     public void start(Stage primaryStage) throws IOException {
