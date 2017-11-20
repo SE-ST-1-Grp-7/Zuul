@@ -4,9 +4,7 @@ package worldofzuul.mapAndRooms;
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
-import worldofzuul.People.Player;
-import worldofzuul.items.Assignment;
-import worldofzuul.items.Coffee;
+import worldofzuul.entities.Entity;
 import worldofzuul.items.Item;
 
 /**
@@ -19,9 +17,8 @@ public class Room {
     // Declare attributes -section.
     private String description;
     private String name;
-    RoomCoord roomcords = new RoomCoord();
     private ArrayList<Item> itemsInRoom = new ArrayList<>();
-    public Object[][] roomArray = new Object[10][10];
+    public Entity[][] roomArray = new Entity[10][10];
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 

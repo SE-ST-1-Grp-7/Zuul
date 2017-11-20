@@ -54,4 +54,9 @@ public class Chair extends Furniture /*implements Interactable*/{
     public void standUp(){
         //not implementet yet
     }
+    @Override
+    public void onInteract() {
+        System.out.println("this is a chair");
+        System.out.println("you cant sit on it though");
+    }
 }

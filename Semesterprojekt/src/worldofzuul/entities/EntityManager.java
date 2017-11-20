@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import javafx.scene.image.Image;
 import worldofzuul.items.Adderall;
 import worldofzuul.items.Assignment;
 import worldofzuul.items.Coffee;
@@ -31,8 +32,11 @@ public class EntityManager {
     private ArrayList<Player> playerlist = new ArrayList<>();
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
-    private RoomManager rm = new RoomManager();
+    private RoomManager rm;
     
+    public EntityManager(RoomManager rm) {
+        this.rm = rm;
+    }
     // ENTITY MANAGMENT METHODS
     public void addPlayer(Player p) {
         playerlist.add(p);
@@ -98,6 +102,7 @@ public class EntityManager {
     public void setItem(ArrayList<Item> item) {
         this.itemlist = item;
     }
+    
 
     public void saveGame() {
         saveItems();

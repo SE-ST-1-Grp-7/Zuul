@@ -87,4 +87,9 @@ public class Student extends Person {
     public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
         this.hasQuestionToPlayer = hasQuestionToPlayer;
     }
+
+    @Override
+    public void onInteract() {
+        System.out.println("Hello professor! :sunglasses: ");
+    }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
@@ -10,26 +11,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane fx:id="gp" gridLinesVisible="true" style="-fx-background-position: center; -fx-background-image: url('wow2.jpg'); -fx-background-size: cover;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulgui.FXMLDocumentController">
-   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-   </rowConstraints>
+
+<AnchorPane xmlns="http://javafx.com/javafx/9.0.1" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1" fx:controller="zuulgui.FXMLDocumentController">
    <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1140.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="672.0" minWidth="10.0" prefWidth="637.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="0.0" prefWidth="266.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="266.0" minWidth="10.0" prefWidth="218.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="91.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="348.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="266.0" minHeight="0.0" prefHeight="206.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="153.0" minHeight="0.0" prefHeight="153.0" vgrow="SOMETIMES" />
-        </rowConstraints>
+      <GridPane fx:id="gp" gridLinesVisible="true" layoutX="0.5" layoutY="0.5" style="-fx-background-position: center; -fx-background-image: url('wow2.jpg'); -fx-background-size: cover;" stylesheets="@style.css">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
          <children>
             <Canvas fx:id="c" height="640.0" width="640.0" GridPane.rowSpan="3" />
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
@@ -76,4 +72,4 @@
          </children>
       </GridPane>
    </children>
-</GridPane>
+</AnchorPane>

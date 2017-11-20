@@ -50,7 +50,19 @@ public class Player extends Person {
         this.gradedAssignments = 0; //the amount of graded assignments is set to 0
         this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
     }
-
+    /**
+     * interacts with nearby interactable object
+     * @param direction
+     */
+    public void interact(String direction) {
+        // check if square next to player != null
+        // if true - call .interact on the entity
+        
+    }
+    /**
+     * moves in a given direction
+     * @param direction 
+     */
     public void move(String direction) {
         this.inventory.printInventory();
 
@@ -262,5 +274,12 @@ public class Player extends Person {
      */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
+    }
+
+    @Override
+    public void onInteract() {
+        System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
+        // this gets called when an "evil" student interacts with the player
+        // needs to pop up window/something to get input from the player
     }
 }
