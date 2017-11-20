@@ -16,6 +16,7 @@ public class BusinessFacade implements IBusiness {
     private EntityManager entityManager;
     private RoomManager roomManager;
     
+    
     /**
      * zero-arg constructor
      * assigns values to EntityManager & RoomManager
@@ -70,6 +71,16 @@ public class BusinessFacade implements IBusiness {
             Image i = new Image("testSquare.png");
             return i;
         }
+    }
+
+    @Override
+    public void saveGame() {
+        entityManager.saveGame();
+    }
+
+    @Override
+    public void loadGame() {
+        entityManager.loadGame();
     }
     
 }
