@@ -51,8 +51,8 @@ public class Student extends Person {
         }
     }
     public void move(int newX, int newY) {
-        currentRoom.roomArray[getY()][getX()] = null; // set current position in array to null
-        currentRoom.roomArray[newY][newX] = this; // place student in new position
+        currentRoom.entityArray[getY()][getX()] = null; // set current position in array to null
+        currentRoom.entityArray[newY][newX] = this; // place student in new position
         // update x & y
         setX(newX);
         setY(newY);
@@ -65,7 +65,7 @@ public class Student extends Person {
      * @return 
      */
     public boolean isLegal(int newX, int newY) {
-        return currentRoom.roomArray[newY][newX] == null;
+        return currentRoom.entityArray[newY][newX] == null;
     }
     // GETTERS & SETTERS
     
