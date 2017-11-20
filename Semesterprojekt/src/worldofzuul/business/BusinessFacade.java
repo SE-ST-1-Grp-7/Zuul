@@ -7,9 +7,6 @@ package worldofzuul.business;
 
 import Acq.IBusiness;
 import javafx.scene.image.Image;
-import worldofzuul.entities.Entity;
-import worldofzuul.entities.EntityManager;
-import worldofzuul.mapAndRooms.RoomManager;
 
 /**
  *

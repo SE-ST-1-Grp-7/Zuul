@@ -1,25 +1,25 @@
-package worldofzuul.entities;
+package worldofzuul.business;
 
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import worldofzuul.Furniture.Furniture;
-import worldofzuul.People.Player;
-import worldofzuul.People.Student;
-import worldofzuul.items.Item;
-import worldofzuul.mapAndRooms.RoomManager;
+import worldofzuul.business.Furniture;
+import worldofzuul.business.Player;
+import worldofzuul.business.Student;
+import worldofzuul.business.Item;
+import worldofzuul.business.RoomManager;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
-import worldofzuul.items.Adderall;
-import worldofzuul.items.Assignment;
-import worldofzuul.items.Coffee;
-import worldofzuul.items.EnergyDrink;
-import worldofzuul.items.Key;
-import worldofzuul.mapAndRooms.Room;
+import worldofzuul.business.Adderall;
+import worldofzuul.business.Assignment;
+import worldofzuul.business.Coffee;
+import worldofzuul.business.EnergyDrink;
+import worldofzuul.business.Key;
+import worldofzuul.business.Room;
 
 /**
  *

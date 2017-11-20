@@ -1,9 +1,9 @@
-package worldofzuul.items;
+package worldofzuul.business;
 
 import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
-import worldofzuul.People.Player;
-import worldofzuul.mapAndRooms.Room;
+import worldofzuul.business.Player;
+import worldofzuul.business.Room;
 
 /**
  *
