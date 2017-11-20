@@ -27,7 +27,7 @@ import javafx.scene.layout.Pane;
  *
  * @author J
  */
-public class FXMLDocumentController implements Initializable, IUI {
+public class FXMLDocumentController implements Initializable {
 
     // business facade
     private IBusiness ib;
@@ -95,6 +95,7 @@ public class FXMLDocumentController implements Initializable, IUI {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ib = UI.getUI().getBusiness();
     }
 
     public void drawImages(GraphicsContext gc) {
@@ -124,18 +125,12 @@ public class FXMLDocumentController implements Initializable, IUI {
     private void quitGameButton(ActionEvent event) {
     }
 
-    @Override
-    public void injectBusiness(IBusiness businessFacade) {
-        this.ib = businessFacade;
-    }
+ 
 
     @FXML
     private void buttonSavePressed(ActionEvent event) {
+        ib.print();
     }
 
-    @Override
-    public void openUI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+ 
 }

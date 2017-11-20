@@ -68,6 +68,10 @@ public class BusinessFacade implements IBusiness {
             return i;
         }
     }
+    @Override
+    public void print() {
+        System.out.println("umf");
+    }
     
     
 }
