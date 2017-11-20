@@ -49,5 +49,5 @@ public class UI extends Application implements IUI {
     public void openUI() {
         ui = this;
         launch();
-
+    }
 }
