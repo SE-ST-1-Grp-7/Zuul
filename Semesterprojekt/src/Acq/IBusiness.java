@@ -16,5 +16,6 @@ public interface IBusiness {
     void playerInteract(String direction);
     void playerDropItem(int index);
     Image entityGetImage(int row, int col);
-    void print();
+    void saveGame();
+    void loadGame();
 }

@@ -54,16 +54,16 @@ public class Player extends Person {
     public void interact() {
         switch(facing) {
             case "right":
-                getCurrentRoom().roomArray[getY()][getX()+1].onInteract();
+                getCurrentRoom().entityArray[getY()][getX()+1].onInteract();
                 break;
             case "left":
-                getCurrentRoom().roomArray[getY()][getX()-1].onInteract();
+                getCurrentRoom().entityArray[getY()][getX()-1].onInteract();
                 break;
             case "up":
-                getCurrentRoom().roomArray[getY()-1][getX()].onInteract();
+                getCurrentRoom().entityArray[getY()-1][getX()].onInteract();
                 break;
             case "down":
-                getCurrentRoom().roomArray[getY()+1][getX()].onInteract();
+                getCurrentRoom().entityArray[getY()+1][getX()].onInteract();
                 break;
         }
         // check if square next to player != null
@@ -107,7 +107,7 @@ public class Player extends Person {
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
-            currentRoom.roomArray[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            currentRoom.entityArray[tempItem.getY()][tempItem.getX()] = tempItem; // place it
             dont = true; // dont set previous field to null
         }
     }
@@ -117,15 +117,15 @@ public class Player extends Person {
             if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
                 placeItem(); // places tempItem if it exists
                 if (currentRoom.hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) currentRoom.roomArray[newY][newX])) { // if addItem was successful
+                    if (inventory.addItem((Item) currentRoom.entityArray[newY][newX])) { // if addItem was successful
                         System.out.println("YOU LOOTED IT"); // print loot message
                     } else { // if not
-                        tempItem = (Item) currentRoom.roomArray[newY][newX]; // set temp item to be whatevers in pos x & y
+                        tempItem = (Item) currentRoom.entityArray[newY][newX]; // set temp item to be whatevers in pos x & y
                     }
                 }
-                currentRoom.roomArray[newY][newX] = this; // move the player to another location
+                currentRoom.entityArray[newY][newX] = this; // move the player to another location
                 if (!dont) {
-                    currentRoom.roomArray[getY()][getX()] = null; // reset current position
+                    currentRoom.entityArray[getY()][getX()] = null; // reset current position
                 } else {
                     dont = false;
                     tempItem = null;
@@ -149,10 +149,13 @@ public class Player extends Person {
      * @return
      */
     public boolean checkCollision(int x, int y) {
-        if (currentRoom.roomArray[y][x] instanceof Item) {
-            return false;
+        if (currentRoom.entityArray[y][x] instanceof Item) {
+            if (!currentRoom.tileArray[y][x].isSolid()) {
+                return false;
+            }
+            return currentRoom.tileArray[y][x].isSolid();
         } else {
-            return currentRoom.roomArray[y][x] != null;
+            return currentRoom.entityArray[y][x] != null;
         }
 
     }

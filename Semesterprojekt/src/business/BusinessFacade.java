@@ -16,6 +16,7 @@ public class BusinessFacade implements IBusiness {
     private EntityManager entityManager;
     private RoomManager roomManager;
     
+    
     /**
      * zero-arg constructor
      * assigns values to EntityManager & RoomManager
@@ -61,16 +62,22 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public Image entityGetImage(int row, int col) {
-        if(roomManager.getCurrentRoom().roomArray[row][col] != null) {
-            return roomManager.getCurrentRoom().roomArray[row][col].getEntityImage();
+        if(roomManager.getCurrentRoom().entityArray[row][col] != null) {
+            return roomManager.getCurrentRoom().entityArray[row][col].getEntityImage();
         } else {
             Image i = new Image("testSquare.png");
             return i;
         }
     }
+
     @Override
-    public void print() {
-        System.out.println("umf");
+    public void saveGame() {
+        entityManager.saveGame();
+    }
+
+    @Override
+    public void loadGame() {
+        entityManager.loadGame();
     }
     
     

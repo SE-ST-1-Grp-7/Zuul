@@ -10,13 +10,12 @@ import java.util.HashMap;
  * @author Rasmus Willer & Jonas
  */
 public class Room {
-
     // instantiates room coordinates to set and get.
     // Declare attributes -section.
     private String description;
     private String name;
-    private ArrayList<Item> itemsInRoom = new ArrayList<>();
-    public Entity[][] roomArray = new Entity[10][10];
+    public Tile[][] tileArray = new Tile[10][10];
+    public Entity[][] entityArray = new Entity[10][10];
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
@@ -24,16 +23,17 @@ public class Room {
      * One-arg constructor with description String.
      *
      * @param description Passed string argument providing room description.
+     * @param name
      */
-    public Room(String description,String name) {
+    public Room(String description, String name) {
         // Assigning description argument to instance attribute.
         this.description = description;
         this.name = name;
         /* Instantiating map object with key of String type and
            value as Room object. */
         exits = new HashMap<String, Room>();
-        fillArray();
-
+        fillTenTenArray(tileArray);
+        fillTenTenArray(entityArray);
     }
 
     /**
@@ -117,11 +117,10 @@ public class Room {
         return this.exits;
     }
 
-    private void fillArray() {
+    private void fillTenTenArray(Object[][] list) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                roomArray[i][j] = null;
-
+                list[i][j] = null;
             }
         }
         /*Assignment a = new Assignment();
@@ -135,18 +134,13 @@ public class Room {
         for (Item i : itemsInRoom) {
             roomArray[i.getY()][i.getX()] = i;
         }*/
-
-    }
-
-    public ArrayList<Item> getItemList() {
-        return this.itemsInRoom;
     }
 
     public boolean hasLoot(int x, int y) {
-        return roomArray[y][x] instanceof Item;
+        return entityArray[y][x] instanceof Item;
     }
-
-    public void removeItem(Item i) {
-        itemsInRoom.remove(i);
+    
+    public void makeTile(int x, int y, String image, boolean solid) {
+        tileArray[y][x] = new Tile(image, solid);
     }
 }

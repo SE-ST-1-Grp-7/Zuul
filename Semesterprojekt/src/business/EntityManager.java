@@ -89,13 +89,15 @@ public class EntityManager {
         savePlayers();
         saveStudents();
         saveFurniture();
+        saveInventory();
     }
 
     public void loadGame() {
         loadItems();
         loadPlayers();
         loadStudents();
-//        loadFurniture();
+        loadFurniture();
+        loadInventory();
     }
 
     public void saveItems() {
@@ -286,7 +288,7 @@ public class EntityManager {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    Player player = new Player(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[3], (Room) rm.getRoomlist().get(tokens[4]));
+                    player = new Player(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[3], (Room) rm.getRoomlist().get(tokens[4]));
                 }
             }
         } catch (IOException e) {
@@ -331,7 +333,6 @@ public class EntityManager {
                             break;
                         case "Table":
                             Table t = new Table(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "Table", "It might contain items!", true, 2);
-
                             furniturelist.add(t);
                             break;
                         default:
