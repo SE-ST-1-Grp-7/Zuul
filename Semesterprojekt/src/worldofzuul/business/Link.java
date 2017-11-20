@@ -1,7 +1,5 @@
 package worldofzuul.business;
 
-import worldofzuul.business.RoomManager;
-
 /**
  *
  * @author Rasmus Willer & Søren Bendtsen & Magnus Mortensen

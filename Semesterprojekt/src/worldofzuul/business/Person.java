@@ -1,9 +1,5 @@
 package worldofzuul.business;
 
-
-import worldofzuul.business.Entity;
-import worldofzuul.business.Room;
-
 /** Person class - superclass of Student & Player
  *
  * @author Gruppe 7

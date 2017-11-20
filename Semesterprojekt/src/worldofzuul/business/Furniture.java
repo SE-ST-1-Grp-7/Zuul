@@ -1,9 +1,5 @@
 package worldofzuul.business;
 
-import java.awt.image.BufferedImage;
-import worldofzuul.business.Entity;
-import worldofzuul.business.Room;
-
 /**
  * a class for all furniture
  * @author Robin & Rasmus Willer
