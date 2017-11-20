@@ -11,8 +11,10 @@ import javafx.stage.Stage;
 
 /**
  *
- * @author Søren Bendtsen
+
+ * @author Søren Bendtsen & Niclas Johansen
  */
+
 public class UI extends Application implements IUI {
 
     private IBusiness ib;
@@ -28,24 +30,24 @@ public class UI extends Application implements IUI {
     public void start(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
         Parent p = loader.load();
+
         Scene scene = new Scene(p);
 
         primaryStage.setScene(scene);
         primaryStage.show();
+
     }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
-        System.out.println("ass");
+
         this.ib = businessFacade;
-        System.out.println(ib.toString());
+
     }
 
     @Override
     public void openUI() {
-        System.out.println(ib.toString());
         ui = this;
         launch();
-    }
 
 }
