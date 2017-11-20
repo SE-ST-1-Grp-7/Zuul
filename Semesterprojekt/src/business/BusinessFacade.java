@@ -34,7 +34,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void playerMove(String direction) {
         // player currently saved in an arraylist - might/should be changed
-        entityManager.getPlayerList().get(0).move(direction);
+        entityManager.getPlayer().move(direction);
     }
     /**
      * calls .interact on player
@@ -43,7 +43,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void playerInteract(String direction) {
-        entityManager.getPlayerList().get(0).interact();
+        entityManager.getPlayer().interact();
     }
     /**
      * calls .dropItem on player's inventory
@@ -53,7 +53,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void playerDropItem(int index) {
         // note to self: move dropItem to player
-         entityManager.getPlayerList().get(0).inventory().dropItem(index, entityManager.getPlayerList().get(0));
+         entityManager.getPlayer().inventory().dropItem(index, entityManager.getPlayer());
     }
     /**
      * gets the image of an entity placed at row, col
