@@ -1,11 +1,9 @@
-package worldofzuul.mapAndRooms;
+package worldofzuul.business;
 
 // importing standard libraries for managing datastructures.
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.HashMap;
-import worldofzuul.entities.Entity;
-import worldofzuul.items.Item;
 
 /**
  *

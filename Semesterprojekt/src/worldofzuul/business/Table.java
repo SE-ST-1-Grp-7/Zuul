@@ -1,11 +1,8 @@
-package worldofzuul.Furniture;
+package worldofzuul.business;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.scene.image.Image;
-import worldofzuul.items.Item;
-import worldofzuul.mapAndRooms.Room;
 
 /**
  *a subclass of furniture that makes a table

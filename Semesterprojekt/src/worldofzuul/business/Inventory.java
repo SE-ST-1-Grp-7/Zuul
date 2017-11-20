@@ -1,7 +1,6 @@
-package worldofzuul.items;
+package worldofzuul.business;
 
 import java.util.ArrayList;
-import worldofzuul.People.Player;
 
 /**
  *
