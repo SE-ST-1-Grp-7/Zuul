@@ -1,8 +1,6 @@
 package worldofzuul.business;
 
-import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
-import worldofzuul.business.Room;
 
 /**
  *

@@ -1,9 +1,6 @@
 package worldofzuul.business;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
-import worldofzuul.business.Room;
 
 /**
  *a subclass of furniture that makes a chair

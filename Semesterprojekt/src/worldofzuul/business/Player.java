@@ -1,10 +1,6 @@
 package worldofzuul.business;
 
-import java.awt.image.BufferedImage;
 import javafx.scene.image.Image;
-import worldofzuul.business.Inventory;
-import worldofzuul.business.Item;
-import worldofzuul.business.Room;
 
 /**
  * Player class - subclass of the Person class Used to instantiate a Player

@@ -1,8 +1,6 @@
 package worldofzuul.business;
 
-import java.awt.Graphics;
 import java.util.HashMap;
-import worldofzuul.business.Player;
 
 /**
  *

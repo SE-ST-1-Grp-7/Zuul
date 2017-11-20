@@ -2,7 +2,6 @@ package worldofzuul.business;
 
 import javafx.scene.image.Image;
 import java.util.Random;
-import worldofzuul.business.Room;
 
 /**
  *A student class that extends person

@@ -1,10 +1,5 @@
 package worldofzuul.business;
 
-import java.awt.image.BufferedImage;
-import worldofzuul.business.Entity;
-import worldofzuul.business.Player;
-import worldofzuul.business.Room;
-
 /**
  * Item class - the class used to instantiate an item in the game
  *
