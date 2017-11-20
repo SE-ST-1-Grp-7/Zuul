@@ -71,36 +71,36 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
-    public ArrayList<Player> getPlayer() {
+    public ArrayList<Player> getPlayerList() {
         return playerlist;
     }
 
-    public void setPlayer(ArrayList<Player> player) {
-        this.playerlist = player;
+    public void setPlayerList(ArrayList<Player> playerlist) {
+        this.playerlist = playerlist;
     }
 
-    public ArrayList<Student> getStudent() {
+    public ArrayList<Student> getStudentList() {
         return studentlist;
     }
 
-    public void setStudent(ArrayList<Student> student) {
-        this.studentlist = student;
+    public void setStudentList(ArrayList<Student> studentlist) {
+        this.studentlist = studentlist;
     }
 
-    public ArrayList<Furniture> getFurniture() {
+    public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
     }
 
-    public void setFurniture(ArrayList<Furniture> furniture) {
-        this.furniturelist = furniture;
+    public void setFurnitureList(ArrayList<Furniture> furniturelist) {
+        this.furniturelist = furniturelist;
     }
 
-    public ArrayList<Item> getItem() {
+    public ArrayList<Item> getItemList() {
         return itemlist;
     }
 
-    public void setItem(ArrayList<Item> item) {
-        this.itemlist = item;
+    public void setItemList(ArrayList<Item> itemlist) {
+        this.itemlist = itemlist;
     }
     
 
@@ -111,12 +111,12 @@ public class EntityManager {
         saveFurniture();
     }
 
-//    public void loadGame() {
-//        loadItems();
-//        loadPlayers();
-//        loadStudents();
+    public void loadGame() {
+        loadItems();
+        loadPlayers();
+        loadStudents();
 //        loadFurniture();
-//    }
+    }
     public void saveItems() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SaveItemsTest.txt")));
