@@ -16,8 +16,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -34,21 +32,13 @@ public class FXMLDocumentController implements Initializable, IUI {
     private final int X = 64;
     private final int Y = 64;
     private Pane pane;
-    @FXML
-    private Button buttonSavePressed;
-    @FXML
-    private Button highscoreButton;
-    @FXML
-    private Button quitGameButton;
-    @FXML
-    private TextArea textArea;
-    @FXML
     private Canvas c;
-    @FXML
     private GridPane gp;
+    @FXML
+    private Canvas canvasId;
 
     private void handleButtonAction(ActionEvent event) {
-        GraphicsContext gc = c.getGraphicsContext2D();
+        GraphicsContext gc = canvasId.getGraphicsContext2D();
         // set focus on canvas
         gp.setFocusTraversable(true);
         // set keylistener
@@ -80,7 +70,7 @@ public class FXMLDocumentController implements Initializable, IUI {
         new AnimationTimer() {
             public void handle(long currentNanoTime) {
                 // draw room 60 times per second
-                c.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
+                canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
                 drawImages(gc);
             }
         }.start();
@@ -116,26 +106,16 @@ public class FXMLDocumentController implements Initializable, IUI {
         return ib.entityGetImage(row, col);
     }
 
-    @FXML
-    private void highscoreButtonPressed(ActionEvent event) {
-    }
-
-    @FXML
-    private void quitGameButton(ActionEvent event) {
-    }
 
     @Override
     public void injectBusiness(IBusiness businessFacade) {
         this.ib = businessFacade;
     }
 
-    @FXML
-    private void buttonSavePressed(ActionEvent event) {
-    }
-
     @Override
     public void openUI() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 
 }

@@ -7,14 +7,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import business.BusinessFacade;
 
 /**
  *
- * @author Søren Bendtsen
+ * @author Søren Bendtsen & Niclas Johansen
  */
 public class NewFXMain extends Application implements IUI {
     private IBusiness ib;
@@ -28,6 +25,7 @@ public class NewFXMain extends Application implements IUI {
         
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.setTitle("World of SDU");
     }
 
     @Override
