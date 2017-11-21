@@ -128,7 +128,7 @@ public class FXMLDocumentController implements Initializable {
                 Image tile = new Image("/textures/floor10.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
-                gc.drawImage(choosePic(i,j), X * j, Y * i);
+                //gc.drawImage(choosePic(i,j), X * j, Y * i);
 
             }
         }
