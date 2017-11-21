@@ -58,7 +58,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="EXIT">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitButton" text="EXIT">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

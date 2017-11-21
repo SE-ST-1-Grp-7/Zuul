@@ -5,6 +5,7 @@ import Acq.IUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -112,9 +113,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-    @FXML
     private void buttonSavePressed(ActionEvent event) {
         ib.saveGame();
+    }
+
+    @FXML
+    private void exitButton(ActionEvent event) {
+        Platform.exit(); //exit the application
     }
 
 }
