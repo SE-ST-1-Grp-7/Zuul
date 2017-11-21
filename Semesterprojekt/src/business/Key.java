@@ -1,32 +1,27 @@
 package business;
 
-import javafx.scene.image.Image;
-
 /**
- *
+ * Subclass of Item, Key class.
+ * 
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
-    private Image keyImage = new Image("/texture/key.png");
+    private String keyImage = "/texture/key.png"; // Path to texture of key.
+    
     /**
-     * Constructor with all the necessary parameters for the class
-     * @param x                 x coordinate
-     * @param y                 y coordinate
-     * @param width             pixel width
-     * @param height            pixel height
-     * @param currentRoom       currently in room ...
-     * @param itemName          name of the item
-     * @param itemDescription   item description
-     * @param weight            designated inventory weight
+     * Constructor for Key class
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of key.
+     * @param height            int, pixel height of key.
+     * @param currentRoom       Room, currently in this room.
      */
     public Key(int x,
                 int y,
                 int width,
                 int height,
-                Room currentRoom,
-                String itemName,
-                String itemDescription,
-                int weight) {
+                Room currentRoom) {
         
         // Arguments for superclass
         super(x,
@@ -34,12 +29,18 @@ public class Key extends Item {
                 width,
                 height,
                 currentRoom,
-                itemName,
-                itemDescription,
-                weight);
+                "Key",                  // Name of item.
+                "Used to open doors",   // Description of item.
+                1);                     // Weight of item.
+        // Pass path of texture to superclass.
         super.setEntityImage(keyImage);
     }
     
+    /**
+     * Override, implement use in this class.
+     * 
+     * @param p     Player, player is the one using the item.
+     */
     @Override
     public void use(Player p) {
     }

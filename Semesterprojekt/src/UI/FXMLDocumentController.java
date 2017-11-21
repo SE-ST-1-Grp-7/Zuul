@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Acq.IBusiness;
@@ -103,15 +98,15 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public Image choosePic(int row, int col) {
-        // magic
-        return ib.entityGetImage(row, col);
+        // This will cause all entity images to be loaded repeatedly for now.
+        Image image = new Image(ib.entityGetImage(row, col));
+        return image;
     }
 
 
  
 
-
-    @Override
+    //@Override
     public void openUI() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -119,7 +114,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void buttonSavePressed(ActionEvent event) {
-        ib.print();
+        ib.saveGame();
     }
 
 }

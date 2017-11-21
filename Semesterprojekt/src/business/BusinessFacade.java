@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package business;
 
 import Acq.IBusiness;
@@ -61,11 +56,11 @@ public class BusinessFacade implements IBusiness {
      * @return 
      */
     @Override
-    public Image entityGetImage(int row, int col) {
+    public String entityGetImage(int row, int col) {
         if(roomManager.getCurrentRoom().entityArray[row][col] != null) {
             return roomManager.getCurrentRoom().entityArray[row][col].getEntityImage();
         } else {
-            Image i = new Image("testSquare.png");
+            String i = "testSquare.png";
             return i;
         }
     }

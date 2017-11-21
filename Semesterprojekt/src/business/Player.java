@@ -1,35 +1,32 @@
 package business;
 
-import javafx.scene.image.Image;
-
 /**
- * Player class - subclass of the Person class Used to instantiate a Player
+ * Player class, the main character of the game and controllable.
  *
  * @author Gruppe 7
  */
 public class Player extends Person {
-
-    private int energy; //current energy level
-    private int energyCap; //the max amount of energy
-    private int fatigue; //the current fatiuge level
-    private int fatigueCap; //the max amount of fatiuge
-    private Inventory inventory; // the player's inventory
-    private Room currentRoom;
-    private int gradedAssignments; //the amount of graded assignments
-    private int assignmentProgress; //the progress of grading an assignment
-    private Item tempItem;
-    private boolean dont = false;
-    private Image playerImage = new Image("/texture/player.png");
-    private String facing;
+    private int energy; // Current energy level.
+    private int energyCap; // Max amount of energy.
+    private int fatigue; // Current fatiuge level.
+    private int fatigueCap; // Max amount of fatiuge.
+    private Inventory inventory; // The player's inventory.
+    private Room currentRoom; // Room player is in.
+    private int gradedAssignments; // Amount of graded assignments.
+    private int assignmentProgress; // Progress of grading an assignment.
+    private Item tempItem; // Temporary holder for item to be dropped.
+    private boolean dont = false; // Avoid tempItem overlap with other items.
+    private String playerImage = "/texture/player.png"; // String of image path.
+    private String facing; // Direction for object to be interacted with.
 
     /**
-     * Constructor for player.
+     * Constructor for player. Passes all relevant arguments to Superclass and
+     * sets the attributes for the player.
      *
-     * @param x
-     * @param y
-     * @param currentRoom
-     * @param graphics
-     * @param name
+     * @param x             int, horizontal positioning in grid.
+     * @param y             int, vertical positioning in grid.
+     * @param currentRoom   Room, placed currently in this room.
+     * @param name          String, name of player.
      */
     public Player(int x, int y, String name, Room currentRoom) {
         super(x,
@@ -37,19 +34,23 @@ public class Player extends Person {
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
                 currentRoom);
+        // Pass image path to Superclass.
         super.setEntityImage(playerImage);
         
-        this.energy = 100; //the current energy level
-        this.energyCap = 100; // the energy cap
-        this.fatigue = 0; //the current amount of fatigue
-        this.fatigueCap = 100; //the fatigue cap
-        inventory = new Inventory(); //instanciate the inventory
-        this.gradedAssignments = 0; //the amount of graded assignments is set to 0
-        this.assignmentProgress = 0; //the progress of grading an assignment is set to 0
+        // PLAYER STATS
+        
+        this.energy = 100; // Assign energy level to start at 100.
+        this.energyCap = 100; // Assign energy capacity to 100.
+        this.fatigue = 0; // Current amount of fatigue starts at 0.
+        this.fatigueCap = 100; // Assign fatigue capacity to 100.
+        inventory = new Inventory(); // Instantiate inventory.
+        this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
+        // Progress of grading an assignment starts at 0.
+        this.assignmentProgress = 0;
     }
+    
     /**
-     * interacts with nearby interactable object
-     * @param direction
+     * Interacts with nearby interactable object.
      */
     public void interact() {
         switch(facing) {
@@ -71,8 +72,9 @@ public class Player extends Person {
         
     }
     /**
-     * moves in a given direction
-     * @param direction 
+     * Move in given direction.
+     * 
+     * @param direction     String, lowercase written direction for movement.
      */
     public void move(String direction) {
         this.inventory.printInventory();
@@ -103,7 +105,7 @@ public class Player extends Person {
     }
 
     /**
-     * places the item referenced by tempItem in the room
+     * Place item referenced by tempItem into the room
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
@@ -111,7 +113,13 @@ public class Player extends Person {
             dont = true; // dont set previous field to null
         }
     }
-
+    
+    /**
+     * Teleportation movement.
+     * 
+     * @param newX      int, new X coordinate in room.
+     * @param newY      int, new Y coordinate in room.
+     */
     public void move(int newX, int newY) {
         try {
             if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
@@ -142,11 +150,11 @@ public class Player extends Person {
     }
 
     /**
-     * method for collision check
+     * Method for collision check.
      *
-     * @param x
-     * @param y
-     * @return
+     * @param x         int, X coordinate of grid location to be checked.
+     * @param y         int, Y coordinate of grid location to be checked.
+     * @return          boolean, true if collision, false otherwise.
      */
     public boolean checkCollision(int x, int y) {
         if (currentRoom.entityArray[y][x] instanceof Item) {
@@ -161,139 +169,146 @@ public class Player extends Person {
     }
 
     // GETTERS & SETTERS
+    
     /**
-     * a method to call/get the player's inventory (getter)
+     * Method call/get the player's inventory.
      *
-     * @return
+     * @return      Inventory, returns the inventory object.
      */
     public Inventory inventory() {
         return this.inventory;
     }
     
     /**
-     * getter for tempItem - used to drop an item
-     * @return 
+     * Getter for tempItem - used to drop an item.
+     * 
+     * @return      Item, return the tempItem object.
      */
     public Item getTempItem(){
         return this.tempItem;
     }
     
     /**
-     * setter for tempItem - used to set the tempitem to be dropped
-     * @param i
+     * Setter for tempItem - used to set the tempitem to be dropped
+     * 
+     * @param i     Item, assigns an Item object to tempItem.
      */
     public void setTempItem(Item i){
         this.tempItem = i;
     }
     
     /**
-     * getter for the current energy level
+     * Getter for the current energy level.
      *
-     * @return
+     * @return      int, current value of energy level.
      */
     public int getEnergy() {
         return this.energy;
     }
 
     /**
-     * setter for the current energy level
+     * Setter for the current energy level.
      *
-     * @param energy
+     * @param energy    int, value to be current energy level.
      */
     public void setEnergy(int energy) {
         this.energy = energy;
     }
 
     /**
-     * getter for the energy cap
+     * Getter for the energy capacity.
      *
-     * @return
+     * @return      int, value of energy capacity.
      */
     public int getEnergyCap() {
         return this.energyCap;
     }
 
     /**
-     * setter for energyCap
+     * Setter for energyCap.
      *
-     * @param energyCap
+     * @param energyCap     int, value to be energy capacity.
      */
     public void setEnergyCap(int energyCap) {
         this.energyCap = energyCap;
     }
 
     /**
-     * getter for the current fatiuge
+     * Getter for the current fatigue.
      *
-     * @return
+     * @return      int, current value for fatigue stat.
      */
     public int getFatigue() {
         return this.fatigue;
     }
 
     /**
-     * setter for the current fatiuge
+     * Setter for the current fatigue.
      *
-     * @param fatigue
+     * @param fatigue   int, value to become the current fatigue level.
      */
     public void setFatigue(int fatigue) {
         this.fatigue = fatigue;
     }
 
     /**
-     * getter for the fatiuge cap
+     * Getter for the fatiuge capacity.
      *
-     * @return
+     * @return      int, value of fatigue capacity.
      */
     public int getFatigueCap() {
         return this.fatigueCap;
     }
 
     /**
-     * setter for fatiugeCap
+     * Setter for fatiuge capacity.
      *
-     * @param fatigueCap
+     * @param fatigueCap    int, change fatigue capacity to this value.
      */
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
     }
 
     /**
-     * getter for gradedAssignments
+     * Getter for graded assignments.
      *
-     * @return
+     * @return      int, value of current assignments graded.
      */
     public int getGradedAssignments() {
         return this.gradedAssignments;
     }
 
     /**
-     * setter for gradedAssignments
+     * Setter for graded assignments.
      *
-     * @param assignment
+     * @param assignment    int, assign new value of graded assignments.
      */
     public void setGradedAssignments(int assignment) {
         this.gradedAssignments = assignment;
     }
 
     /**
-     * getter for assignmentProgress
+     * Getter for assignment progress.
      *
-     * @return
+     * @return      int, value representation of assignment progress.
      */
     public int getAssignmentProgress() {
         return this.assignmentProgress;
     }
 
     /**
-     * setter for assignmentProgress
+     * Setter for assignment progress.
      *
-     * @param assignmentProgress
+     * @param assignmentProgress    int, change value of assignment progress.
      */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
     }
-
+    
+    /**
+     * Override, upon interaction with player.
+     * (if students catch up to the professor.)
+     */
     @Override
     public void onInteract() {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");

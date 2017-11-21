@@ -1,27 +1,24 @@
 package business;
 
-import java.awt.image.BufferedImage;
-import javafx.scene.image.Image;
-import business.Player;
-import business.Room;
-
 /**
- *
+ * Subclass of Item, Adderall class.
+ * 
  * @author J & Rasmus Willer
  */
 public class Adderall extends Item{
-    private final int ENERGY_RESTORE = 70;
-    private final int ENERGY_CAP_INCREASE = 20;
-    private Image adderallImage = new Image("/texture/adderall.png");
+    private final int ENERGY_RESTORE = 70; // Energy restore value upon use.
+    private final int ENERGY_CAP_INCREASE = 20; // Energy cap increase.
+    // Path of texture for adderall.
+    private String adderallImage = "/texture/adderall.png";
     
     /**
-     * Constructor with all the necessary parameters for the class
-     * @param x                 x coordinate
-     * @param y                 y coordinate
-     * @param width             pixel width
-     * @param height            pixel height
-     * @param currentRoom       currently in room ...
-     * @param graphics          graphic image
+     * Constructor for Adderall class.
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of adderall.
+     * @param height            int, pixel height of adderall.
+     * @param currentRoom       Room, currently in this room.
      */
     public Adderall(int x,
             int y,
@@ -35,15 +32,24 @@ public class Adderall extends Item{
                 width,
                 height,
                 currentRoom,
-                "Adderall",
-                "Adderall - Energy restore and cap increase. Yay!",
-                1);
+                "Adderall",         // Name of item.
+                // Description of item.
+                "Energy restore and cap increase. Yay!",
+                1);                 // Weight of item.
+        // Pass path of texture to superclass.
         super.setEntityImage(adderallImage);
     }
-
+    
+    /**
+     * Override, upon use of adderall.
+     * 
+     * @param p     Player, player is the one using the item.
+     */
     @Override
     public void use(Player p) {
-        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+        // Increase energy cap.
         p.setEnergyCap(p.getEnergyCap() + ENERGY_CAP_INCREASE);
+        // Replenish energy.
+        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
     }
 }

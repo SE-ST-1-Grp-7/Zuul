@@ -1,22 +1,23 @@
-
 package business;
-import javafx.scene.image.Image;
 
 /**
- *
+ * Subclass of Item, Coffee class.
+ * 
  * @author Jonas Bjørstorp & Frederik Bauer & Rasmus Willer
  */
 public class Coffee extends Item {
-    private final int ENERGY_RESTORE = 15;
-    private Image coffeeImage = new Image("/texture/coffee.png");
+    private final int ENERGY_RESTORE = 15; // Energy restore value upon use.
+    // Path of texture for coffee.
+    private String coffeeImage = "/texture/coffee.png";
     
     /**
-     * Constructor with all the necessary parameters for the class
-     * @param x                 x coordinate
-     * @param y                 y coordinate
-     * @param width             pixel width
-     * @param height            pixel height
-     * @param currentRoom       currently in room ...
+     * Constructor for Coffee class.
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of coffee.
+     * @param height            int, pixel height of coffee.
+     * @param currentRoom       Room, currently in this room.
      */
     public Coffee(int x,
                     int y,
@@ -30,16 +31,17 @@ public class Coffee extends Item {
                 width,
                 height,
                 currentRoom,
-                "Coffee",
-                "A cup of coffee. Yum!",
-                5);
+                "Coffee",                   // Name of item.
+                "A cup of coffee. Yum!",    // Description of item.
+                5);                         // Weight of item.
+        // Pass path of texture to superclass.
         super.setEntityImage(coffeeImage);
     }
     
-    
     /**
-     * Override use to let player use item.
-     * @param p     Player object
+     * Override, upon use of coffee.
+     * 
+     * @param p     Player, player is the one using the item.
      */
     @Override
     public void use(Player p) {

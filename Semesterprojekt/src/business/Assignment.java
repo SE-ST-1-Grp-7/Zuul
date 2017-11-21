@@ -1,54 +1,47 @@
 package business;
 
-import javafx.scene.image.Image;
-import business.Player;
-import business.Room;
-
 /**
- *
+ * Subclass of Item, Assignment class.
+ * 
  * @author Robin & Søren & Rasmus Willer
  */
 public class Assignment extends Item {
-    private Image assignmentImage = new Image("/texture/assignment.png");
+    // Path of texture for assignment.
+    private String assignmentImage = "/texture/assignment.png";
+    
     /**
-     * Constructor with all the necessary parameters for the class
-     * @param x                 x coordinate
-     * @param y                 y coordinate
-     * @param width             pixel width
-     * @param height            pixel height
-     * @param currentRoom       currently in room ...
-     * @param itemName          name of the item
-     * @param itemDescription   item description
-     * @param weight            designated inventory weight
+     * Constructor for Assignment class.
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of assignment.
+     * @param height            int, pixel height of assignment.
+     * @param currentRoom       Room, currently in this room.
      */
     public Assignment(int x,
             int y,
             int width,
             int height,
-            Room currentRoom,
-            String itemName,
-            String itemDescription,
-            int weight) {
+            Room currentRoom) {
         
-        // Pass arguments to superclass
+        // Pass arguments to superclass.
         super(x,
                 y,
                 width,
                 height,
                 currentRoom,
-                itemName,
-                itemDescription,
-                weight);
-        
-        //sets the name - calls the set name in Item super class
-        super.setName("Assignment"); 
-        //set a discription for the assignment item
-        super.setDescription("An assignment you can gr - " +
-                "calls the set name in Item super classade");
-        super.setWeight(1); //set the weight for the assignment
+                "Assignment",                   // Name of item.
+                "An assigment you can grade.",  // Description of item.
+                1);                             // Weight of item.
+        // Pass path of texture to superclass.
         super.setEntityImage(assignmentImage);
     }
-
+    
+    /**
+     * Override, upon use of item.
+     * 
+     * @param p     Player, player is the one doing the item.
+     */
     @Override
     public void use(Player p) {
         //if you have more than or equal to 20 energy
@@ -82,8 +75,7 @@ public class Assignment extends Item {
                 }
 
             }
-        }else{
-            //this will be printed if you don't have enough energy
+        }else{ // If not enough energy, do the following.
             System.out.println("You do not have enough energy");
         }
         
