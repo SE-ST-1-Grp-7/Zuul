@@ -26,7 +26,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="NEW GAME">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButton" text="NEW GAME">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -34,7 +34,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="LOAD">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadButton" text="LOAD">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -42,7 +42,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="SAVE">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveButton" text="SAVE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -50,7 +50,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="HIGHSCORE">
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#highscoreButton" text="HIGHSCORE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -73,12 +73,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" text="USE">
+            <Button mnemonicParsing="false" onAction="#useButton" text="USE">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" text="DROP">
+            <Button mnemonicParsing="false" onAction="#dropButton" text="DROP">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>

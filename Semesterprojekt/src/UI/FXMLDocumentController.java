@@ -122,4 +122,28 @@ public class FXMLDocumentController implements Initializable {
         Platform.exit(); //exit the application
     }
 
+    @FXML
+    private void newGameButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void loadButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void saveButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void highscoreButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void useButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void dropButton(ActionEvent event) {
+    }
+
 }
