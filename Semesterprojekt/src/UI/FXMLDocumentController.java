@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
@@ -32,6 +34,16 @@ public class FXMLDocumentController implements Initializable {
     private GridPane gp;
     @FXML
     private Canvas canvasId;
+    @FXML
+    private Button exitButton;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Button newGameButton;
+    @FXML
+    private Button loadButton;
+    @FXML
+    private Button highscoreButton;
 
     private void handleButtonAction(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
@@ -82,6 +94,20 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ib = UI.getUI().getBusiness();
+        Tooltip exittip = new Tooltip("Exit the game");
+        Tooltip savetip = new Tooltip("Save the game");
+        Tooltip loadtip = new Tooltip("Load the game");
+        Tooltip highscoretip = new Tooltip("Get all highscores");
+        Tooltip newGametip = new Tooltip("Start fresh new game");
+        
+        
+        //Creating tooltips on buttons
+        Tooltip.install(exitButton, exittip);
+        Tooltip.install(saveButton, savetip);
+        Tooltip.install(loadButton, loadtip);
+        Tooltip.install(newGameButton, newGametip);
+        Tooltip.install(highscoreButton, highscoretip);
+        
     }
 
     public void drawImages(GraphicsContext gc) {
