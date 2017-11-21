@@ -107,7 +107,7 @@
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </GridPane.margin>
       </TextArea>
-      <Canvas fx:id="canvasId" height="640.0" width="640.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+      <Canvas fx:id="canvasId" height="640.0" visible="false" width="640.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
