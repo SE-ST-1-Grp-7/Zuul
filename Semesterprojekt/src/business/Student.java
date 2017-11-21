@@ -1,38 +1,62 @@
 package business;
 
-import javafx.scene.image.Image;
 import java.util.Random;
 
 /**
- *A student class that extends person
+ * Student class, NPC in the game.
+ * 
  * @author Robin & Niclas & Rasmus Willer & Magnus Mortensen
  */
 public class Student extends Person {
-    private boolean hasQuestionToPlayer; //this variable is true if the student has a question for the player
-    private Image studentImage;
-    private Random rand = new Random(); // used for randomization of move()
-
-    public Student(int x, int y, int width, int height, Room currentRoom, Boolean hasQ){
-        super(x, y, width, height, currentRoom); //a call to the super constructor
-        int number = (1 + (int) (Math.random()*12));
-        studentImage = new Image("/texture/student"+number+".png");
-        super.setEntityImage(studentImage);
-        this.hasQuestionToPlayer = hasQ; //the player has a question to the player
-    }
+    // true if student has a question for the player.
+    private boolean hasQuestionToPlayer;
+    private String studentImage; // Path to image used for this entity.
+    private Random rand = new Random(); // used for randomization of move().
+    
     /**
-     * one of two move methods for a student
-     * moves student in a random direction with a 50% chance per call
-     * used by an idling student
+     * Student constructor, actions upon instantiation.
+     * 
+     * @param x             int, horizontal positioning in grid.
+     * @param y             int, vertical positioning in grid.
+     * @param currentRoom   Room, placed currently in this room.
+     * @param hasQ          boolean, true if student has a questions.
+     */
+    public Student(int x,
+            int y,
+            Room currentRoom,
+            Boolean hasQ){
+        
+        // Pass arguments to superclass.
+        super(x,
+                y,
+                Person.DEFAULT_PERSON_WIDTH,
+                Person.DEFAULT_PERSON_HEIGHT,
+                currentRoom);
+        
+        // Generate random choice of student texture, 12 options.
+        int number = (1 + (int) (Math.random()*12));
+        studentImage = "/texture/student"+number+".png";
+        // Pass the chosen texture path to superclass.
+        super.setEntityImage(studentImage);
+        this.hasQuestionToPlayer = hasQ; // Student has a question to player.
+    }
+    
+    /**
+     * One of two move methods for student, random.
+     * Student moves in a random direction with a 50% chance per call
+     * used by an idling student.
      */
     public void idleMove() {
-        // assuming that this gets executed once per second
-        if(rand.nextBoolean()) { // rolls either true or false, if true then move
+        // Assumes gets executed once per second.
+        
+        if(rand.nextBoolean()) { // If true, move.
             String[] directions = { "left","right","up","down" };
-            String direction = directions[rand.nextInt(4)]; // roll for a random direction
+            // Roll for a random direction.
+            String direction = directions[rand.nextInt(4)];
             switch(direction) {
                 case "left":
-                    if(isLegal(getX()-1,getY())) // if the move is legal
-                        move(getX()-1,getY()); // then move
+                    if(isLegal(getX()-1,getY())) // If move is legal, move.
+                        move(getX()-1,getY());
                     break;
                 case "right":
                     if(isLegal(getX()+1,getY()))
@@ -50,6 +74,14 @@ public class Student extends Person {
             
         }
     }
+    
+    /**
+     * The second movement method for student.
+     * Removes student from current location and assign student to new location.
+     * 
+     * @param newX      int, new horizontal grid position. 
+     * @param newY      int, new vertical grid position.
+     */
     public void move(int newX, int newY) {
         currentRoom.entityArray[getY()][getX()] = null; // set current position in array to null
         currentRoom.entityArray[newY][newX] = this; // place student in new position
@@ -57,36 +89,43 @@ public class Student extends Person {
         setX(newX);
         setY(newY);
     }
+    
     /**
-     * checks if a move is legal
-     * a move is legal if the desired field is null
-     * @param newX
-     * @param newY
-     * @return 
+     * Checks if move is legal.
+     * (A move is legal if the desired field is null.)
+     * 
+     * @param newX      int, horizontal grid position to be checked.
+     * @param newY      int, vertical grid position to be checked.
+     * @return          boolean, true if empty field, false otherwise.
      */
     public boolean isLegal(int newX, int newY) {
         return currentRoom.entityArray[newY][newX] == null;
     }
+    
     // GETTERS & SETTERS
     
     /**
-     * getter for hasQusetionForPlayer
+     * Getter for hasQusetionForPlayer.
      *
-     * @return
+     * @return      boolean, true if student has question for player,
+     *              false otherwise.
      */
     public boolean getHasQuestionToPlayer() {
         return this.hasQuestionToPlayer;
     }
 
     /**
-     * setter for hasQusetionForPlayer
+     * Setter for hasQusetionForPlayer
      *
-     * @param hasQuestionToPlayer
+     * @param hasQuestionToPlayer   boolean, set variable for student.
      */
     public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
         this.hasQuestionToPlayer = hasQuestionToPlayer;
     }
-
+    
+    /**
+     * Override, upon interacted with student.
+     */
     @Override
     public void onInteract() {
         System.out.println("Hello professor! :sunglasses: ");

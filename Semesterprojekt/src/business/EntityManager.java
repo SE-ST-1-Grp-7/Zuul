@@ -1,5 +1,7 @@
 package business;
 
+// IMPORTS
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -10,12 +12,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Entity Manager class. Keeps track of all the entities currently in the game.
+ * 
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class EntityManager {
 
-    // containers for entities
+    // Containers for the different type entities.
     private ArrayList<Item> itemlist = new ArrayList<>();
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
@@ -27,6 +30,7 @@ public class EntityManager {
     }
 
     // ENTITY MANAGMENT METHODS
+    
     public void addStudent(Student s) {
         studentlist.add(s);
     }
@@ -52,6 +56,7 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
+    
     public Player getPlayer() {
         return player;
     }
@@ -83,7 +88,9 @@ public class EntityManager {
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
     }
-
+    
+    // LOAD & SAVE METHODS
+    
     public void saveGame() {
         saveItems();
         savePlayers();
@@ -102,7 +109,10 @@ public class EntityManager {
 
     public void saveItems() {
         try {
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SaveItemsTest.txt")));
+            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(System.getProperty("user.home") +
+                            "\\Documents\\SaveItemsTest.txt")));
+            
             for (Item item : itemlist) {
                 fileWriter.append(item.getName());
                 fileWriter.append(",");
@@ -118,25 +128,32 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void saveInventory() {
         try {
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SaveInventoryTest.txt")));
+            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(System.getProperty("user.home") +
+                            "\\Documents\\SaveInventoryTest.txt")));
             for (Item item : player.inventory().getInventory()) {
                 fileWriter.append(item.getName());
             }
             fileWriter.append("\n");
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void savePlayers() {
         try {
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SavePlayersTest.txt")));
+            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(System.getProperty("user.home") +
+                            "\\Documents\\SavePlayersTest.txt")));
+            
             fileWriter.append(player.getName());
             fileWriter.append(",");
             fileWriter.append(String.valueOf(player.getX()));
@@ -150,13 +167,16 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void saveStudents() {
         try {
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SaveStudentTest.txt")));
+            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(System.getProperty("user.home") +
+                            "\\Documents\\SaveStudentTest.txt")));
             for (Student student : studentlist) {
                 fileWriter.append(String.valueOf(student.getX()));
                 fileWriter.append(",");
@@ -164,7 +184,8 @@ public class EntityManager {
                 fileWriter.append(",");
                 fileWriter.append(student.getCurrentRoom().getName());
                 fileWriter.append(",");
-                fileWriter.append(String.valueOf(student.getHasQuestionToPlayer()));
+                fileWriter.append(String.valueOf(
+                        student.getHasQuestionToPlayer()));
                 fileWriter.append("\n");
 
                 System.out.println("Saved Students");
@@ -172,15 +193,18 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void saveFurniture() {
         try {
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(System.getProperty("user.home") + "\\Documents\\SaveFurnitureTest.txt")));
+            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
+                    new FileOutputStream(System.getProperty("user.home") +
+                            "\\Documents\\SaveFurnitureTest.txt")));
+            
             for (Furniture furniture : furniturelist) {
-
                 fileWriter.append(String.valueOf(furniture.getX()));
                 fileWriter.append(",");
                 fileWriter.append(String.valueOf(furniture.getY()));
@@ -194,13 +218,16 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void loadItems() {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveItemsTest.txt")));
+            BufferedReader fileReader = new BufferedReader(
+                    new FileReader(System.getProperty("user.home") +
+                            ("\\Documents\\SaveItemsTest.txt")));
             itemlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -209,23 +236,48 @@ public class EntityManager {
                 if (tokens.length > 0) {
                     switch (tokens[0]) {
                         case "Adderal":
-                            Adderall d = new Adderall(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]));
+                            Adderall d = new Adderall(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(d);
                             break;
                         case "Coffee":
-                            Coffee c = new Coffee(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]));
+                            Coffee c = new Coffee(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(c);
                             break;
                         case "Assignment":
-                            Assignment a = new Assignment(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "Assignment", "An assignment you can gr - calls the set name in Item super classade", 1);
+                            Assignment a = new Assignment(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(a);
                             break;
                         case "Key":
-                            Key k = new Key(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "key", "used to open doors", 1);
+                            Key k = new Key(Integer.parseInt(
+                                    tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(k);
                             break;
                         case "EnergyDrink":
-                            EnergyDrink e = new EnergyDrink(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, rm.getCurrentRoom().getExit(tokens[3]));
+                            EnergyDrink e = new EnergyDrink(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    rm.getCurrentRoom().getExit(tokens[3]));
                             itemlist.add(e);
                             break;
                         default:
@@ -235,13 +287,16 @@ public class EntityManager {
             }
 
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void loadInventory() {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveInventoryTest.txt")));
+            BufferedReader fileReader = new BufferedReader(
+                    new FileReader(System.getProperty("user.home") +
+                            ("\\Documents\\SaveInventoryTest.txt")));
             player.inventory().getInventory().clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -250,23 +305,46 @@ public class EntityManager {
                 if (tokens.length > 0) {
                     switch (tokens[0]) {
                         case "Adderal":
-                            Adderall d = new Adderall(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]));
+                            Adderall d = new Adderall(Integer.parseInt(
+                                    tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             player.inventory().addItem(d);
                             break;
                         case "Coffee":
-                            Coffee c = new Coffee(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]));
+                            Coffee c = new Coffee(Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             player.inventory().addItem(c);
                             break;
                         case "Assignment":
-                            Assignment a = new Assignment(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "Assignment", "An assignment you can gr - calls the set name in Item super classade", 1);
+                            Assignment a = new Assignment(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             player.inventory().addItem(a);
                             break;
                         case "Key":
-                            Key k = new Key(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "key", "used to open doors", 1);
+                            Key k = new Key(Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             player.inventory().addItem(k);
                             break;
                         case "EnergyDrink":
-                            EnergyDrink e = new EnergyDrink(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, rm.getCurrentRoom().getExit(tokens[3]));
+                            EnergyDrink e = new EnergyDrink(
+                                    Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    rm.getCurrentRoom().getExit(tokens[3]));
                             player.inventory().addItem(e);
                             break;
                         default:
@@ -275,51 +353,65 @@ public class EntityManager {
                 }
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void loadPlayers() {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SavePlayersTest.txt")));
+            BufferedReader fileReader = new BufferedReader(
+                    new FileReader(System.getProperty("user.home") +
+                            ("\\Documents\\SavePlayersTest.txt")));
             player = null;
             String line;
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    player = new Player(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), tokens[3], (Room) rm.getRoomlist().get(tokens[4]));
+                    player = new Player(Integer.parseInt(tokens[1]),
+                            Integer.parseInt(tokens[2]),
+                            tokens[3],
+                            (Room) rm.getRoomlist().get(tokens[4]));
                 }
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... " +
+                    "please check the save directory in the code.");
         }
     }
 
     public void loadStudents() {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveStudentsTest.txt")));
+            BufferedReader fileReader = new BufferedReader(
+                    new FileReader(System.getProperty("user.home") +
+                            ("\\Documents\\SaveStudentsTest.txt")));
             studentlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    Student student = new Student(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64,
-                            (Room) rm.getRoomlist().get(tokens[3]), Boolean.parseBoolean(tokens[4]));
+                    Student student = new Student(Integer.parseInt(tokens[1]),
+                            Integer.parseInt(tokens[2]),
+                            (Room) rm.getRoomlist().get(tokens[3]),
+                            Boolean.parseBoolean(tokens[4]));
                     studentlist.add(student);
                 }
 
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... " +
+                    "please check the save directory in the code.");
 
         }
     }
 
     public void loadFurniture() {
         try {
-            BufferedReader fileReader = new BufferedReader(new FileReader(System.getProperty("user.home") + ("\\Documents\\SaveItemsTest.txt")));
+            BufferedReader fileReader = new BufferedReader(
+                    new FileReader(System.getProperty("user.home") +
+                            ("\\Documents\\SaveItemsTest.txt")));
             furniturelist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -328,11 +420,21 @@ public class EntityManager {
                 if (tokens.length > 0) {
                     switch (tokens[0]) {
                         case "Chair":
-                            Chair c = new Chair(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "Chair", "You can sit on this");
+                            Chair c = new Chair(Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             furniturelist.add(c);
                             break;
                         case "Table":
-                            Table t = new Table(Integer.parseInt(tokens[1]), Integer.parseInt(tokens[2]), 64, 64, (Room) rm.getRoomlist().get(tokens[3]), "Table", "It might contain items!", true, 2);
+                            Table t = new Table(Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
+                                    64,
+                                    64,
+                                    (Room) rm.getRoomlist().get(tokens[3]),
+                                    true,
+                                    2);
                             furniturelist.add(t);
                             break;
                         default:
@@ -342,7 +444,8 @@ public class EntityManager {
             }
 
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... " +
+                    "please check the save directory in the code.");
         }
     }
 }

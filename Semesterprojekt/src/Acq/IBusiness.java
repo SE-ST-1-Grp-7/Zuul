@@ -1,21 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Acq;
 
-import javafx.scene.image.Image;
-
 /**
- *
- * @author J
+ * IBusiness interface.
+ * 
+ * @author J & Rasmus Willer
  */
 public interface IBusiness {
+    // Move player.
     void playerMove(String direction);
+    // Player interacts.
     void playerInteract(String direction);
+    // Drop item from player.
     void playerDropItem(int index);
-    Image entityGetImage(int row, int col);
+    // Get texture path for entity.
+    String entityGetImage(int row, int col);
+    // Save game and data.
     void saveGame();
+    // Load game from memory.
     void loadGame();
 }

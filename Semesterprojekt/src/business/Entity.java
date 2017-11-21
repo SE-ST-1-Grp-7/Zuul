@@ -1,7 +1,5 @@
 package business;
 
-import javafx.scene.image.Image;
-
 /**
  *
  * @author Group 7
@@ -10,7 +8,7 @@ public abstract class Entity {
     protected int x, y;
     protected int width, height;
     protected Room currentRoom;
-    protected Image entityImage;
+    protected String entityImage;
     
     public Entity(int x, int y, int width, int height, Room currentRoom) {
         this.x = x;
@@ -62,11 +60,11 @@ public abstract class Entity {
         this.currentRoom = currentRoom;
     }
 
-    public Image getEntityImage() {
+    public String getEntityImage() {
         return entityImage;
     }
 
-    public void setEntityImage(Image entityImage) {
+    public void setEntityImage(String entityImage) {
         this.entityImage = entityImage;
     }
     
