@@ -154,10 +154,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void loadButton(ActionEvent event) {
+        ib.loadGame();
     }
 
     @FXML
     private void saveButton(ActionEvent event) {
+        ib.saveGame();
     }
 
     @FXML
