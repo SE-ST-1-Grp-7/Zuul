@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="660.0" minWidth="10.0" prefWidth="660.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="10.0" prefWidth="301.0" />
@@ -26,7 +26,7 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="NEW GAME">
+            <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButton" text="NEW GAME">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -34,7 +34,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="LOAD">
+            <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadButton" text="LOAD">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -42,7 +42,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="SAVE">
+            <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveButton" text="SAVE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -50,7 +50,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="HIGHSCORE">
+            <Button fx:id="highscoreButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#highscoreButton" text="HIGHSCORE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -58,7 +58,7 @@
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="EXIT">
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#exitButton" text="EXIT">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -73,12 +73,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" text="USE">
+            <Button fx:id="useButton" mnemonicParsing="false" onAction="#useButton" text="USE">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" text="DROP">
+            <Button fx:id="dropButton" mnemonicParsing="false" onAction="#dropButton" text="DROP">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
@@ -95,14 +95,14 @@
                   <Image url="@../wow.jpg" />
                </image>
             </ImageView>
-            <ListView>
+            <ListView focusTraversable="false">
                <VBox.margin>
                   <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                </VBox.margin>
             </ListView>
          </children>
       </VBox>
-      <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <TextArea editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </GridPane.margin>
