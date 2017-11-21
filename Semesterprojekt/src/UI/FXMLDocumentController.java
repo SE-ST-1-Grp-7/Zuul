@@ -44,34 +44,41 @@ public class FXMLDocumentController implements Initializable {
     private Button loadButton;
     @FXML
     private Button highscoreButton;
-
-    private void handleButtonAction(ActionEvent event) {
+    @FXML
+    private Button useButton;
+    @FXML
+    private Button dropButton;
+    
+    @FXML
+    private void newGameButton(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
+        
+        // We have to move to to another place cause it is movement
         // set focus on canvas
-        gp.setFocusTraversable(true);
+//        gp.setFocusTraversable(true);
         // set keylistener
-        gp.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case D:
-                        ib.playerMove("right");
-                        break;
-                    case A:
-                        ib.playerMove("left");
-                        break;
-                    case W:
-                        ib.playerMove("up");
-                        break;
-                    case S:
-                        ib.playerMove("down");
-                        break;
-                    case SPACE:
-                        ib.playerInteract("idk");
-                        break;
-                }
-            }
-        });
+//        gp.setOnKeyPressed(new EventHandler<KeyEvent>() {
+//            @Override
+//            public void handle(KeyEvent event) {
+//                switch (event.getCode()) {
+//                    case D:
+//                        ib.playerMove("right");
+//                        break;
+//                    case A:
+//                        ib.playerMove("left");
+//                        break;
+//                    case W:
+//                        ib.playerMove("up");
+//                        break;
+//                    case S:
+//                        ib.playerMove("down");
+//                        break;
+//                    case SPACE:
+//                        ib.playerInteract("idk");
+//                        break;
+//                }
+//            }
+//        });
 
         // current time in nano time
         final long startNanoTime = System.nanoTime();
@@ -99,6 +106,8 @@ public class FXMLDocumentController implements Initializable {
         Tooltip loadtip = new Tooltip("Load the game");
         Tooltip highscoretip = new Tooltip("Get all highscores");
         Tooltip newGametip = new Tooltip("Start fresh new game");
+        Tooltip dropItem = new Tooltip("drop the item");
+        Tooltip useItem = new Tooltip("use the item");
         
         
         //Creating tooltips on buttons
@@ -107,6 +116,8 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(loadButton, loadtip);
         Tooltip.install(newGameButton, newGametip);
         Tooltip.install(highscoreButton, highscoretip);
+        Tooltip.install(dropButton, dropItem);
+        Tooltip.install(useButton, useItem);
         
     }
 
@@ -114,7 +125,7 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 // render floor
-                Image tile = new Image("testSquare.png");
+                Image tile = new Image("\\res\\textures\\floor10.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
                 gc.drawImage(choosePic(i,j), X * j, Y * i);
@@ -148,9 +159,9 @@ public class FXMLDocumentController implements Initializable {
         Platform.exit(); //exit the application
     }
 
-    @FXML
-    private void newGameButton(ActionEvent event) {
-    }
+//    @FXML
+//    private void newGameButton(ActionEvent event) {
+//    }
 
     @FXML
     private void loadButton(ActionEvent event) {

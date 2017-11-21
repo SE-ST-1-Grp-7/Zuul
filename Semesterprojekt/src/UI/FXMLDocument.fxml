@@ -73,12 +73,12 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <children>
-            <Button mnemonicParsing="false" onAction="#useButton" text="USE">
+            <Button fx:id="useButton" mnemonicParsing="false" onAction="#useButton" text="USE">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
             </Button>
-            <Button mnemonicParsing="false" onAction="#dropButton" text="DROP">
+            <Button fx:id="dropButton" mnemonicParsing="false" onAction="#dropButton" text="DROP">
                <padding>
                   <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
                </padding>
