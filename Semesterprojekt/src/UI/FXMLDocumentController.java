@@ -122,20 +122,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     public void drawImages(GraphicsContext gc) {
-        for (int i = 0; i < 10; i+=2) {
-            for (int j = 0; j < 10; j+=2) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
                 // render floor
-                Image tile = new Image("/textures/floor16.png");
-                gc.drawImage(tile, X * j, Y * i);
-                // render entities
-                //gc.drawImage(choosePic(i,j), X * j, Y * i);
-
-            }
-        }
-        for (int i = 1; i < 10; i+=2) {
-            for (int j = 1; j < 10; j+=2) {
-                // render floor
-                Image tile = new Image("/textures/floor15.png");
+                Image tile = new Image("/textures/floor14.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
                 //gc.drawImage(choosePic(i,j), X * j, Y * i);
