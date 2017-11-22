@@ -163,6 +163,7 @@ public class RoomManager {
             fileReader = new BufferedReader(new FileReader(csvFile));
             while ((line = fileReader.readLine()) != null) {
                 if (!"".equals(line)) {
+                    line = line.trim(); // Trim leading and tailing whitespaces.
                     String[] segments = line.split(splitBy);
                     if ("-".equals(segments[0])) {
                         lineNo = 0;
