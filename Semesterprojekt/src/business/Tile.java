@@ -1,17 +1,15 @@
 package business;
 
-import javafx.scene.image.Image;
-
 /**
  *
  * @author Rasmus Willer
  */
 class Tile {
     private boolean solid = false;
-    private Image image;
+    private String image;
     
     public Tile(String imgPath) {
-        this.image = new Image(imgPath);
+        this.image = imgPath;
     }
     
     public Tile(String imgPath, boolean solid) {
@@ -27,12 +25,12 @@ class Tile {
         this.solid = solid;
     }
 
-    public Image getImage() {
+    public String getImage() {
         return image;
     }
 
     public void setImage(String imgPath) {
-        this.image = new Image(imgPath);
+        this.image = imgPath;
     }
     
     
