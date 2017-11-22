@@ -140,7 +140,7 @@ public class Room {
         return entityArray[y][x] instanceof Item;
     }
     
-    public void makeTile(int x, int y, String image, boolean solid) {
-        tileArray[y][x] = new Tile(image, solid);
+    public void setTile(int x, int y, Tile tile) {
+        tileArray[y][x] = tile;
     }
 }

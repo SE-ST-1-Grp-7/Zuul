@@ -1,7 +1,6 @@
 package business;
 
 import Acq.IBusiness;
-import javafx.scene.image.Image;
 
 /**
  *
