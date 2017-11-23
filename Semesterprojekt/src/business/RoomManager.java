@@ -145,9 +145,9 @@ public class RoomManager {
         tiles.put("ID17", new Tile("/textures/floor6.png"));
         tiles.put("ID14", new Tile("/textures/floor2.png"));
         tiles.put("ID15", new Tile("/textures/floor4.png"));
-        tiles.put("ID41", new Tile("/textures/wall2.png"));
-        tiles.put("ID42", new Tile("/textures/wall6.png"));
-        tiles.put("ID43", new Tile("/textures/wall1.png"));
+        tiles.put("ID41", new Tile("/textures/wall2.png", true));
+        tiles.put("ID42", new Tile("/textures/wall6.png", true));
+        tiles.put("ID43", new Tile("/textures/wall1.png", true));
     }
 
     // Reads tile IDs from csv file.
@@ -165,13 +165,14 @@ public class RoomManager {
                 if (!"".equals(line)) {
                     line = line.trim(); // Trim leading and tailing whitespaces.
                     String[] segments = line.split(splitBy);
+                    // If reached new room in csv file, new entry in hashmap.
                     if ("-".equals(segments[0])) {
                         lineNo = 0;
                         roomName = segments[1].trim();
                         String[][] idList = new String[10][10];
                         tileMap.put(roomName, idList);
+                    // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
-
                         for (int i = 0; i < segments.length; i++) {
                             tileMap.get(roomName)[lineNo][i] = segments[i];
                         }
@@ -199,7 +200,9 @@ public class RoomManager {
         for (String name : roomlist.keySet()) {
             for (int i = 0; i < tileMap.get(name).length; i++) {
                 for (int j = 0; j < tileMap.get(name)[i].length; j++) {
+                    // Which tile to be placed in room object grid position.
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
+                    // Call setTile function and place tile object.
                     roomlist.get(name).setTile(i, j, tile);
                 }
             }
