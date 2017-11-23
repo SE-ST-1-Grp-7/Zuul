@@ -6,12 +6,12 @@ package business;
  * @author Gruppe 7
  */
 public class Player extends Person {
+
     private int energy; // Current energy level.
     private int energyCap; // Max amount of energy.
     private int fatigue; // Current fatiuge level.
     private int fatigueCap; // Max amount of fatiuge.
     private Inventory inventory; // The player's inventory.
-    private Room currentRoom; // Room player is in.
     private int gradedAssignments; // Amount of graded assignments.
     private int assignmentProgress; // Progress of grading an assignment.
     private Item tempItem; // Temporary holder for item to be dropped.
@@ -23,10 +23,10 @@ public class Player extends Person {
      * Constructor for player. Passes all relevant arguments to Superclass and
      * sets the attributes for the player.
      *
-     * @param x             int, horizontal positioning in grid.
-     * @param y             int, vertical positioning in grid.
-     * @param currentRoom   Room, placed currently in this room.
-     * @param name          String, name of player.
+     * @param x int, horizontal positioning in grid.
+     * @param y int, vertical positioning in grid.
+     * @param currentRoom Room, placed currently in this room.
+     * @param name String, name of player.
      */
     public Player(int x, int y, String name, Room currentRoom) {
         super(x,
@@ -36,9 +36,8 @@ public class Player extends Person {
                 currentRoom);
         // Pass image path to Superclass.
         super.setEntityImage(playerImage);
-        
+
         // PLAYER STATS
-        
         this.energy = 100; // Assign energy level to start at 100.
         this.energyCap = 100; // Assign energy capacity to 100.
         this.fatigue = 0; // Current amount of fatigue starts at 0.
@@ -48,33 +47,38 @@ public class Player extends Person {
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
     }
-    
+
     /**
      * Interacts with nearby interactable object.
      */
     public void interact() {
-        switch(facing) {
+        switch (facing) {
             case "right":
-                getCurrentRoom().entityArray[getY()][getX()+1].onInteract();
+                if(getCurrentRoom().entityArray[getY()][getX() + 1] != null)
+                  getCurrentRoom().entityArray[getY()][getX() + 1].onInteract();
                 break;
             case "left":
-                getCurrentRoom().entityArray[getY()][getX()-1].onInteract();
+                if(getCurrentRoom().entityArray[getY()][getX() - 1] != null)
+                  getCurrentRoom().entityArray[getY()][getX() - 1].onInteract();
                 break;
             case "up":
-                getCurrentRoom().entityArray[getY()-1][getX()].onInteract();
+                if(getCurrentRoom().entityArray[getY()-1][getX()] != null)
+                  getCurrentRoom().entityArray[getY() - 1][getX()].onInteract();
                 break;
             case "down":
-                getCurrentRoom().entityArray[getY()+1][getX()].onInteract();
+                if(getCurrentRoom().entityArray[getY()+1][getX()] != null)
+                 getCurrentRoom().entityArray[getY() + 1][getX()].onInteract();
                 break;
         }
         // check if square next to player != null
         // if true - call .interact on the entity
-        
+
     }
+
     /**
      * Move in given direction.
-     * 
-     * @param direction     String, lowercase written direction for movement.
+     *
+     * @param direction String, lowercase written direction for movement.
      */
     public void move(String direction) {
         this.inventory.printInventory();
@@ -101,7 +105,7 @@ public class Player extends Person {
                 break;
 
         }
-        System.out.println(currentRoom.getLongDescription());
+//        System.out.println(currentRoom.getLongDescription());
     }
 
     /**
@@ -113,27 +117,26 @@ public class Player extends Person {
             dont = true; // dont set previous field to null
         }
     }
-    
+
     /**
      * Teleportation movement.
-     * 
-     * @param newX      int, new X coordinate in room.
-     * @param newY      int, new Y coordinate in room.
+     *
+     * @param newX int, new X coordinate in room.
+     * @param newY int, new Y coordinate in room.
      */
     public void move(int newX, int newY) {
         try {
             if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
                 placeItem(); // places tempItem if it exists
-                if (currentRoom.hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) currentRoom.entityArray[newY][newX])) { // if addItem was successful
-                        System.out.println("YOU LOOTED IT"); // print loot message
+                if (getCurrentRoom().hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
+                    if (inventory.addItem((Item) getCurrentRoom().entityArray[newY][newX])) { // if addItem was successful
                     } else { // if not
-                        tempItem = (Item) currentRoom.entityArray[newY][newX]; // set temp item to be whatevers in pos x & y
+                        tempItem = (Item) getCurrentRoom().entityArray[newY][newX]; // set temp item to be whatevers in pos x & y
                     }
                 }
-                currentRoom.entityArray[newY][newX] = this; // move the player to another location
+                getCurrentRoom().entityArray[newY][newX] = this; // move the player to another location
                 if (!dont) {
-                    currentRoom.entityArray[getY()][getX()] = null; // reset current position
+                    getCurrentRoom().entityArray[getY()][getX()] = null; // reset current position
                 } else {
                     dont = false;
                     tempItem = null;
@@ -152,15 +155,12 @@ public class Player extends Person {
     /**
      * Method for collision check.
      *
-     * @param x         int, X coordinate of grid location to be checked.
-     * @param y         int, Y coordinate of grid location to be checked.
-     * @return          boolean, true if collision, false otherwise.
+     * @param x int, X coordinate of grid location to be checked.
+     * @param y int, Y coordinate of grid location to be checked.
+     * @return boolean, true if collision, false otherwise.
      */
     public boolean checkCollision(int x, int y) {
         if (currentRoom.entityArray[y][x] instanceof Item) {
-            if (!currentRoom.tileArray[y][x].isSolid()) {
-                return false;
-            }
             return currentRoom.tileArray[y][x].isSolid();
         } else {
             return currentRoom.entityArray[y][x] != null;
@@ -169,38 +169,37 @@ public class Player extends Person {
     }
 
     // GETTERS & SETTERS
-    
     /**
      * Method call/get the player's inventory.
      *
-     * @return      Inventory, returns the inventory object.
+     * @return Inventory, returns the inventory object.
      */
     public Inventory inventory() {
         return this.inventory;
     }
-    
+
     /**
      * Getter for tempItem - used to drop an item.
-     * 
-     * @return      Item, return the tempItem object.
+     *
+     * @return Item, return the tempItem object.
      */
-    public Item getTempItem(){
+    public Item getTempItem() {
         return this.tempItem;
     }
-    
+
     /**
      * Setter for tempItem - used to set the tempitem to be dropped
-     * 
-     * @param i     Item, assigns an Item object to tempItem.
+     *
+     * @param i Item, assigns an Item object to tempItem.
      */
-    public void setTempItem(Item i){
+    public void setTempItem(Item i) {
         this.tempItem = i;
     }
-    
+
     /**
      * Getter for the current energy level.
      *
-     * @return      int, current value of energy level.
+     * @return int, current value of energy level.
      */
     public int getEnergy() {
         return this.energy;
@@ -209,7 +208,7 @@ public class Player extends Person {
     /**
      * Setter for the current energy level.
      *
-     * @param energy    int, value to be current energy level.
+     * @param energy int, value to be current energy level.
      */
     public void setEnergy(int energy) {
         this.energy = energy;
@@ -218,7 +217,7 @@ public class Player extends Person {
     /**
      * Getter for the energy capacity.
      *
-     * @return      int, value of energy capacity.
+     * @return int, value of energy capacity.
      */
     public int getEnergyCap() {
         return this.energyCap;
@@ -227,7 +226,7 @@ public class Player extends Person {
     /**
      * Setter for energyCap.
      *
-     * @param energyCap     int, value to be energy capacity.
+     * @param energyCap int, value to be energy capacity.
      */
     public void setEnergyCap(int energyCap) {
         this.energyCap = energyCap;
@@ -236,7 +235,7 @@ public class Player extends Person {
     /**
      * Getter for the current fatigue.
      *
-     * @return      int, current value for fatigue stat.
+     * @return int, current value for fatigue stat.
      */
     public int getFatigue() {
         return this.fatigue;
@@ -245,7 +244,7 @@ public class Player extends Person {
     /**
      * Setter for the current fatigue.
      *
-     * @param fatigue   int, value to become the current fatigue level.
+     * @param fatigue int, value to become the current fatigue level.
      */
     public void setFatigue(int fatigue) {
         this.fatigue = fatigue;
@@ -254,7 +253,7 @@ public class Player extends Person {
     /**
      * Getter for the fatiuge capacity.
      *
-     * @return      int, value of fatigue capacity.
+     * @return int, value of fatigue capacity.
      */
     public int getFatigueCap() {
         return this.fatigueCap;
@@ -263,7 +262,7 @@ public class Player extends Person {
     /**
      * Setter for fatiuge capacity.
      *
-     * @param fatigueCap    int, change fatigue capacity to this value.
+     * @param fatigueCap int, change fatigue capacity to this value.
      */
     public void setFatigueCap(int fatigueCap) {
         this.fatigueCap = fatigueCap;
@@ -272,7 +271,7 @@ public class Player extends Person {
     /**
      * Getter for graded assignments.
      *
-     * @return      int, value of current assignments graded.
+     * @return int, value of current assignments graded.
      */
     public int getGradedAssignments() {
         return this.gradedAssignments;
@@ -281,7 +280,7 @@ public class Player extends Person {
     /**
      * Setter for graded assignments.
      *
-     * @param assignment    int, assign new value of graded assignments.
+     * @param assignment int, assign new value of graded assignments.
      */
     public void setGradedAssignments(int assignment) {
         this.gradedAssignments = assignment;
@@ -290,7 +289,7 @@ public class Player extends Person {
     /**
      * Getter for assignment progress.
      *
-     * @return      int, value representation of assignment progress.
+     * @return int, value representation of assignment progress.
      */
     public int getAssignmentProgress() {
         return this.assignmentProgress;
@@ -299,15 +298,15 @@ public class Player extends Person {
     /**
      * Setter for assignment progress.
      *
-     * @param assignmentProgress    int, change value of assignment progress.
+     * @param assignmentProgress int, change value of assignment progress.
      */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
     }
-    
+
     /**
-     * Override, upon interaction with player.
-     * (if students catch up to the professor.)
+     * Override, upon interaction with player. (if students catch up to the
+     * professor.)
      */
     @Override
     public void onInteract() {

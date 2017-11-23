@@ -1,7 +1,6 @@
 package business;
 
 // IMPORTS
-
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -10,10 +9,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Entity Manager class. Keeps track of all the entities currently in the game.
- * 
+ *
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class EntityManager {
@@ -23,14 +23,21 @@ public class EntityManager {
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
+    private HashMap<Room, Entity[][]> entityArray = new HashMap<>();
     private RoomManager rm;
 
     public EntityManager(RoomManager rm) {
         this.rm = rm;
+        createPlayer();
+
+    }
+
+    private void createPlayer() {
+        player = new Player(0, 0, "james", rm.getCurrentRoom());
+        player.getCurrentRoom().entityArray[player.getY()][player.getX()] = player;
     }
 
     // ENTITY MANAGMENT METHODS
-    
     public void addStudent(Student s) {
         studentlist.add(s);
     }
@@ -56,7 +63,6 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
-    
     public Player getPlayer() {
         return player;
     }
@@ -88,9 +94,8 @@ public class EntityManager {
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
     }
-    
+
     // LOAD & SAVE METHODS
-    
     public void saveGame() {
         saveItems();
         savePlayers();
@@ -110,9 +115,9 @@ public class EntityManager {
     public void saveItems() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home") +
-                            "\\Documents\\SaveItemsTest.txt")));
-            
+                    new FileOutputStream(System.getProperty("user.home")
+                            + "\\Documents\\SaveItemsTest.txt")));
+
             for (Item item : itemlist) {
                 fileWriter.append(item.getName());
                 fileWriter.append(",");
@@ -128,32 +133,32 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void saveInventory() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home") +
-                            "\\Documents\\SaveInventoryTest.txt")));
+                    new FileOutputStream(System.getProperty("user.home")
+                            + "\\Documents\\SaveInventoryTest.txt")));
             for (Item item : player.inventory().getInventory()) {
                 fileWriter.append(item.getName());
             }
             fileWriter.append("\n");
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void savePlayers() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home") +
-                            "\\Documents\\SavePlayersTest.txt")));
-            
+                    new FileOutputStream(System.getProperty("user.home")
+                            + "\\Documents\\SavePlayersTest.txt")));
+
             fileWriter.append(player.getName());
             fileWriter.append(",");
             fileWriter.append(String.valueOf(player.getX()));
@@ -167,16 +172,16 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void saveStudents() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home") +
-                            "\\Documents\\SaveStudentTest.txt")));
+                    new FileOutputStream(System.getProperty("user.home")
+                            + "\\Documents\\SaveStudentTest.txt")));
             for (Student student : studentlist) {
                 fileWriter.append(String.valueOf(student.getX()));
                 fileWriter.append(",");
@@ -193,17 +198,17 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void saveFurniture() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home") +
-                            "\\Documents\\SaveFurnitureTest.txt")));
-            
+                    new FileOutputStream(System.getProperty("user.home")
+                            + "\\Documents\\SaveFurnitureTest.txt")));
+
             for (Furniture furniture : furniturelist) {
                 fileWriter.append(String.valueOf(furniture.getX()));
                 fileWriter.append(",");
@@ -218,16 +223,16 @@ public class EntityManager {
             fileWriter.flush();
             fileWriter.close();
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void loadItems() {
         try {
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home") +
-                            ("\\Documents\\SaveItemsTest.txt")));
+                    new FileReader(System.getProperty("user.home")
+                            + ("\\Documents\\SaveItemsTest.txt")));
             itemlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -287,16 +292,16 @@ public class EntityManager {
             }
 
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void loadInventory() {
         try {
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home") +
-                            ("\\Documents\\SaveInventoryTest.txt")));
+                    new FileReader(System.getProperty("user.home")
+                            + ("\\Documents\\SaveInventoryTest.txt")));
             player.inventory().getInventory().clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -353,16 +358,16 @@ public class EntityManager {
                 }
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void loadPlayers() {
         try {
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home") +
-                            ("\\Documents\\SavePlayersTest.txt")));
+                    new FileReader(System.getProperty("user.home")
+                            + ("\\Documents\\SavePlayersTest.txt")));
             player = null;
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -376,16 +381,16 @@ public class EntityManager {
                 }
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
+                    + "please check the save directory in the code.");
         }
     }
 
     public void loadStudents() {
         try {
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home") +
-                            ("\\Documents\\SaveStudentsTest.txt")));
+                    new FileReader(System.getProperty("user.home")
+                            + ("\\Documents\\SaveStudentsTest.txt")));
             studentlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -401,8 +406,8 @@ public class EntityManager {
 
             }
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... "
+                    + "please check the save directory in the code.");
 
         }
     }
@@ -410,8 +415,8 @@ public class EntityManager {
     public void loadFurniture() {
         try {
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home") +
-                            ("\\Documents\\SaveItemsTest.txt")));
+                    new FileReader(System.getProperty("user.home")
+                            + ("\\Documents\\SaveItemsTest.txt")));
             furniturelist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -444,8 +449,8 @@ public class EntityManager {
             }
 
         } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... " +
-                    "please check the save directory in the code.");
+            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... "
+                    + "please check the save directory in the code.");
         }
     }
 }

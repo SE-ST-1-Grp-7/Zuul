@@ -132,7 +132,7 @@ public class RoomManager {
 
         /* Assign the Room object reference 'teacher room' as the
         currentRoom object.*/
-        currentRoom = roomlist.get("teacher room");
+        currentRoom = roomlist.get("pub");
     }
 
     /* Creates a hashmap with new Tile object as value.
@@ -218,7 +218,7 @@ public class RoomManager {
     }
 
     public Room getCurrentRoom() {
-        return currentRoom;
+        return this.currentRoom;
     }
 
     /**

@@ -10,12 +10,13 @@ import java.util.HashMap;
  * @author Rasmus Willer & Jonas
  */
 public class Room {
+
     // instantiates room coordinates to set and get.
     // Declare attributes -section.
     private String description;
     private String name;
     public Tile[][] tileArray = new Tile[10][10];
-    public Entity[][] entityArray = new Entity[10][10];
+    public Entity[][] entityArray;
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
@@ -33,6 +34,7 @@ public class Room {
            value as Room object. */
         exits = new HashMap<String, Room>();
         fillTenTenArray(tileArray);
+         entityArray = new Entity[10][10];
         fillTenTenArray(entityArray);
     }
 
@@ -57,7 +59,8 @@ public class Room {
     public String getShortDescription() {
         return description;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
@@ -117,7 +120,25 @@ public class Room {
         return this.exits;
     }
 
-    private void fillTenTenArray(Object[][] list) {
+    private void fillTenTenArray(Tile[][] list) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                list[i][j] = null;
+            }
+        }
+        /*Assignment a = new Assignment();
+        a.setX(3);
+        a.setY(0);
+        itemsInRoom.add(a);
+        Assignment b = new Assignment();
+        b.setX(3);
+        b.setY(1);
+        itemsInRoom.add(b);
+        for (Item i : itemsInRoom) {
+            roomArray[i.getY()][i.getX()] = i;
+        }*/
+    }
+        private void fillTenTenArray(Entity[][] list) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 list[i][j] = null;
@@ -137,9 +158,13 @@ public class Room {
     }
 
     public boolean hasLoot(int x, int y) {
-        return entityArray[y][x] instanceof Item;
+        if (entityArray[y][x] != null) {
+            return entityArray[y][x] instanceof Item;
+        }
+        return false;
+
     }
-    
+
     public void setTile(int x, int y, Tile tile) {
         tileArray[y][x] = tile;
     }

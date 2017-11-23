@@ -9,7 +9,7 @@ public interface IBusiness {
     // Move player.
     void playerMove(String direction);
     // Player interacts.
-    void playerInteract(String direction);
+    void playerInteract();
     // Drop item from player.
     void playerDropItem(int index);
     // Get texture path for entity.
