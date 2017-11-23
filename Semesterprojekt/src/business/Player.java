@@ -81,8 +81,6 @@ public class Player extends Person {
      * @param direction String, lowercase written direction for movement.
      */
     public void move(String direction) {
-        this.inventory.printInventory();
-
         // Get second parsed command word and assign it to String variable.
         /* Assign next room according to matching direction defined in the
            createRooms method */

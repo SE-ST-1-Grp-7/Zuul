@@ -81,7 +81,6 @@ public class BusinessFacade implements IBusiness {
         entityManager.loadGame();
     }
 
-    
     @Override
     public String getTileImage(int row, int col) {
         if (roomManager.getCurrentRoom().getTiles()[row][col] != null) {
@@ -89,7 +88,5 @@ public class BusinessFacade implements IBusiness {
         } else {
             return "testSquare.png";
         }
-        
     }
-    
 }
