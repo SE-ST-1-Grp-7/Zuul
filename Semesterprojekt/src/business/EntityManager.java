@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -97,6 +98,7 @@ public class EntityManager {
 
     // LOAD & SAVE METHODS
     public void saveGame() {
+        makeSaveFolder();
         saveItems();
         savePlayers();
         saveStudents();
@@ -112,11 +114,17 @@ public class EntityManager {
         loadInventory();
     }
 
+    public void makeSaveFolder(){
+        File folder = new File(System.getProperty("user.home")+"\\Documents\\zuul");
+            if(!folder.exists()){
+                folder.mkdirs();
+            }
+    }
     public void saveItems() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\SaveItemsTest.txt")));
+                            + "\\Documents\\zuul\\SaveItemsTest.txt")));
 
             for (Item item : itemlist) {
                 fileWriter.append(item.getName());
@@ -142,7 +150,7 @@ public class EntityManager {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\SaveInventoryTest.txt")));
+                            + "\\Documents\\zuul\\SaveInventoryTest.txt")));
             for (Item item : player.inventory().getInventory()) {
                 fileWriter.append(item.getName());
             }
@@ -157,7 +165,7 @@ public class EntityManager {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\SavePlayersTest.txt")));
+                            + "\\Documents\\zuul\\SavePlayersTest.txt")));
 
             fileWriter.append(player.getName());
             fileWriter.append(",");
@@ -181,7 +189,7 @@ public class EntityManager {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\SaveStudentTest.txt")));
+                            + "\\Documents\\zuul\\SaveStudentTest.txt")));
             for (Student student : studentlist) {
                 fileWriter.append(String.valueOf(student.getX()));
                 fileWriter.append(",");
@@ -207,7 +215,7 @@ public class EntityManager {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\SaveFurnitureTest.txt")));
+                            + "\\Documents\\zuul\\SaveFurnitureTest.txt")));
 
             for (Furniture furniture : furniturelist) {
                 fileWriter.append(String.valueOf(furniture.getX()));
@@ -232,7 +240,7 @@ public class EntityManager {
         try {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\SaveItemsTest.txt")));
+                            + ("\\Documents\\zuul\\SaveItemsTest.txt")));
             itemlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -301,7 +309,7 @@ public class EntityManager {
         try {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\SaveInventoryTest.txt")));
+                            + ("\\Documents\\zuul\\SaveInventoryTest.txt")));
             player.inventory().getInventory().clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -367,7 +375,7 @@ public class EntityManager {
         try {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\SavePlayersTest.txt")));
+                            + ("\\Documents\\zuul\\SavePlayersTest.txt")));
             player = null;
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -390,7 +398,7 @@ public class EntityManager {
         try {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\SaveStudentsTest.txt")));
+                            + ("\\Documents\\zuul\\SaveStudentsTest.txt")));
             studentlist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
@@ -416,7 +424,7 @@ public class EntityManager {
         try {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\SaveItemsTest.txt")));
+                            + ("\\Documents\\zuul\\SaveItemsTest.txt")));
             furniturelist.clear();
             String line;
             while ((line = fileReader.readLine()) != null) {
