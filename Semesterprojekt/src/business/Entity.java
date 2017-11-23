@@ -53,7 +53,7 @@ public abstract class Entity {
     }
     
     public Room getCurrentRoom() {
-        return currentRoom;
+        return this.currentRoom;
     }
 
     public void setCurrentRoom(Room currentRoom) {

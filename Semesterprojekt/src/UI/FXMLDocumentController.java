@@ -31,6 +31,7 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     private Pane pane;
     private Canvas c;
+    @FXML
     private GridPane gp;
     @FXML
     private Canvas canvasId;
@@ -55,30 +56,30 @@ public class FXMLDocumentController implements Initializable {
         
         // We have to move to to another place cause it is movement
         // set focus on canvas
-//        gp.setFocusTraversable(true);
-        // set keylistener
-//        gp.setOnKeyPressed(new EventHandler<KeyEvent>() {
-//            @Override
-//            public void handle(KeyEvent event) {
-//                switch (event.getCode()) {
-//                    case D:
-//                        ib.playerMove("right");
-//                        break;
-//                    case A:
-//                        ib.playerMove("left");
-//                        break;
-//                    case W:
-//                        ib.playerMove("up");
-//                        break;
-//                    case S:
-//                        ib.playerMove("down");
-//                        break;
-//                    case SPACE:
-//                        ib.playerInteract("idk");
-//                        break;
-//                }
-//            }
-//        });
+        gp.setFocusTraversable(true);
+        //set keylistener
+        gp.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()) {
+                    case D:
+                        ib.playerMove("right");
+                        break;
+                    case A:
+                        ib.playerMove("left");
+                        break;
+                    case W:
+                        ib.playerMove("up");
+                        break;
+                    case S:
+                        ib.playerMove("down");
+                        break;
+                    case Z:
+                        ib.playerInteract();
+                        break;
+                }
+            }
+        });
 
         // current time in nano time
         final long startNanoTime = System.nanoTime();
@@ -128,7 +129,10 @@ public class FXMLDocumentController implements Initializable {
                 Image tile = new Image("/textures/floor10.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
-                //gc.drawImage(choosePic(i,j), X * j, Y * i);
+                if(!ib.entityGetImage(i, j).equals("testSquare.png")) {
+                    gc.drawImage(choosePic(i,j), X * j, Y * i);
+                }
+                
 
             }
         }
