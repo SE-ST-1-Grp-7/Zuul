@@ -81,4 +81,10 @@ public class BusinessFacade implements IBusiness {
         entityManager.loadGame();
     }
 
+    
+    @Override
+    public String getTileImage(int row, int col) {
+        return roomManager.getCurrentRoom().getTiles()[row][col].getImage();
+    }
+    
 }

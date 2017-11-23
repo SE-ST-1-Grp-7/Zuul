@@ -18,4 +18,6 @@ public interface IBusiness {
     void saveGame();
     // Load game from memory.
     void loadGame();
+    // Get tiles
+    String getTileImage(int row, int col);
 }
