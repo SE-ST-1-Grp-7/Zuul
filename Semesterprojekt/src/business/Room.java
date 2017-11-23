@@ -168,4 +168,8 @@ public class Room {
     public void setTile(int x, int y, Tile tile) {
         tileArray[y][x] = tile;
     }
+    
+    public Tile[][] getTiles() {
+        return tileArray;
+    }
 }
