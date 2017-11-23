@@ -236,7 +236,7 @@ public class RoomManager {
            createRooms method */
         Room nextRoom = currentRoom.getExit(direction);
 
-        // If there is no such direction print message.
+        // If there is no such direction print message. 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } /* Update current room reference and print long description of new

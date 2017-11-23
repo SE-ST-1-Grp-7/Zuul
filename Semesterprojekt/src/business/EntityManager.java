@@ -250,47 +250,47 @@ public class EntityManager {
                     switch (tokens[0]) {
                         case "Adderal":
                             Adderall d = new Adderall(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(d);
                             break;
                         case "Coffee":
                             Coffee c = new Coffee(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(c);
                             break;
                         case "Assignment":
                             Assignment a = new Assignment(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(a);
                             break;
                         case "Key":
                             Key k = new Key(Integer.parseInt(
-                                    tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                                    tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(k);
                             break;
                         case "EnergyDrink":
                             EnergyDrink e = new EnergyDrink(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    rm.getCurrentRoom().getExit(tokens[3]));
+                                    rm.getCurrentRoom().getExit(tokens[2]));
                             itemlist.add(e);
                             break;
                         default:
@@ -319,45 +319,45 @@ public class EntityManager {
                     switch (tokens[0]) {
                         case "Adderal":
                             Adderall d = new Adderall(Integer.parseInt(
-                                    tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                                    tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             player.inventory().addItem(d);
                             break;
                         case "Coffee":
-                            Coffee c = new Coffee(Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                            Coffee c = new Coffee(Integer.parseInt(tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             player.inventory().addItem(c);
                             break;
                         case "Assignment":
                             Assignment a = new Assignment(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             player.inventory().addItem(a);
                             break;
                         case "Key":
-                            Key k = new Key(Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                            Key k = new Key(Integer.parseInt(tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             player.inventory().addItem(k);
                             break;
                         case "EnergyDrink":
                             EnergyDrink e = new EnergyDrink(
+                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    rm.getCurrentRoom().getExit(tokens[3]));
+                                    rm.getCurrentRoom().getExit(tokens[2]));
                             player.inventory().addItem(e);
                             break;
                         default:
@@ -382,10 +382,10 @@ public class EntityManager {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    player = new Player(Integer.parseInt(tokens[1]),
-                            Integer.parseInt(tokens[2]),
-                            tokens[3],
-                            (Room) rm.getRoomlist().get(tokens[4]));
+                    player = new Player(Integer.parseInt(tokens[0]),
+                            Integer.parseInt(tokens[1]),
+                            tokens[2],
+                            (Room) rm.getRoomlist().get(tokens[3]));
                 }
             }
         } catch (IOException e) {
@@ -405,10 +405,10 @@ public class EntityManager {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
                 if (tokens.length > 0) {
-                    Student student = new Student(Integer.parseInt(tokens[1]),
-                            Integer.parseInt(tokens[2]),
-                            (Room) rm.getRoomlist().get(tokens[3]),
-                            Boolean.parseBoolean(tokens[4]));
+                    Student student = new Student(Integer.parseInt(tokens[0]),
+                            Integer.parseInt(tokens[1]),
+                            (Room) rm.getRoomlist().get(tokens[2]),
+                            Boolean.parseBoolean(tokens[3]));
                     studentlist.add(student);
                 }
 
@@ -433,19 +433,19 @@ public class EntityManager {
                 if (tokens.length > 0) {
                     switch (tokens[0]) {
                         case "Chair":
-                            Chair c = new Chair(Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                            Chair c = new Chair(Integer.parseInt(tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             furniturelist.add(c);
                             break;
                         case "Table":
-                            Table t = new Table(Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
+                            Table t = new Table(Integer.parseInt(tokens[0]),
+                                    Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[3]),
+                                    (Room) rm.getRoomlist().get(tokens[2]),
                                     true,
                                     2);
                             furniturelist.add(t);
