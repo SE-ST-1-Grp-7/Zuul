@@ -170,6 +170,6 @@ public class Room {
     }
     
     public Tile[][] getTiles() {
-        return tileArray;
+        return this.tileArray;
     }
 }

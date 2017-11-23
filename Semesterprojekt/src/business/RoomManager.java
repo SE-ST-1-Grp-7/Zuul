@@ -132,7 +132,7 @@ public class RoomManager {
 
         /* Assign the Room object reference 'teacher room' as the
         currentRoom object.*/
-        currentRoom = roomlist.get("pub");
+        currentRoom = roomlist.get("garden");
     }
 
     /* Creates a hashmap with new Tile object as value.
@@ -171,10 +171,12 @@ public class RoomManager {
                         roomName = segments[1].trim();
                         String[][] idList = new String[10][10];
                         tileMap.put(roomName, idList);
-                    // Otherwise assign ID to grid position in hashmap value[][] 
+                        // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         for (int i = 0; i < segments.length; i++) {
-                            tileMap.get(roomName)[lineNo][i] = segments[i];
+                            tileMap.get(roomName)[lineNo][i] = segments[i].trim();
+                            System.out.println(segments[i]);
+
                         }
                         lineNo++;
                     }
@@ -203,7 +205,9 @@ public class RoomManager {
                     // Which tile to be placed in room object grid position.
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
                     // Call setTile function and place tile object.
+                    System.out.println(name);
                     roomlist.get(name).setTile(i, j, tile);
+                    System.out.println(i + " " + j);
                 }
             }
         }
