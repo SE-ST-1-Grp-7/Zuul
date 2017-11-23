@@ -169,8 +169,6 @@ public class RoomManager {
                         lineNo = 0;
                         roomName = segments[1].trim();
                         String[][] idList = new String[10][10];
-                        System.out.println(roomName);
-                        
                         tileMap.put(roomName, idList);
                     } else {
 
@@ -199,8 +197,6 @@ public class RoomManager {
     // goes through all rooms and each grid position gets a tile assigned.
     public static void addTilesToRooms() {
         for (String name : roomlist.keySet()) {
-            System.out.println(roomlist.keySet());
-            System.out.println(tileMap.keySet());
             for (int i = 0; i < tileMap.get(name).length; i++) {
                 for (int j = 0; j < tileMap.get(name)[i].length; j++) {
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
