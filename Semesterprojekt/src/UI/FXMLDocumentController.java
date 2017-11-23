@@ -126,7 +126,7 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 // render floor
-                Image tile = new Image(ib.getTileImage(i, j));
+                Image tile = new Image("/textures/floor5.png");
                 gc.drawImage(tile, X * j, Y * i);
                 // render entities
                 if(!ib.entityGetImage(i, j).equals("testSquare.png")) {
