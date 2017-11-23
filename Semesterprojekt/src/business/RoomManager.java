@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author Rasmus Willer & Søren Bendtsen
+ * @author Rasmus Willer & Søren Bendtsen & Jonas Bjørstorp
  */
 public class RoomManager {
 
@@ -31,7 +31,6 @@ public class RoomManager {
         // Declare room objects.
 
         // Instantiate the rooms and their descriptions
-        roomlist = new HashMap<>();
         roomlist.put("garden", new Room(
                 "outside in the lovely garden... smells lovely of roses",
                 "garden"));
