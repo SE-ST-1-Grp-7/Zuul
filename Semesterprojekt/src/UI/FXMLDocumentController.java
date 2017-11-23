@@ -106,7 +106,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip savetip = new Tooltip("Save the game");
         Tooltip loadtip = new Tooltip("Load the game");
         Tooltip highscoretip = new Tooltip("Get all highscores");
-        Tooltip newGametip = new Tooltip("Start fresh new game");
+        Tooltip newGametip = new Tooltip("Start game");
         Tooltip dropItem = new Tooltip("drop the item");
         Tooltip useItem = new Tooltip("use the item");
         

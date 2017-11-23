@@ -167,11 +167,12 @@ public class EntityManager {
                     new FileOutputStream(System.getProperty("user.home")
                             + "\\Documents\\zuul\\SavePlayersTest.txt")));
 
-            fileWriter.append(player.getName());
-            fileWriter.append(",");
+            
             fileWriter.append(String.valueOf(player.getX()));
             fileWriter.append(",");
             fileWriter.append(String.valueOf(player.getY()));
+            fileWriter.append(",");
+            fileWriter.append(player.getName());
             fileWriter.append(",");
             fileWriter.append(player.getCurrentRoom().getName());
             fileWriter.append("\n");
@@ -376,7 +377,7 @@ public class EntityManager {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SavePlayersTest.txt")));
-            player = null;
+            this.player = null;
             String line;
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
