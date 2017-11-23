@@ -84,7 +84,12 @@ public class BusinessFacade implements IBusiness {
     
     @Override
     public String getTileImage(int row, int col) {
-        return roomManager.getCurrentRoom().getTiles()[row][col].getImage();
+        if (roomManager.getCurrentRoom().getTiles()[row][col] != null) {
+            return roomManager.getCurrentRoom().getTiles()[row][col].getImage();
+        } else {
+            return "testSquare.png";
+        }
+        
     }
     
 }

@@ -34,7 +34,7 @@ public class EntityManager {
     }
 
     private void createPlayer() {
-        player = new Player(0, 0, "james", rm.getCurrentRoom());
+        player = new Player(2, 2, "james", rm.getCurrentRoom());
         player.getCurrentRoom().entityArray[player.getY()][player.getX()] = player;
     }
 
