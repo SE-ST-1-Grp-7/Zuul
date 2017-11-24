@@ -117,11 +117,12 @@ public class EntityManager {
                         roomName = segments[1].trim();
                         String[][] idList = new String[10][10];
                         entityCSV.put(roomName, idList);
-                        // Otherwise assign ID to grid position in hashmap value[][] 
+                    // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         for (int i = 0; i < segments.length; i++) {
                             if (!"".equals(segments[i].trim())) {
-                                entityCSV.get(roomName)[lineNo][i] = segments[i].trim();
+                                entityCSV.get(roomName)[lineNo][i] =
+                                        segments[i].trim();
                             }
                         }
                         lineNo++;
@@ -155,7 +156,7 @@ public class EntityManager {
                     if (IDnum == null) {
                         continue;
                     }
-                    entityTypes(i, j, playerName, IDnum);
+                    entityTypes(i, j, name, playerName, IDnum);
                 }
             }
         }
@@ -163,7 +164,12 @@ public class EntityManager {
     
     /* Creates an entity based on ID and grid position and assigns the entity
        to its respective list of entities. */
-    public void entityTypes(int i, int j, String playerName, String IDnum) {
+    public void entityTypes(int i,
+            int j,
+            String name,
+            String playerName,
+            String IDnum) {
+        
         // Switch cases for what type of entity it is
         switch (IDnum.toUpperCase()) {
             // Instance of player to be added.
@@ -178,7 +184,7 @@ public class EntityManager {
             case "ID51":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student1.png"));
                 break;
@@ -187,7 +193,7 @@ public class EntityManager {
             case "ID52":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         true,
                         "/textures/student2.png"));
                 break;
@@ -196,7 +202,7 @@ public class EntityManager {
             case "ID53":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student3.png"));
                 break;
@@ -205,7 +211,7 @@ public class EntityManager {
             case "ID54":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student4.png"));
                 break;
@@ -214,7 +220,7 @@ public class EntityManager {
             case "ID55":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         true,
                         "/textures/student5.png"));
                 break;
@@ -223,7 +229,7 @@ public class EntityManager {
             case "ID56":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student6.png"));
                 break;
@@ -232,7 +238,7 @@ public class EntityManager {
             case "ID57":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student7.png"));
                 break;
@@ -241,7 +247,7 @@ public class EntityManager {
             case "ID58":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         true,
                         "/textures/student8.png"));
                 break;
@@ -250,7 +256,7 @@ public class EntityManager {
             case "ID59":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student9.png"));
                 break;
@@ -259,7 +265,7 @@ public class EntityManager {
             case "ID60":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student10.png"));
                 break;
@@ -268,7 +274,7 @@ public class EntityManager {
             case "ID61":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         true,
                         "/textures/student11.png"));
                 break;
@@ -277,7 +283,7 @@ public class EntityManager {
             case "ID62":
                 studentlist.add(new Student(j,
                         i,
-                        rm.getCurrentRoom(),
+                        rm.getRoom(name),
                         false,
                         "/textures/student12.png"));
                 break;
@@ -310,7 +316,9 @@ public class EntityManager {
     }
 
     public void makeSaveFolder(){
-        File folder = new File(System.getProperty("user.home")+"\\Documents\\zuul");
+        File folder = new File(System.getProperty("user.home") +
+                "\\Documents\\zuul");
+        
             if(!folder.exists()){
                 folder.mkdirs();
             }

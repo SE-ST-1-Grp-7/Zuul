@@ -171,10 +171,11 @@ public class RoomManager {
                         roomName = segments[1].trim();
                         String[][] idList = new String[10][10];
                         tileMap.put(roomName, idList);
-                        // Otherwise assign ID to grid position in hashmap value[][] 
+                    // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         for (int i = 0; i < segments.length; i++) {
-                            tileMap.get(roomName)[lineNo][i] = segments[i].trim();
+                            tileMap.get(roomName)[lineNo][i] =
+                                    segments[i].trim();
                         }
                         lineNo++;
                     }
@@ -244,5 +245,10 @@ public class RoomManager {
             //p.spawnPlayer();
             System.out.println(currentRoom.getLongDescription());
         }
+    }
+    
+    // Return specific room object.
+    public Room getRoom(String name) {
+        return roomlist.get(name);
     }
 }
