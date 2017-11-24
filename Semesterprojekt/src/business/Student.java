@@ -10,7 +10,7 @@ import java.util.Random;
 public class Student extends Person {
     // true if student has a question for the player.
     private boolean hasQuestionToPlayer;
-    private String studentImage; // Path to image used for this entity.
+    private String studentImage = ""; // Path to image used for this entity.
     private Random rand = new Random(); // used for randomization of move().
     
     /**
@@ -21,10 +21,10 @@ public class Student extends Person {
      * @param currentRoom   Room, placed currently in this room.
      * @param hasQ          boolean, true if student has a questions.
      */
-    public Student(int x,
+    public Student (int x,
             int y,
             Room currentRoom,
-            Boolean hasQ){
+            boolean hasQ){
         
         // Pass arguments to superclass.
         super(x,
@@ -33,12 +33,25 @@ public class Student extends Person {
                 Person.DEFAULT_PERSON_HEIGHT,
                 currentRoom);
         
-        // Generate random choice of student texture, 12 options.
-        int number = (1 + (int) (Math.random()*12));
-        studentImage = "/texture/student"+number+".png";
-        // Pass the chosen texture path to superclass.
-        super.setEntityImage(studentImage);
+        if ("".equals(studentImage)) {
+            // Generate random choice of student texture, 12 options.
+            int number = (1 + (int) (Math.random()*12));
+            studentImage = "/texture/student"+number+".png";
+            // Pass the chosen texture path to superclass.
+            super.setEntityImage(studentImage);
+        }
         this.hasQuestionToPlayer = hasQ; // Student has a question to player.
+    }
+    
+    public Student (int x,
+            int y,
+            Room currentRoom,
+            boolean hasQ,
+            String studentImage) {
+        // Pass arguments to other constructor.
+        this(x, y, currentRoom, hasQ);
+        this.studentImage = studentImage;
+        super.setEntityImage(studentImage);
     }
     
     /**

@@ -1,12 +1,14 @@
 package business;
 
 // IMPORTS
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,18 +26,16 @@ public class EntityManager {
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
-    private HashMap<Room, Entity[][]> entityArray = new HashMap<>();
-    private RoomManager rm;
+    private static HashMap<String, String[][]> entityCSV = new HashMap<>();
+    private static RoomManager rm;
+    private static HashMap<String, Room> roomlist;
 
     public EntityManager(RoomManager rm) {
         this.rm = rm;
-        createPlayer();
-
-    }
-
-    private void createPlayer() {
-        player = new Player(2, 2, "james", rm.getCurrentRoom());
-        player.getCurrentRoom().entityArray[player.getY()][player.getX()] = player;
+        this.roomlist = rm.getRoomlist();
+        loadPresetEntities();
+        String playerName = "Jason";
+        addEntitiesToRooms(playerName);
     }
 
     // ENTITY MANAGMENT METHODS
@@ -96,7 +96,202 @@ public class EntityManager {
         this.itemlist = itemlist;
     }
 
+    // Reads tile IDs from csv file.
+    public static void loadPresetEntities() {
+        String csvFile = "res/presets/roomEntities.csv";
+        BufferedReader fileReader = null;
+        String line = "";
+        String splitBy = ",";
+        String roomName = "";
+        int lineNo = 0;
+
+        try {
+            fileReader = new BufferedReader(new FileReader(csvFile));
+            while ((line = fileReader.readLine()) != null) {
+                if (!"".equals(line)) {
+                    line = line.trim(); // Trim leading and tailing whitespaces.
+                    String[] segments = line.split(splitBy);
+                    // If reached new room in csv file, new entry in hashmap.
+                    if ("-".equals(segments[0])) {
+                        lineNo = 0;
+                        roomName = segments[1].trim();
+                        String[][] idList = new String[10][10];
+                        entityCSV.put(roomName, idList);
+                        // Otherwise assign ID to grid position in hashmap value[][] 
+                    } else {
+                        for (int i = 0; i < segments.length; i++) {
+                            if (!"".equals(segments[i].trim())) {
+                                entityCSV.get(roomName)[lineNo][i] = segments[i].trim();
+                            }
+                        }
+                        lineNo++;
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fileReader != null) {
+                try {
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /* goes through all rooms and each grid position and assigns an entity if
+       preset has assigned an entity to be there. */
+    public void addEntitiesToRooms(String playerName) {
+        String IDnum;
+        for (String name : roomlist.keySet()) {
+            for (int i = 0; i < entityCSV.get(name).length; i++) {
+                for (int j = 0; j < entityCSV.get(name)[i].length; j++) {
+                    // ID number in the specific grid position.
+                    IDnum = entityCSV.get(name)[i][j];
+                    if (IDnum == null) {
+                        continue;
+                    }
+                    entityTypes(i, j, playerName, IDnum);
+                }
+            }
+        }
+    }
+    
+    /* Creates an entity based on ID and grid position and assigns the entity
+       to its respective list of entities. */
+    public void entityTypes(int i, int j, String playerName, String IDnum) {
+        // Switch cases for what type of entity it is
+        switch (IDnum.toUpperCase()) {
+            // Instance of player to be added.
+            case "ID50":
+                player = new Player(j,
+                        i,
+                        playerName,
+                        rm.getCurrentRoom());
+                break;
+
+            // Instance of white t-shirt, brunette student.
+            case "ID51":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student1.png"));
+                break;
+
+            // Instance of red t-shirt, brunette student.
+            case "ID52":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student2.png"));
+                break;
+
+            // Instance of green t-shirt, brunette student.
+            case "ID53":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student3.png"));
+                break;
+
+            // Instance of white t-shirt, blond student.
+            case "ID54":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student4.png"));
+                break;
+
+            // Instance of red t-shirt, blond student.
+            case "ID55":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student5.png"));
+                break;
+
+            // Instance of green t-shirt, blond student.
+            case "ID56":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student6.png"));
+                break;
+
+            // Instance of white t-shirt, black student.
+            case "ID57":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student7.png"));
+                break;
+
+            // Instance of red t-shirt, black student.
+            case "ID58":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student8.png"));
+                break;
+
+            // Instance of green t-shirt, black student.
+            case "ID59":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student9.png"));
+                break;
+
+            // Instance of white t-shirt, asian student.
+            case "ID60":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student10.png"));
+                break;
+
+            // Instance of red t-shirt, asian student.
+            case "ID61":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student11.png"));
+                break;
+
+            // Instance of green t-shirt, asian student.
+            case "ID62":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student12.png"));
+                break;
+            
+            // In case the ID is not recognized.
+            default:
+                System.out.println("Error. Entity ID   " + IDnum +
+                        "   not defined.");
+                break;
+        }
+    }
+    
     // LOAD & SAVE METHODS
+    
     public void saveGame() {
         makeSaveFolder();
         saveItems();
