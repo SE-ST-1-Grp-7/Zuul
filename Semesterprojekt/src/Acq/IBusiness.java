@@ -20,4 +20,6 @@ public interface IBusiness {
     void loadGame();
     // Get tiles
     String getTileImage(int row, int col);
+    
+    void goThroughDoor();
 }

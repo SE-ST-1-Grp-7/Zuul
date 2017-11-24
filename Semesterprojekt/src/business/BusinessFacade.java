@@ -91,4 +91,13 @@ public class BusinessFacade implements IBusiness {
             return "testSquare.png";
         }
     }
+
+    @Override
+    public void goThroughDoor() {
+        //pseudo logic:
+        //Door
+        //setplayer
+        //set roomManager
+        //onInteract
+    }
 }

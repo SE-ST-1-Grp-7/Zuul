@@ -288,6 +288,10 @@ public class EntityManager {
                         "/textures/student12.png"));
                 break;
             
+            case "ID63":
+                furniturelist.add(new Door(j, i, 64, 64, IDnum, rm.getRoom(name)));
+                break;
+            
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum +

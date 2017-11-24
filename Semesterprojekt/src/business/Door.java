@@ -2,12 +2,14 @@ package business;
 
 /**
  *
- * @author Magnus Mortensen
+ * @author Magnus Mortensen & Robin Petersen
  */
 public class Door extends Furniture {
 
     private String direction;
-    private String doorImage = "/texture/Door.png"; // Path to texture.
+    private String doorImage = "/texture/door1.png"; // Path to texture.
+    private Player player;
+    private RoomManager roomManager;
 
     public Door(int x,
             int y,
@@ -25,11 +27,20 @@ public class Door extends Furniture {
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         this.direction = direction;
+        super.setEntityImage(doorImage);
+    }
+    
+    public void setPlayer(Player p){
+        this.player = p;
+    }
+    
+    public void setRoomManager(RoomManager rm){
+        this.roomManager = rm;
     }
     
     @Override
     public void onInteract() {
-        useDoor(goPlayer, roomManager);
+        useDoor(this.player, this.roomManager);
     }
 
     public void useDoor(Player goPlayer, RoomManager roomManager) {
