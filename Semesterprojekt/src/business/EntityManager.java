@@ -1,6 +1,7 @@
 package business;
 
 // IMPORTS
+
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -25,9 +26,7 @@ public class EntityManager {
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
-    private static HashMap<String, Entity> entityTypes = new HashMap<>();
     private static HashMap<String, String[][]> entityCSV = new HashMap<>();
-    private HashMap<Room, Entity[][]> entityArray = new HashMap<>();
     private static RoomManager rm;
     private static HashMap<String, Room> roomlist;
 
@@ -146,141 +145,148 @@ public class EntityManager {
 
     /* goes through all rooms and each grid position and assigns an entity if
        preset has assigned an entity to be there. */
-    public static void addEntitiesToRooms(String playerName) {
-        Entity entity;
+    public void addEntitiesToRooms(String playerName) {
         String IDnum;
         for (String name : roomlist.keySet()) {
             for (int i = 0; i < entityCSV.get(name).length; i++) {
                 for (int j = 0; j < entityCSV.get(name)[i].length; j++) {
                     // ID number in the specific grid position.
                     IDnum = entityCSV.get(name)[i][j];
-                    
-                    // Switch cases for what type of entity it is
-                    switch (IDnum.toUpperCase()) {
-                        // Instance of player to be added.
-                        case "ID50":
-                            entity = new Player(j,
-                                    i,
-                                    playerName,
-                                    rm.getCurrentRoom());
-                            break;
-                            
-                        // Instance of white t-shirt, brunette student.
-                        case "ID51":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student1.png");
-                            break;
-                            
-                        // Instance of red t-shirt, brunette student.
-                        case "ID52":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    true,
-                                    "/textures/student2.png");
-                            break;
-                            
-                        // Instance of green t-shirt, brunette student.
-                        case "ID53":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student3.png");
-                            break;
-                            
-                        // Instance of white t-shirt, blond student.
-                        case "ID54":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student4.png");
-                            break;
-                            
-                        // Instance of red t-shirt, blond student.
-                        case "ID55":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    true,
-                                    "/textures/student5.png");
-                            break;
-                            
-                        // Instance of green t-shirt, blond student.
-                        case "ID56":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student6.png");
-                            break;
-                            
-                        // Instance of white t-shirt, black student.
-                        case "ID57":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student7.png");
-                            break;
-                            
-                        // Instance of red t-shirt, black student.
-                        case "ID58":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    true,
-                                    "/textures/student8.png");
-                            break;
-                            
-                        // Instance of green t-shirt, black student.
-                        case "ID59":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student9.png");
-                            break;
-                            
-                        // Instance of white t-shirt, asian student.
-                        case "ID60":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student10.png");
-                            break;
-                            
-                        // Instance of red t-shirt, asian student.
-                        case "ID61":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    true,
-                                    "/textures/student11.png");
-                            break;
-                            
-                        // Instance of green t-shirt, asian student.
-                        case "ID62":
-                            entity = new Student(j,
-                                    i,
-                                    rm.getCurrentRoom(),
-                                    false,
-                                    "/textures/student12.png");
-                            break;
-                            
-                        default:
-                            entity = null;
+                    if (IDnum == null) {
+                        continue;
                     }
-                    
-                    // Call setTile function and place tile object.
-                    roomlist.get(name).setEntity(i, j, entity);
+                    entityTypes(i, j, playerName, IDnum);
                 }
             }
+        }
+    }
+    
+    /* Creates an entity based on ID and grid position and assigns the entity
+       to its respective list of entities. */
+    public void entityTypes(int i, int j, String playerName, String IDnum) {
+        // Switch cases for what type of entity it is
+        switch (IDnum.toUpperCase()) {
+            // Instance of player to be added.
+            case "ID50":
+                player = new Player(j,
+                        i,
+                        playerName,
+                        rm.getCurrentRoom());
+                break;
+
+            // Instance of white t-shirt, brunette student.
+            case "ID51":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student1.png"));
+                break;
+
+            // Instance of red t-shirt, brunette student.
+            case "ID52":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student2.png"));
+                break;
+
+            // Instance of green t-shirt, brunette student.
+            case "ID53":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student3.png"));
+                break;
+
+            // Instance of white t-shirt, blond student.
+            case "ID54":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student4.png"));
+                break;
+
+            // Instance of red t-shirt, blond student.
+            case "ID55":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student5.png"));
+                break;
+
+            // Instance of green t-shirt, blond student.
+            case "ID56":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student6.png"));
+                break;
+
+            // Instance of white t-shirt, black student.
+            case "ID57":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student7.png"));
+                break;
+
+            // Instance of red t-shirt, black student.
+            case "ID58":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student8.png"));
+                break;
+
+            // Instance of green t-shirt, black student.
+            case "ID59":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student9.png"));
+                break;
+
+            // Instance of white t-shirt, asian student.
+            case "ID60":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student10.png"));
+                break;
+
+            // Instance of red t-shirt, asian student.
+            case "ID61":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        true,
+                        "/textures/student11.png"));
+                break;
+
+            // Instance of green t-shirt, asian student.
+            case "ID62":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getCurrentRoom(),
+                        false,
+                        "/textures/student12.png"));
+                break;
+            
+            // In case the ID is not recognized.
+            default:
+                System.out.println("Error. Entity ID   " + IDnum +
+                        "   not defined.");
+                break;
         }
     }
     
