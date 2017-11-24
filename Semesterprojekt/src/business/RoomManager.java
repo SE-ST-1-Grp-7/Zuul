@@ -152,7 +152,7 @@ public class RoomManager {
 
     // Reads tile IDs from csv file.
     public static void loadTiles() {
-        String csvFile = "res/conf/roomTiles.txt";
+        String csvFile = "res/presets/roomTiles.csv";
         BufferedReader fileReader = null;
         String line = "";
         String splitBy = ",";
@@ -175,8 +175,6 @@ public class RoomManager {
                     } else {
                         for (int i = 0; i < segments.length; i++) {
                             tileMap.get(roomName)[lineNo][i] = segments[i].trim();
-                            System.out.println(segments[i]);
-
                         }
                         lineNo++;
                     }
@@ -205,9 +203,7 @@ public class RoomManager {
                     // Which tile to be placed in room object grid position.
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
                     // Call setTile function and place tile object.
-                    System.out.println(name);
                     roomlist.get(name).setTile(i, j, tile);
-                    System.out.println(i + " " + j);
                 }
             }
         }

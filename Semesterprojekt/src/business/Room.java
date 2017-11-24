@@ -172,4 +172,12 @@ public class Room {
     public Tile[][] getTiles() {
         return this.tileArray;
     }
+    
+    public void setEntity (int x, int y, Entity entity) {
+        entityArray[y][x] = entity;
+    }
+    
+    public Entity[][] getEntities() {
+        return this.entityArray;
+    }
 }
