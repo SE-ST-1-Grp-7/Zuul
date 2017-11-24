@@ -46,7 +46,6 @@ public class Door extends Furniture {
     public void useDoor(Player goPlayer, RoomManager roomManager) {
         goPlayer.setCurrentRoom(currentRoom.getExit(direction));
         roomManager.setCurrentRoom(currentRoom.getExit(direction));
-
                 if (goPlayer.getX() == getX() && getY() > 5) {
                 goPlayer.setY(8);
                 goPlayer.setX(getX());

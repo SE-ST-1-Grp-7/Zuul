@@ -81,6 +81,7 @@ public class BusinessFacade implements IBusiness {
         entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
         entityManager.loadGame();
         entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
+        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override
@@ -99,5 +100,6 @@ public class BusinessFacade implements IBusiness {
         //setplayer
         //set roomManager
         //onInteract
+        roomManager.getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
 }
