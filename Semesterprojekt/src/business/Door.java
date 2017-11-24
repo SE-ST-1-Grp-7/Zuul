@@ -47,31 +47,21 @@ public class Door extends Furniture {
         goPlayer.setCurrentRoom(currentRoom.getExit(direction));
         roomManager.setCurrentRoom(currentRoom.getExit(direction));
 
-        switch (goPlayer.getX()) {
-
-            case 1:
-                if (goPlayer.getX() == getX() && getY() > 5);
+                if (goPlayer.getX() == getX() && getY() > 5) {
                 goPlayer.setY(8);
                 goPlayer.setX(getX());
-                break;
-            case 2:
-                if (goPlayer.getX() == getX() && getY() < 5);
+                } else if (goPlayer.getX() == getX() && getY() < 5) {
                 goPlayer.setY(1);
-                goPlayer.setX(getX());
-                break;
-            case 3:
-                if (goPlayer.getY() == getY() && getX() > 5);
+                goPlayer.setX(getX()); 
+                } else if (goPlayer.getY() == getY() && getX() > 5){
                 goPlayer.setX(1);
                 goPlayer.setY(getY());
-                break;
-            case 4:
-                if (goPlayer.getY() == getY() && getX() < 5);
+                } else if (goPlayer.getY() == getY() && getX() < 5) {
                 goPlayer.setX(8);
                 goPlayer.setY(getY());
-                break;
-        }
-
+                }
     }
+    
     @Override
         public int getX() {
         return super.getX();        
