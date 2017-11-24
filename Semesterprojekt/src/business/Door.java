@@ -5,7 +5,7 @@ package business;
  * @author Magnus Mortensen
  */
 public class Door extends Furniture {
-    
+
     private String direction;
     private String doorImage = "/texture/Door.png"; // Path to texture.
 
@@ -27,27 +27,49 @@ public class Door extends Furniture {
         this.direction = direction;
     }
     
-    public void onInteract(Player goPlayer, RoomManager roomManager) {
+    @Override
+    public void onInteract() {
+        useDoor(goPlayer, roomManager);
+    }
+
+    public void useDoor(Player goPlayer, RoomManager roomManager) {
         goPlayer.setCurrentRoom(currentRoom.getExit(direction));
         roomManager.setCurrentRoom(currentRoom.getExit(direction));
-        
-        switch (goPlayer.x) {
-            
-            case 1:                
-                if (goPlayer.getX() == getX());
+
+        switch (goPlayer.getX()) {
+
+            case 1:
+                if (goPlayer.getX() == getX() && getY() > 5);
+                goPlayer.setY(8);
+                goPlayer.setX(getX());
+                break;
+            case 2:
+                if (goPlayer.getX() == getX() && getY() < 5);
+                goPlayer.setY(1);
+                goPlayer.setX(getX());
+                break;
+            case 3:
+                if (goPlayer.getY() == getY() && getX() > 5);
+                goPlayer.setX(1);
                 goPlayer.setY(getY());
-            
+                break;
+            case 4:
+                if (goPlayer.getY() == getY() && getX() < 5);
+                goPlayer.setX(8);
+                goPlayer.setY(getY());
+                break;
         }
-    }    
-    
+
+    }
     @Override
-    public int getX() {
+        public int getX() {
         return super.getX();        
     }
     
     @Override
-    public int getY() {
+        public int getY() {
         return super.getY();        
     }
+    
     
 }
