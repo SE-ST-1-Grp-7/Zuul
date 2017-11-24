@@ -11,7 +11,6 @@ import java.util.HashMap;
  * @author Rasmus Willer & Søren Bendtsen & Jonas Bjørstorp
  */
 public class RoomManager {
-
     private Room currentRoom;
     private static HashMap<String, Room> roomlist = new HashMap<>();
     private static HashMap<String, Tile> tiles = new HashMap<>();
@@ -134,11 +133,13 @@ public class RoomManager {
         currentRoom object.*/
         currentRoom = roomlist.get("garden");
     }
-
-    /* Creates a hashmap with new Tile object as value.
-       Connecting tile ID to a texture file.*/
+    
+    /**
+     * Creates a hashmap with new Tile object as value.
+     * Connecting tile ID to a texture file.
+     */
     public final void tileBase() {
-        // Defining tile ID with a tile object.
+        // Defining tile ID with a new instantiated tile object.
         tiles.put("ID23", new Tile("/textures/floor5.png", true));
         tiles.put("ID01", new Tile("/textures/floor17.png"));
         tiles.put("ID19", new Tile("/textures/floor11.png"));
@@ -150,41 +151,67 @@ public class RoomManager {
         tiles.put("ID43", new Tile("/textures/wall1.png", true));
     }
 
-    // Reads tile IDs from csv file.
+    /**
+     * Reads tile IDs from csv file.
+     */
     public static void loadTiles() {
+        // CSV file.
         String csvFile = "res/presets/roomTiles.csv";
+        // Declare buffer to make readback from file simpler.
         BufferedReader fileReader = null;
+        // Temp variable to hold one line at a time during the readback.
         String line = "";
+        // Designate which split operator the content is split by.
         String splitBy = ",";
+        // Temp variable to hold the String name of the room getting handled.
         String roomName = "";
+        // Keeps track of which iteration of line in a room is being handled.
         int lineNo = 0;
-
+        
+        // Try catch for file IO operations. 
         try {
+            // Instantiate buffer with file reader and file as parameter.
             fileReader = new BufferedReader(new FileReader(csvFile));
+            // As long as there are more lines.
             while ((line = fileReader.readLine()) != null) {
+                line = line.trim(); // Trim leading and tailing whitespaces.
+                // If line is not empty.
                 if (!"".equals(line)) {
-                    line = line.trim(); // Trim leading and tailing whitespaces.
+                    // Split line into String array at defined split operator.
                     String[] segments = line.split(splitBy);
+                    
                     // If reached new room in csv file, new entry in hashmap.
                     if ("-".equals(segments[0])) {
+                        // Reset line count as it is a new room.
                         lineNo = 0;
+                        // Parse the room name String from line.
                         roomName = segments[1].trim();
+                        /* Create a two-dimensional array and make a HashMap
+                           entry with room String as key and the two dimensional
+                           array as the value. */
                         String[][] idList = new String[10][10];
                         tileMap.put(roomName, idList);
+                        
                     // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
+                        // Iterate through each parameter from split up line.
                         for (int i = 0; i < segments.length; i++) {
+                            /* At the specified grid position assign the trimmed
+                               paramter to the HashMap value. */
                             tileMap.get(roomName)[lineNo][i] =
                                     segments[i].trim();
                         }
+                        // Increment line count after operation.
                         lineNo++;
                     }
                 }
             }
+        // Exception catching.
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        // Finally try to close file IO operation.
         } finally {
             if (fileReader != null) {
                 try {
@@ -196,10 +223,16 @@ public class RoomManager {
         }
     }
 
-    // goes through all rooms and each grid position gets a tile assigned.
+    /**
+     * Method runs through all rooms and each grid position within and assigns
+     * a tile to the position.
+     */
     public static void addTilesToRooms() {
+        // For each room.
         for (String name : roomlist.keySet()) {
+            // Iterate through y-coordinates (rows).
             for (int i = 0; i < tileMap.get(name).length; i++) {
+                // Iterate through x-coordinates (column position).
                 for (int j = 0; j < tileMap.get(name)[i].length; j++) {
                     // Which tile to be placed in room object grid position.
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
@@ -210,25 +243,13 @@ public class RoomManager {
         }
     }
 
-    public HashMap getRoomlist() {
-        return roomlist;
-    }
-
-    public void setCurrentRoom(Room room) {
-        this.currentRoom = room;
-    }
-
-    public Room getCurrentRoom() {
-        return this.currentRoom;
-    }
-
     /**
      * Go to a different room and update current room.
      *
-     * @param command String argument of user command input.
+     * @param direction String, north/west/south/east direction to next room.
+     * @param p         Player, the player object whos data requires updating.
      */
     public void goRoom(String direction, Player p) {
-
         /* Assign next room according to matching direction defined in the
            createRooms method */
         Room nextRoom = currentRoom.getExit(direction);
@@ -237,18 +258,54 @@ public class RoomManager {
         if (nextRoom == null) {
             System.out.println("There is no door!");
         } /* Update current room reference and print long description of new
-           current room. */ else {
+           current room. */ 
+        else {
             currentRoom = nextRoom;
-            p.setX(0);
-            p.setY(0);
+            p.setX(5);
+            p.setY(5);
             p.setCurrentRoom(nextRoom);
             //p.spawnPlayer();
             System.out.println(currentRoom.getLongDescription());
         }
     }
     
-    // Return specific room object.
+    // GETTERS & SETTERS
+    
+    /**
+     * getRoom method returns the requested room object, based on a passed
+     * argument matching a key in the roomlist HashMap.
+     * 
+     * @param name      String, name of the room object requested.
+     * @return          Room, requested room object.
+     */
     public Room getRoom(String name) {
         return roomlist.get(name);
+    }
+    
+    /**
+     * Retrieve hashmap with all room objects.
+     * 
+     * @return      HashMap, contains all rooms objects in the game.
+     */
+    public HashMap getRoomlist() {
+        return roomlist;
+    }
+    
+    /**
+     * Change the attribute currentRoom to a new room object.
+     * 
+     * @param room  Room, new room to be the current room in focus.
+     */
+    public void setCurrentRoom(Room room) {
+        this.currentRoom = room;
+    }
+    
+    /**
+     * Retrieve the room object of the current room in focus.
+     * 
+     * @return      Room, retrieve object of current room in focus.
+     */
+    public Room getCurrentRoom() {
+        return this.currentRoom;
     }
 }
