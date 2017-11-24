@@ -7,7 +7,7 @@ package business;
 public class Door extends Furniture {
 
     private String direction;
-    private String doorImage = "/texture/door1.png"; // Path to texture.
+    private String doorImage = "/texture/door2.png"; // Path to texture.
     private Player player;
     private RoomManager roomManager;
 

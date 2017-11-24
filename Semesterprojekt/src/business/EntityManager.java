@@ -289,7 +289,7 @@ public class EntityManager {
                 break;
             
             case "ID63":
-                furniturelist.add(new Door(j, i, 64, 64, IDnum, rm.getRoom(name)));
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getCurrentRoom()));
                 break;
             
             // In case the ID is not recognized.

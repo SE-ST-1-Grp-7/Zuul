@@ -63,7 +63,7 @@ public class BusinessFacade implements IBusiness {
     public String entityGetImage(int row, int col) {
         if (roomManager.getCurrentRoom().entityArray[row][col] != null) {
 //            return roomManager.getCurrentRoom().entityArray[row][col].getEntityImage();
-            String i = "boi.png";
+            String i = "/textures/player.png";
             return i;
         } else {
             String i = "testSquare.png";
