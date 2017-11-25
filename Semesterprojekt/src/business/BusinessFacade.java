@@ -64,9 +64,10 @@ public class BusinessFacade implements IBusiness {
         if (roomManager.getCurrentRoom().getEntities()[row][col] != null) {
             if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Student){
             return entityManager.getStudentList().get(0).getEntityImage(); //get(0) has to be changed to match the csv file to show the right student
-            //return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-//            
-            } else{
+            //return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();        
+            }else if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Furniture){
+                return entityManager.getFurnitureList().get(0).getEntityImage();
+            }else{
                 return "/textures/player.png"; 
             }
         } else {

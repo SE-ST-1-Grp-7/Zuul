@@ -37,9 +37,9 @@ public class EntityManager {
         String playerName = "Jason";
         addEntitiesToRooms(playerName);
         
-        Student s = new Student(5, 2, rm.getCurrentRoom(), true, "/textures/student1");
-        this.rm.getCurrentRoom().setEntity(this.player);
-        this.rm.getCurrentRoom().setEntity(s);
+        //Student s = new Student(5, 2, rm.getCurrentRoom(), true, "/textures/student1");
+        //this.rm.getCurrentRoom().setEntity(this.player);
+        //this.rm.getCurrentRoom().setEntity(s);
         
     }
 
@@ -183,15 +183,15 @@ public class EntityManager {
                         i,
                         playerName,
                         rm.getCurrentRoom());
+                        this.rm.getCurrentRoom().setEntity(this.player);
                 break;
 
             // Instance of white t-shirt, brunette student.
             case "ID51":
-                studentlist.add(new Student(j,
-                        i,
-                        rm.getRoom(name),
-                        false,
-                        "/textures/student1.png"));
+                Student s = new Student(j, i, rm.getRoom(name), false,
+                        "/textures/student1.png");
+                studentlist.add(s);
+                this.rm.getCurrentRoom().setEntity(s);
                 break;
 
             // Instance of red t-shirt, brunette student.
@@ -294,7 +294,10 @@ public class EntityManager {
                 break;
             
             case "ID63": //this is a test... not sure if it works
-                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getCurrentRoom()));
+                Door d = new Door(j, i, 64, 64, "east", rm.getCurrentRoom());
+                furniturelist.add(d);
+                 this.rm.getCurrentRoom().setEntity(d);
+                
                 break;
             
             // In case the ID is not recognized.

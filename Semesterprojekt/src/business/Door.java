@@ -7,7 +7,7 @@ package business;
 public class Door extends Furniture {
 
     private String direction;
-    private String doorImage = "/texture/door2.png"; // Path to texture.
+    private String doorImage = "/textures/door2.png"; // Path to texture.
     private Player player;
     private RoomManager roomManager;
 
@@ -26,8 +26,8 @@ public class Door extends Furniture {
                 currentRoom,
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
-        this.direction = direction;
         super.setEntityImage(doorImage);
+        this.direction = direction;
     }
     
     /**
