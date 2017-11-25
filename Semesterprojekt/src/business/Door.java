@@ -30,10 +30,18 @@ public class Door extends Furniture {
         super.setEntityImage(doorImage);
     }
     
+    /**
+     * settermethod: mostly used to give the useDoor and onInteract methods acces to the player
+     * @param p 
+     */
     public void setPlayer(Player p){
         this.player = p;
     }
     
+    /**
+     * setter method: mostly used to give the useDoor and onInteract methods acces to the roomManager
+     * @param rm 
+     */
     public void setRoomManager(RoomManager rm){
         this.roomManager = rm;
     }
@@ -43,6 +51,11 @@ public class Door extends Furniture {
         useDoor(this.player, this.roomManager);
     }
 
+    /**
+     * method for using a door
+     * @param goPlayer
+     * @param roomManager 
+     */
     public void useDoor(Player goPlayer, RoomManager roomManager) {
         goPlayer.setCurrentRoom(currentRoom.getExit(direction));
         roomManager.setCurrentRoom(currentRoom.getExit(direction));

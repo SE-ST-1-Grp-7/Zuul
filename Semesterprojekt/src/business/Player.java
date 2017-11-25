@@ -142,7 +142,7 @@ public class Player extends Person {
                 setX(newX);
                 setY(newY);
             } else { // if a collision is detected
-                System.out.println("Collissioned occurred, ouch!!");
+                System.out.println("Collision occurred, ouch!!");
             }
         } catch (Exception ex) { // catches the out of bounds exception that occurs when you try to move outside the limits of the array
             System.out.println("You hit the wall. Ouch.");

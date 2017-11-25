@@ -36,6 +36,11 @@ public class EntityManager {
         loadPresetEntities();
         String playerName = "Jason";
         addEntitiesToRooms(playerName);
+        
+        Student s = new Student(5, 2, rm.getCurrentRoom(), true, "/textures/student1");
+        this.rm.getCurrentRoom().setEntity(this.player);
+        this.rm.getCurrentRoom().setEntity(s);
+        
     }
 
     // ENTITY MANAGMENT METHODS
@@ -288,7 +293,7 @@ public class EntityManager {
                         "/textures/student12.png"));
                 break;
             
-            case "ID63":
+            case "ID63": //this is a test... not sure if it works
                 furniturelist.add(new Door(j, i, 64, 64, "east", rm.getCurrentRoom()));
                 break;
             

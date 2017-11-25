@@ -61,13 +61,16 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public String entityGetImage(int row, int col) {
-        if (roomManager.getCurrentRoom().entityArray[row][col] != null) {
-//            return roomManager.getCurrentRoom().entityArray[row][col].getEntityImage();
-            String i = "/textures/player.png";
-            return i;
+        if (roomManager.getCurrentRoom().getEntities()[row][col] != null) {
+            if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Student){
+            return entityManager.getStudentList().get(0).getEntityImage(); //get(0) has to be changed to match the csv file to show the right student
+            //return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
+//            
+            } else{
+                return "/textures/player.png"; 
+            }
         } else {
-            String i = "testSquare.png";
-            return i;
+            return "testSquare.png";
         }
     }
 

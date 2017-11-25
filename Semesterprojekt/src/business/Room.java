@@ -173,8 +173,8 @@ public class Room {
         return this.tileArray;
     }
     
-    public void setEntity (int x, int y, Entity entity) {
-        entityArray[y][x] = entity;
+    public void setEntity (Entity entity) {
+        entityArray[entity.getY()][entity.getX()] = entity;
     }
     
     public Entity[][] getEntities() {
