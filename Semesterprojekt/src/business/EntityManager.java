@@ -51,6 +51,12 @@ public class EntityManager {
     public void removeStudent(Student s) {
         studentlist.remove(s);
     }
+    public void showStudents(){
+        for(Student s : studentlist){
+            s.getCurrentRoom().setEntity(s);
+            
+        }
+    }
 
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
@@ -183,15 +189,13 @@ public class EntityManager {
                         i,
                         playerName,
                         rm.getCurrentRoom());
-                        this.rm.getCurrentRoom().setEntity(this.player);
+                        this.rm.getRoom(name).setEntity(this.player);
                 break;
 
             // Instance of white t-shirt, brunette student.
             case "ID51":
-                Student s = new Student(j, i, rm.getRoom(name), false,
-                        "/textures/student1.png");
-                studentlist.add(s);
-                this.rm.getCurrentRoom().setEntity(s);
+                studentlist.add(new Student(j, i, rm.getRoom(name), false,
+                        "/textures/student1.png"));
                 break;
 
             // Instance of red t-shirt, brunette student.
@@ -296,8 +300,9 @@ public class EntityManager {
             case "ID63": //this is a test... not sure if it works
                 Door d = new Door(j, i, 64, 64, "east", rm.getCurrentRoom());
                 furniturelist.add(d);
-                 this.rm.getCurrentRoom().setEntity(d);
-                 
+
+                 this.rm.getRoom(name).setEntity(d);
+
                 
                 break;
             
@@ -307,6 +312,7 @@ public class EntityManager {
                         "   not defined.");
                 break;
         }
+        showStudents();
     }
     
     // LOAD & SAVE METHODS
