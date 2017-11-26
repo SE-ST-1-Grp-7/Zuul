@@ -17,6 +17,13 @@ public class BusinessFacade implements IBusiness {
     public BusinessFacade() {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
+        for(int i = 0; i < entityManager.getFurnitureList().size(); i++) {
+            if(entityManager.getFurnitureList().get(i) instanceof Door){
+                Door d = (Door) entityManager.getFurnitureList().get(i);
+                d.setPlayer(entityManager.getPlayer());
+                d.setRoomManager(roomManager);
+            }
+        }
     }
 
     /**

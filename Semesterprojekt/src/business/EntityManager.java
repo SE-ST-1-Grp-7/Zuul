@@ -300,7 +300,9 @@ public class EntityManager {
             case "ID63": //this is a test... not sure if it works
                 Door d = new Door(j, i, 64, 64, "east", rm.getCurrentRoom());
                 furniturelist.add(d);
+
                  this.rm.getRoom(name).setEntity(d);
+
                 
                 break;
             
