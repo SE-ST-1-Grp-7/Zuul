@@ -11,22 +11,14 @@ public class Door extends Furniture {
     private Player player;
     private RoomManager roomManager;
 
-    public Door(int x,
-            int y,
-            int width,
-            int height,
-            String direction,
-            Room currentRoom) {
+    public Door(int x, int y, int width, int height, String direction,
+            Room currentRoom, String imagePath) {
 
         // Pass arguments to superclass.
-        super(x,
-                y,
-                width,
-                height,
-                currentRoom,
+        super(x, y, width, height, currentRoom, 
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
-        super.setEntityImage(doorImage);
+        super.setEntityImage(imagePath);
         this.direction = direction;
     }
 
@@ -66,10 +58,10 @@ public class Door extends Furniture {
         goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
         roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
         if (goPlayer.getX() == getX() && getY() > 5) {
-            goPlayer.setY(8);
+            goPlayer.setY(1);
             goPlayer.setX(getX());
         } else if (goPlayer.getX() == getX() && getY() < 5) {
-            goPlayer.setY(1);
+            goPlayer.setY(8);
             goPlayer.setX(getX());
         } else if (goPlayer.getY() == getY() && getX() > 5) {
             goPlayer.setX(1);

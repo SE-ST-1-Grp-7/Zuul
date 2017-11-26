@@ -57,6 +57,13 @@ public class EntityManager {
             
         }
     }
+    
+    public void showFurniture(){
+        for(Furniture d : furniturelist){
+            d.getCurrentRoom().setEntity(d);
+            
+        }
+    }
 
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
@@ -297,15 +304,22 @@ public class EntityManager {
                         "/textures/student12.png"));
                 break;
             
-            case "ID63": //this is a test... not sure if it works
-                Door d = new Door(j, i, 64, 64, "east", rm.getCurrentRoom());
-                furniturelist.add(d);
-
-                 this.rm.getRoom(name).setEntity(d);
-
-                
+            case "ID63": 
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png"));
                 break;
-            
+                
+            case "ID64":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png"));
+                break;
+                
+            case "ID65":
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png"));
+                break;
+                
+            case "ID66":
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png"));
+                break;
+                
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum +
@@ -313,6 +327,7 @@ public class EntityManager {
                 break;
         }
         showStudents();
+        showFurniture();
     }
     
     // LOAD & SAVE METHODS
