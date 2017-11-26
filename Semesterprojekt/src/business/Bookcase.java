@@ -6,7 +6,7 @@ package business;
  * @author Robin & Rasmus Willer
  */
 public class Bookcase extends Furniture /*implements Interactable*/{
-    private String bookcaseImage = "/texture/bookcase1.png";  
+    private String bookcaseImage = "/textures/bookcase1.png";  
 
     /**
      * Constructor for Chair class.

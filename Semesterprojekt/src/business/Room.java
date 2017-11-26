@@ -15,8 +15,8 @@ public class Room {
     // Declare attributes -section.
     private String description;
     private String name;
-    public Tile[][] tileArray = new Tile[10][10];
-    public Entity[][] entityArray;
+    private Tile[][] tileArray = new Tile[10][10];
+    private Entity[][] entityArray;
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
@@ -173,7 +173,21 @@ public class Room {
         return this.tileArray;
     }
     
-    public void setEntity (int x, int y, Entity entity) {
+    /**
+     * this method will set the entity to be shown on the GUI
+     * @param entity 
+     */
+    public void setEntity (Entity entity) {
+        entityArray[entity.getY()][entity.getX()] = entity;
+    }
+    
+    /**
+     * this method is mostly for deleting the player from the room he is leaving
+     * @param x
+     * @param y
+     * @param entity 
+     */
+    public void setEntityWithXY(int x, int y, Entity entity){
         entityArray[y][x] = entity;
     }
     

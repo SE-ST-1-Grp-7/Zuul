@@ -237,7 +237,7 @@ public class RoomManager {
                     // Which tile to be placed in room object grid position.
                     Tile tile = tiles.get(tileMap.get(name)[i][j]);
                     // Call setTile function and place tile object.
-                    roomlist.get(name).setTile(i, j, tile);
+                    roomlist.get(name).setTile(j, i, tile);
                 }
             }
         }

@@ -31,9 +31,11 @@ public class EntityManager {
 
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
+        this.roomlist = rm.getRoomlist();
         loadPresetEntities();           // Load entity IDs from CSV file.
         String playerName = "Jason";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
+
     }
 
     // ENTITY MANAGMENT METHODS
@@ -44,6 +46,19 @@ public class EntityManager {
 
     public void removeStudent(Student s) {
         studentlist.remove(s);
+    }
+    public void showStudents(){
+        for(Student s : studentlist){
+            s.getCurrentRoom().setEntity(s);
+            
+        }
+    }
+    
+    public void showFurniture(){
+        for(Furniture d : furniturelist){
+            d.getCurrentRoom().setEntity(d);
+            
+        }
     }
 
     public void addFurniture(Furniture f) {
@@ -227,14 +242,12 @@ public class EntityManager {
                         i,
                         playerName,
                         rm.getCurrentRoom());
+                        this.rm.getRoom(name).setEntity(this.player);
                 break;
 
             // Instance of white t-shirt, brunette student.
             case "ID51":
-                studentlist.add(new Student(j,
-                        i,
-                        rm.getRoom(name),
-                        false,
+                studentlist.add(new Student(j, i, rm.getRoom(name), false,
                         "/textures/student1.png"));
                 break;
 
@@ -337,12 +350,30 @@ public class EntityManager {
                         "/textures/student12.png"));
                 break;
             
+            case "ID63": 
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png"));
+                break;
+                
+            case "ID64":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png"));
+                break;
+                
+            case "ID65":
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png"));
+                break;
+                
+            case "ID66":
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png"));
+                break;
+                
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum +
                         "   not defined.");
                 break;
         }
+        showStudents();
+        showFurniture();
     }
     
     // LOAD & SAVE METHODS

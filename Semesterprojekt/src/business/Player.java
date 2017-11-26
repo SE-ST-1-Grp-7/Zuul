@@ -16,7 +16,7 @@ public class Player extends Person {
     private int assignmentProgress; // Progress of grading an assignment.
     private Item tempItem; // Temporary holder for item to be dropped.
     private boolean dont = false; // Avoid tempItem overlap with other items.
-    private String playerImage = "/texture/player.png"; // String of image path.
+    private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
 
     /**
@@ -54,20 +54,20 @@ public class Player extends Person {
     public void interact() {
         switch (facing) {
             case "right":
-                if(getCurrentRoom().entityArray[getY()][getX() + 1] != null)
-                  getCurrentRoom().entityArray[getY()][getX() + 1].onInteract();
+                if(getCurrentRoom().getEntities()[getY()][getX() + 1] != null)
+                  getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract();
                 break;
             case "left":
-                if(getCurrentRoom().entityArray[getY()][getX() - 1] != null)
-                  getCurrentRoom().entityArray[getY()][getX() - 1].onInteract();
+                if(getCurrentRoom().getEntities()[getY()][getX() - 1] != null)
+                  getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract();
                 break;
             case "up":
-                if(getCurrentRoom().entityArray[getY()-1][getX()] != null)
-                  getCurrentRoom().entityArray[getY() - 1][getX()].onInteract();
+                if(getCurrentRoom().getEntities()[getY()-1][getX()] != null)
+                  getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract();
                 break;
             case "down":
-                if(getCurrentRoom().entityArray[getY()+1][getX()] != null)
-                 getCurrentRoom().entityArray[getY() + 1][getX()].onInteract();
+                if(getCurrentRoom().getEntities()[getY()+1][getX()] != null)
+                 getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract();
                 break;
         }
         // check if square next to player != null
@@ -111,7 +111,7 @@ public class Player extends Person {
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
-            currentRoom.entityArray[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            currentRoom.getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
             dont = true; // dont set previous field to null
         }
     }
@@ -127,14 +127,14 @@ public class Player extends Person {
             if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
                 placeItem(); // places tempItem if it exists
                 if (getCurrentRoom().hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) getCurrentRoom().entityArray[newY][newX])) { // if addItem was successful
+                    if (inventory.addItem((Item) getCurrentRoom().getEntities()[newY][newX])) { // if addItem was successful
                     } else { // if not
-                        tempItem = (Item) getCurrentRoom().entityArray[newY][newX]; // set temp item to be whatevers in pos x & y
+                        tempItem = (Item) getCurrentRoom().getEntities()[newY][newX]; // set temp item to be whatevers in pos x & y
                     }
                 }
-                getCurrentRoom().entityArray[newY][newX] = this; // move the player to another location
+                getCurrentRoom().getEntities()[newY][newX] = this; // move the player to another location
                 if (!dont) {
-                    getCurrentRoom().entityArray[getY()][getX()] = null; // reset current position
+                    getCurrentRoom().getEntities()[getY()][getX()] = null; // reset current position
                 } else {
                     dont = false;
                     tempItem = null;
@@ -142,7 +142,7 @@ public class Player extends Person {
                 setX(newX);
                 setY(newY);
             } else { // if a collision is detected
-                System.out.println("Collissioned occurred, ouch!!");
+                System.out.println("Collision occurred, ouch!!");
             }
         } catch (Exception ex) { // catches the out of bounds exception that occurs when you try to move outside the limits of the array
             System.out.println("You hit the wall. Ouch.");
@@ -158,10 +158,10 @@ public class Player extends Person {
      * @return boolean, true if collision, false otherwise.
      */ 
     public boolean checkCollision(int x, int y) {
-        if(getCurrentRoom().tileArray[y][x].isSolid()) {
+        if(getCurrentRoom().getTiles()[y][x].isSolid()) {
             return true;
         } else {
-            return getCurrentRoom().entityArray[y][x] != null;
+            return getCurrentRoom().getEntities()[y][x] != null;
         }
     }
 

@@ -20,12 +20,8 @@ public abstract class Furniture extends Entity {
      * @param furnitureName         String, name of furniture.
      * @param furnitureDescription  String, description of furniture.
      */
-    public Furniture(int x,
-            int y,
-            int width,
-            int height,
-            Room currentRoom,
-            String furnitureName,
+    public Furniture(int x, int y, int width, int height,
+            Room currentRoom, String furnitureName, 
             String furnitureDescription) {
         
         // Pass arguments to superclass

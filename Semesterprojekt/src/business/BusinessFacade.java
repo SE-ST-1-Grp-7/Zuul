@@ -17,6 +17,13 @@ public class BusinessFacade implements IBusiness {
     public BusinessFacade() {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
+        for(int i = 0; i < entityManager.getFurnitureList().size(); i++) {
+            if(entityManager.getFurnitureList().get(i) instanceof Door){
+                Door d = (Door) entityManager.getFurnitureList().get(i);
+                d.setPlayer(entityManager.getPlayer());
+                d.setRoomManager(roomManager);
+            }
+        }
     }
 
     /**
@@ -61,13 +68,18 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public String entityGetImage(int row, int col) {
-        if (roomManager.getCurrentRoom().entityArray[row][col] != null) {
-//            return roomManager.getCurrentRoom().entityArray[row][col].getEntityImage();
-            String i = "boi.png";
-            return i;
+        if (roomManager.getCurrentRoom().getEntities()[row][col] != null) {
+            if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Student){
+                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();       
+            }else if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Furniture){
+                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
+            }else if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Item){
+                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
+            }else{
+                return "/textures/player.png"; 
+            }
         } else {
-            String i = "testSquare.png";
-            return i;
+            return "testSquare.png";
         }
     }
 
@@ -78,9 +90,10 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void loadGame() {
-        entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
         entityManager.loadGame();
-        entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
+        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override
@@ -90,5 +103,10 @@ public class BusinessFacade implements IBusiness {
         } else {
             return "testSquare.png";
         }
+    }
+
+    @Override
+    public void goThroughDoor() {
+        roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
 }

@@ -38,12 +38,12 @@ public class PrintOut {
     public static void displayRoom(Room currentRoom) {
         for(int i = 0; i < 10; i++) {
             for(int j = 0; j< 10; j++) {
-                if(currentRoom.entityArray[i][j] instanceof Player) {
+                if(currentRoom.getEntities()[i][j] instanceof Player) {
                     System.out.print("|" + "p");
-                } else if(currentRoom.entityArray[i][j] instanceof Item) {
+                } else if(currentRoom.getEntities()[i][j] instanceof Item) {
                     System.out.print("|" + "i");
                 }
-                 else if(currentRoom.entityArray[i][j] instanceof Student) {
+                 else if(currentRoom.getEntities()[i][j] instanceof Student) {
                     System.out.print("|" + "s");
                 }
                  else {
