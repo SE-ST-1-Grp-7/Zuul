@@ -1,0 +1,16 @@
+8,1,dinninghall,false
+8,1,lecturehall2,true
+8,1,hallway 1,false
+8,1,lecturehall 1,false
+8,1,toilet,false
+8,1,outside,true
+8,1,garden,false
+3,2,garden,false
+3,4,garden,false
+2,6,garden,false
+2,8,garden,false
+8,1,pub,false
+8,1,teacher room,false
+8,1,hallway 2,true
+8,1,relaxing room,true
+8,1,hallway 3,false

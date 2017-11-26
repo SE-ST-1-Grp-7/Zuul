@@ -29,23 +29,27 @@ public class Door extends Furniture {
         super.setEntityImage(doorImage);
         this.direction = direction;
     }
-    
+
     /**
-     * settermethod: mostly used to give the useDoor and onInteract methods acces to the player
-     * @param p 
+     * settermethod: mostly used to give the useDoor and onInteract methods
+     * acces to the player
+     *
+     * @param p
      */
-    public void setPlayer(Player p){
+    public void setPlayer(Player p) {
         this.player = p;
     }
-    
+
     /**
-     * setter method: mostly used to give the useDoor and onInteract methods acces to the roomManager
-     * @param rm 
+     * setter method: mostly used to give the useDoor and onInteract methods
+     * acces to the roomManager
+     *
+     * @param rm
      */
-    public void setRoomManager(RoomManager rm){
+    public void setRoomManager(RoomManager rm) {
         this.roomManager = rm;
     }
-    
+
     @Override
     public void onInteract() {
         useDoor(this.player, this.roomManager);
@@ -53,36 +57,36 @@ public class Door extends Furniture {
 
     /**
      * method for using a door
+     *
      * @param goPlayer
-     * @param roomManager 
+     * @param roomManager
      */
     public void useDoor(Player goPlayer, RoomManager roomManager) {
-        goPlayer.setCurrentRoom(currentRoom.getExit(direction));
-        roomManager.setCurrentRoom(currentRoom.getExit(direction));
-                if (goPlayer.getX() == getX() && getY() > 5) {
-                goPlayer.setY(8);
-                goPlayer.setX(getX());
-                } else if (goPlayer.getX() == getX() && getY() < 5) {
-                goPlayer.setY(1);
-                goPlayer.setX(getX()); 
-                } else if (goPlayer.getY() == getY() && getX() > 5){
-                goPlayer.setX(1);
-                goPlayer.setY(getY());
-                } else if (goPlayer.getY() == getY() && getX() < 5) {
-                goPlayer.setX(8);
-                goPlayer.setY(getY());
-                }
+        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+        if (goPlayer.getX() == getX() && getY() > 5) {
+            goPlayer.setY(8);
+            goPlayer.setX(getX());
+        } else if (goPlayer.getX() == getX() && getY() < 5) {
+            goPlayer.setY(1);
+            goPlayer.setX(getX());
+        } else if (goPlayer.getY() == getY() && getX() > 5) {
+            goPlayer.setX(1);
+            goPlayer.setY(getY());
+        } else if (goPlayer.getY() == getY() && getX() < 5) {
+            goPlayer.setX(8);
+            goPlayer.setY(getY());
+        }
     }
-    
+
     @Override
-        public int getX() {
-        return super.getX();        
+    public int getX() {
+        return super.getX();
     }
-    
+
     @Override
-        public int getY() {
-        return super.getY();        
+    public int getY() {
+        return super.getY();
     }
-    
-    
+
 }

@@ -297,6 +297,7 @@ public class EntityManager {
                 Door d = new Door(j, i, 64, 64, "east", rm.getCurrentRoom());
                 furniturelist.add(d);
                  this.rm.getCurrentRoom().setEntity(d);
+                 
                 
                 break;
             
