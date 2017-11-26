@@ -20,30 +20,26 @@ import java.util.HashMap;
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class EntityManager {
-
     // Containers for the different type entities.
     private ArrayList<Item> itemlist = new ArrayList<>();
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
+    // Container for entity IDs from CSV file.
     private static HashMap<String, String[][]> entityCSV = new HashMap<>();
     private static RoomManager rm;
-    private static HashMap<String, Room> roomlist;
 
     public EntityManager(RoomManager rm) {
-        this.rm = rm;
+        this.rm = rm;                   // Assign room manager object to class.
         this.roomlist = rm.getRoomlist();
-        loadPresetEntities();
-        String playerName = "Jason";
-        addEntitiesToRooms(playerName);
-        
-        //Student s = new Student(5, 2, rm.getCurrentRoom(), true, "/textures/student1");
-        //this.rm.getCurrentRoom().setEntity(this.player);
-        //this.rm.getCurrentRoom().setEntity(s);
-        
+        loadPresetEntities();           // Load entity IDs from CSV file.
+        String playerName = "Jason";    // Temp define for player name.
+        addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
+
     }
 
     // ENTITY MANAGMENT METHODS
+    
     public void addStudent(Student s) {
         studentlist.add(s);
     }
@@ -82,6 +78,7 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
+    
     public Player getPlayer() {
         return player;
     }
@@ -113,44 +110,75 @@ public class EntityManager {
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
     }
-
-    // Reads tile IDs from csv file.
+    
+    // LOAD ENTITIES FROM CSV
+    
+    /**
+     * Read entity IDs from CSV file.
+     */
     public static void loadPresetEntities() {
+        // Path of CSV file.
         String csvFile = "res/presets/roomEntities.csv";
+        // Declare a buffer for the file reader.
         BufferedReader fileReader = null;
+        // Define a String to contain the data from a single line in the CSV.
         String line = "";
+        // The split operator.
         String splitBy = ",";
+        // Declare variable for temp holding the room name.
         String roomName = "";
+        // Start line count of room to 0.
         int lineNo = 0;
-
+        
+        // Try catch for file IO operation exception handling.
         try {
+            // Instantiate file reader on top of a buffer with path to CSV file.
             fileReader = new BufferedReader(new FileReader(csvFile));
+            // While stil more lines left in file.
             while ((line = fileReader.readLine()) != null) {
+                // Trim leading and tailing whitespaces.
+                line = line.trim();
+                // If line is not empty.
                 if (!"".equals(line)) {
-                    line = line.trim(); // Trim leading and tailing whitespaces.
+                    // Split the line by the defined split operator.
                     String[] segments = line.split(splitBy);
+                    
                     // If reached new room in csv file, new entry in hashmap.
                     if ("-".equals(segments[0])) {
+                        // Reset room line count to 0.
                         lineNo = 0;
+                        // Parse name of room from same line.
                         roomName = segments[1].trim();
+                        /* Create a two-dimensional array and make a HashMap
+                           entry with room String as key and the two dimensional
+                           array as the value. */
                         String[][] idList = new String[10][10];
                         entityCSV.put(roomName, idList);
                     // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
+                        /* Iterate through each x-coordinate in room grid in CSV
+                           file and look for ID numbers. */
                         for (int i = 0; i < segments.length; i++) {
+                            /* If parameter isn't blank assign ID number trimmed
+                               to room grid. */
                             if (!"".equals(segments[i].trim())) {
                                 entityCSV.get(roomName)[lineNo][i] =
                                         segments[i].trim();
                             }
                         }
+                        // Increment line count after operation.
                         lineNo++;
                     }
                 }
             }
+            
+        // Exception handling.
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+            
+        // Finally try to close File IO operations.
         } finally {
             if (fileReader != null) {
                 try {
@@ -162,26 +190,44 @@ public class EntityManager {
         }
     }
 
-    /* goes through all rooms and each grid position and assigns an entity if
-       preset has assigned an entity to be there. */
-    public void addEntitiesToRooms(String playerName) {
+    /**
+     * Iterate through all rooms and their position grids and call instantiation
+     * of entities where CSV file had defined one to be placed.
+     * 
+     * @param playerName    String, name of player.
+     */
+    public final void addEntitiesToRooms(String playerName) {
         String IDnum;
+        // Get HashMap of all rooms and iterate through it based on keys.
+        HashMap<String, Room> roomlist = rm.getRoomlist();
         for (String name : roomlist.keySet()) {
+            // Iterate through y-coordinates (rows) in each room.
             for (int i = 0; i < entityCSV.get(name).length; i++) {
+                // Iterate through x-coordinates (column position).
                 for (int j = 0; j < entityCSV.get(name)[i].length; j++) {
                     // ID number in the specific grid position.
                     IDnum = entityCSV.get(name)[i][j];
+                    // If no ID continue to next iteration.
                     if (IDnum == null) {
                         continue;
                     }
+                    // Call instantiation of entity based on ID number.
                     entityTypes(i, j, name, playerName, IDnum);
                 }
             }
         }
     }
     
-    /* Creates an entity based on ID and grid position and assigns the entity
-       to its respective list of entities. */
+    /**
+     * Instantiate entity objects based on ID number and add them to their
+     * respective entity list.
+     * 
+     * @param i             int, y-coordinate of grid position.
+     * @param j             int, x-coordinate of grid position.
+     * @param name          String, name of room for entity to 'spawn' in.
+     * @param playerName    String, name of player.
+     * @param IDnum         String, ID of the type of entity to be created.
+     */
     public void entityTypes(int i,
             int j,
             String name,
