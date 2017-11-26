@@ -173,9 +173,20 @@ public class Room {
         return this.tileArray;
     }
     
+    /**
+     * this method will set the entity to be shown on the GUI
+     * @param entity 
+     */
     public void setEntity (Entity entity) {
         entityArray[entity.getY()][entity.getX()] = entity;
     }
+    
+    /**
+     * this method is mostly for deleting the player from the room he is leaving
+     * @param x
+     * @param y
+     * @param entity 
+     */
     public void setEntityWithXY(int x, int y, Entity entity){
         entityArray[y][x] = entity;
     }
