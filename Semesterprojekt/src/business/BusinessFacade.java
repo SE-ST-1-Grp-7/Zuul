@@ -89,9 +89,9 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void loadGame() {
-        entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
         entityManager.loadGame();
-        entityManager.getPlayer().getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
         roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
@@ -106,11 +106,6 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void goThroughDoor() {
-        //pseudo logic:
-        //Door
-        //setplayer
-        //set roomManager
-        //onInteract
-        roomManager.getCurrentRoom().entityArray[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
+        roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
 }

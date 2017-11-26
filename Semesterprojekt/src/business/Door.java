@@ -53,6 +53,7 @@ public class Door extends Furniture {
     @Override
     public void onInteract() {
         useDoor(this.player, this.roomManager);
+        roomManager.getCurrentRoom().setEntity(this.player);
     }
 
     /**

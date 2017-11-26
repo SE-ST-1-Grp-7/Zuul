@@ -16,7 +16,7 @@ public class Room {
     private String description;
     private String name;
     public Tile[][] tileArray = new Tile[10][10];
-    public Entity[][] entityArray;
+    private Entity[][] entityArray;
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
 
