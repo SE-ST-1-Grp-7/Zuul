@@ -16,7 +16,7 @@ public class Player extends Person {
     private int assignmentProgress; // Progress of grading an assignment.
     private Item tempItem; // Temporary holder for item to be dropped.
     private boolean dont = false; // Avoid tempItem overlap with other items.
-    private String playerImage = "/texture/player.png"; // String of image path.
+    private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
 
     /**

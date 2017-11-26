@@ -7,7 +7,7 @@ package business;
  */
 public class Assignment extends Item {
     // Path of texture for assignment.
-    private String assignmentImage = "/texture/assignment.png";
+    private String assignmentImage = "/textures/assignment.png";
     
     /**
      * Constructor for Assignment class.

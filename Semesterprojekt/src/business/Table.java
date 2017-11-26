@@ -14,7 +14,7 @@ public class Table extends Furniture /*implements Inspectable*/{
     private int maxAmountOfItems; // Max amount of items on table.
     // List of items on table.
     private List<Item> itemsOnTable = new ArrayList<>();
-    private String tableImage = "/texture/table.png"; // Path to texture.
+    private String tableImage = "/textures/table.png"; // Path to texture.
     
     /**
      * Constructor for Table class.

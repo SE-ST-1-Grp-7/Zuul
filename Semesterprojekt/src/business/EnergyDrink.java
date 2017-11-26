@@ -8,7 +8,7 @@ package business;
 public class EnergyDrink extends Item {
     private final int ENERGY_RESTORE = 40; // Energy restore upon use.
     // Path of tecture for energy drink.
-    private String energydrinkImage = "/texture/energydrik.png";
+    private String energydrinkImage = "/textures/energydrik.png";
     
     /**
      * Constructor for EnergyDrink class.

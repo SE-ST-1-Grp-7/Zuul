@@ -36,7 +36,7 @@ public class Student extends Person {
         if ("".equals(studentImage)) {
             // Generate random choice of student texture, 12 options.
             int number = (1 + (int) (Math.random()*12));
-            studentImage = "/texture/student"+number+".png";
+            studentImage = "/textures/student"+number+".png";
             // Pass the chosen texture path to superclass.
             super.setEntityImage(studentImage);
         }
