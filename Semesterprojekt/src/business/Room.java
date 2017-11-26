@@ -15,7 +15,7 @@ public class Room {
     // Declare attributes -section.
     private String description;
     private String name;
-    public Tile[][] tileArray = new Tile[10][10];
+    private Tile[][] tileArray = new Tile[10][10];
     private Entity[][] entityArray;
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
@@ -175,6 +175,9 @@ public class Room {
     
     public void setEntity (Entity entity) {
         entityArray[entity.getY()][entity.getX()] = entity;
+    }
+    public void setEntityWithXY(int x, int y, Entity entity){
+        entityArray[y][x] = entity;
     }
     
     public Entity[][] getEntities() {

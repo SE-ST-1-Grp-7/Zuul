@@ -158,7 +158,7 @@ public class Player extends Person {
      * @return boolean, true if collision, false otherwise.
      */ 
     public boolean checkCollision(int x, int y) {
-        if(getCurrentRoom().tileArray[y][x].isSolid()) {
+        if(getCurrentRoom().getTiles()[y][x].isSolid()) {
             return true;
         } else {
             return getCurrentRoom().getEntities()[y][x] != null;

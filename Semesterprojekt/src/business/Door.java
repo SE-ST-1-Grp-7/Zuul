@@ -44,6 +44,7 @@ public class Door extends Furniture {
 
     @Override
     public void onInteract() {
+        roomManager.getCurrentRoom().setEntityWithXY(this.player.getX(), this.player.getY(), null);
         useDoor(this.player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(this.player);
     }
