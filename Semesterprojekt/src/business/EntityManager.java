@@ -31,7 +31,6 @@ public class EntityManager {
 
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
-        this.roomlist = rm.getRoomlist();
         loadPresetEntities();           // Load entity IDs from CSV file.
         String playerName = "Jason";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
