@@ -531,7 +531,7 @@ public class EntityManager {
                 break;
    
             case "KEY":
-                itemlist.add(new Key(j, i, 64, 64, rm.getRoom(name)));
+                itemlist.add(new Key(j, i, 64, 64, rm.getRoom(name), "/textures/key.png"));
                 break;
                 
             case "COFFEE":
@@ -969,7 +969,7 @@ public class EntityManager {
                                     Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[2]), "/textures/key.png");
                             itemlist.add(k);
                             break;
                             
@@ -1052,7 +1052,7 @@ public class EntityManager {
                                     Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[2]),"/textures/key.png");
                             player.inventory().addItem(k);
                             break;
                         case "EnergyDrink":
