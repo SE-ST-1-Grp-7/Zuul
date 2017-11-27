@@ -398,13 +398,13 @@ public class EntityManager {
         
         // Switch cases for what type of entity it is
         switch (IDnum.toUpperCase()) {
-            // Instance of white t-shirt, brunette student.
+            // Instance of peaceful kouhai (face covered by hair).
             case "ID51":
                 studentlist.add(new Student(j, i, rm.getRoom(name), false,
                         "/textures/kouhai1.png"));
                 break;
 
-            // Instance of red t-shirt, brunette student.
+            // Instance of hostile kouhai (red eye).
             case "ID52":
                 studentlist.add(new Student(j,
                         i,
@@ -413,7 +413,7 @@ public class EntityManager {
                         "/textures/kouhai3.png"));
                 break;
 
-            // Instance of green t-shirt, brunette student.
+            // Instance of peaceful kouhai (black eye).
             case "ID53":
                 studentlist.add(new Student(j,
                         i,
@@ -422,7 +422,7 @@ public class EntityManager {
                         "/textures/kouhai2.png"));
                 break;
 
-            // Instance of white t-shirt, blond student.
+            // Instance of peaceful kouhai (face covered by hair).
             case "ID54":
                 studentlist.add(new Student(j,
                         i,
@@ -431,7 +431,7 @@ public class EntityManager {
                         "/textures/kouhai1.png"));
                 break;
 
-            // Instance of red t-shirt, blond student.
+            // Instance of hostile kouhai (red eye).
             case "ID55":
                 studentlist.add(new Student(j,
                         i,
@@ -440,7 +440,7 @@ public class EntityManager {
                         "/textures/kouhai3.png"));
                 break;
 
-            // Instance of green t-shirt, blond student.
+            // Instance of peaceful kouhai (black eye).
             case "ID56":
                 studentlist.add(new Student(j,
                         i,
@@ -449,7 +449,7 @@ public class EntityManager {
                         "/textures/kouhai2.png"));
                 break;
 
-            // Instance of white t-shirt, black student.
+            // Instance of peaceful kouhai (face covered by hair).
             case "ID57":
                 studentlist.add(new Student(j,
                         i,
@@ -458,7 +458,7 @@ public class EntityManager {
                         "/textures/kouhai1.png"));
                 break;
 
-            // Instance of red t-shirt, black student.
+            // Instance of hostile kouhai (red eye).
             case "ID58":
                 studentlist.add(new Student(j,
                         i,
@@ -467,7 +467,7 @@ public class EntityManager {
                         "/textures/kouhai3.png"));
                 break;
 
-            // Instance of green t-shirt, black student.
+            // Instance of peaceful kouhai (black eye).
             case "ID59":
                 studentlist.add(new Student(j,
                         i,
@@ -476,7 +476,7 @@ public class EntityManager {
                         "/textures/kouhai2.png"));
                 break;
 
-            // Instance of white t-shirt, asian student.
+            // Instance of peaceful kouhai (face covered by hair).
             case "ID60":
                 studentlist.add(new Student(j,
                         i,
@@ -485,7 +485,7 @@ public class EntityManager {
                         "/textures/kouhai1.png"));
                 break;
 
-            // Instance of red t-shirt, asian student.
+            // Instance of hostile kouhai (red eye).
             case "ID61":
                 studentlist.add(new Student(j,
                         i,
@@ -494,7 +494,7 @@ public class EntityManager {
                         "/textures/kouhai3.png"));
                 break;
 
-            // Instance of green t-shirt, asian student.
+            // Instance of peaceful kouhai (black eye).
             case "ID62":
                 studentlist.add(new Student(j,
                         i,
