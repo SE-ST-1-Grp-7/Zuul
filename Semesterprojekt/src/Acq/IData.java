@@ -6,4 +6,6 @@ package Acq;
  */
 public interface IData {
 
+    public String toString();
+
 }

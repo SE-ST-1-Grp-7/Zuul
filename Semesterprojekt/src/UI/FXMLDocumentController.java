@@ -2,6 +2,7 @@ package UI;
 
 import Acq.IBusiness;
 import Acq.IUI;
+import data.Highscore;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -31,6 +33,7 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
+    private Highscore h = new Highscore();
     private long diff = 0;
     private Pane pane;
     private Canvas c;
@@ -52,7 +55,9 @@ public class FXMLDocumentController implements Initializable {
     private Button useButton;
     @FXML
     private Button dropButton;
-
+    @FXML
+    private TextArea bottomTextArea;
+    
     @FXML
     private void newGameButton(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
@@ -182,6 +187,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void highscoreButton(ActionEvent event) {
+        h.loadXML();
+        ib.toString();
+        bottomTextArea.appendText("The highscore list for World of SDU\n");
+        bottomTextArea.appendText("---------------------------------\n");
+        bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
+        bottomTextArea.appendText(h.toString());
     }
 
     @FXML

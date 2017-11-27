@@ -1,16 +1,23 @@
 package business;
 
 import Acq.IBusiness;
+import Acq.IData;
 
 /**
  *
- * @author J
+ * @author Niclas Johansen & J
  */
 public class BusinessFacade implements IBusiness {
 
     private EntityManager entityManager;
     private RoomManager roomManager;
+    private IData data;
 
+    @Override
+    public void injectData(IData dataLayer) {
+        data = dataLayer;
+    }
+    
     /**
      * zero-arg constructor assigns values to EntityManager & RoomManager
      */
