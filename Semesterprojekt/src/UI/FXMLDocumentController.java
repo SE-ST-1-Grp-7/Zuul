@@ -50,6 +50,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button dropButton;
     
+    
     @FXML
     private void newGameButton(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
