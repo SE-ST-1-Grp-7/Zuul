@@ -364,6 +364,21 @@ public class EntityManager {
             case "ID66":
                 furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png"));
                 break;
+            case "ID67":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name),"/textures/chair1.png"));
+                break;
+            case "ID68":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name),"/textures/chair2.png"));
+                break;
+            case "ID69":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name),"/textures/chair3.png"));
+                break;
+            case "ID70":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name),"/textures/chair4.png"));
+                break;
+            case "ID71":
+                furniturelist.add(new Table(j, i, 64, 64,rm.getRoom(name), true,2));
+                break;
                 
             // In case the ID is not recognized.
             default:
@@ -508,6 +523,8 @@ public class EntityManager {
                 fileWriter.append(furniture.getFurnitureName());
                 fileWriter.append(",");
                 fileWriter.append(furniture.getCurrentRoom().getName());
+                fileWriter.append(",");
+                fileWriter.append(furniture.getImagePath());
                 fileWriter.append("\n");
                 System.out.println("Saved Furniture");
             }
@@ -720,7 +737,7 @@ public class EntityManager {
                                     Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[2]),tokens[3]);
                             furniturelist.add(c);
                             break;
                         case "Table":

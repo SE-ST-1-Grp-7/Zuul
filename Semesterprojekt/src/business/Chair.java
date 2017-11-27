@@ -6,7 +6,6 @@ package business;
  * @author Robin & Rasmus Willer
  */
 public class Chair extends Furniture /*implements Interactable*/{
-    private String chairImage = "/textures/chair1.png";  
 
     /**
      * Constructor for Chair class.
@@ -15,12 +14,13 @@ public class Chair extends Furniture /*implements Interactable*/{
      * @param width             int, pixel width of chair.
      * @param height            int, pixel height of chair.
      * @param currentRoom       Room, currently in this room.
+     * @param imagePath
      */
     public Chair(int x,
             int y,
             int width,
             int height,
-            Room currentRoom){
+            Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
         super(x,
@@ -31,7 +31,7 @@ public class Chair extends Furniture /*implements Interactable*/{
                 "Chair",            // Item name.
                 "Nice to sit on");  // Item description.
         // Pass path of texture to superclass.
-        super.setEntityImage(chairImage);
+        super.setEntityImage(imagePath);
     }
     /**
      * Override, upon interaction with furniture.
@@ -41,4 +41,5 @@ public class Chair extends Furniture /*implements Interactable*/{
         System.out.println("this is a chair");
         System.out.println("you cant sit on it though");
     }
+    
 }
