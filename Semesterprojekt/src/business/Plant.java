@@ -1,11 +1,11 @@
 package business;
 
 /**
- * Subclass of furniture, Chair class.
+ * Subclass of furniture, Plant class.
  * 
  * @author Robin & Rasmus Willer
  */
-public class Chair extends Furniture /*implements Interactable*/{
+public class Plant extends Furniture /*implements Interactable*/{
 
     /**
      * Constructor for Chair class.
@@ -16,7 +16,7 @@ public class Chair extends Furniture /*implements Interactable*/{
      * @param currentRoom       Room, currently in this room.
      * @param imagePath
      */
-    public Chair(int x,
+    public Plant(int x,
             int y,
             int width,
             int height,
@@ -28,8 +28,8 @@ public class Chair extends Furniture /*implements Interactable*/{
                 width,
                 height,
                 currentRoom,
-                "Chair",            // Item name.
-                "Nice to sit on");  // Item description.
+                "Plant",            // Item name.
+                "Looks so lovely");  // Item description.
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
@@ -38,8 +38,8 @@ public class Chair extends Furniture /*implements Interactable*/{
      */
     @Override
     public void onInteract() {
-        System.out.println("this is a chair");
-        System.out.println("you cant sit on it though");
+        System.out.println("This is a plant");
+        System.out.println("Looks lovely!");
     }
     
 }
