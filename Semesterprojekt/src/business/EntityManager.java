@@ -28,7 +28,12 @@ public class EntityManager {
     // Container for entity IDs from CSV file.
     private static HashMap<String, String[][]> entityCSV = new HashMap<>();
     private static RoomManager rm;
-
+    
+    /**
+     * Primary constructor for the EntityManager class.
+     * 
+     * @param rm    RoomManager, used to assign entities to a specific room.
+     */
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
         loadPresetEntities();           // Load entity IDs from CSV file.
@@ -39,73 +44,151 @@ public class EntityManager {
 
     // ENTITY MANAGMENT METHODS
     
+    /**
+     * Add initialized student to the student list.
+     * 
+     * @param s     Student, student to be added to studet list.
+     */
     public void addStudent(Student s) {
         studentlist.add(s);
     }
-
+    
+    /**
+     * Despawn student.
+     * 
+     * @param s     Student, student that need to be removed from the game.
+     */
     public void removeStudent(Student s) {
         studentlist.remove(s);
     }
+    
+    /**
+     * Spawn students in the currently active room, in the beginning of the 
+     * game.
+     */
     public void showStudents(){
         for(Student s : studentlist){
             s.getCurrentRoom().setEntity(s);
-            
         }
     }
     
+    /**
+     * Spawn furnitures in the currently active room, in the beginning of the
+     * game.
+     */
     public void showFurniture(){
         for(Furniture d : furniturelist){
             d.getCurrentRoom().setEntity(d);
             
         }
     }
-
+    
+    /**
+     * Add initialized furniture to the furniture list.
+     * 
+     * @param f     Furniture, to be placed in the furniture list.
+     */
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
     }
-
+    
+    /**
+     * Remove furniture object from furniture list.
+     * 
+     * @param f     Furniture, to be removed from furniture list.
+     */
     public void removeFurniture(Furniture f) {
         furniturelist.remove(f);
     }
-
+    
+    /**
+     * Add initializedd item to the item list.
+     * 
+     * @param i     Item, to be placed in the item list.
+     */
     public void addItem(Item i) {
         itemlist.add(i);
     }
-
+    
+    /**
+     * Remove item object from item list.
+     * 
+     * @param i     Item, to be removed from item list.
+     */
     public void removeItem(Item i) {
         itemlist.remove(i);
     }
 
     // SETTERS & GETTERS
     
+    /**
+     * Get player object.
+     * 
+     * @return      Player, player object retrieved.
+     */
     public Player getPlayer() {
         return player;
     }
-
+    
+    /**
+     * Replace player object.
+     * 
+     * @param player    Player, the new player object to replace previous.
+     */
     public void setPlayer(Player player) {
         this.player = player;
     }
-
+    
+    /**
+     * Get student list.
+     * 
+     * @return      ArrayList<Student>, student list to retrieve.
+     */
     public ArrayList<Student> getStudentList() {
         return studentlist;
     }
-
+    
+    /**
+     * Replace student list.
+     * 
+     * @param studentlist   ArrayList<Student>, student list to assign.
+     */
     public void setStudentList(ArrayList<Student> studentlist) {
         this.studentlist = studentlist;
     }
-
+    
+    /**
+     * Get furniture list.
+     * 
+     * @return      ArrayList<Furniture>, furniture list to retrieve.
+     */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
     }
-
+    
+    /**
+     * Replace furniture list.
+     * 
+     * @param furniturelist     ArrayList<Student>, furniture list to assign.
+     */
     public void setFurnitureList(ArrayList<Furniture> furniturelist) {
         this.furniturelist = furniturelist;
     }
-
+    
+    /**
+     * Get item list.
+     * 
+     * @return      ArrayList<Item>, item list to retrieve.
+     */
     public ArrayList<Item> getItemList() {
         return itemlist;
     }
-
+    
+    /**
+     * Replace item list.
+     * 
+     * @param itemlist      ArrayList<Item>, item list to assign.
+     */
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
     }
@@ -585,37 +668,53 @@ public class EntityManager {
     
     // LOAD & SAVE METHODS
     
+    /**
+     * Method for saving the game progress.
+     */
     public void saveGame() {
-        makeSaveFolder();
-        saveItems();
-        savePlayers();
-        saveStudents();
-        saveFurniture();
-        saveInventory();
+        makeSaveFolder();   // Create folder if it does not exist.
+        saveItems();        // Save item list to file.
+        savePlayers();      // Save player to file.
+        saveStudents();     // Save student list to file.
+        saveFurniture();    // Save furniture list to file.
+        saveInventory();    // Save inventory list to file.
     }
-
+    
+    /**
+     * Method for loading the previously saved game progress.
+     */
     public void loadGame() {
-        loadItems();
-        loadPlayers();
-        loadStudents();
-        loadFurniture();
-        loadInventory();
+        loadItems();        // Load item list from file.
+        loadPlayers();      // Load player from file.
+        loadStudents();     // Load student list from file.
+        loadFurniture();    // Load furniture list from file.
+        loadInventory();    // Load inventory list from file.
     }
-
+    
+    /**
+     * Create save folder if it does not exist.
+     */
     public void makeSaveFolder(){
         File folder = new File(System.getProperty("user.home") +
                 "\\Documents\\zuul");
-        
-            if(!folder.exists()){
-                folder.mkdirs();
-            }
+        // If folder does not exist, create directory.
+        if(!folder.exists()){
+            folder.mkdirs();
+        }
     }
+    
+    /**
+     * Save item list to file.
+     */
     public void saveItems() {
+        // File IO try/catch.
         try {
+            // Buffer, writer, file-path.
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
                             + "\\Documents\\zuul\\SaveItemsTest.txt")));
-
+            
+            // Iterate through item list and write them to file.
             for (Item item : itemlist) {
                 fileWriter.append(item.getName());
                 fileWriter.append(",");
@@ -628,36 +727,54 @@ public class EntityManager {
 
                 System.out.println("Saved items");
             }
-            fileWriter.flush();
+            
+            // Flush and then close file stream.
             fileWriter.close();
-        } catch (IOException e) {
+        } catch (IOException e) { // File write error print.
             System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Save inventory list to file.
+     */
     public void saveInventory() {
+        // File IO try/catch.
         try {
+            // Buffer, writer, file-path.
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
                             + "\\Documents\\zuul\\SaveInventoryTest.txt")));
+            
+            /* Iterate through player's inventory list and write the items to
+               file. */
             for (Item item : player.inventory().getInventory()) {
                 fileWriter.append(item.getName());
             }
             fileWriter.append("\n");
-        } catch (IOException e) {
+            
+            // Flush and then close file stream.
+            fileWriter.close();
+            
+        } catch (IOException e) { // File write error print.
             System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Save player to file.
+     */
     public void savePlayers() {
+        // File IO try/catch.
         try {
+            // Buffer, writer, file-path.
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
                     new FileOutputStream(System.getProperty("user.home")
                             + "\\Documents\\zuul\\SavePlayersTest.txt")));
 
-            
+            // Write player status to file.
             fileWriter.append(String.valueOf(player.getX()));
             fileWriter.append(",");
             fileWriter.append(String.valueOf(player.getY()));
@@ -668,14 +785,19 @@ public class EntityManager {
             fileWriter.append("\n");
 
             System.out.println("Saved Player");
-            fileWriter.flush();
+            
+            // Flush and then close file stream.
             fileWriter.close();
+            
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Save student list to file.
+     */
     public void saveStudents() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
@@ -694,14 +816,18 @@ public class EntityManager {
 
                 System.out.println("Saved Students");
             }
-            fileWriter.flush();
+            
+            // Flush and then close file stream.
             fileWriter.close();
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Save furniture list to file.
+     */
     public void saveFurniture() {
         try {
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
@@ -719,21 +845,28 @@ public class EntityManager {
                 fileWriter.append("\n");
                 System.out.println("Saved Furniture");
             }
-            fileWriter.flush();
+            
+            // Flush and then close file stream.
             fileWriter.close();
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Load item list from previously saved game file.
+     */
     public void loadItems() {
+        // File IO try/catch.
         try {
+            // Buffer, reader, file-path.
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveItemsTest.txt")));
             itemlist.clear();
             String line;
+            // Continue as long as there is file content.
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
@@ -789,13 +922,19 @@ public class EntityManager {
                     }
                 }
             }
+            
+            // Flush and then close file stream.
+            fileReader.close();
 
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Load inventory list from previously saved game file.
+     */
     public void loadInventory() {
         try {
             BufferedReader fileReader = new BufferedReader(
@@ -856,12 +995,19 @@ public class EntityManager {
                     }
                 }
             }
+            
+            // Flush and then close file stream.
+            fileReader.close();
+            
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Load player from previously saved game file.
+     */
     public void loadPlayers() {
         try {
             BufferedReader fileReader = new BufferedReader(
@@ -879,12 +1025,19 @@ public class EntityManager {
                             (Room) rm.getRoomlist().get(tokens[3]));
                 }
             }
+            
+            // Flush and then close file stream.
+            fileReader.close();
+            
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
                     + "please check the save directory in the code.");
         }
     }
-
+    
+    /**
+     * Load student list from previously saved game file.
+     */
     public void loadStudents() {
         try {
             BufferedReader fileReader = new BufferedReader(
@@ -902,15 +1055,21 @@ public class EntityManager {
                             Boolean.parseBoolean(tokens[3]));
                     studentlist.add(student);
                 }
-
             }
+            
+            // Flush and then close file stream.
+            fileReader.close();
+            
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... "
                     + "please check the save directory in the code.");
 
         }
     }
-
+    
+    /**
+     * Load furniture list from previously saved game file.
+     */
     public void loadFurniture() {
         try {
             BufferedReader fileReader = new BufferedReader(
@@ -946,7 +1105,10 @@ public class EntityManager {
                     }
                 }
             }
-
+            
+            // Flush and then close file stream.
+            fileReader.close();
+            
         } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... "
                     + "please check the save directory in the code.");
