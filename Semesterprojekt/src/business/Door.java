@@ -45,11 +45,12 @@ public class Door extends Furniture {
     }
 
     @Override
-    public void onInteract() {
-        if (this.isLocked == true && /*player has the key*/) {
-            System.out.println("you unlock the door and go through");
-            goThroughDoorMethod();
-        } else if (this.isLocked == true) {
+    public void onInteract() {        
+//        if (this.isLocked == true && /*player has the key*/) {
+//            System.out.println("you unlock the door and go through");
+//            goThroughDoorMethod();
+//        } else
+        if (this.isLocked == true) {
             System.out.println("the door is locked, you need a key to open it");
         } else {
             goThroughDoorMethod();
