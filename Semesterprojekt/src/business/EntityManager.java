@@ -864,14 +864,20 @@ public class EntityManager {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveItemsTest.txt")));
+            
+            // Clear item list.
             itemlist.clear();
+            
             String line;
-            // Continue as long as there is file content.
+            // Continue to iterate as long as there is file content.
             while ((line = fileReader.readLine()) != null) {
-                //Get all tokens available in line
+                // Get all tokens available in line
                 String[] tokens = line.split(",");
+                // If more than
                 if (tokens.length > 0) {
+                    // Check for first token in line.
                     switch (tokens[0]) {
+                        // If adderall, add item to item list.
                         case "Adderal":
                             Adderall d = new Adderall(
                                     Integer.parseInt(tokens[0]),
@@ -881,6 +887,8 @@ public class EntityManager {
                                     (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(d);
                             break;
+                            
+                        // If coffee, add item to item list.
                         case "Coffee":
                             Coffee c = new Coffee(
                                     Integer.parseInt(tokens[0]),
@@ -890,6 +898,8 @@ public class EntityManager {
                                     (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(c);
                             break;
+                            
+                        // If assignment, add item to item list.
                         case "Assignment":
                             Assignment a = new Assignment(
                                     Integer.parseInt(tokens[0]),
@@ -899,6 +909,8 @@ public class EntityManager {
                                     (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(a);
                             break;
+                            
+                        // If key, add item to item list.
                         case "Key":
                             Key k = new Key(Integer.parseInt(
                                     tokens[0]),
@@ -908,6 +920,8 @@ public class EntityManager {
                                     (Room) rm.getRoomlist().get(tokens[2]));
                             itemlist.add(k);
                             break;
+                            
+                        // If energydrink, add item to item list.
                         case "EnergyDrink":
                             EnergyDrink e = new EnergyDrink(
                                     Integer.parseInt(tokens[0]),
@@ -917,6 +931,8 @@ public class EntityManager {
                                     rm.getCurrentRoom().getExit(tokens[2]));
                             itemlist.add(e);
                             break;
+                        
+                        // Ignore anything else
                         default:
                             break;
                     }
@@ -926,7 +942,7 @@ public class EntityManager {
             // Flush and then close file stream.
             fileReader.close();
 
-        } catch (IOException e) {
+        } catch (IOException e) { // File read error print.
             System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
                     + "please check the save directory in the code.");
         }
@@ -936,12 +952,18 @@ public class EntityManager {
      * Load inventory list from previously saved game file.
      */
     public void loadInventory() {
+        // File IO try/catch.
         try {
+            // Buffer, reader, file-path.
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveInventoryTest.txt")));
+            
+            // Clear inventory list.
             player.inventory().getInventory().clear();
+            
             String line;
+            
             while ((line = fileReader.readLine()) != null) {
                 //Get all tokens available in line
                 String[] tokens = line.split(",");
