@@ -16,7 +16,7 @@ public class Door extends Furniture {
             Room currentRoom, String imagePath, boolean isLocked) {
 
         // Pass arguments to superclass.
-        super(x, y, width, height, currentRoom, 
+        super(x, y, width, height, currentRoom,
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         super.setEntityImage(imagePath);
@@ -46,14 +46,12 @@ public class Door extends Furniture {
 
     @Override
     public void onInteract() {
-        if (this.isLocked == true) {
+        if (this.isLocked == true && /*player has the key*/) {
+            System.out.println("you unlock the door and go through");
+            goThroughDoorMethod();
+        } else if (this.isLocked == true) {
             System.out.println("the door is locked, you need a key to open it");
-        } 
-//        else if (this.isLocked == true && /*player has the key*/)) {
-//            System.out.println("you unlock the door and go through");
-//            goThroughDoorMethod();
-//        }
-        else {
+        } else {
             goThroughDoorMethod();
         }
     }
