@@ -488,7 +488,7 @@ public class EntityManager {
                         64,
                         "east",
                         rm.getRoom(name),
-                        "/textures/door12.png"));
+                        "/textures/door12.png", false));
                 break;
                 
             // Door, outer, east, type 2.
@@ -499,7 +499,7 @@ public class EntityManager {
                         64,
                         "east",
                         rm.getRoom(name),
-                        "/textures/door11.png"));
+                        "/textures/door11.png", false));
                 break;
             
             // Door, outer, south, type 1.
@@ -510,7 +510,7 @@ public class EntityManager {
                         64,
                         "south",
                         rm.getRoom(name),
-                        "/textures/door13.png"));
+                        "/textures/door13.png", false));
                 break;
                 
             // Door, outer, south, type 2.
@@ -521,7 +521,7 @@ public class EntityManager {
                         64,
                         "south",
                         rm.getRoom(name),
-                        "/textures/door14.png"));
+                        "/textures/door14.png", false));
                 break;
                 
             case "KEY":
