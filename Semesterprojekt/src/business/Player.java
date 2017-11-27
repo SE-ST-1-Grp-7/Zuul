@@ -54,20 +54,24 @@ public class Player extends Person {
     public void interact() {
         switch (facing) {
             case "right":
-                if(getCurrentRoom().getEntities()[getY()][getX() + 1] != null)
-                  getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract();
+                if (getCurrentRoom().getEntities()[getY()][getX() + 1] != null) {
+                    getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract();
+                }
                 break;
             case "left":
-                if(getCurrentRoom().getEntities()[getY()][getX() - 1] != null)
-                  getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract();
+                if (getCurrentRoom().getEntities()[getY()][getX() - 1] != null) {
+                    getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract();
+                }
                 break;
             case "up":
-                if(getCurrentRoom().getEntities()[getY()-1][getX()] != null)
-                  getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract();
+                if (getCurrentRoom().getEntities()[getY() - 1][getX()] != null) {
+                    getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract();
+                }
                 break;
             case "down":
-                if(getCurrentRoom().getEntities()[getY()+1][getX()] != null)
-                 getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract();
+                if (getCurrentRoom().getEntities()[getY() + 1][getX()] != null) {
+                    getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract();
+                }
                 break;
         }
         // check if square next to player != null
@@ -156,9 +160,9 @@ public class Player extends Person {
      * @param x int, X coordinate of grid location to be checked.
      * @param y int, Y coordinate of grid location to be checked.
      * @return boolean, true if collision, false otherwise.
-     */ 
+     */
     public boolean checkCollision(int x, int y) {
-        if(getCurrentRoom().getTiles()[y][x].isSolid()) {
+        if (getCurrentRoom().getTiles()[y][x].isSolid()) {
             return true;
         } else {
             return getCurrentRoom().getEntities()[y][x] != null;

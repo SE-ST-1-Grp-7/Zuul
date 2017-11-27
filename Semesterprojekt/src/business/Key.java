@@ -36,9 +36,9 @@ public class Key extends Item {
     @Override
     public void use(Player p) {
     }
-    @Override
-    public void onInteract(){
-        System.out.println("This is a " + super.getName() + " it is " + super.getItemDescription());
-        //ADD CODE TO PICK UP THE ITEM AND ADD IT TO THE INVENTORY AND REMOVE IT ON THE GROUND
-    }
+//    @Override
+//    public void onInteract(){
+//        System.out.println("This is a " + super.getName() + " it is " + super.getItemDescription());
+//        //ADD CODE TO PICK UP THE ITEM AND ADD IT TO THE INVENTORY AND REMOVE IT ON THE GROUND
+//    }
 }

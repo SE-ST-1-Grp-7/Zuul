@@ -390,6 +390,9 @@ public class EntityManager {
                 itemlist.add(new Key(j, i, 64, 64, rm.getRoom(name)));
                 break;
                 
+            case "COFFEE":
+                itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
+                
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum +
