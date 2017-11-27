@@ -6,7 +6,6 @@ package business;
  * @author Robin & Rasmus Willer
  */
 public class Bookcase extends Furniture /*implements Interactable*/{
-    private String bookcaseImage = "/textures/bookcase1.png";  
 
     /**
      * Constructor for Chair class.
@@ -20,7 +19,7 @@ public class Bookcase extends Furniture /*implements Interactable*/{
             int y,
             int width,
             int height,
-            Room currentRoom){
+            Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
         super(x,
@@ -31,7 +30,7 @@ public class Bookcase extends Furniture /*implements Interactable*/{
                 "Bookcase",            // Item name.
                 "full of stuff");  // Item description.
         // Pass path of texture to superclass.
-        super.setEntityImage(bookcaseImage);
+        super.setEntityImage(imagePath);
     }
     @Override
     public void onInteract() {
