@@ -500,7 +500,7 @@ public class EntityManager {
                 break;
                 
             // Door, outer, east, type 2.
-            case "DOOR11":
+            case "ID68":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -511,7 +511,7 @@ public class EntityManager {
                 break;
             
             // Door, outer, south, type 1.
-            case "DOOR13":
+            case "ID69":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -522,7 +522,7 @@ public class EntityManager {
                 break;
                 
             // Door, outer, south, type 2.
-            case "DOOR14":
+            case "ID70":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -531,37 +531,37 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door14.png"));
                 break;
-            case "ID69":
+            case "ID71":
                 furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair3.png"));
                 break;
-            case "ID70":
+            case "ID72":
                 furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair4.png"));
                 break;
-            case "ID71":
+            case "ID73":
                 furniturelist.add(new Table(j, i, 64, 64, rm.getRoom(name), false, 0));
                 break;
-            case "ID72":
+            case "ID74":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase1.png"));
                 break;
-            case "ID73":
+            case "ID75":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase2.png"));
                 break;
-            case "ID74":
+            case "ID76":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase3.png"));
                 break;
-            case "ID75":
+            case "ID77":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase4.png"));
                 break;
-            case "ID76":
+            case "ID78":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase5.png"));
                 break;
-            case "ID77":
+            case "ID79":
                 furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase6.png"));
                 break;
-            case "ID78":
+            case "ID80":
                 furniturelist.add(new Plant(j, i, 64, 64, rm.getRoom(name), "/textures/hedge1.png"));
                 break;
-            case "ID79":
+            case "ID81":
                 furniturelist.add(new Plant(j, i, 64, 64, rm.getRoom(name), "/textures/potplant.png"));
                 break;
 
