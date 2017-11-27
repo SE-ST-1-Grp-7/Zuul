@@ -211,7 +211,13 @@ public class EntityManager {
                         continue;
                     }
                     // Call instantiation of entity based on ID number.
-                    entityTypes(i, j, name, playerName, IDnum);
+                    if (playerName.equals("Peter")) {
+                        senpaiTypes(i, j, name, playerName, IDnum);
+                    } else {
+                        entityTypes(i, j, name, playerName, IDnum);
+                    }
+                    showStudents();
+                    showFurniture();
                 }
             }
         }
@@ -371,8 +377,138 @@ public class EntityManager {
                         "   not defined.");
                 break;
         }
-        showStudents();
-        showFurniture();
+    }
+    
+    /**
+     * Senpai-edition.
+     * Instantiate entity objects based on ID number and add them to their
+     * respective entity list.
+     * 
+     * @param i             int, y-coordinate of grid position.
+     * @param j             int, x-coordinate of grid position.
+     * @param name          String, name of room for entity to 'spawn' in.
+     * @param playerName    String, name of player.
+     * @param IDnum         String, ID of the type of entity to be created.
+     */
+    public void senpaiTypes(int i,
+            int j,
+            String name,
+            String playerName,
+            String IDnum) {
+        
+        // Switch cases for what type of entity it is
+        switch (IDnum.toUpperCase()) {
+            // Instance of white t-shirt, brunette student.
+            case "ID51":
+                studentlist.add(new Student(j, i, rm.getRoom(name), false,
+                        "/textures/kouhai1.png"));
+                break;
+
+            // Instance of red t-shirt, brunette student.
+            case "ID52":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        true,
+                        "/textures/kouhai3.png"));
+                break;
+
+            // Instance of green t-shirt, brunette student.
+            case "ID53":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai2.png"));
+                break;
+
+            // Instance of white t-shirt, blond student.
+            case "ID54":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai1.png"));
+                break;
+
+            // Instance of red t-shirt, blond student.
+            case "ID55":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        true,
+                        "/textures/kouhai3.png"));
+                break;
+
+            // Instance of green t-shirt, blond student.
+            case "ID56":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai2.png"));
+                break;
+
+            // Instance of white t-shirt, black student.
+            case "ID57":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai1.png"));
+                break;
+
+            // Instance of red t-shirt, black student.
+            case "ID58":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        true,
+                        "/textures/kouhai3.png"));
+                break;
+
+            // Instance of green t-shirt, black student.
+            case "ID59":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai2.png"));
+                break;
+
+            // Instance of white t-shirt, asian student.
+            case "ID60":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai1.png"));
+                break;
+
+            // Instance of red t-shirt, asian student.
+            case "ID61":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        true,
+                        "/textures/kouhai3.png"));
+                break;
+
+            // Instance of green t-shirt, asian student.
+            case "ID62":
+                studentlist.add(new Student(j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/kouhai2.png"));
+                break;
+                
+            /* In case the ID is not a special case, instantiate entity from
+                the regular game edition. */
+            default:
+                entityTypes(i, j, name, playerName, IDnum);
+                break;
+        }
     }
     
     // LOAD & SAVE METHODS
