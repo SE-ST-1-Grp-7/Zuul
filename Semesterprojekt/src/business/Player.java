@@ -56,27 +56,38 @@ public class Player extends Person {
             case "right":
                 if (getCurrentRoom().getEntities()[getY()][getX() + 1] != null) {
                     getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract();
+                    pickUpItem(0, +1);
                 }
                 break;
             case "left":
                 if (getCurrentRoom().getEntities()[getY()][getX() - 1] != null) {
                     getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract();
+                    pickUpItem(0, -1);
                 }
                 break;
             case "up":
                 if (getCurrentRoom().getEntities()[getY() - 1][getX()] != null) {
                     getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract();
+                    pickUpItem(-1, 0);
                 }
                 break;
             case "down":
                 if (getCurrentRoom().getEntities()[getY() + 1][getX()] != null) {
                     getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract();
+                    pickUpItem(+1, 0);
                 }
                 break;
         }
         // check if square next to player != null
         // if true - call .interact on the entity
 
+    }
+
+    private void pickUpItem(int yOffset, int xOffset) {
+        if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
+            inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+            getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+        }
     }
 
     /**
