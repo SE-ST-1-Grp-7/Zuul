@@ -84,11 +84,17 @@ public class EntityManager {
         }
     }
     
+    public void showItems(){
+        for(Item i : itemlist)
+            i.getCurrentRoom().setEntity(i);
+    }
+
     /**
      * Add initialized furniture to the furniture list.
      * 
      * @param f     Furniture, to be placed in the furniture list.
      */
+
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
     }
@@ -446,48 +452,40 @@ public class EntityManager {
                 
             // Door, inner, east, type 1.
             case "ID63": 
-                furniturelist.add(new Door(j,
-                        i,
-                        64,
-                        64,
-                        "east",
-                        rm.getRoom(name),
-                        "/textures/door2.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png",false));
                 break;
             
             // Door, inner, south, type 1.
             case "ID64":
-                furniturelist.add(new Door(j,
-                        i,
-                        64,
-                        64,
-                        "south",
-                        rm.getRoom(name),
-                        "/textures/door1.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png",false));
                 break;
                 
             // Door, inner, west, type 1.
             case "ID65":
-                furniturelist.add(new Door(j,
-                        i,
-                        64,
-                        64,
-                        "west",
-                        rm.getRoom(name),
-                        "/textures/door2.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png",false));
                 break;
                 
             // Door, inner, north, type 1.
             case "ID66":
-                furniturelist.add(new Door(j,
-                        i,
-                        64,
-                        64,
-                        "north",
-                        rm.getRoom(name),
-                        "/textures/door1.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png",false));
                 break;
                 
+            case "ID63L": 
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png",true));
+                break;
+            
+            case "ID64L":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png",true));
+                break;
+                
+            case "ID65L":
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png",true));
+                break;
+                
+            case "ID66L":
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png",true));
+                break;
+
             // Door, outer, east, type 1.
             case "ID67": 
                 furniturelist.add(new Door(j,
@@ -496,7 +494,7 @@ public class EntityManager {
                         64,
                         "east",
                         rm.getRoom(name),
-                        "/textures/door12.png"));
+                        "/textures/door12.png", false));
                 break;
                 
             // Door, outer, east, type 2.
@@ -507,7 +505,7 @@ public class EntityManager {
                         64,
                         "east",
                         rm.getRoom(name),
-                        "/textures/door11.png"));
+                        "/textures/door11.png", false));
                 break;
             
             // Door, outer, south, type 1.
@@ -518,7 +516,7 @@ public class EntityManager {
                         64,
                         "south",
                         rm.getRoom(name),
-                        "/textures/door13.png"));
+                        "/textures/door13.png", false));
                 break;
                 
             // Door, outer, south, type 2.
@@ -529,8 +527,17 @@ public class EntityManager {
                         64,
                         "south",
                         rm.getRoom(name),
-                        "/textures/door14.png"));
+                        "/textures/door14.png", false));
                 break;
+                
+            case "KEY":
+                itemlist.add(new Key(j, i, 64, 64, rm.getRoom(name)));
+                break;
+                
+            case "COFFEE":
+                itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
+                break;
+                
             case "ID69":
                 furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair3.png"));
                 break;
@@ -571,6 +578,9 @@ public class EntityManager {
                         + "   not defined.");
                 break;
         }
+        showStudents();
+        showFurniture();
+        showItems();
     }
     
     /**
