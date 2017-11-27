@@ -354,21 +354,45 @@ public class EntityManager {
                         false,
                         "/textures/student12.png"));
                 break;
-            
+                
+            // Door, inner, east, type 1.
             case "ID63": 
                 furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png"));
                 break;
-                
+            
+            // Door, inner, south, type 1.
             case "ID64":
                 furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png"));
                 break;
                 
+            // Door, inner, west, type 1.
             case "ID65":
                 furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png"));
                 break;
                 
+            // Door, inner, north, type 1.
             case "ID66":
                 furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png"));
+                break;
+                
+            // Door, outer, east, type 1.
+            case "ID67": 
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door12.png"));
+                break;
+                
+            // Door, outer, east, type 2.
+            case "ID68":
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door11.png"));
+                break;
+            
+            // Door, outer, south, type 1.
+            case "ID69":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door13.png"));
+                break;
+                
+            // Door, outer, south, type 2.
+            case "ID70":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door14.png"));
                 break;
                 
             // In case the ID is not recognized.
