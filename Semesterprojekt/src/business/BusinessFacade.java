@@ -109,4 +109,25 @@ public class BusinessFacade implements IBusiness {
     public void goThroughDoor() {
         roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
+    /**
+     * the game loop - responsible for moving students
+     * and managing energy
+     */
+    @Override
+    public void loop() {
+        // check if player's energy is 0
+        // if so - quit the game
+        if(entityManager.getPlayer().getEnergy() <= 0)
+                System.exit(0);
+ 
+        // loop through array and call .idleMove on all students in the room      
+        for(Entity[] e : roomManager.getCurrentRoom().getEntities()) {
+            for(Entity s : e) {
+                if(s instanceof Student) {
+                    ((Student) s).idleMove();
+                }}
+        }
+        // reduce player's current energy by 1
+        entityManager.getPlayer().setEnergy(entityManager.getPlayer().getEnergy()-1);
+    }
 }
