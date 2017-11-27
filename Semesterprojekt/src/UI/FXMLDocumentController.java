@@ -29,6 +29,7 @@ public class FXMLDocumentController implements Initializable {
     private IBusiness ib;
     private final int X = 64;
     private final int Y = 64;
+    // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
     private long diff = 0;
     private Pane pane;
@@ -88,6 +89,7 @@ public class FXMLDocumentController implements Initializable {
         new AnimationTimer() {
             @Override
             public void handle(long currentNanoTime) {
+                // ensures that the loop only gets called once per second
                 diff = currentNanoTime - prevNanoTime;
                 if (diff >= 1000000000) {
                     ib.loop();
