@@ -350,19 +350,35 @@ public class EntityManager {
                 break;
             
             case "ID63": 
-                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png",false));
                 break;
                 
             case "ID64":
-                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png",false));
                 break;
                 
             case "ID65":
-                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png",false));
                 break;
                 
             case "ID66":
-                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png"));
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png",false));
+                break;
+                
+            case "ID63L": 
+                furniturelist.add(new Door(j, i, 64, 64, "east", rm.getRoom(name),"/textures/door2.png",true));
+                break;
+                
+            case "ID64L":
+                furniturelist.add(new Door(j, i, 64, 64, "south", rm.getRoom(name),"/textures/door1.png",true));
+                break;
+                
+            case "ID65L":
+                furniturelist.add(new Door(j, i, 64, 64, "west", rm.getRoom(name),"/textures/door2.png",true));
+                break;
+                
+            case "ID66L":
+                furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png",true));
                 break;
                 
             // In case the ID is not recognized.
