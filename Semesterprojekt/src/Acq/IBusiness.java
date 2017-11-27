@@ -22,4 +22,5 @@ public interface IBusiness {
     String getTileImage(int row, int col);
     
     void goThroughDoor();
+    void loop();
 }

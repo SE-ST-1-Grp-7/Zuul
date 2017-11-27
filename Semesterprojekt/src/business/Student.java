@@ -62,25 +62,26 @@ public class Student extends Person {
     public void idleMove() {
         // Assumes gets executed once per second.
         
+        
         if(rand.nextBoolean()) { // If true, move.
             String[] directions = { "left","right","up","down" };
             // Roll for a random direction.
             String direction = directions[rand.nextInt(4)];
             switch(direction) {
                 case "left":
-                    if(isLegal(getX()-1,getY())) // If move is legal, move.
+                    if(!checkCollision(getX()-1,getY())) // check for collision before moving
                         move(getX()-1,getY());
                     break;
                 case "right":
-                    if(isLegal(getX()+1,getY()))
+                    if(!checkCollision(getX()+1,getY()))
                         move(getX()+1,getY());
                     break;
                 case "up":
-                    if(isLegal(getX(),getY()-1))
+                    if(!checkCollision(getX(),getY()-1))
                         move(getX(),getY()-1);
                     break;
                 case "down":
-                    if(isLegal(getX()-1,getY()))
+                    if(!checkCollision(getX(),getY()+1))
                         move(getX(),getY()+1);
                     break;         
             }
