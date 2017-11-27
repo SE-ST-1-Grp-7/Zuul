@@ -165,21 +165,6 @@ public class Player extends Person {
 
     }
 
-    /**
-     * Method for collision check.
-     *
-     * @param x int, X coordinate of grid location to be checked.
-     * @param y int, Y coordinate of grid location to be checked.
-     * @return boolean, true if collision, false otherwise.
-     */
-    public boolean checkCollision(int x, int y) {
-        if (getCurrentRoom().getTiles()[y][x].isSolid()) {
-            return true;
-        } else {
-            return getCurrentRoom().getEntities()[y][x] != null;
-        }
-    }
-
     // GETTERS & SETTERS
     /**
      * Method call/get the player's inventory.

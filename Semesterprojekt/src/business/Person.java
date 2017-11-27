@@ -25,6 +25,20 @@ public abstract class Person extends Entity {
         // Get random name as name for person.
         name = getRandomName();
     }
+        /**
+     * Method for collision check.
+     *
+     * @param x int, X coordinate of grid location to be checked.
+     * @param y int, Y coordinate of grid location to be checked.
+     * @return boolean, true if collision, false otherwise.
+     */ 
+    public boolean checkCollision(int x, int y) {
+        if(getCurrentRoom().getTiles()[y][x].isSolid()) {
+            return true;
+        } else {
+            return getCurrentRoom().getEntities()[y][x] != null;
+        }
+    }
     
     /**
      * Person 2nd constructor, with given name.
