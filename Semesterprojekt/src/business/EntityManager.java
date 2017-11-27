@@ -500,7 +500,7 @@ public class EntityManager {
                 break;
                 
             // Door, outer, east, type 2.
-            case "DOOR13":
+            case "DOOR11":
                 furniturelist.add(new Door(j,
                         i,
                         64,
