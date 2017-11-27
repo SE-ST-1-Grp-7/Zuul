@@ -317,11 +317,11 @@ public class EntityManager {
      * Instantiate entity objects based on ID number and add them to their
      * respective entity list.
      *
-     * @param i int, y-coordinate of grid position.
-     * @param j int, x-coordinate of grid position.
-     * @param name String, name of room for entity to 'spawn' in.
-     * @param playerName String, name of player.
-     * @param IDnum String, ID of the type of entity to be created.
+     * @param i             int, y-coordinate of grid position.
+     * @param j             int, x-coordinate of grid position.
+     * @param name          String, name of room for entity to 'spawn' in.
+     * @param playerName    String, name of player.
+     * @param IDnum         String, ID of the type of entity to be created.
      */
     public void entityTypes(int i,
             int j,
