@@ -1,7 +1,6 @@
 package business;
 
 // IMPORTS
-
 import java.io.BufferedWriter;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
@@ -20,6 +19,7 @@ import java.util.HashMap;
  * @author Rasmus Willer & Søren Bendtsen
  */
 public class EntityManager {
+
     // Containers for the different type entities.
     private ArrayList<Item> itemlist = new ArrayList<>();
     private Player player;
@@ -43,7 +43,7 @@ public class EntityManager {
     }
 
     // ENTITY MANAGMENT METHODS
-    
+
     /**
      * Add initialized student to the student list.
      * 
@@ -61,6 +61,7 @@ public class EntityManager {
     public void removeStudent(Student s) {
         studentlist.remove(s);
     }
+
     
     /**
      * Spawn students in the currently active room, in the beginning of the 
@@ -79,7 +80,7 @@ public class EntityManager {
     public void showFurniture(){
         for(Furniture d : furniturelist){
             d.getCurrentRoom().setEntity(d);
-            
+
         }
     }
     
@@ -126,7 +127,7 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
-    
+
     /**
      * Get player object.
      * 
@@ -198,9 +199,8 @@ public class EntityManager {
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
     }
-    
+
     // LOAD ENTITIES FROM CSV
-    
     /**
      * Read entity IDs from CSV file.
      */
@@ -217,7 +217,7 @@ public class EntityManager {
         String roomName = "";
         // Start line count of room to 0.
         int lineNo = 0;
-        
+
         // Try catch for file IO operation exception handling.
         try {
             // Instantiate file reader on top of a buffer with path to CSV file.
@@ -230,7 +230,7 @@ public class EntityManager {
                 if (!"".equals(line)) {
                     // Split the line by the defined split operator.
                     String[] segments = line.split(splitBy);
-                    
+
                     // If reached new room in csv file, new entry in hashmap.
                     if ("-".equals(segments[0])) {
                         // Reset room line count to 0.
@@ -242,7 +242,7 @@ public class EntityManager {
                            array as the value. */
                         String[][] idList = new String[10][10];
                         entityCSV.put(roomName, idList);
-                    // Otherwise assign ID to grid position in hashmap value[][] 
+                        // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         /* Iterate through each x-coordinate in room grid in CSV
                            file and look for ID numbers. */
@@ -250,8 +250,8 @@ public class EntityManager {
                             /* If parameter isn't blank assign ID number trimmed
                                to room grid. */
                             if (!"".equals(segments[i].trim())) {
-                                entityCSV.get(roomName)[lineNo][i] =
-                                        segments[i].trim();
+                                entityCSV.get(roomName)[lineNo][i]
+                                        = segments[i].trim();
                             }
                         }
                         // Increment line count after operation.
@@ -259,14 +259,14 @@ public class EntityManager {
                     }
                 }
             }
-            
-        // Exception handling.
+
+            // Exception handling.
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-            
-        // Finally try to close File IO operations.
+
+            // Finally try to close File IO operations.
         } finally {
             if (fileReader != null) {
                 try {
@@ -281,8 +281,8 @@ public class EntityManager {
     /**
      * Iterate through all rooms and their position grids and call instantiation
      * of entities where CSV file had defined one to be placed.
-     * 
-     * @param playerName    String, name of player.
+     *
+     * @param playerName String, name of player.
      */
     public final void addEntitiesToRooms(String playerName) {
         String IDnum;
@@ -311,23 +311,23 @@ public class EntityManager {
             }
         }
     }
-    
+
     /**
      * Instantiate entity objects based on ID number and add them to their
      * respective entity list.
-     * 
-     * @param i             int, y-coordinate of grid position.
-     * @param j             int, x-coordinate of grid position.
-     * @param name          String, name of room for entity to 'spawn' in.
-     * @param playerName    String, name of player.
-     * @param IDnum         String, ID of the type of entity to be created.
+     *
+     * @param i int, y-coordinate of grid position.
+     * @param j int, x-coordinate of grid position.
+     * @param name String, name of room for entity to 'spawn' in.
+     * @param playerName String, name of player.
+     * @param IDnum String, ID of the type of entity to be created.
      */
     public void entityTypes(int i,
             int j,
             String name,
             String playerName,
             String IDnum) {
-        
+
         // Switch cases for what type of entity it is
         switch (IDnum.toUpperCase()) {
             // Instance of player to be added.
@@ -336,7 +336,7 @@ public class EntityManager {
                         i,
                         playerName,
                         rm.getCurrentRoom());
-                        this.rm.getRoom(name).setEntity(this.player);
+                this.rm.getRoom(name).setEntity(this.player);
                 break;
 
             // Instance of white t-shirt, brunette student.
@@ -443,6 +443,12 @@ public class EntityManager {
                         false,
                         "/textures/student12.png"));
                 break;
+
+            case "chair1":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair1.png"));
+                break;
+            case "chair2":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair2.png"));
                 
             // Door, inner, east, type 1.
             case "ID63": 
@@ -492,7 +498,7 @@ public class EntityManager {
                 break;
                 
             // Door, outer, east, type 2.
-            case "ID68":
+            case "DOOR11":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -503,7 +509,7 @@ public class EntityManager {
                 break;
             
             // Door, outer, south, type 1.
-            case "ID69":
+            case "DOOR13":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -514,7 +520,7 @@ public class EntityManager {
                 break;
                 
             // Door, outer, south, type 2.
-            case "ID70":
+            case "DOOR14":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -530,11 +536,46 @@ public class EntityManager {
                 
             case "COFFEE":
                 itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
+                break;
                 
+            case "ID69":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair3.png"));
+                break;
+            case "ID70":
+                furniturelist.add(new Chair(j, i, 64, 64, rm.getRoom(name), "/textures/chair4.png"));
+                break;
+            case "ID71":
+                furniturelist.add(new Table(j, i, 64, 64, rm.getRoom(name), false, 0));
+                break;
+            case "ID72":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase1.png"));
+                break;
+            case "ID73":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase2.png"));
+                break;
+            case "ID74":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase3.png"));
+                break;
+            case "ID75":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase4.png"));
+                break;
+            case "ID76":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase5.png"));
+                break;
+            case "ID77":
+                furniturelist.add(new Bookcase(j, i, 64, 64, rm.getRoom(name), "/textures/bookcase6.png"));
+                break;
+            case "ID78":
+                furniturelist.add(new Plant(j, i, 64, 64, rm.getRoom(name), "/textures/hedge1.png"));
+                break;
+            case "ID79":
+                furniturelist.add(new Plant(j, i, 64, 64, rm.getRoom(name), "/textures/potplant.png"));
+                break;
+
             // In case the ID is not recognized.
             default:
-                System.out.println("Error. Entity ID   " + IDnum +
-                        "   not defined.");
+                System.out.println("Error. Entity ID   " + IDnum
+                        + "   not defined.");
                 break;
         }
         showStudents();
@@ -673,9 +714,9 @@ public class EntityManager {
                 break;
         }
     }
-    
+
     // LOAD & SAVE METHODS
-    
+
     /**
      * Method for saving the game progress.
      */
@@ -698,6 +739,7 @@ public class EntityManager {
         loadFurniture();    // Load furniture list from file.
         loadInventory();    // Load inventory list from file.
     }
+
     
     /**
      * Create save folder if it does not exist.
@@ -850,6 +892,8 @@ public class EntityManager {
                 fileWriter.append(furniture.getFurnitureName());
                 fileWriter.append(",");
                 fileWriter.append(furniture.getCurrentRoom().getName());
+                fileWriter.append(",");
+                fileWriter.append(furniture.getImagePath());
                 fileWriter.append("\n");
                 System.out.println("Saved Furniture");
             }
@@ -1095,7 +1139,7 @@ public class EntityManager {
                                     Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[2]), tokens[3]);
                             furniturelist.add(c);
                             break;
                         case "Table":

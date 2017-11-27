@@ -8,6 +8,7 @@ package business;
 public abstract class Furniture extends Entity {
     private String furnitureName; // Name of the furniture.
     private String furnitureDescription; // Description of furniture.
+    private String imagePath;
     
     /**
      * Constructor for Furniture class.
@@ -69,5 +70,8 @@ public abstract class Furniture extends Entity {
      */
     public void setFurnitureDescription(String furnitureDescription) {
         this.furnitureDescription = furnitureDescription;
+    }
+    public String getImagePath(){
+        return imagePath;
     }
 }
