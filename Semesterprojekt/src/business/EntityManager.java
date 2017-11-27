@@ -59,6 +59,11 @@ public class EntityManager {
             
         }
     }
+    
+    public void showItems(){
+        for(Item i : itemlist)
+            i.getCurrentRoom().setEntity(i);
+    }
 
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
@@ -381,6 +386,10 @@ public class EntityManager {
                 furniturelist.add(new Door(j, i, 64, 64, "north", rm.getRoom(name),"/textures/door1.png",true));
                 break;
                 
+            case "KEY":
+                itemlist.add(new Key(j, i, 64, 64, rm.getRoom(name)));
+                break;
+                
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum +
@@ -389,6 +398,7 @@ public class EntityManager {
         }
         showStudents();
         showFurniture();
+        showItems();
     }
     
     // LOAD & SAVE METHODS

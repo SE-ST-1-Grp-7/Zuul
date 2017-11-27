@@ -46,13 +46,22 @@ public class Door extends Furniture {
 
     @Override
     public void onInteract() {
-        if(this.isLocked==false){
+        if (this.isLocked == true) {
+            System.out.println("the door is locked, you need a key to open it");
+        } 
+//        else if (this.isLocked == true && this.player.inventory().getInventory().contains()) {
+//            System.out.println("you unlock the door and go through");
+//            goThroughDoorMethod();
+//        }
+        else {
+            goThroughDoorMethod();
+        }
+    }
+
+    private void goThroughDoorMethod() {
         roomManager.getCurrentRoom().setEntityWithXY(this.player.getX(), this.player.getY(), null);
         useDoor(this.player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(this.player);
-        }else{
-            System.out.println("the door is locked, you need a key to open it");
-        }
     }
 
     /**

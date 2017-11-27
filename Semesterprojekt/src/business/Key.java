@@ -6,7 +6,7 @@ package business;
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
-    private String keyImage = "/textures/key.png"; // Path to texture of key.
+    private String keyImage = "/textures/skeleton1.png"; // Path to texture of key.
     
     /**
      * Constructor for Key class
@@ -35,5 +35,10 @@ public class Key extends Item {
      */
     @Override
     public void use(Player p) {
+    }
+    @Override
+    public void onInteract(){
+        System.out.println("This is a " + super.getName() + " it is " + super.getItemDescription());
+        //ADD CODE TO PICK UP THE ITEM AND ADD IT TO THE INVENTORY AND REMOVE IT ON THE GROUND
     }
 }
