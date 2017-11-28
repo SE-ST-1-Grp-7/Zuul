@@ -5,8 +5,6 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -35,7 +33,6 @@ public class FXMLDocumentController implements Initializable {
     private long prevNanoTime = System.nanoTime();
     private long diff = 0;
     private Pane pane;
-    private ObservableList<Object> iList = FXCollections.observableArrayList();
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -56,12 +53,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button dropButton;
     @FXML
-    private ListView<Object> listView = new ListView<Object>();
+    private ListView listView;
 
     @FXML
     private void newGameButton(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
-        listView.setItems(iList);
+        //link the listView to the inventory
+        listView.setItems(ib.playerGetInventory().getInventory());
 
         // We have to move to to another place cause it is movement
         // set focus on canvas
@@ -89,7 +87,6 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
-
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         new AnimationTimer() {
@@ -99,21 +96,12 @@ public class FXMLDocumentController implements Initializable {
                 diff = currentNanoTime - prevNanoTime;
                 if (diff >= 1000000000) {
                     // calls gameloop
-
                     ib.loop();
                     prevNanoTime = currentNanoTime;
-                    //fills inventory with items
-                    for (Object o : ib.playerGetInventory().getInventory()) {
-                        if (!iList.contains(o)) {
-                            iList.add(o);
-                        }
-                    }
                 }
-
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
                 drawImages(gc);
-
             }
         }.start();
 
@@ -161,54 +149,73 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * returns an image depending on entity image string
+     *
+     * @param row
+     * @param col
+     * @return
+     */
     public Image choosePic(int row, int col) {
         // This will cause all entity images to be loaded repeatedly for now.
         Image image = new Image(ib.entityGetImage(row, col));
         return image;
     }
 
-    //@Override
-    public void openUI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void buttonSavePressed(ActionEvent event) {
-        ib.saveGame();
-    }
-
+    /**
+     * exits game
+     *
+     * @param event
+     */
     @FXML
     private void exitButton(ActionEvent event) {
         Platform.exit(); //exit the application
     }
 
-//    @FXML
-//    private void newGameButton(ActionEvent event) {
-//    }
+    /**
+     * loads save files
+     *
+     * @param event
+     */
     @FXML
     private void loadButton(ActionEvent event) {
         ib.loadGame();
     }
 
+    /**
+     * saves the game
+     *
+     * @param event
+     */
     @FXML
     private void saveButton(ActionEvent event) {
         ib.saveGame();
     }
 
+    /**
+     * displays highscore
+     * @param event 
+     */
     @FXML
     private void highscoreButton(ActionEvent event) {
     }
 
+    /**
+     * uses the item selected in the listview
+     * @param event 
+     */
     @FXML
     private void useButton(ActionEvent event) {
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
-        iList.remove(listView.getSelectionModel().getSelectedItem());
 
     }
-
+    /**
+     * drops the item selected in the listview
+     * @param event 
+     */
     @FXML
     private void dropButton(ActionEvent event) {
         ib.itemDrop(listView.getSelectionModel().getSelectedItem());
-        iList.remove(listView.getSelectionModel().getSelectedItem());
     }
 
 }

@@ -2,6 +2,7 @@ package business;
 
 import Acq.IBusiness;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
 /**
  *
@@ -11,6 +12,7 @@ public class BusinessFacade implements IBusiness {
 
     private EntityManager entityManager;
     private RoomManager roomManager;
+    private ListView<Item> listView;
 
     /**
      * zero-arg constructor assigns values to EntityManager & RoomManager
@@ -118,7 +120,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public Inventory playerGetInventory() {
-       return entityManager.getPlayer().inventory();
+        return entityManager.getPlayer().inventory();
     }
 
     /**
