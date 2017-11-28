@@ -1,11 +1,12 @@
 package UI;
 
 import Acq.IBusiness;
-import Acq.IUI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,6 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -33,6 +35,7 @@ public class FXMLDocumentController implements Initializable {
     private long prevNanoTime = System.nanoTime();
     private long diff = 0;
     private Pane pane;
+    private ObservableList<Object> iList = FXCollections.observableArrayList();
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -52,10 +55,13 @@ public class FXMLDocumentController implements Initializable {
     private Button useButton;
     @FXML
     private Button dropButton;
+    @FXML
+    private ListView<Object> listView = new ListView<Object>();
 
     @FXML
     private void newGameButton(ActionEvent event) {
         GraphicsContext gc = canvasId.getGraphicsContext2D();
+        listView.setItems(iList);
 
         // We have to move to to another place cause it is movement
         // set focus on canvas
@@ -92,13 +98,22 @@ public class FXMLDocumentController implements Initializable {
                 // ensures that the loop only gets called once per second
                 diff = currentNanoTime - prevNanoTime;
                 if (diff >= 1000000000) {
+                    // calls gameloop
+
                     ib.loop();
                     prevNanoTime = currentNanoTime;
+                    //fills inventory with items
+                    for (Object o : ib.playerGetInventory().getInventory()) {
+                        if (!iList.contains(o)) {
+                            iList.add(o);
+                        }
+                    }
                 }
 
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
                 drawImages(gc);
+
             }
         }.start();
 
@@ -120,7 +135,6 @@ public class FXMLDocumentController implements Initializable {
         Tooltip newGametip = new Tooltip("Start game");
         Tooltip dropItem = new Tooltip("drop the item");
         Tooltip useItem = new Tooltip("use the item");
-
         //Creating tooltips on buttons
         Tooltip.install(exitButton, exittip);
         Tooltip.install(saveButton, savetip);
@@ -186,10 +200,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void useButton(ActionEvent event) {
+        ib.itemUse(listView.getSelectionModel().getSelectedItem());
+        iList.remove(listView.getSelectionModel().getSelectedItem());
+
     }
 
     @FXML
     private void dropButton(ActionEvent event) {
+        ib.itemDrop(listView.getSelectionModel().getSelectedItem());
+        iList.remove(listView.getSelectionModel().getSelectedItem());
     }
 
 }

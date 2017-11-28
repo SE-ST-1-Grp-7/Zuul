@@ -799,9 +799,9 @@ public class EntityManager {
             
             /* Iterate through player's inventory list and write the items to
                file. */
-            for (Item item : player.inventory().getInventory()) {
-                fileWriter.append(item.getName());
-            }
+//            for (Item item : player.inventory().getInventory()) {
+//                fileWriter.append(item.getName());
+//            }
             fileWriter.append("\n");
             
             // Flush and then close file stream.
