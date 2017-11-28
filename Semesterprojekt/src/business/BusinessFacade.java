@@ -12,7 +12,6 @@ public class BusinessFacade implements IBusiness {
 
     private EntityManager entityManager;
     private RoomManager roomManager;
-    private ListView<Item> listView;
 
     /**
      * zero-arg constructor assigns values to EntityManager & RoomManager
