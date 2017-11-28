@@ -1,7 +1,6 @@
 package Acq;
 
 import business.Inventory;
-import javafx.scene.control.ListView;
 
 /**
  * IBusiness interface.
