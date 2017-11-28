@@ -6,7 +6,7 @@ package business;
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
-    private String keyImage = "/textures/skeleton1.png"; // Path to texture of key.
+    private String keyImage = "/textures/key.png"; // Path to texture of key.
     
     /**
      * Constructor for Key class
@@ -17,7 +17,7 @@ public class Key extends Item {
      * @param height            int, pixel height of key.
      * @param currentRoom       Room, currently in this room.
      */
-    public Key(int x, int y, int width, int height, Room currentRoom) {
+    public Key(int x, int y, int width, int height, Room currentRoom, String imagePath) {
         
         // Arguments for superclass
         super(x, y, width, height, currentRoom, 
@@ -25,7 +25,7 @@ public class Key extends Item {
                 "Used to open doors",   // Description of item.
                 1);                     // Weight of item.
         // Pass path of texture to superclass.
-        super.setEntityImage(keyImage);
+        super.setEntityImage(imagePath);
     }
     
     /**
