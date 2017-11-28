@@ -13,7 +13,12 @@ public class Inventory {
     private final int CAPACITY = 5;
     private final int MAX_WEIGHT = 200;
     private int currentWeight;
-    private ArrayList<Item> items = new ArrayList<>(CAPACITY);
+    // ObservableList allows us to connect a javafx listview directly to the inventory
+    private ObservableList<Item> items = FXCollections.observableArrayList();
+
+    public Inventory() {
+
+    }
 
     /**
      * adds an item to the inventory
@@ -61,7 +66,7 @@ public class Inventory {
      *
      * @return
      */
-    public ArrayList<Item> getInventory() {
+    public ObservableList<Item> getInventory() {
         return items;
     }
 
