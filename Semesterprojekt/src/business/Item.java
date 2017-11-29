@@ -70,7 +70,10 @@ public abstract class Item extends Entity {
     public int getWeight() {
         return this.weight;
     }
-    
+    @Override
+    public String toString() {
+        return getName();
+    }
     /**
      * Setter for name of item.
      * 
@@ -103,6 +106,6 @@ public abstract class Item extends Entity {
      */
     @Override
     public void onInteract() {
-        System.out.println("this is a " + getName());
+        
     }
 }

@@ -1,6 +1,8 @@
 package business;
 
 import Acq.IBusiness;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
 /**
  *
@@ -17,8 +19,8 @@ public class BusinessFacade implements IBusiness {
     public BusinessFacade() {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
-        for(int i = 0; i < entityManager.getFurnitureList().size(); i++) {
-            if(entityManager.getFurnitureList().get(i) instanceof Door){
+        for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
+            if (entityManager.getFurnitureList().get(i) instanceof Door) {
                 Door d = (Door) entityManager.getFurnitureList().get(i);
                 d.setPlayer(entityManager.getPlayer());
                 d.setRoomManager(roomManager);
@@ -48,17 +50,6 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * calls .dropItem on player's inventory drops the item located at index i
-     *
-     * @param index
-     */
-    @Override
-    public void playerDropItem(int index) {
-        // note to self: move dropItem to player
-        entityManager.getPlayer().inventory().dropItem(index, entityManager.getPlayer());
-    }
-
-    /**
      * gets the image of an entity placed at row, col if no entity is present ->
      * return an empty square
      *
@@ -69,15 +60,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public String entityGetImage(int row, int col) {
         if (roomManager.getCurrentRoom().getEntities()[row][col] != null) {
-            if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Student){
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();       
-            }else if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Furniture){
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-            }else if(roomManager.getCurrentRoom().getEntities()[row][col] instanceof Item){
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-            }else{
-                return "/textures/player.png"; 
-            }
+            return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
         } else {
             return "testSquare.png";
         }
@@ -90,9 +73,9 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void loadGame() {
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=null;
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = null;
         entityManager.loadGame();
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()]=entityManager.getPlayer();
+        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = entityManager.getPlayer();
         roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
@@ -109,25 +92,56 @@ public class BusinessFacade implements IBusiness {
     public void goThroughDoor() {
         roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
+
     /**
-     * the game loop - responsible for moving students
-     * and managing energy
+     * the game loop - responsible for moving students and managing energy
      */
     @Override
     public void loop() {
         // check if player's energy is 0
         // if so - quit the game
-        if(entityManager.getPlayer().getEnergy() <= 0)
-                System.exit(0);
- 
+        if (entityManager.getPlayer().getEnergy() <= 0) {
+            System.exit(0);
+        }
+
         // loop through array and call .idleMove on all students in the room      
-        for(Entity[] e : roomManager.getCurrentRoom().getEntities()) {
-            for(Entity s : e) {
-                if(s instanceof Student) {
+        for (Entity[] e : roomManager.getCurrentRoom().getEntities()) {
+            for (Entity s : e) {
+                if (s instanceof Student) {
                     ((Student) s).idleMove();
-                }}
+                }
+            }
         }
         // reduce player's current energy by 1
-        entityManager.getPlayer().setEnergy(entityManager.getPlayer().getEnergy()-1);
+        entityManager.getPlayer().setEnergy(entityManager.getPlayer().getEnergy() - 1);
+        System.out.println(entityManager.getPlayer().getEnergy());
     }
+
+    @Override
+    public Inventory playerGetInventory() {
+        return entityManager.getPlayer().inventory();
+    }
+
+    /**
+     * uses a given item
+     *
+     * @param o
+     */
+    @Override
+    public void itemUse(Object o) {
+        Item toUse = (Item) o;
+        toUse.use(entityManager.getPlayer());
+        entityManager.getPlayer().inventory().removeItem(toUse);
+    }
+
+    /**
+     * drops a given item
+     *
+     * @param o
+     */
+    @Override
+    public void itemDrop(Object o) {
+        entityManager.getPlayer().inventory().dropItem((Item) o, entityManager.getPlayer());
+    }
+
 }
