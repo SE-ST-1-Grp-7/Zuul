@@ -12,8 +12,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1000.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="660.0" minWidth="10.0" prefWidth="660.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="495.0" minWidth="10.0" prefWidth="301.0" />
@@ -26,21 +27,18 @@
    <children>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="15.0" GridPane.rowIndex="2">
          <children>
-            <Button fx:id="newGameButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#newGameButton" text="START GAME">
+            <Button fx:id="newGameButton" alignment="CENTER" cacheShape="false" centerShape="false" contentDisplay="TEXT_ONLY" focusTraversable="false" graphicTextGap="0.0" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#newGameButton" scaleShape="false" styleClass="start-button" stylesheets="@style.css" text="START GAME" textFill="WHITE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
-               </padding>
+               <font>
+                  <Font name="Avenir Book" size="13.0" />
+               </font>
             </Button>
-            <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#loadButton" text="LOAD">
+            <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="150.0" mnemonicParsing="false" onAction="#loadButton" text="LOAD">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" left="30.0" right="30.0" top="5.0" />
-               </padding>
             </Button>
             <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#saveButton" text="SAVE">
                <opaqueInsets>
@@ -102,7 +100,7 @@
             </ListView>
          </children>
       </VBox>
-      <TextArea editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <TextArea editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" styleClass="text-field" stylesheets="@style.css" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </GridPane.margin>
