@@ -447,23 +447,6 @@ public class EntityManager {
                         "/textures/student12.png"));
                 break;
 
-            case "chair1":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair1.png"));
-                break;
-
-            case "chair2":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair2.png"));
-
             // Door, inner, vertical.
             case "ID63":
                 furniturelist.add(new Door(j,
@@ -509,7 +492,7 @@ public class EntityManager {
                 break;
 
             // Door, outer, vertical, handle down.
-            case "ID67":
+            case "ID65":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -518,8 +501,18 @@ public class EntityManager {
                         "/textures/door12.png", false));
                 break;
 
+             // Door, outer, vertical handle down, locked
+            case "ID65L":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/door12.png", true));
+                break;   
+                
             // Door, outer, vertical, handle up.
-            case "ID68":
+            case "ID66":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -528,18 +521,8 @@ public class EntityManager {
                         "/textures/door11.png", false));
                 break;
 
-            // Door, outer, vertical handle down, locked
-            case "ID67L":
-                furniturelist.add(new Door(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/door12.png", true));
-                break;
-
             // Door, outer, vertical, handle up. locked
-            case "ID68L":
+            case "ID66L":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -549,7 +532,7 @@ public class EntityManager {
                 break;
 
             // Door, outer, horizontal, handle right.
-            case "ID69":
+            case "ID67":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -557,9 +540,19 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door13.png", false));
                 break;
+                
+                // Door, outer, horizontal, handle right, locked.
+            case "ID67L":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/door13.png", true));
+                break;
 
             // Door, outer, horizontal, handle left.
-            case "ID70":
+            case "ID68":
                 furniturelist.add(new Door(j,
                         i,
                         64,
@@ -567,7 +560,35 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door14.png", false));
                 break;
+                
+                // Door, outer, horizontal, handle left, locked.
+            case "ID68L":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/door14.png", true));
+                break;
 
+            case "chair1":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/chair1.png"));
+                break;
+
+            case "chair2":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/chair2.png"));
+                break;
+                
             // Chair facing north.
             case "ID71":
                 furniturelist.add(new Chair(j,
