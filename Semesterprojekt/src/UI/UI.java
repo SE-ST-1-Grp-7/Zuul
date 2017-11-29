@@ -32,6 +32,7 @@ public class UI extends Application implements IUI {
         Parent p = loader.load();
 
         Scene scene = new Scene(p);
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Bangers");
         primaryStage.setScene(scene);
         primaryStage.show();
 
