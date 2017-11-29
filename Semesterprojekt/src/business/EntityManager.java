@@ -584,7 +584,7 @@ public class EntityManager {
                         "/textures/door11.png", false));
                 break;
             
-             // Door, outer, east, type 1.
+             // Door, outer, east, type 1. locked
             case "ID67L": 
                 furniturelist.add(new Door(j,
                         i,
@@ -595,7 +595,7 @@ public class EntityManager {
                         "/textures/door12.png", true));
                 break;
                 
-            // Door, outer, east, type 2.
+            // Door, outer, east, type 2. locked
             case "ID68L":
                 furniturelist.add(new Door(j,
                         i,
