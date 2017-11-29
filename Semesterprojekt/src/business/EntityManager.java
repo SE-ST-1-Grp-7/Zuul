@@ -584,6 +584,74 @@ public class EntityManager {
                         "/textures/door11.png", false));
                 break;
             
+             // Door, outer, east, type 1. locked
+            case "ID67L": 
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "east",
+                        rm.getRoom(name),
+                        "/textures/door12.png", true));
+                break;
+                
+            // Door, outer, east, type 2. locked
+            case "ID68L":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "east",
+                        rm.getRoom(name),
+                        "/textures/door11.png", true));
+                break;
+                
+                 // Door, outer, east, type 1.
+            case "ID67W": 
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "west",
+                        rm.getRoom(name),
+                        "/textures/door12.png", false));
+                break;
+                
+            // Door, outer, east, type 2.
+            case "ID68W":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "west",
+                        rm.getRoom(name),
+                        "/textures/door11.png", false));
+                break;
+            
+             // Door, outer, east, type 1. locked
+            case "ID67WL": 
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "west",
+                        rm.getRoom(name),
+                        "/textures/door12.png", true));
+                break;
+                
+            // Door, outer, east, type 2. locked
+            case "ID68WL":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "west",
+                        rm.getRoom(name),
+                        "/textures/door11.png", true));
+                break;
+                
+                
+                
             // Door, outer, south, type 1.
             case "ID69":
                 furniturelist.add(new Door(j,
