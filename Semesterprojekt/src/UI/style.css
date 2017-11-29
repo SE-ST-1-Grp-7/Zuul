@@ -6,7 +6,7 @@
 .text {
     -fx-font-family: "Bangers";
     -fx-font-size: 22px;
-    -fx-fill: white;
+   
 }
 
 .text-area{
@@ -24,10 +24,11 @@
     -fx-background-image: url("/assets/textfield.png");
     -fx-background-repeat:no-repeat;
 }
-.list-view{
-    -fx-background-color: transparent;
-    -fx-background-image: url("/assets/list-view.png");
-    -fx-background-repeat:no-repeat;
+.list-cell{
+    -fx-text-fill: black;
+}
+.list-cell:filled:selected {
+    -fx-text-fill:#009966;
 }
 
 .text-area .scroll-pane {
@@ -75,4 +76,5 @@
     -fx-background-color: transparent;
     -fx-background-size: cover;
     -fx-background-repeat:no-repeat;
+    -fx-text-fill: black;
 }
