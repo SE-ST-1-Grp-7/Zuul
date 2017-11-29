@@ -12,7 +12,7 @@ public class Door extends Furniture {
     private RoomManager roomManager;
     private boolean isLocked;
 
-    public Door(int x, int y, int width, int height, String direction,
+    public Door(int x, int y, int width, int height,
             Room currentRoom, String imagePath, boolean isLocked) {
 
         // Pass arguments to superclass.
@@ -20,7 +20,6 @@ public class Door extends Furniture {
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         super.setEntityImage(imagePath);
-        this.direction = direction;
         this.isLocked = isLocked;
     }
 
@@ -69,22 +68,43 @@ public class Door extends Furniture {
      * @param roomManager
      */
     public void useDoor(Player goPlayer, RoomManager roomManager) {
-        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+        
         if (goPlayer.getX() == getX() && getY() > 5) {
+            this.direction = "south";
+            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+            
             goPlayer.setY(1);
             goPlayer.setX(getX());
+            System.out.println("syd");
         } else if (goPlayer.getX() == getX() && getY() < 5) {
+            this.direction = "north";
+            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+            
             goPlayer.setY(8);
             goPlayer.setX(getX());
+            System.out.println("nord");
         } else if (goPlayer.getY() == getY() && getX() > 5) {
+            this.direction = "east";
+            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+            
             goPlayer.setX(1);
             goPlayer.setY(getY());
+            System.out.println("øst");
         } else if (goPlayer.getY() == getY() && getX() < 5) {
+            this.direction = "west";
+            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+            
             goPlayer.setX(8);
             goPlayer.setY(getY());
+            System.out.println("vest");
         }
     }
+    
+    
 
     @Override
     public int getX() {
