@@ -584,6 +584,30 @@ public class EntityManager {
                         "/textures/door11.png", false));
                 break;
             
+             // Door, outer, east, type 1.
+            case "ID67L": 
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "east",
+                        rm.getRoom(name),
+                        "/textures/door12.png", true));
+                break;
+                
+            // Door, outer, east, type 2.
+            case "ID68L":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "east",
+                        rm.getRoom(name),
+                        "/textures/door11.png", true));
+                break;   
+                
+                
+                
             // Door, outer, south, type 1.
             case "ID69":
                 furniturelist.add(new Door(j,
