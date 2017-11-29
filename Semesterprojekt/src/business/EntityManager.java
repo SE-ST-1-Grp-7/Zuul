@@ -693,7 +693,59 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair4.png"));
                 break;
+            case "ID99":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench3.png"));
+                break;
+                case "ID98":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench4.png"));
+                break;
+                case "ID97":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench5.png"));
+                break;
+                case "ID96":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench6.png"));
+                break;
+                case "ID95":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "north",
+                        rm.getRoom(name),
+                        "/textures/door13.png", false));
+                break;
                 
+            // Door, outer, south, type 2.
+            case "ID94":
+                furniturelist.add(new Door(j,
+                        i,
+                        64,
+                        64,
+                        "north",
+                        rm.getRoom(name),
+                        "/textures/door14.png", false));
+                break;
+                    
             // Table furniture.
             case "ID73":
                 furniturelist.add(new Table(j,
