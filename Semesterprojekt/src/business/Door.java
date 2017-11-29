@@ -68,42 +68,39 @@ public class Door extends Furniture {
      * @param roomManager
      */
     public void useDoor(Player goPlayer, RoomManager roomManager) {
-        
         if (goPlayer.getX() == getX() && getY() > 5) {
             this.direction = "south";
-            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
-            
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setY(1);
             goPlayer.setX(getX());
-            System.out.println("syd");
         } else if (goPlayer.getX() == getX() && getY() < 5) {
             this.direction = "north";
-            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
-            
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setY(8);
             goPlayer.setX(getX());
-            System.out.println("nord");
         } else if (goPlayer.getY() == getY() && getX() > 5) {
             this.direction = "east";
-            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
-            
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setX(1);
             goPlayer.setY(getY());
-            System.out.println("øst");
         } else if (goPlayer.getY() == getY() && getX() < 5) {
             this.direction = "west";
-            goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
-            
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setX(8);
             goPlayer.setY(getY());
-            System.out.println("vest");
         }
     }
     
+    /**
+     * this method sets the player's position to the room in the specified direction
+     * @param goPlayer
+     * @param roomManager
+     * @param direction 
+     */
+    private void setThePlayerToNewRoom(Player goPlayer, RoomManager roomManager, String direction){
+        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+    }
     
 
     @Override
