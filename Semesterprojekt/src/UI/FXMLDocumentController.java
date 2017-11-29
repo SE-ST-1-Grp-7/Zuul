@@ -195,7 +195,8 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * displays highscore
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void highscoreButton(ActionEvent event) {
@@ -203,20 +204,25 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * uses the item selected in the listview
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void useButton(ActionEvent event) {
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
 
     }
+
     /**
      * drops the item selected in the listview
-     * @param event 
+     *
+     * @param event
      */
     @FXML
     private void dropButton(ActionEvent event) {
-        ib.itemDrop(listView.getSelectionModel().getSelectedItem());
+        if ((listView.getSelectionModel().getSelectedItem() != null)) {
+            ib.itemDrop(listView.getSelectionModel().getSelectedItem());
+        }
     }
 
 }
