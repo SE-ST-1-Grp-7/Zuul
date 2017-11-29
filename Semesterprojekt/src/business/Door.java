@@ -49,8 +49,7 @@ public class Door extends Furniture {
         if (this.isLocked == true && this.player.getHasKey()) {
             System.out.println("you unlock the door and go through");
             goThroughDoorMethod();
-        } else
-        if (this.isLocked == true) {
+        } else if (this.isLocked == true) {
             System.out.println("the door is locked, you need a key to open it");
         } else {
             goThroughDoorMethod();
