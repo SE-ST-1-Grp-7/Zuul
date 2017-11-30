@@ -142,8 +142,8 @@ public class RoomManager {
         // Defining tile ID with a new instantiated tile object.
         tiles.put("ID01", new Tile("/textures/floor17.png"));
         tiles.put("ID11", new Tile("/textures/floor19.png"));
-        tiles.put("ID12", new Tile("/textures/.png"));
-        tiles.put("ID13", new Tile("/textures/.png"));
+        tiles.put("ID12", new Tile("/textures/floweredgrass.png"));
+        tiles.put("ID13", new Tile("/textures/floor13.png"));
         tiles.put("ID14", new Tile("/textures/floor2.png"));
         tiles.put("ID15", new Tile("/textures/floor4.png"));
         tiles.put("ID17", new Tile("/textures/floor6.png"));

@@ -40,7 +40,7 @@ public class EntityManager {
         loadPresetEntities();           // Load entity IDs from CSV file.
         String playerName = "Pete";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
-
+        player.setName(playerName);
     }
 
     // ENTITY MANAGMENT METHODS
@@ -1107,7 +1107,17 @@ public class EntityManager {
             fileWriter.append(",");
             fileWriter.append(player.getName());
             fileWriter.append(",");
-            fileWriter.append(player.getCurrentRoom().getName());
+            fileWriter.append(String.valueOf(player.getCurrentRoom().getName()));
+            fileWriter.append(",");
+            fileWriter.append(String.valueOf(player.getAssignmentProgress()));
+            fileWriter.append(",");
+            fileWriter.append(String.valueOf(player.getGradedAssignments()));
+            fileWriter.append(",");
+            fileWriter.append(String.valueOf(player.getHasKey()));
+            fileWriter.append(",");
+            fileWriter.append(String.valueOf(player.getEnergy()));
+            fileWriter.append(",");
+            fileWriter.append(String.valueOf(player.getEnergyCap()));
             fileWriter.append("\n");
 
             System.out.println("Saved Player");
@@ -1403,6 +1413,10 @@ public class EntityManager {
                             Integer.parseInt(tokens[1]),
                             tokens[2],
                             (Room) rm.getRoomlist().get(tokens[3]));
+                    player.setAssignmentProgress(Integer.parseInt(tokens[4]));
+                    player.setGradedAssignments(Integer.parseInt(tokens[5]));
+                    player.setEnergyCap(Integer.parseInt(tokens[7]));
+                    player.setEnergy(Integer.parseInt(tokens[6]));
                 }
             }
             
