@@ -112,6 +112,9 @@
          <GridPane.margin>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </GridPane.margin>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </TextArea>
       <Canvas fx:id="canvasId" height="640.0" width="640.0" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
          <GridPane.margin>

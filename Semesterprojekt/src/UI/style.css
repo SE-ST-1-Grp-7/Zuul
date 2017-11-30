@@ -9,10 +9,9 @@
    
 }
 
-.text-area{
-    -fx-font-size: 32px;
-    -fx-text-fill: black;
-    -fx-background-color: rgba(255, 255, 255, 0.14);
+.text-field{
+    -fx-font-size: 20px;
+   -fx-font-family: "Bangers";
 }
 .main{
     -fx-background-image: url("/assets/background-1.png");
