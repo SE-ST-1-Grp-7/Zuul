@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -85,8 +87,31 @@
             <Insets left="15.0" />
          </padding>
       </HBox>
-      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
          <children>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+               <children>
+                  <Label contentDisplay="CENTER" text="MAP">
+                     <StackPane.margin>
+                        <Insets />
+                     </StackPane.margin>
+                  </Label>
+               </children>
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
+            </StackPane>
+            <ImageView fitHeight="179.0" fitWidth="263.0" pickOnBounds="true" smooth="false">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../res/assets/Box.png" />
+               </image>
+            </ImageView>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
                <children>
                   <Label fx:id="timeLabel" contentDisplay="CENTER" text="TIME">
