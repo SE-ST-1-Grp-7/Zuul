@@ -882,9 +882,9 @@ public class EntityManager {
         makeSaveFolder();   // Create folder if it does not exist.
         savePlayers();      // Save player to file.
         saveItems();        // Save item list to file.
-        saveStudents();     // Save student list to file.
+        //saveStudents();     // Save student list to file.
         //saveFurniture();    // Save furniture list to file.
-        //saveInventory();    // Save inventory list to file.
+        saveInventory();    // Save inventory list to file.
     }
 
     /**
@@ -893,9 +893,9 @@ public class EntityManager {
     public void loadGame() {
         loadPlayers();      // Load player from file.
         loadItems();        // Load item list from file.
-        loadStudents();     // Load student list from file.
+        //loadStudents();     // Load student list from file.
         //loadFurniture();    // Load furniture list from file.
-        //loadInventory();    // Load inventory list from file.
+        loadInventory();    // Load inventory list from file.
 
     }
 
@@ -957,10 +957,12 @@ public class EntityManager {
 
             /* Iterate through player's inventory list and write the items to
                file. */
-//            for (Item item : player.inventory().getInventory()) {
-//                fileWriter.append(item.getName());
-//            }
-            fileWriter.append("\n");
+            for (Item item : player.inventory().getInventory()) {
+                fileWriter.append(item.getName());
+                fileWriter.append("\n");
+                System.out.println("Saved items");
+
+            }
 
             // Flush and then close file stream.
             fileWriter.close();
@@ -1203,54 +1205,53 @@ public class EntityManager {
                     switch (tokens[0]) {
                         // If adderall, add to inventory list.
                         case "Adderal":
-                            Adderall d = new Adderall(Integer.parseInt(
-                                    tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                            Adderall d = new Adderall(0,
+                                    0,
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    null);
                             player.inventory().addItem(d);
                             break;
 
                         // If coffee, add to inventory list.
                         case "Coffee":
-                            Coffee c = new Coffee(Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                            Coffee c = new Coffee(0,
+                                    0,
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    null);
                             player.inventory().addItem(c);
                             break;
 
                         // If assignment, add to inventory list.
                         case "Assignment":
                             Assignment a = new Assignment(
-                                    Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                                    0,
+                                    0,
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    null);
                             player.inventory().addItem(a);
                             break;
 
                         // If key, add to inventory list.
                         case "Key":
-                            Key k = new Key(Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                            Key k = new Key(0,
+                                    0,
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    null);
                             player.inventory().addItem(k);
                             break;
 
                         // If energy drink, add to inventory list.
                         case "EnergyDrink":
                             EnergyDrink e = new EnergyDrink(
-                                    Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                                    0,
+                                    0,
                                     64,
                                     64,
-                                    rm.getCurrentRoom().getExit(tokens[2]));
+                                    null);
                             player.inventory().addItem(e);
                             break;
 
@@ -1337,9 +1338,10 @@ public class EntityManager {
                     Student student = studentlist.get(i);
                     student.setX(Integer.parseInt(tokens[0]));
                     student.setY(Integer.parseInt(tokens[1]));
-                    student.setCurrentRoom((Room) rm.getRoomlist().get(tokens[2]));
+                    student.setCurrentRoom((Room) (rm.getRoomlist().get(tokens[2])));
                     student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
-                    i+=1;
+                    student.getCurrentRoom().setEntity(student);
+                    i += 1;
                 }
             }
             showStudents();
