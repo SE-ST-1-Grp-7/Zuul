@@ -883,7 +883,7 @@ public class EntityManager {
         makeSaveFolder();   // Create folder if it does not exist.
         savePlayers();      // Save player to file.
         saveItems();        // Save item list to file.
-        //saveStudents();     // Save student list to file.
+        saveStudents();     // Save student list to file.
         //saveFurniture();    // Save furniture list to file.
         saveInventory();    // Save inventory list to file.
     }
@@ -894,7 +894,7 @@ public class EntityManager {
     public void loadGame() {
         loadPlayers();      // Load player from file.
         loadItems();        // Load item list from file.
-        //loadStudents();     // Load student list from file.
+        loadStudents();     // Load student list from file.
         //loadFurniture();    // Load furniture list from file.
         loadInventory();    // Load inventory list from file.
 
