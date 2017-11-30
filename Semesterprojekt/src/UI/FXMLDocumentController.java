@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
@@ -61,7 +62,9 @@ public class FXMLDocumentController implements Initializable {
     private ListView listView;
     @FXML
     private TextArea bottomTextArea;
-
+    @FXML
+    private Label timeLabel;
+    
     @FXML
     private void newGameButton(ActionEvent event) {
         bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest game on SDU.\n");
@@ -139,6 +142,8 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(highscoreButton, highscoretip);
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
+        
+        timeLabel.setText("TIME IS:" + System.currentTimeMillis()/1000L);
 
     }
 
