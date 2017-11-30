@@ -8,7 +8,7 @@ package business;
 public class Coffee extends Item {
     private final int ENERGY_RESTORE = 15; // Energy restore value upon use.
     // Path of texture for coffee.
-    private String coffeeImage = "/textures/coffee1.png";
+    private final String coffeeImage = "/textures/coffee1.png";
     
     /**
      * Constructor for Coffee class.
@@ -26,11 +26,11 @@ public class Coffee extends Item {
                     Room currentRoom) {
         
         // Pass arguments to superclass
-        super(x,
-                y,
-                width,
-                height,
-                currentRoom,
+        super(x,                            // X grid position in room.
+                y,                          // Y grid position in room.
+                width,                      // Pixel width.
+                height,                     // Pixel height.
+                currentRoom,                // Placed in this room.
                 "Coffee",                   // Name of item.
                 "A cup of coffee. Yum!",    // Description of item.
                 5);                         // Weight of item.
@@ -45,6 +45,13 @@ public class Coffee extends Item {
      */
     @Override
     public void use(Player p) {
-        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+        // If it does not max out player energy, restore energy.
+        if (p.getEnergyCap() < ENERGY_RESTORE + p.getEnergy()) {
+            p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+            
+        // Otherwise set energy to max of capacity.
+        } else {
+            p.setEnergy(p.getEnergyCap());
+        }
     }
 }

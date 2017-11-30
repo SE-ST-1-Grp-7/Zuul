@@ -22,16 +22,20 @@ public class Bookcase extends Furniture /*implements Interactable*/{
             Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
-        super(x,
-                y,
-                width,
-                height,
-                currentRoom,
-                "Bookcase",            // Item name.
-                "full of stuff");  // Item description.
+        super(x,                    // X grid position in room.
+                y,                  // Y grid position in room.
+                width,              // Pixel width.
+                height,             // Pixel height.
+                currentRoom,        // Placed in this room.
+                "Bookcase",         // Item name.
+                "full of stuff");   // Item description.
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
+    
+    /**
+     * Override, upon interact with bookcase.
+     */
     @Override
     public void onInteract() {
         System.out.println("this is a bookcase!");
