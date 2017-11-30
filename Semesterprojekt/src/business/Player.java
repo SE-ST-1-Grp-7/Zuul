@@ -19,6 +19,7 @@ public class Player extends Person {
     private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
+    private EntityManager em;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -29,7 +30,7 @@ public class Player extends Person {
      * @param currentRoom Room, placed currently in this room.
      * @param name String, name of player.
      */
-    public Player(int x, int y, String name, Room currentRoom) {
+    public Player(int x, int y, String name, Room currentRoom, EntityManager em) {
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
@@ -48,6 +49,7 @@ public class Player extends Person {
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
         this.hasKey = false;
+        this.em = em;
     }
 
     /**
@@ -86,9 +88,12 @@ public class Player extends Person {
     }
 
     private void pickUpItem(int yOffset, int xOffset) {
-        if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
-            inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-            getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+        if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
+            if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
+                inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                em.getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;                
+            }
         }
     }
 
@@ -313,12 +318,12 @@ public class Player extends Person {
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }
-    
-    public boolean getHasKey(){
+
+    public boolean getHasKey() {
         return this.hasKey;
     }
-    
-    public void setHasKey(boolean hasKey){
+
+    public void setHasKey(boolean hasKey) {
         this.hasKey = hasKey;
     }
 }

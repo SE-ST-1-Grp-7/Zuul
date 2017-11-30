@@ -19,7 +19,10 @@ public class Inventory {
     public Inventory() {
 
     }
-
+    
+    public int getCapacity(){
+        return CAPACITY;
+    }
     /**
      * adds an item to the inventory
      *

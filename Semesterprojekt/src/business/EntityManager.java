@@ -338,7 +338,7 @@ public class EntityManager {
                 player = new Player(j,
                         i,
                         playerName,
-                        rm.getCurrentRoom());
+                        rm.getCurrentRoom(), this);
                 this.rm.getRoom(name).setEntity(this.player);
                 break;
 
@@ -571,24 +571,6 @@ public class EntityManager {
                         "/textures/door14.png", true));
                 break;
 
-            case "chair1":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair1.png"));
-                break;
-
-            case "chair2":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair2.png"));
-                break;
-                
             // Chair facing north.
             case "ID71":
                 furniturelist.add(new Chair(j,
@@ -607,38 +589,6 @@ public class EntityManager {
                         64,
                         rm.getRoom(name),
                         "/textures/chair4.png"));
-                break;
-            case "ID99":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench3.png"));
-                break;
-            case "ID98":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench4.png"));
-                break;
-            case "ID97":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench5.png"));
-                break;
-            case "ID96":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench6.png"));
                 break;
 
             // Table furniture.
@@ -749,6 +699,46 @@ public class EntityManager {
             default:
                 System.out.println("Error. Entity ID   " + IDnum
                         + "   not defined.");
+                break;
+                
+            // Bench facing west, top end part.
+            case "ID96":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench6.png"));
+                break;
+                
+            // Bench facing west, bottom end part.
+            case "ID97":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench5.png"));
+                break;
+                
+            // Bench facing east, bottom end part.
+            case "ID98":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench4.png"));
+                break;
+                
+            // Bench facing east, top end part.
+            case "ID99":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench3.png"));
                 break;
         }
     }
@@ -1301,6 +1291,7 @@ public class EntityManager {
                 // If line is not empty.
                 if (tokens.length > 0) {
                     // If player, instantiate player.
+
                     
                     player.setX(Integer.parseInt(tokens[0]));
                     player.setY(Integer.parseInt(tokens[1]));
