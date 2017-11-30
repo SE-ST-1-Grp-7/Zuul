@@ -149,10 +149,6 @@ public class RoomManager {
         tiles.put("ID17", new Tile("/textures/floor6.png"));
         tiles.put("ID19", new Tile("/textures/floor11.png"));
         tiles.put("ID23", new Tile("/textures/floor5.png", true));
-        tiles.put("ID41", new Tile("/textures/wall2.png", true));
-        tiles.put("ID42", new Tile("/textures/wall6.png", true));
-        tiles.put("ID43", new Tile("/textures/wall1.png", true));
-        
         tiles.put("ID30", new Tile("/textures/HedgeWall10.png", true));
         tiles.put("ID31", new Tile("/textures/HedgeWall1.png", true));
         tiles.put("ID32", new Tile("/textures/HedgeWall2.png", true));
@@ -163,6 +159,9 @@ public class RoomManager {
         tiles.put("ID37", new Tile("/textures/HedgeWall7.png", true));
         tiles.put("ID38", new Tile("/textures/HedgeWall8.png", true));
         tiles.put("ID39", new Tile("/textures/HedgeWall9.png", true));
+        tiles.put("ID41", new Tile("/textures/wall2.png", true));
+        tiles.put("ID42", new Tile("/textures/wall6.png", true));
+        tiles.put("ID43", new Tile("/textures/wall1.png", true));
     }
 
     /**
