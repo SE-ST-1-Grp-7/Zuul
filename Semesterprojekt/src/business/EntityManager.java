@@ -307,12 +307,13 @@ public class EntityManager {
                         entityTypes(i, j, name, playerName, IDnum);
                     }
                     // Place entities in their respective rooms.
-                    showStudents();
-                    showFurniture();
-                    showItems();
+
                 }
             }
         }
+        showStudents();
+        showFurniture();
+        showItems();
     }
 
     /**
@@ -963,7 +964,6 @@ public class EntityManager {
                 System.out.println("Saved items");
 
             }
-
             // Flush and then close file stream.
             fileWriter.close();
 
@@ -1301,7 +1301,6 @@ public class EntityManager {
                     player.setEnergyCap(Integer.parseInt(tokens[8]));
                     player.setEnergy(Integer.parseInt(tokens[7]));
                     player.setHasKey(Boolean.parseBoolean(tokens[6]));
-                    System.out.println(player.getCurrentRoom().getName());
                 }
             }
 
@@ -1324,8 +1323,6 @@ public class EntityManager {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveStudentTest.txt")));
-            // Clear student list.
-//                this.studentlist.clear();
             String line;
             // While file in not empty, continue.
             int i = 0;
@@ -1336,6 +1333,8 @@ public class EntityManager {
 
                 if (tokens.length > 0) {
                     Student student = studentlist.get(i);
+                    student.getCurrentRoom().removeEntity(student);
+                    student.setCurrentRoom((Room) (rm.getRoomlist().get(tokens[2])));
                     student.setX(Integer.parseInt(tokens[0]));
                     student.setY(Integer.parseInt(tokens[1]));
                     student.setCurrentRoom((Room) (rm.getRoomlist().get(tokens[2])));
