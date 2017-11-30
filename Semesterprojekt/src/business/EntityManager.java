@@ -570,6 +570,14 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door14.png", true));
                 break;
+             
+                 // Assignment item                
+            case "ID69":
+                itemlist.add(new Assignment(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name)));
 
             // Chair facing north.
             case "ID71":
