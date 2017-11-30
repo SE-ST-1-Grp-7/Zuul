@@ -27,7 +27,7 @@ public abstract class Furniture extends Entity {
         
         // Pass arguments to superclass
         super(x, y, width, height, currentRoom);
-
+       
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;
         this.furnitureDescription = furnitureDescription;
