@@ -338,7 +338,7 @@ public class EntityManager {
                 player = new Player(j,
                         i,
                         playerName,
-                        rm.getCurrentRoom());
+                        rm.getCurrentRoom(), this);
                 this.rm.getRoom(name).setEntity(this.player);
                 break;
 
@@ -1294,7 +1294,7 @@ public class EntityManager {
                     player = new Player(Integer.parseInt(tokens[0]),
                             Integer.parseInt(tokens[1]),
                             tokens[2],
-                            (Room) rm.getRoomlist().get(tokens[3]));
+                            (Room) rm.getRoomlist().get(tokens[3]), this);
                     player.setAssignmentProgress(Integer.parseInt(tokens[4]));
                     player.setGradedAssignments(Integer.parseInt(tokens[5]));
                     player.setEnergyCap(Integer.parseInt(tokens[7]));
