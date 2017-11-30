@@ -8,7 +8,7 @@ package business;
 public class EnergyDrink extends Item {
     private final int ENERGY_RESTORE = 40; // Energy restore upon use.
     // Path of tecture for energy drink.
-    private String energydrinkImage = "/textures/energydrik.png";
+    private final String energydrinkImage = "/textures/energydrink.png";
     
     /**
      * Constructor for EnergyDrink class.
@@ -26,11 +26,11 @@ public class EnergyDrink extends Item {
                        Room currentRoom) {
         
         // Pass arguments to superclass
-        super(x,
-                y,
-                width,
-                height,
-                currentRoom,
+        super(x,                            // X grid position in room.
+                y,                          // Y grid position in room.
+                width,                      // Pixel width.
+                height,                     // Pixel height.
+                currentRoom,                // Placed in this room.
                 "Energy drink",             // Name of item.
                 "A can of Monster. Yum!",   // Description of item.
                 10);                        // Weight of item.
@@ -45,6 +45,13 @@ public class EnergyDrink extends Item {
      */
     @Override
     public void use(Player p) {
-        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+        // If it does not max out player energy, restore energy.
+        if (p.getEnergyCap() < ENERGY_RESTORE + p.getEnergy()) {
+            p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+            
+        // Otherwise set energy to max of capacity.
+        } else {
+            p.setEnergy(p.getEnergyCap());
+        }
     }
 }
