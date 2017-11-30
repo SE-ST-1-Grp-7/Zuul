@@ -9,7 +9,13 @@ public interface IBusiness {
 
     // Inject Data Facade
     void injectData(IData dataLayer);
-
+    
+    //display highscore
+    String displayHighscore();
+    
+    //Load the XML-file highscore.xml
+    void loadXML();
+   
     // Move player.
     void playerMove(String direction);
 

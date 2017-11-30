@@ -14,13 +14,14 @@ public class DataFacade implements IData {
         this.highscore = new Highscore();
     }
     
-    @Override
+    
     /**
      * Method to return our highScore as an string with the toString method.
      *
      * @return string text
      */
-    public String toString() {
+    @Override
+    public String displayHighscore() {
         String text = "";
         int i = 1;
         for (Score score : highscore.highScore) {
@@ -29,4 +30,15 @@ public class DataFacade implements IData {
         }
         return text;
     }
+
+    @Override
+    public void saveGame() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void loadXML(){
+        highscore.loadXML();
+    }
+    
 }

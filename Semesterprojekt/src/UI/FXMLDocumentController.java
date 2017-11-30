@@ -187,12 +187,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void highscoreButton(ActionEvent event) {
-        h.loadXML();
-        ib.toString();
+        ib.loadXML();
+        ib.displayHighscore();
         bottomTextArea.appendText("The highscore list for World of SDU\n");
         bottomTextArea.appendText("---------------------------------\n");
         bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
-        bottomTextArea.appendText(h.toString());
+        bottomTextArea.appendText(ib.displayHighscore());
     }
 
     @FXML

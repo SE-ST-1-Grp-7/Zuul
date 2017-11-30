@@ -57,7 +57,7 @@ public class Highscore {
      *
      * @return string text
      */
-    public String toString() {
+    public String displayHighscore() {
         String text = "";
         int i = 1;
         for (Score score : highScore) {

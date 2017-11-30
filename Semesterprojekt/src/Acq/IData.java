@@ -5,7 +5,13 @@ package Acq;
  * @author J
  */
 public interface IData {
+    // Display the highscore
 
-    public String toString();
+    String displayHighscore();
+    // Save game method
 
+    void saveGame();
+    // Load the XML file
+
+    void loadXML();
 }
