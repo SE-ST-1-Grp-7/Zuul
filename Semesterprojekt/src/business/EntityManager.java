@@ -1324,26 +1324,22 @@ public class EntityManager {
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveStudentTest.txt")));
             // Clear student list.
-                this.studentlist.clear();
+//                this.studentlist.clear();
             String line;
             // While file in not empty, continue.
-            int i= 0;
+            int i = 0;
             while ((line = fileReader.readLine()) != null) {
                 // Get all tokens available in line.
                 String[] tokens = line.split(",");
                 // If line is not empty.
-                
+
                 if (tokens.length > 0) {
-                    int i;
                     Student student = studentlist.get(i);
                     student.setX(Integer.parseInt(tokens[0]));
                     student.setY(Integer.parseInt(tokens[1]));
                     student.setCurrentRoom((Room) rm.getRoomlist().get(tokens[2]));
                     student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
-                    i++;
-                    studentlist.add(student);
-                    
-
+                    i+=1;
                 }
             }
             showStudents();
