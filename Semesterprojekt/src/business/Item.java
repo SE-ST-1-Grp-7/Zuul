@@ -9,6 +9,7 @@ public abstract class Item extends Entity {
     private String itemName; // Name of item.
     private String itemDescription; // Description of item.
     private int weight; // Weight of item, for inventory application.
+    private String imagePath;
 
     /**
      * Constructor for Item class.
@@ -51,6 +52,9 @@ public abstract class Item extends Entity {
      */
     public String getName() {
         return this.itemName;
+    }
+    public String getImagePath(){
+        return imagePath;
     }
     
     /**

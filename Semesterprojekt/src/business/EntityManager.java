@@ -687,8 +687,7 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        "/textures/key.png"));
+                        rm.getRoom(name)));
                 break;
 
             // Coffee item.
@@ -881,22 +880,23 @@ public class EntityManager {
      */
     public void saveGame() {
         makeSaveFolder();   // Create folder if it does not exist.
-        saveItems();        // Save item list to file.
         savePlayers();      // Save player to file.
-        saveStudents();     // Save student list to file.
-        saveFurniture();    // Save furniture list to file.
-        saveInventory();    // Save inventory list to file.
+        saveItems();        // Save item list to file.
+        //saveStudents();     // Save student list to file.
+        //saveFurniture();    // Save furniture list to file.
+        //saveInventory();    // Save inventory list to file.
     }
 
     /**
      * Method for loading the previously saved game progress.
      */
     public void loadGame() {
-        loadItems();        // Load item list from file.
         loadPlayers();      // Load player from file.
-        loadStudents();     // Load student list from file.
-        loadFurniture();    // Load furniture list from file.
-        loadInventory();    // Load inventory list from file.
+        loadItems();        // Load item list from file.
+        //loadStudents();     // Load student list from file.
+        //loadFurniture();    // Load furniture list from file.
+        //loadInventory();    // Load inventory list from file.
+        
     }
 
     /**
@@ -1108,56 +1108,55 @@ public class EntityManager {
                         // If adderall, add item to item list.
                         case "Adderal":
                             Adderall d = new Adderall(
-                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(d);
                             break;
 
                         // If coffee, add item to item list.
                         case "Coffee":
                             Coffee c = new Coffee(
-                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(c);
                             break;
 
                         // If assignment, add item to item list.
                         case "Assignment":
                             Assignment a = new Assignment(
-                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]));
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(a);
                             break;
 
                         // If key, add item to item list.
                         case "Key":
                             Key k = new Key(Integer.parseInt(
-                                    tokens[0]),
-                                    Integer.parseInt(tokens[1]),
+                                    tokens[1]),
+                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]),
-                                    "/textures/key.png");
+                                    (Room) rm.getRoomlist().get(tokens[3]));
                             itemlist.add(k);
                             break;
 
                         // If energy drink, add item to item list.
                         case "EnergyDrink":
                             EnergyDrink e = new EnergyDrink(
-                                    Integer.parseInt(tokens[0]),
                                     Integer.parseInt(tokens[1]),
+                                    Integer.parseInt(tokens[2]),
                                     64,
                                     64,
-                                    rm.getCurrentRoom().getExit(tokens[2]));
+                                    rm.getCurrentRoom().getExit(tokens[3]));
                             itemlist.add(e);
                             break;
 
@@ -1165,6 +1164,7 @@ public class EntityManager {
                         default:
                             break;
                     }
+                     
                 }
             }
 
@@ -1175,6 +1175,7 @@ public class EntityManager {
             System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
                     + "please check the save directory in the code.");
         }
+        showItems();
     }
 
     /**
@@ -1238,8 +1239,7 @@ public class EntityManager {
                                     Integer.parseInt(tokens[1]),
                                     64,
                                     64,
-                                    (Room) rm.getRoomlist().get(tokens[2]),
-                                    "/textures/key.png");
+                                    (Room) rm.getRoomlist().get(tokens[2]));
                             player.inventory().addItem(k);
                             break;
 
@@ -1281,7 +1281,7 @@ public class EntityManager {
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SavePlayersTest.txt")));
             // Set player to null.
-            this.player = null;
+            
 
             String line;
             // While file is not empty continue.
@@ -1291,14 +1291,18 @@ public class EntityManager {
                 // If line is not empty.
                 if (tokens.length > 0) {
                     // If player, instantiate player.
-                    player = new Player(Integer.parseInt(tokens[0]),
-                            Integer.parseInt(tokens[1]),
-                            tokens[2],
-                            (Room) rm.getRoomlist().get(tokens[3]), this);
+
+                    
+                    player.setX(Integer.parseInt(tokens[0]));
+                    player.setY(Integer.parseInt(tokens[1]));
+                    player.setName(tokens[2]);
+                    player.setCurrentRoom((Room)rm.getRoomlist().get(tokens[3]));
                     player.setAssignmentProgress(Integer.parseInt(tokens[4]));
                     player.setGradedAssignments(Integer.parseInt(tokens[5]));
-                    player.setEnergyCap(Integer.parseInt(tokens[7]));
-                    player.setEnergy(Integer.parseInt(tokens[6]));
+                    player.setEnergyCap(Integer.parseInt(tokens[8]));
+                    player.setEnergy(Integer.parseInt(tokens[7]));
+                    player.setHasKey(Boolean.parseBoolean(tokens[6]));
+                     System.out.println(player.getCurrentRoom().getName());
                 }
             }
 
@@ -1338,6 +1342,7 @@ public class EntityManager {
                             Boolean.parseBoolean(tokens[3]));
                     // Add student object to student list.
                     studentlist.add(student);
+                    System.out.println(student);
                 }
             }
 
