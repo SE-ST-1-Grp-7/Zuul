@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
@@ -61,9 +62,12 @@ public class FXMLDocumentController implements Initializable {
     private ListView listView;
     @FXML
     private TextArea bottomTextArea;
-
+    @FXML
+    private Label timeLabel;
+    
     @FXML
     private void newGameButton(ActionEvent event) {
+        bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest game on SDU.\n");
         GraphicsContext gc = canvasId.getGraphicsContext2D();
         //link the listView to the inventory
         listView.setItems(ib.playerGetInventory().getInventory());
@@ -138,6 +142,8 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(highscoreButton, highscoretip);
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
+        
+        timeLabel.setText("TIME IS:" + System.currentTimeMillis()/1000L);
 
     }
 
@@ -186,6 +192,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void loadButton(ActionEvent event) {
+        bottomTextArea.appendText("The game is now loaded.\n");
         ib.loadGame();
     }
 
@@ -196,6 +203,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void saveButton(ActionEvent event) {
+        bottomTextArea.appendText("The game is now saved.\n");
         ib.saveGame();
     }
 
@@ -221,6 +229,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void useButton(ActionEvent event) {
+        bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n" );
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
 
     }
@@ -233,6 +242,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void dropButton(ActionEvent event) {
         if ((listView.getSelectionModel().getSelectedItem() != null)) {
+            bottomTextArea.appendText("You just dropped " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
             ib.itemDrop(listView.getSelectionModel().getSelectedItem());
         }
     }
