@@ -8,7 +8,7 @@ package business;
 public class Coffee extends Item {
     private final int ENERGY_RESTORE = 15; // Energy restore value upon use.
     // Path of texture for coffee.
-    private String coffeeImage = "/textures/tutor2.png";
+    private String coffeeImage = "/textures/coffee1.png";
     
     /**
      * Constructor for Coffee class.

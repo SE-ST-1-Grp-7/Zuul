@@ -12,7 +12,7 @@ public class Door extends Furniture {
     private RoomManager roomManager;
     private boolean isLocked;
 
-    public Door(int x, int y, int width, int height, String direction,
+    public Door(int x, int y, int width, int height,
             Room currentRoom, String imagePath, boolean isLocked) {
 
         // Pass arguments to superclass.
@@ -20,7 +20,6 @@ public class Door extends Furniture {
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         super.setEntityImage(imagePath);
-        this.direction = direction;
         this.isLocked = isLocked;
     }
 
@@ -46,11 +45,10 @@ public class Door extends Furniture {
 
     @Override
     public void onInteract() {        
-//        if (this.isLocked == true && /*player has the key*/) {
-//            System.out.println("you unlock the door and go through");
-//            goThroughDoorMethod();
-//        } else
-        if (this.isLocked == true) {
+        if (this.isLocked == true && this.player.getHasKey()) {
+            System.out.println("you unlock the door and go through");
+            goThroughDoorMethod();
+        } else if (this.isLocked == true) {
             System.out.println("the door is locked, you need a key to open it");
         } else {
             goThroughDoorMethod();
@@ -70,22 +68,40 @@ public class Door extends Furniture {
      * @param roomManager
      */
     public void useDoor(Player goPlayer, RoomManager roomManager) {
-        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
         if (goPlayer.getX() == getX() && getY() > 5) {
+            this.direction = "south";
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setY(1);
             goPlayer.setX(getX());
         } else if (goPlayer.getX() == getX() && getY() < 5) {
+            this.direction = "north";
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setY(8);
             goPlayer.setX(getX());
         } else if (goPlayer.getY() == getY() && getX() > 5) {
+            this.direction = "east";
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setX(1);
             goPlayer.setY(getY());
         } else if (goPlayer.getY() == getY() && getX() < 5) {
+            this.direction = "west";
+            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
             goPlayer.setX(8);
             goPlayer.setY(getY());
         }
     }
+    
+    /**
+     * this method sets the player's position to the room in the specified direction
+     * @param goPlayer
+     * @param roomManager
+     * @param direction 
+     */
+    private void setThePlayerToNewRoom(Player goPlayer, RoomManager roomManager, String direction){
+        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
+        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+    }
+    
 
     @Override
     public int getX() {

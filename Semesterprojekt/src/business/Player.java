@@ -18,6 +18,7 @@ public class Player extends Person {
     private boolean dont = false; // Avoid tempItem overlap with other items.
     private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
+    private boolean hasKey;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -46,6 +47,7 @@ public class Player extends Person {
         this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
+        this.hasKey = false;
     }
 
     /**
@@ -84,9 +86,11 @@ public class Player extends Person {
     }
 
     private void pickUpItem(int yOffset, int xOffset) {
-        if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
-            inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-            getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+        if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
+            if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
+                inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+            }
         }
     }
 
@@ -310,5 +314,13 @@ public class Player extends Person {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
+    }
+
+    public boolean getHasKey() {
+        return this.hasKey;
+    }
+
+    public void setHasKey(boolean hasKey) {
+        this.hasKey = hasKey;
     }
 }

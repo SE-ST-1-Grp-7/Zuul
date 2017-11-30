@@ -2,6 +2,9 @@ package business;
 
 import Acq.IBusiness;
 import Acq.IData;
+import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
+
 
 /**
  *
@@ -55,17 +58,6 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * calls .dropItem on player's inventory drops the item located at index i
-     *
-     * @param index
-     */
-    @Override
-    public void playerDropItem(int index) {
-        // note to self: move dropItem to player
-        entityManager.getPlayer().inventory().dropItem(index, entityManager.getPlayer());
-    }
-
-    /**
      * gets the image of an entity placed at row, col if no entity is present ->
      * return an empty square
      *
@@ -76,15 +68,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public String entityGetImage(int row, int col) {
         if (roomManager.getCurrentRoom().getEntities()[row][col] != null) {
-            if (roomManager.getCurrentRoom().getEntities()[row][col] instanceof Student) {
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-            } else if (roomManager.getCurrentRoom().getEntities()[row][col] instanceof Furniture) {
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-            } else if (roomManager.getCurrentRoom().getEntities()[row][col] instanceof Item) {
-                return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
-            } else {
-                return "/textures/player.png";
-            }
+            return roomManager.getCurrentRoom().getEntities()[row][col].getEntityImage();
         } else {
             return "testSquare.png";
         }
@@ -150,5 +134,34 @@ public class BusinessFacade implements IBusiness {
         }
         // reduce player's current energy by 1
         entityManager.getPlayer().setEnergy(entityManager.getPlayer().getEnergy() - 1);
+        System.out.println(entityManager.getPlayer().getEnergy());
     }
+
+    @Override
+    public Inventory playerGetInventory() {
+        return entityManager.getPlayer().inventory();
+    }
+
+    /**
+     * uses a given item
+     *
+     * @param o
+     */
+    @Override
+    public void itemUse(Object o) {
+        Item toUse = (Item) o;
+        toUse.use(entityManager.getPlayer());
+        entityManager.getPlayer().inventory().removeItem(toUse);
+    }
+
+    /**
+     * drops a given item
+     *
+     * @param o
+     */
+    @Override
+    public void itemDrop(Object o) {
+        entityManager.getPlayer().inventory().dropItem((Item) o, entityManager.getPlayer());
+    }
+
 }

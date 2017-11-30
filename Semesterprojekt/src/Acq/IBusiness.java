@@ -1,9 +1,11 @@
 package Acq;
 
+import business.Inventory;
+
 /**
  * IBusiness interface.
  *
- * @author J & Rasmus Willer
+ * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
 
@@ -24,7 +26,7 @@ public interface IBusiness {
 
     // Drop item from player.
     void playerDropItem(int index);
-
+  
     // Get texture path for entity.
     String entityGetImage(int row, int col);
 
@@ -40,4 +42,7 @@ public interface IBusiness {
     void goThroughDoor();
 
     void loop();
+    Inventory playerGetInventory();
+    void itemUse(Object o);
+    void itemDrop(Object o);
 }
