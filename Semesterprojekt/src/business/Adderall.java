@@ -9,7 +9,7 @@ public class Adderall extends Item{
     private final int ENERGY_RESTORE = 70; // Energy restore value upon use.
     private final int ENERGY_CAP_INCREASE = 20; // Energy cap increase.
     // Path of texture for adderall.
-    private String adderallImage = "/textures/adderall.png";
+    private String adderallImage = "/textures/adderall1.png";
     
     /**
      * Constructor for Adderall class.

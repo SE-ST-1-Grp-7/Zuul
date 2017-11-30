@@ -57,11 +57,11 @@ public class Highscore {
      *
      * @return string text
      */
-    public String toString() {
+    public String displayHighscore() {
         String text = "";
         int i = 1;
         for (Score score : highScore) {
-            text += i + ".\t" + score.getName() + "\t  " + score.getScore() + "\n";
+            text += i + ".\t\t" + score.getName() + "\t\t  " + score.getScore() + "\n";
             i++;
         }
         return text;

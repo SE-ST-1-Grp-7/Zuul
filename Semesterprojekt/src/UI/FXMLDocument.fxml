@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
 
   <columnConstraints>
@@ -109,7 +108,7 @@
             </ListView>
          </children>
       </VBox>
-      <TextArea editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" styleClass="text-field" stylesheets="@style.css" GridPane.rowIndex="1">
+      <TextArea fx:id="bottomTextArea" editable="false" focusTraversable="false" prefHeight="200.0" prefWidth="200.0" styleClass="text-field" stylesheets="@style.css" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </GridPane.margin>

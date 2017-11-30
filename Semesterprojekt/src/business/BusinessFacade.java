@@ -1,17 +1,25 @@
 package business;
 
 import Acq.IBusiness;
+import Acq.IData;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
+
 /**
  *
- * @author J
+ * @author Niclas Johansen & J
  */
 public class BusinessFacade implements IBusiness {
 
     private EntityManager entityManager;
     private RoomManager roomManager;
+    private IData data;
+
+    @Override
+    public void injectData(IData dataLayer) {
+        data = dataLayer;
+    }
 
     /**
      * zero-arg constructor assigns values to EntityManager & RoomManager
@@ -68,7 +76,19 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void saveGame() {
-        entityManager.saveGame();
+        // entityManager.saveGame();
+        data.saveGame();
+    }
+
+    @Override
+    public String displayHighscore() {
+        data.displayHighscore();
+        return data.displayHighscore();
+    }
+
+    @Override
+    public void loadXML() {
+        data.loadXML();
     }
 
     @Override
@@ -142,6 +162,10 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void itemDrop(Object o) {
         entityManager.getPlayer().inventory().dropItem((Item) o, entityManager.getPlayer());
+    }
+
+    @Override
+    public void playerDropItem(int index) {
     }
 
 }

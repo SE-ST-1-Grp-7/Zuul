@@ -703,11 +703,10 @@ public class EntityManager {
             case "ID83":
                 itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
                 break;
-
-            // In case the ID is not recognized.
-            default:
-                System.out.println("Error. Entity ID   " + IDnum
-                        + "   not defined.");
+                
+            // Adderall item.
+            case "ID84":
+                itemlist.add(new Adderall(j, i, 64, 64, rm.getRoom(name)));
                 break;
                 
             // Bench facing west, top end part.
@@ -748,6 +747,12 @@ public class EntityManager {
                         64,
                         rm.getRoom(name),
                         "/textures/bench3.png"));
+                break;
+
+            // In case the ID is not recognized.
+            default:
+                System.out.println("Error. Entity ID   " + IDnum
+                        + "   not defined.");
                 break;
         }
     }
