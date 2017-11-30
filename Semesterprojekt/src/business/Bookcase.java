@@ -33,7 +33,7 @@ public class Bookcase extends Furniture /*implements Interactable*/{
         super.setEntityImage(imagePath);
     }
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("this is a bookcase!");
         System.out.println("you can rumage through its contents");
         

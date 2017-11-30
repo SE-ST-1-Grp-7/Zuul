@@ -37,7 +37,7 @@ public class Plant extends Furniture /*implements Interactable*/{
      * Override, upon interaction with furniture.
      */
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("This is a plant");
         System.out.println("Looks lovely!");
     }

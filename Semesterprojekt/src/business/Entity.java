@@ -71,7 +71,7 @@ public abstract class Entity {
     /**
      * abstact method - gets called when entity is interacted with
      */
-    public abstract void onInteract();    
+    public abstract void onInteract(Person p);    
     
 }
 //    public BufferedImage getGraphics() {
