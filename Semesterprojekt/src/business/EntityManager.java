@@ -590,38 +590,6 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair4.png"));
                 break;
-            case "ID99":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench3.png"));
-                break;
-            case "ID98":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench4.png"));
-                break;
-            case "ID97":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench5.png"));
-                break;
-            case "ID96":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/bench6.png"));
-                break;
 
             // Table furniture.
             case "ID73":
@@ -732,6 +700,46 @@ public class EntityManager {
             default:
                 System.out.println("Error. Entity ID   " + IDnum
                         + "   not defined.");
+                break;
+                
+            // Bench facing west, top end part.
+            case "ID96":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench6.png"));
+                break;
+                
+            // Bench facing west, bottom end part.
+            case "ID97":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench5.png"));
+                break;
+                
+            // Bench facing east, bottom end part.
+            case "ID98":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench4.png"));
+                break;
+                
+            // Bench facing east, top end part.
+            case "ID99":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bench3.png"));
                 break;
         }
     }
