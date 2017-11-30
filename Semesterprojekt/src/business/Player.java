@@ -57,26 +57,22 @@ public class Player extends Person {
         switch (facing) {
             case "right":
                 if (getCurrentRoom().getEntities()[getY()][getX() + 1] != null) {
-                    getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract();
-                    pickUpItem(0, +1);
+                    getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract(this);
                 }
                 break;
             case "left":
                 if (getCurrentRoom().getEntities()[getY()][getX() - 1] != null) {
-                    getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract();
-                    pickUpItem(0, -1);
+                    getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract(this);
                 }
                 break;
             case "up":
                 if (getCurrentRoom().getEntities()[getY() - 1][getX()] != null) {
-                    getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract();
-                    pickUpItem(-1, 0);
+                    getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract(this);
                 }
                 break;
             case "down":
                 if (getCurrentRoom().getEntities()[getY() + 1][getX()] != null) {
-                    getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract();
-                    pickUpItem(+1, 0);
+                    getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract(this);
                 }
                 break;
         }
@@ -184,8 +180,8 @@ public class Player extends Person {
      *
      * @return Item, return the tempItem object.
      */
-    public Item getTempItem() {
-        return this.tempItem;
+        public Item getTempItem() {
+            return this.tempItem;
     }
 
     /**
@@ -310,7 +306,7 @@ public class Player extends Person {
      * professor.)
      */
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player

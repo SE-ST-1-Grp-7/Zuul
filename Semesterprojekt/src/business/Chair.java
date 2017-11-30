@@ -38,7 +38,7 @@ public class Chair extends Furniture {
      * Override, upon interaction with furniture.
      */
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("this is a chair");
         System.out.println("you cant sit on it though");
     }

@@ -30,7 +30,6 @@ public class BusinessFacade implements IBusiness {
         for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
             if (entityManager.getFurnitureList().get(i) instanceof Door) {
                 Door d = (Door) entityManager.getFurnitureList().get(i);
-                d.setPlayer(entityManager.getPlayer());
                 d.setRoomManager(roomManager);
             }
         }
@@ -110,7 +109,7 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void goThroughDoor() {
-        roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
+//        roomManager.getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()].onInteract();
     }
 
     /**
@@ -118,19 +117,10 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void loop() {
-        // check if player's energy is 0
-        // if so - quit the game
-        if (entityManager.getPlayer().getEnergy() <= 0) {
-            System.exit(0);
-        }
 
-        // loop through array and call .idleMove on all students in the room      
-        for (Entity[] e : roomManager.getCurrentRoom().getEntities()) {
-            for (Entity s : e) {
-                if (s instanceof Student) {
-                    ((Student) s).idleMove();
-                }
-            }
+        // call idleMove on all students in the game
+        for(Student s : entityManager.getStudentList()) {
+            s.idleMove();
         }
         // reduce player's current energy by 1
         entityManager.getPlayer().setEnergy(entityManager.getPlayer().getEnergy() - 1);

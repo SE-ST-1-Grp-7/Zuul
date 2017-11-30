@@ -81,7 +81,7 @@ public class Table extends Furniture /*implements Inspectable*/{
      * Override, upon interaction with table.
      */
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("this is a table");
         if(currentAmountOfItems > 0) {
             System.out.println("this is what is on it ;)");
