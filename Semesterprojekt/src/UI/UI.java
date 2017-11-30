@@ -34,7 +34,7 @@ public class UI extends Application implements IUI {
         Scene scene = new Scene(p);
         scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Bangers");
         primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         primaryStage.show();
 
     }
