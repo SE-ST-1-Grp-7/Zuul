@@ -229,8 +229,13 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void useButton(ActionEvent event) {
+        if ((listView.getSelectionModel().getSelectedItem() != null)) {
         bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n" );
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
+        } 
+        else {
+            bottomTextArea.appendText("You have no items to use in inventory." + "\n" );
+        }
 
     }
 
@@ -245,6 +250,9 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You just dropped " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
             ib.itemDrop(listView.getSelectionModel().getSelectedItem());
         }
-    }
+        else {
+            bottomTextArea.appendText("You have no items to drop in inventory." + "\n" );
+        }
+    } 
 
 }
