@@ -109,7 +109,11 @@ public abstract class Item extends Entity {
      * Override, upon interaction with item.
      */
     @Override
-    public void onInteract() {
-        
+    public void onInteract(Person p) {
+        if(p instanceof Player) {
+            ((Player) p).inventory().addItem(this);
+            getCurrentRoom().getEntities()[getY()][getX()] = null;
+            // also remove from entitymanager
+    }
     }
 }

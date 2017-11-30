@@ -13,11 +13,6 @@ public class Student extends Person {
     private boolean hasQuestionToPlayer;
     private String studentImage = ""; // Path to image used for this entity.
     private Random rand = new Random(); // used for randomization of move().
-    private Room room1;
-
-    public void setRoom(Room room) {
-        this.room1 = room;
-    }
 
     /**
      * Student constructor, actions upon instantiation.
@@ -74,24 +69,34 @@ public class Student extends Person {
             String direction = directions[rand.nextInt(4)];
             switch (direction) {
                 case "left":
-                    if (!checkCollision(getX() - 1, getY())) // check for collision before moving
-                    {
+
+                    if (getCurrentRoom().getEntities()[getY()][getX() - 1] instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract(this);
+                    } else if (!checkCollision(getX() - 1, getY())) {
                         move(getX() - 1, getY());
                     }
                     break;
                 case "right":
-                    if (!checkCollision(getX() + 1, getY())) {
+
+                    if (getCurrentRoom().getEntities()[getY()][getX() + 1] instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract(this);
+                    } else if (!checkCollision(getX() + 1, getY())) {
                         move(getX() + 1, getY());
                     }
                     break;
                 case "up":
-                    if (!checkCollision(getX(), getY() - 1)) {
-                        move(getX(), getY() - 1);
+                    if (getCurrentRoom().getEntities()[getY()-1][getX()] instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()-1][getX()].onInteract(this);
+                    } else if (!checkCollision(getX(), getY()-1)) {
+                        move(getX(), getY()-1);
                     }
                     break;
                 case "down":
-                    if (!checkCollision(getX(), getY() + 1)) {
-                        move(getX(), getY() + 1);
+                    if (getCurrentRoom().getEntities()[getY()+1][getX() + 1] instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()+1][getX() + 1].onInteract(this);
+                    } else if (!checkCollision(getX(), getY()+1)) {
+                        move(getX(), getY()+1);
+
                     }
                     break;
             }
@@ -149,7 +154,7 @@ public class Student extends Person {
      * Override, upon interacted with student.
      */
     @Override
-    public void onInteract() {
+    public void onInteract(Person p) {
         System.out.println("Hello professor! :sunglasses: ");
     }
 }

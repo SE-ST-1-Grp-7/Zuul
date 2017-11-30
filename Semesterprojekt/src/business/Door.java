@@ -8,7 +8,6 @@ public class Door extends Furniture {
 
     private String direction;
     private String doorImage = "/textures/door2.png"; // Path to texture.
-    private Player player;
     private RoomManager roomManager;
     private boolean isLocked;
 
@@ -24,16 +23,6 @@ public class Door extends Furniture {
     }
 
     /**
-     * settermethod: mostly used to give the useDoor and onInteract methods
-     * acces to the player
-     *
-     * @param p
-     */
-    public void setPlayer(Player p) {
-        this.player = p;
-    }
-
-    /**
      * setter method: mostly used to give the useDoor and onInteract methods
      * acces to the roomManager
      *
@@ -44,64 +33,79 @@ public class Door extends Furniture {
     }
 
     @Override
-    public void onInteract() {        
-        if (this.isLocked == true && this.player.getHasKey()) {
-            System.out.println("you unlock the door and go through");
-            goThroughDoorMethod();
-        } else if (this.isLocked == true) {
-            System.out.println("the door is locked, you need a key to open it");
+    public void onInteract(Person p) {
+        if (p instanceof Player) {
+            if (this.isLocked == true && ((Player) p).getHasKey()) {
+                System.out.println("you unlock the door and go through");
+                goThroughDoorMethod((Player) p);
+            } else if (this.isLocked == true) {
+                System.out.println("the door is locked, you need a key to open it");
+            } else {
+                goThroughDoorMethod((Player) p);
+            }
         } else {
-            goThroughDoorMethod();
+            goThroughDoorMethod2((Student ) p);
         }
+
     }
 
-    private void goThroughDoorMethod() {
-        roomManager.getCurrentRoom().setEntityWithXY(this.player.getX(), this.player.getY(), null);
-        useDoor(this.player, this.roomManager);
-        roomManager.getCurrentRoom().setEntity(this.player);
+    private void goThroughDoorMethod(Player player) {
+        roomManager.getCurrentRoom().setEntityWithXY(player.getX(), player.getY(), null);
+        useDoor(player, this.roomManager);
+        roomManager.getCurrentRoom().setEntity(player);
+    }
+
+    private void goThroughDoorMethod2(Student student) {
+        student.getCurrentRoom().setEntityWithXY(student.getX(), student.getY(), null);
+        useDoor(student, this.roomManager);
+        student.getCurrentRoom().setEntity(student);
     }
 
     /**
      * method for using a door
      *
-     * @param goPlayer
+     * @param person
      * @param roomManager
      */
-    public void useDoor(Player goPlayer, RoomManager roomManager) {
-        if (goPlayer.getX() == getX() && getY() > 5) {
+    public void useDoor(Person person, RoomManager roomManager) {
+        if (person.getX() == getX() && getY() > 5) {
             this.direction = "south";
-            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
-            goPlayer.setY(1);
-            goPlayer.setX(getX());
-        } else if (goPlayer.getX() == getX() && getY() < 5) {
+            setPersonToNewRoom(person, roomManager, this.direction);
+            person.setY(1);
+            person.setX(getX());
+        } else if (person.getX() == getX() && getY() < 5) {
             this.direction = "north";
-            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
-            goPlayer.setY(8);
-            goPlayer.setX(getX());
-        } else if (goPlayer.getY() == getY() && getX() > 5) {
+            setPersonToNewRoom(person, roomManager, this.direction);
+            person.setY(8);
+            person.setX(getX());
+        } else if (person.getY() == getY() && getX() > 5) {
             this.direction = "east";
-            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
-            goPlayer.setX(1);
-            goPlayer.setY(getY());
-        } else if (goPlayer.getY() == getY() && getX() < 5) {
+            setPersonToNewRoom(person, roomManager, this.direction);
+            person.setX(1);
+            person.setY(getY());
+        } else if (person.getY() == getY() && getX() < 5) {
             this.direction = "west";
-            setThePlayerToNewRoom(goPlayer, roomManager, this.direction);
-            goPlayer.setX(8);
-            goPlayer.setY(getY());
+            setPersonToNewRoom(person, roomManager, this.direction);
+            person.setX(8);
+            person.setY(getY());
         }
     }
-    
+
     /**
-     * this method sets the player's position to the room in the specified direction
-     * @param goPlayer
+     * this method sets the player's position to the room in the specified
+     * direction
+     *
+     * @param person
      * @param roomManager
-     * @param direction 
+     * @param direction
      */
-    private void setThePlayerToNewRoom(Player goPlayer, RoomManager roomManager, String direction){
-        goPlayer.setCurrentRoom(getCurrentRoom().getExit(direction));
-        roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+    private void setPersonToNewRoom(Person person, RoomManager roomManager, String direction) {
+        person.setCurrentRoom(getCurrentRoom().getExit(direction));
+        if (person instanceof Player) {
+            roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
+        }
+
     }
-    
 
     @Override
     public int getX() {
