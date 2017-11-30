@@ -13,6 +13,15 @@
     -fx-font-size: 20px;
    -fx-font-family: "Bangers";
 }
+.text-field .scroll-bar{
+    -fx-background-color:transparent;
+}
+.text-field .scroll-bar:horizontal .thumb,
+.text-field  .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+
+}
+
 .main{
     -fx-background-image: url("/assets/background-1.png");
     -fx-background-size: cover;
