@@ -36,6 +36,7 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
+    private int seconds = 0;
     private Highscore h = new Highscore();
     private long diff = 0;
     private Pane pane;
@@ -106,9 +107,12 @@ public class FXMLDocumentController implements Initializable {
                 // ensures that the loop only gets called once per second
                 diff = currentNanoTime - prevNanoTime;
                 if (diff >= 1000000000) {
+                    seconds++;
+                    timeLabel.setText(Integer.toString(seconds));
                     // calls gameloop
                     ib.loop();
                     prevNanoTime = currentNanoTime;
+                    
                 }
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
