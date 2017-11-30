@@ -58,9 +58,9 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button dropButton;
     @FXML
-    private TextArea bottomTextArea;
-    @FXML
     private ListView listView;
+    @FXML
+    private TextArea bottomTextArea;
 
     @FXML
     private void newGameButton(ActionEvent event) {

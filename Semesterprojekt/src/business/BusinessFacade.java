@@ -164,4 +164,8 @@ public class BusinessFacade implements IBusiness {
         entityManager.getPlayer().inventory().dropItem((Item) o, entityManager.getPlayer());
     }
 
+    @Override
+    public void playerDropItem(int index) {
+    }
+
 }
