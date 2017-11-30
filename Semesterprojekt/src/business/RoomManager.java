@@ -43,7 +43,7 @@ public class RoomManager {
         roomlist.put("hallway 1", new Room(
                 "moving along the hallway", "hallway 1"));
         roomlist.put("dininghall", new Room(
-                "in the dining hall, time to nom!", "dinninghall"));
+                "in the dining hall, time to nom!", "dininghall"));
         roomlist.put("hallway 2", new Room(
                 "moving along the hallway", "hallway 2"));
         roomlist.put("lecturehall 1", new Room(
@@ -53,7 +53,7 @@ public class RoomManager {
                 "moving along the hallway", "hallway 3"));
         roomlist.put("lecturehall 2", new Room(
                 "in a lecturehall, everything is working... weird...",
-                "lecturehall2"));
+                "lecturehall 2"));
         roomlist.put("toilet", new Room("pooping", "toilet"));
 
         /* Define the exit-waypoints:

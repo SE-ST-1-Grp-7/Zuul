@@ -307,12 +307,13 @@ public class EntityManager {
                         entityTypes(i, j, name, playerName, IDnum);
                     }
                     // Place entities in their respective rooms.
-                    showStudents();
-                    showFurniture();
-                    showItems();
+                    
                 }
             }
         }
+        showStudents();
+        showFurniture();
+        showItems();
     }
 
     /**
@@ -957,9 +958,9 @@ public class EntityManager {
 
             /* Iterate through player's inventory list and write the items to
                file. */
-//            for (Item item : player.inventory().getInventory()) {
-//                fileWriter.append(item.getName());
-//            }
+            for (Item item : player.inventory().getInventory()) {
+                fileWriter.append(item.getName());
+            }
             fileWriter.append("\n");
 
             // Flush and then close file stream.
@@ -1300,7 +1301,6 @@ public class EntityManager {
                     player.setEnergyCap(Integer.parseInt(tokens[8]));
                     player.setEnergy(Integer.parseInt(tokens[7]));
                     player.setHasKey(Boolean.parseBoolean(tokens[6]));
-                    System.out.println(player.getCurrentRoom().getName());
                 }
             }
 
@@ -1323,8 +1323,6 @@ public class EntityManager {
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveStudentTest.txt")));
-            // Clear student list.
-//                this.studentlist.clear();
             String line;
             // While file in not empty, continue.
             int i = 0;
@@ -1335,9 +1333,10 @@ public class EntityManager {
 
                 if (tokens.length > 0) {
                     Student student = studentlist.get(i);
+                    student.getCurrentRoom().removeEntity(student);
+                    student.setCurrentRoom((Room)(rm.getRoomlist().get(tokens[2])));
                     student.setX(Integer.parseInt(tokens[0]));
                     student.setY(Integer.parseInt(tokens[1]));
-                    student.setCurrentRoom((Room) rm.getRoomlist().get(tokens[2]));
                     student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
                     i+=1;
                 }

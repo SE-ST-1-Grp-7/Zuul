@@ -58,6 +58,7 @@ public class Student extends Person {
         this(x, y, currentRoom, hasQ);
         this.studentImage = studentImage;
         super.setEntityImage(studentImage);
+        getCurrentRoom().getEntities()[getY()][getX()] = null;
     }
 
     /**

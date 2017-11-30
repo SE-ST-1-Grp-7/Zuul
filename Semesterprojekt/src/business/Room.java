@@ -182,6 +182,15 @@ public class Room {
     }
     
     /**
+     * Remove entity from its current location.
+     * 
+     * @param entity    Entity, to be removed.
+     */
+    public void removeEntity (Entity entity) {
+        entityArray[entity.getY()][entity.getX()] = null;
+    }
+    
+    /**
      * this method is mostly for deleting the player from the room he is leaving
      * @param x
      * @param y
