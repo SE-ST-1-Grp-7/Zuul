@@ -36,7 +36,9 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
+    private int startSeconds = 300;
     private int seconds = 0;
+    private int minutes = 0;
     private Highscore h = new Highscore();
     private long diff = 0;
     private Pane pane;
@@ -107,8 +109,11 @@ public class FXMLDocumentController implements Initializable {
                 // ensures that the loop only gets called once per second
                 diff = currentNanoTime - prevNanoTime;
                 if (diff >= 1000000000) {
-                    seconds++;
-                    timeLabel.setText(Integer.toString(seconds));
+                    startSeconds--;
+                    minutes = startSeconds / 60;
+                    seconds = startSeconds % 60;
+                    timeLabel.setText("Time LEFT: " + Integer.toString(minutes) + ":" + Integer.toString(seconds));
+                 //   timeLabel.setText("TIME LEFT: " + Integer.toString(seconds));
                     // calls gameloop
                     ib.loop();
                     prevNanoTime = currentNanoTime;
@@ -147,7 +152,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
         
-        timeLabel.setText("TIME IS:" + System.currentTimeMillis()/1000L);
+        timeLabel.setText("TIME LEFT: " + "05:00");
 
     }
 
