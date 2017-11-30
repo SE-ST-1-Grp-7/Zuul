@@ -12,6 +12,7 @@ public class Student extends Person {
     private boolean hasQuestionToPlayer;
     private String studentImage = ""; // Path to image used for this entity.
     private Random rand = new Random(); // used for randomization of move().
+    private Room room;
     
     /**
      * Student constructor, actions upon instantiation.

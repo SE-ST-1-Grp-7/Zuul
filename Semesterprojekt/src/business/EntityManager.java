@@ -1295,6 +1295,7 @@ public class EntityManager {
                     player.setY(Integer.parseInt(tokens[1]));
                     player.setName(tokens[2]);
                     player.setCurrentRoom((Room) rm.getRoomlist().get(tokens[3]));
+                    System.out.println(player.getCurrentRoom().getName());
                     player.setAssignmentProgress(Integer.parseInt(tokens[4]));
                     player.setGradedAssignments(Integer.parseInt(tokens[5]));
                     player.setEnergyCap(Integer.parseInt(tokens[8]));
@@ -1324,7 +1325,7 @@ public class EntityManager {
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SaveStudentTest.txt")));
             // Clear student list.
-                this.studentlist.clear();
+//                this.studentlist.clear();
             String line;
             // While file in not empty, continue.
             for (int i = 0; i < studentlist.size(); i++) {
@@ -1334,13 +1335,12 @@ public class EntityManager {
                     // If line is not empty.
                     if (tokens.length > 0) {
                         Student student = studentlist.get(i);
-
                         student.setX(Integer.parseInt(tokens[0]));
                         student.setY(Integer.parseInt(tokens[1]));
                         student.setCurrentRoom((Room) rm.getRoomlist().get(tokens[2]));
                         student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
-                        System.out.println(student.getX());
-                        System.out.println(student.getY());
+                        System.out.println(student.getCurrentRoom().getName()+" "+student.getX()+","+student.getY());
+                       
                     }
                 }
             }
