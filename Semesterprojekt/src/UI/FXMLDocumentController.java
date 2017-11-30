@@ -229,8 +229,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void useButton(ActionEvent event) {
+        if ((listView.getSelectionModel().getSelectedItem() != null)) {
         bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n" );
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
+        }
 
     }
 
