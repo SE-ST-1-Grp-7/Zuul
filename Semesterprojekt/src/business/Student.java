@@ -53,6 +53,7 @@ public class Student extends Person {
         this(x, y, currentRoom, hasQ);
         this.studentImage = studentImage;
         super.setEntityImage(studentImage);
+        getCurrentRoom().getEntities()[getY()][getX()] = null;
     }
 
     /**
@@ -68,6 +69,7 @@ public class Student extends Person {
             String direction = directions[rand.nextInt(4)];
             switch (direction) {
                 case "left":
+
                     if (getCurrentRoom().getEntities()[getY()][getX() - 1] instanceof Door) {
                         getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract(this);
                     } else if (!checkCollision(getX() - 1, getY())) {
@@ -75,6 +77,7 @@ public class Student extends Person {
                     }
                     break;
                 case "right":
+
                     if (getCurrentRoom().getEntities()[getY()][getX() + 1] instanceof Door) {
                         getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract(this);
                     } else if (!checkCollision(getX() + 1, getY())) {
@@ -93,6 +96,7 @@ public class Student extends Person {
                         getCurrentRoom().getEntities()[getY()+1][getX() + 1].onInteract(this);
                     } else if (!checkCollision(getX(), getY()+1)) {
                         move(getX(), getY()+1);
+
                     }
                     break;
             }
