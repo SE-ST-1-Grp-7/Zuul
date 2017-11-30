@@ -234,7 +234,7 @@ public class FXMLDocumentController implements Initializable {
         ib.itemUse(listView.getSelectionModel().getSelectedItem());
         } 
         else {
-            bottomTextArea.appendText("You have no items to use in inventory." + "\n" );
+            bottomTextArea.appendText("You have no selected items to use in inventory." + "\n" );
         }
 
     }
@@ -251,7 +251,7 @@ public class FXMLDocumentController implements Initializable {
             ib.itemDrop(listView.getSelectionModel().getSelectedItem());
         }
         else {
-            bottomTextArea.appendText("You have no items to drop in inventory." + "\n" );
+            bottomTextArea.appendText("You have no selected items to drop." + "\n" );
         }
     } 
 
