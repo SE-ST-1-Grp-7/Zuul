@@ -28,11 +28,11 @@ public class UI extends Application implements IUI {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("FXMLDocument.fxml")); 
         Parent p = loader.load();
 
         Scene scene = new Scene(p);
-
+        scene.getStylesheets().add("https://fonts.googleapis.com/css?family=Bangers");
         primaryStage.setScene(scene);
         primaryStage.show();
 
