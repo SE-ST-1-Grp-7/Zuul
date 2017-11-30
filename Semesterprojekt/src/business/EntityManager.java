@@ -501,7 +501,7 @@ public class EntityManager {
                         "/textures/door12.png", false));
                 break;
 
-             // Door, outer, vertical handle down, locked
+            // Door, outer, vertical handle down, locked
             case "ID65L":
                 furniturelist.add(new Door(j,
                         i,
@@ -509,8 +509,8 @@ public class EntityManager {
                         64,
                         rm.getRoom(name),
                         "/textures/door12.png", true));
-                break;   
-                
+                break;
+
             // Door, outer, vertical, handle up.
             case "ID66":
                 furniturelist.add(new Door(j,
@@ -540,8 +540,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door13.png", false));
                 break;
-                
-                // Door, outer, horizontal, handle right, locked.
+
+            // Door, outer, horizontal, handle right, locked.
             case "ID67L":
                 furniturelist.add(new Door(j,
                         i,
@@ -560,8 +560,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/door14.png", false));
                 break;
-                
-                // Door, outer, horizontal, handle left, locked.
+
+            // Door, outer, horizontal, handle left, locked.
             case "ID68L":
                 furniturelist.add(new Door(j,
                         i,
@@ -700,7 +700,7 @@ public class EntityManager {
                 System.out.println("Error. Entity ID   " + IDnum
                         + "   not defined.");
                 break;
-                
+
             // Bench facing west, top end part.
             case "ID96":
                 furniturelist.add(new Chair(j,
@@ -710,7 +710,7 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench6.png"));
                 break;
-                
+
             // Bench facing west, bottom end part.
             case "ID97":
                 furniturelist.add(new Chair(j,
@@ -720,7 +720,7 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench5.png"));
                 break;
-                
+
             // Bench facing east, bottom end part.
             case "ID98":
                 furniturelist.add(new Chair(j,
@@ -730,7 +730,7 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench4.png"));
                 break;
-                
+
             // Bench facing east, top end part.
             case "ID99":
                 furniturelist.add(new Chair(j,
@@ -882,7 +882,7 @@ public class EntityManager {
         makeSaveFolder();   // Create folder if it does not exist.
         savePlayers();      // Save player to file.
         saveItems();        // Save item list to file.
-        //saveStudents();     // Save student list to file.
+        saveStudents();     // Save student list to file.
         //saveFurniture();    // Save furniture list to file.
         //saveInventory();    // Save inventory list to file.
     }
@@ -893,10 +893,10 @@ public class EntityManager {
     public void loadGame() {
         loadPlayers();      // Load player from file.
         loadItems();        // Load item list from file.
-        //loadStudents();     // Load student list from file.
+        loadStudents();     // Load student list from file.
         //loadFurniture();    // Load furniture list from file.
         //loadInventory();    // Load inventory list from file.
-        
+
     }
 
     /**
@@ -1164,7 +1164,7 @@ public class EntityManager {
                         default:
                             break;
                     }
-                     
+
                 }
             }
 
@@ -1281,7 +1281,6 @@ public class EntityManager {
                     new FileReader(System.getProperty("user.home")
                             + ("\\Documents\\zuul\\SavePlayersTest.txt")));
             // Set player to null.
-            
 
             String line;
             // While file is not empty continue.
@@ -1292,17 +1291,16 @@ public class EntityManager {
                 if (tokens.length > 0) {
                     // If player, instantiate player.
 
-                    
                     player.setX(Integer.parseInt(tokens[0]));
                     player.setY(Integer.parseInt(tokens[1]));
                     player.setName(tokens[2]);
-                    player.setCurrentRoom((Room)rm.getRoomlist().get(tokens[3]));
+                    player.setCurrentRoom((Room) rm.getRoomlist().get(tokens[3]));
                     player.setAssignmentProgress(Integer.parseInt(tokens[4]));
                     player.setGradedAssignments(Integer.parseInt(tokens[5]));
                     player.setEnergyCap(Integer.parseInt(tokens[8]));
                     player.setEnergy(Integer.parseInt(tokens[7]));
                     player.setHasKey(Boolean.parseBoolean(tokens[6]));
-                     System.out.println(player.getCurrentRoom().getName());
+                    System.out.println(player.getCurrentRoom().getName());
                 }
             }
 
@@ -1324,25 +1322,26 @@ public class EntityManager {
             // Buffer, reader, file-path.
             BufferedReader fileReader = new BufferedReader(
                     new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SaveStudentsTest.txt")));
+                            + ("\\Documents\\zuul\\SaveStudentTest.txt")));
             // Clear student list.
-            studentlist.clear();
-
+                this.studentlist.clear();
             String line;
             // While file in not empty, continue.
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line.
-                String[] tokens = line.split(",");
-                // If line is not empty.
-                if (tokens.length > 0) {
-                    // Instantiate Student with parameters taken from CSV file.
-                    Student student = new Student(Integer.parseInt(tokens[0]),
-                            Integer.parseInt(tokens[1]),
-                            (Room) rm.getRoomlist().get(tokens[2]),
-                            Boolean.parseBoolean(tokens[3]));
-                    // Add student object to student list.
-                    studentlist.add(student);
-                    System.out.println(student);
+            for (int i = 0; i < studentlist.size(); i++) {
+                while ((line = fileReader.readLine()) != null) {
+                    // Get all tokens available in line.
+                    String[] tokens = line.split(",");
+                    // If line is not empty.
+                    if (tokens.length > 0) {
+                        Student student = studentlist.get(i);
+
+                        student.setX(Integer.parseInt(tokens[0]));
+                        student.setY(Integer.parseInt(tokens[1]));
+                        student.setCurrentRoom((Room) rm.getRoomlist().get(tokens[2]));
+                        student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
+                        System.out.println(student.getX());
+                        System.out.println(student.getY());
+                    }
                 }
             }
 
