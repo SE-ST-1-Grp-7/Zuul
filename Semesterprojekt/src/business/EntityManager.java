@@ -571,24 +571,6 @@ public class EntityManager {
                         "/textures/door14.png", true));
                 break;
 
-            case "chair1":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair1.png"));
-                break;
-
-            case "chair2":
-                furniturelist.add(new Chair(j,
-                        i,
-                        64,
-                        64,
-                        rm.getRoom(name),
-                        "/textures/chair2.png"));
-                break;
-                
             // Chair facing north.
             case "ID71":
                 furniturelist.add(new Chair(j,
