@@ -86,9 +86,11 @@ public class Player extends Person {
     }
 
     private void pickUpItem(int yOffset, int xOffset) {
-        if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
-            inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-            getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+        if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
+            if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
+                inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
+            }
         }
     }
 
@@ -313,12 +315,12 @@ public class Player extends Person {
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }
-    
-    public boolean getHasKey(){
+
+    public boolean getHasKey() {
         return this.hasKey;
     }
-    
-    public void setHasKey(boolean hasKey){
+
+    public void setHasKey(boolean hasKey) {
         this.hasKey = hasKey;
     }
 }
