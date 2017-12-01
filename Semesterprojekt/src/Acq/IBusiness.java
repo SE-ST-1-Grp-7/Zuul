@@ -47,6 +47,8 @@ public interface IBusiness {
     void itemDrop(Object o);
     
     String playerCurrentRoom();
-    
+
     void resetGame();
+  
+    int playerEnergy();
 }

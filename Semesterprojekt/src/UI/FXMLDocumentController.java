@@ -70,7 +70,8 @@ public class FXMLDocumentController implements Initializable {
     private Label timeLabel;
     @FXML
     private Label roomViewer;
-
+    @FXML
+    private Label energyViewer;
     @FXML
     private void newGameButton(ActionEvent event) {
         loop.stop();
@@ -104,7 +105,9 @@ public class FXMLDocumentController implements Initializable {
                         ib.playerInteract();
                         break;
                 }
-                roomViewer.setText(ib.playerCurrentRoom() + "\n");
+
+                roomViewer.setText(ib.playerCurrentRoom());
+                energyViewer.setText(""+ib.playerEnergy());
             }
         });
         // current time in nano time

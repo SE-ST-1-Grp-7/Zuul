@@ -9,8 +9,6 @@ public class Player extends Person {
 
     private int energy; // Current energy level.
     private int energyCap; // Max amount of energy.
-    private int fatigue; // Current fatiuge level.
-    private int fatigueCap; // Max amount of fatiuge.
     private Inventory inventory; // The player's inventory.
     private int gradedAssignments; // Amount of graded assignments.
     private int assignmentProgress; // Progress of grading an assignment.
@@ -41,8 +39,6 @@ public class Player extends Person {
         // PLAYER STATS
         this.energy = 100; // Assign energy level to start at 100.
         this.energyCap = 100; // Assign energy capacity to 100.
-        this.fatigue = 0; // Current amount of fatigue starts at 0.
-        this.fatigueCap = 100; // Assign fatigue capacity to 100.
         inventory = new Inventory(); // Instantiate inventory.
         this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
         // Progress of grading an assignment starts at 0.
@@ -230,42 +226,6 @@ public class Player extends Person {
      */
     public void setEnergyCap(int energyCap) {
         this.energyCap = energyCap;
-    }
-
-    /**
-     * Getter for the current fatigue.
-     *
-     * @return int, current value for fatigue stat.
-     */
-    public int getFatigue() {
-        return this.fatigue;
-    }
-
-    /**
-     * Setter for the current fatigue.
-     *
-     * @param fatigue int, value to become the current fatigue level.
-     */
-    public void setFatigue(int fatigue) {
-        this.fatigue = fatigue;
-    }
-
-    /**
-     * Getter for the fatiuge capacity.
-     *
-     * @return int, value of fatigue capacity.
-     */
-    public int getFatigueCap() {
-        return this.fatigueCap;
-    }
-
-    /**
-     * Setter for fatiuge capacity.
-     *
-     * @param fatigueCap int, change fatigue capacity to this value.
-     */
-    public void setFatigueCap(int fatigueCap) {
-        this.fatigueCap = fatigueCap;
     }
 
     /**
