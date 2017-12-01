@@ -125,7 +125,7 @@
                   <Insets bottom="5.0" />
                </padding>
                <children>
-                  <Label fx:id="roomViewer" text="Position" />
+                  <Label fx:id="roomViewer" text="Current Room" />
                </children>
             </StackPane>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
