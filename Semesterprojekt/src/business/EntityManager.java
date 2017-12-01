@@ -1,12 +1,8 @@
 package business;
 
 // IMPORTS
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -306,11 +302,10 @@ public class EntityManager {
                     } else {
                         entityTypes(i, j, name, playerName, IDnum);
                     }
-                    // Place entities in their respective rooms.
-
                 }
             }
         }
+        // Place entities in their respective rooms.
         showStudents();
         showFurniture();
         showItems();
@@ -889,543 +884,409 @@ public class EntityManager {
     }
 
     // LOAD & SAVE METHODS
+    
     /**
-     * Method for saving the game progress.
+     * Method for gathering the data that must be saved during saving.
+     * 
+     * @return  HashMap<String, ArrayList<ArrayList<String>>>,
+     *          key is path to file, value is data.
      */
-    public void saveGame() {
-        makeSaveFolder();   // Create folder if it does not exist.
-        savePlayers();      // Save player to file.
-        saveItems();        // Save item list to file.
-        saveStudents();     // Save student list to file.
-        //saveFurniture();    // Save furniture list to file.
-        saveInventory();    // Save inventory list to file.
+    public HashMap parseForSave() {
+        // Instantiate the HashMap.
+        HashMap<String, ArrayList<ArrayList<String>>>
+                savePackage = new HashMap<>();
+        
+        // Place collected data about students in HashMap.
+        savePackage.put("\\Documents\\zuul\\SaveStudentTest.txt",
+                saveStudents());
+        
+        // Place collected data about player in HashMap.
+        savePackage.put("\\Documents\\zuul\\SavePlayersTest.txt",
+                savePlayers());
+        
+        // Place collected data about inventory in HashMap.
+        savePackage.put("\\Documents\\zuul\\SaveInventoryTest.txt",
+                saveInventory());
+        
+        // Place collected data about items in HashMap.
+        savePackage.put("\\Documents\\zuul\\SaveItemsTest.txt",
+                saveItems());
+        
+        // Return the HashMap with all the data collections to be saved.
+        return savePackage;
     }
-
+    
     /**
-     * Method for loading the previously saved game progress.
+     * Parse data for saving items in the game.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
      */
-    public void loadGame() {
-        loadPlayers();      // Load player from file.
-        loadItems();        // Load item list from file.
-        loadStudents();     // Load student list from file.
-        //loadFurniture();    // Load furniture list from file.
-        loadInventory();    // Load inventory list from file.
-
-    }
-
-    /**
-     * Create save folder if it does not exist.
-     */
-    public void makeSaveFolder() {
-        File folder = new File(System.getProperty("user.home")
-                + "\\Documents\\zuul");
-        // If folder does not exist, create directory.
-        if (!folder.exists()) {
-            folder.mkdirs();
+    public ArrayList<ArrayList<String>> saveItems() {
+        // 2D list to contain the data.
+        ArrayList<ArrayList<String>> itemsData = new ArrayList<>();
+        // Iterate through all items in the game and gather their data.
+        for (Item item : itemlist) {
+            // Sub-list to store the individual item data.
+            ArrayList<String> itemData = new ArrayList<>();
+            // Gatherig item name.
+            itemData.add(item.getName());
+            // Gathering X grid position.
+            itemData.add(String.valueOf(item.getX()));
+            // Gathering Y grid position.
+            itemData.add(String.valueOf(item.getY()));
+            // Gathering the item's current room.
+            itemData.add(item.getCurrentRoom().getName());
+            
+            // Add sub-list to main 2D list.
+            itemsData.add(itemData);
         }
+        // Return gathered data.
+        return itemsData;
     }
-
+    
     /**
-     * Save item list to file.
+     * Parse data for saving player's inventory status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
      */
-    public void saveItems() {
-        // File IO try/catch.
-        try {
-            // Buffer, writer, file-path.
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\zuul\\SaveItemsTest.txt")));
-
-            // Iterate through item list and write them to file.
-            for (Item item : itemlist) {
-                fileWriter.append(item.getName());
-                fileWriter.append(",");
-                fileWriter.append(String.valueOf(item.getX()));
-                fileWriter.append(",");
-                fileWriter.append(String.valueOf(item.getY()));
-                fileWriter.append(",");
-                fileWriter.append(item.getCurrentRoom().getName());
-                fileWriter.append("\n");
-
-                System.out.println("Saved items");
-            }
-
-            // Flush and then close file stream.
-            fileWriter.close();
-        } catch (IOException e) { // File write error print.
-            System.err.println("BEEP BOOP, COULDNT SAVE ITEMS... "
-                    + "please check the save directory in the code.");
+    public ArrayList<ArrayList<String>> saveInventory() {
+        // 2D list to contain the data.
+        ArrayList<ArrayList<String>> invenData = new ArrayList<>();
+        /* Iterate through player's inventory and assign item name to sub-list
+           before adding sub-list to the main 2D list. */
+        for (Item item : player.inventory().getInventory()) {
+            ArrayList<String> itemData = new ArrayList<>();
+            itemData.add(item.getName());
+            invenData.add(itemData);
         }
+        // Return gathered data.
+        return invenData;
     }
-
+    
     /**
-     * Save inventory list to file.
+     * Parse data for saving player's status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
      */
-    public void saveInventory() {
-        // File IO try/catch.
-        try {
-            // Buffer, writer, file-path.
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\zuul\\SaveInventoryTest.txt")));
-
-            /* Iterate through player's inventory list and write the items to
-               file. */
-            for (Item item : player.inventory().getInventory()) {
-                fileWriter.append(item.getName());
-                fileWriter.append("\n");
-                System.out.println("Saved items");
-
-            }
-            // Flush and then close file stream.
-            fileWriter.close();
-
-        } catch (IOException e) { // File write error print.
-            System.err.println("BEEP BOOP, COULDNT SAVE INVENTORY... "
-                    + "please check the save directory in the code.");
+    public ArrayList<ArrayList<String>> savePlayers() {
+        // 2D list to contain the data.
+        ArrayList<ArrayList<String>> playersData = new ArrayList<>();
+        // Sub-list for holding the player's data.
+        /* Not directly necessary, but this way it will work without making
+           dedicated code for handling this type save data. */
+        ArrayList<String> playerData = new ArrayList<>();
+        
+        // Gathering X grid position.
+        playerData.add(String.valueOf(player.getX()));
+        // Gathering Y grid position.
+        playerData.add(String.valueOf(player.getY()));
+        // Gathering player's name.
+        playerData.add(player.getName());
+        // Gathering player's current room.
+        playerData.add(String.valueOf(player.getCurrentRoom().getName()));
+        // Gathering assignment progress.
+        playerData.add(String.valueOf(player.getAssignmentProgress()));
+        // Gathering assignment graded count.
+        playerData.add(String.valueOf(player.getGradedAssignments()));
+        // Gathering if player has key or not.
+        playerData.add(String.valueOf(player.getHasKey()));
+        // Gathering player energy level.
+        playerData.add(String.valueOf(player.getEnergy()));
+        // Gathering player energy capacity.
+        playerData.add(String.valueOf(player.getEnergyCap()));
+        
+        // Add sub-list to main list.
+        playersData.add(playerData);
+        
+        // Return parsed data.
+        return playersData;
+    }
+    
+    /**
+     * Parse data for saving student's status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
+     */
+    public ArrayList<ArrayList<String>> saveStudents() {
+        // 2D list to contain the data.
+        ArrayList<ArrayList<String>> studentsData = new ArrayList<>();
+        // Iterate through all the students and collect the data.
+        for (Student student : studentlist) {
+            // Sub-list instantiation.
+            ArrayList<String> studData = new ArrayList<>();
+            // Gathering X grid position.
+            studData.add(String.valueOf(student.getX()));
+            // Gathering Y grid position.
+            studData.add(String.valueOf(student.getY()));
+            // Gathering name of current room.
+            studData.add(student.getCurrentRoom().getName());
+            // Gathering String version of boolean for has question for player.
+            studData.add(String.valueOf(student.getHasQuestionToPlayer()));
+            // Add sub-list to main list.
+            studentsData.add(studData);
         }
+        // Return parsed data for saving.
+        return studentsData;
     }
-
+    
     /**
-     * Save player to file.
+     * Directing loading data to the different entity load methods.
+     * 
+     * @param loadPackage   HashMap<String, ArrayList<ArrayList<String>>>,
+     *                      key is file path, value is 2D list with data.
      */
-    public void savePlayers() {
-        // File IO try/catch.
-        try {
-            // Buffer, writer, file-path.
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\zuul\\SavePlayersTest.txt")));
-
-            // Write player status to file.
-            fileWriter.append(String.valueOf(player.getX()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getY()));
-            fileWriter.append(",");
-            fileWriter.append(player.getName());
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getCurrentRoom().getName()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getAssignmentProgress()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getGradedAssignments()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getHasKey()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getEnergy()));
-            fileWriter.append(",");
-            fileWriter.append(String.valueOf(player.getEnergyCap()));
-            fileWriter.append("\n");
-
-            System.out.println("Saved Player");
-
-            // Flush and then close file stream.
-            fileWriter.close();
-
-        } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... "
-                    + "please check the save directory in the code.");
-        }
+    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>>
+            loadPackage) {
+        // Retrieve list with save file paths.
+        ArrayList<String> saveFiles = getSaveFiles();
+        
+        // Call student load with student data as parameter.
+        loadStudents(loadPackage.get(saveFiles.get(0)));
+        
+        // Call player load with player data as parameter.
+        loadPlayers(loadPackage.get(saveFiles.get(1)));
+        
+        // Call inventory load with inventory data as parameter.
+        loadInventory(loadPackage.get(saveFiles.get(2)));
+        
+        // Call item load with item data as parameter.
+        loadItems(loadPackage.get(saveFiles.get(3)));
     }
-
+    
     /**
-     * Save student list to file.
+     * Load items from collected data. Iterate through load data and instantiate
+     * items based on item name and parameters.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
      */
-    public void saveStudents() {
-        // File IO try/catch.
-        try {
-            // Buffer, writer, file-path.
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\zuul\\SaveStudentTest.txt")));
+    public void loadItems(ArrayList<ArrayList<String>> data) {
+        // Clear item list.
+        itemlist.clear();
 
-            // Write status of students to file.
-            for (Student student : studentlist) {
-                fileWriter.append(String.valueOf(student.getX()));
-                fileWriter.append(",");
-                fileWriter.append(String.valueOf(student.getY()));
-                fileWriter.append(",");
-                fileWriter.append(student.getCurrentRoom().getName());
-                fileWriter.append(",");
-                fileWriter.append(String.valueOf(
-                        student.getHasQuestionToPlayer()));
-                fileWriter.append("\n");
+        // Iterate through data of all items for loading.
+        for (ArrayList<String> itemData: data) {
+            // If not empty, check for type of item.
+            if (itemData.size() > 0) {
+                // Switch case based on the name of the item.
+                switch (itemData.get(0)) {
+                    // If adderall, add item to item list.
+                    case "Adderal":
+                        Adderall d = new Adderall(
+                                Integer.parseInt(itemData.get(1)),
+                                Integer.parseInt(itemData.get(2)),
+                                64,
+                                64,
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
+                        itemlist.add(d);
+                        break;
 
-                System.out.println("Saved Students");
-            }
+                    // If coffee, add item to item list.
+                    case "Coffee":
+                        Coffee c = new Coffee(
+                                Integer.parseInt(itemData.get(1)),
+                                Integer.parseInt(itemData.get(2)),
+                                64,
+                                64,
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
+                        itemlist.add(c);
+                        break;
 
-            // Flush and then close file stream.
-            fileWriter.close();
-        } catch (IOException e) {
-            System.err.println("BEEP BOOP, COULDNT SAVE STUDENTS... "
-                    + "please check the save directory in the code.");
-        }
-    }
+                    // If assignment, add item to item list.
+                    case "Assignment":
+                        Assignment a = new Assignment(
+                                Integer.parseInt(itemData.get(1)),
+                                Integer.parseInt(itemData.get(2)),
+                                64,
+                                64,
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
+                        itemlist.add(a);
+                        break;
 
-    /**
-     * Save furniture list to file.
-     */
-    public void saveFurniture() {
-        // File IO try/catch.
-        try {
-            // Buffer, writer, file-path.
-            Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + "\\Documents\\zuul\\SaveFurnitureTest.txt")));
+                    // If key, add item to item list.
+                    case "Key":
+                        Key k = new Key(Integer.parseInt(itemData.get(1)),
+                                Integer.parseInt(itemData.get(2)),
+                                64,
+                                64,
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
+                        itemlist.add(k);
+                        break;
 
-            // Write status of furniture to file.
-            for (Furniture furniture : furniturelist) {
-                fileWriter.append(String.valueOf(furniture.getX()));
-                fileWriter.append(",");
-                fileWriter.append(String.valueOf(furniture.getY()));
-                fileWriter.append(",");
-                fileWriter.append(furniture.getFurnitureName());
-                fileWriter.append(",");
-                fileWriter.append(furniture.getCurrentRoom().getName());
-                fileWriter.append(",");
-                fileWriter.append(furniture.getImagePath());
-                fileWriter.append("\n");
-                System.out.println("Saved Furniture");
-            }
+                    // If energy drink, add item to item list.
+                    case "EnergyDrink":
+                        EnergyDrink e = new EnergyDrink(
+                                Integer.parseInt(itemData.get(1)),
+                                Integer.parseInt(itemData.get(2)),
+                                64,
+                                64,
+                                rm.getCurrentRoom().getExit(itemData.get(3)));
+                        itemlist.add(e);
+                        break;
 
-            // Flush and then close file stream.
-            fileWriter.close();
-
-        } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT SAVE FURNITURE... "
-                    + "please check the save directory in the code.");
-        }
-    }
-
-    /**
-     * Load item list from previously saved game file.
-     */
-    public void loadItems() {
-        // File IO try/catch.
-        try {
-            // Buffer, reader, file-path.
-            BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SaveItemsTest.txt")));
-
-            // Clear item list.
-            itemlist.clear();
-
-            String line;
-            // Continue to iterate as long as there is file content.
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line
-                String[] tokens = line.split(",");
-                // If not blank line.
-                if (tokens.length > 0) {
-                    // Check for first token in line.
-                    switch (tokens[0]) {
-                        // If adderall, add item to item list.
-                        case "Adderal":
-                            Adderall d = new Adderall(
-                                    Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
-                            itemlist.add(d);
-                            break;
-
-                        // If coffee, add item to item list.
-                        case "Coffee":
-                            Coffee c = new Coffee(
-                                    Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
-                            itemlist.add(c);
-                            break;
-
-                        // If assignment, add item to item list.
-                        case "Assignment":
-                            Assignment a = new Assignment(
-                                    Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
-                            itemlist.add(a);
-                            break;
-
-                        // If key, add item to item list.
-                        case "Key":
-                            Key k = new Key(Integer.parseInt(
-                                    tokens[1]),
-                                    Integer.parseInt(tokens[2]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[3]));
-                            itemlist.add(k);
-                            break;
-
-                        // If energy drink, add item to item list.
-                        case "EnergyDrink":
-                            EnergyDrink e = new EnergyDrink(
-                                    Integer.parseInt(tokens[1]),
-                                    Integer.parseInt(tokens[2]),
-                                    64,
-                                    64,
-                                    rm.getCurrentRoom().getExit(tokens[3]));
-                            itemlist.add(e);
-                            break;
-
-                        // Ignore anything else
-                        default:
-                            break;
-                    }
-
+                    // Ignore anything else
+                    default:
+                        break;
                 }
+
             }
-
-            // Flush and then close file stream.
-            fileReader.close();
-
-        } catch (IOException e) { // File read error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
-                    + "please check the save directory in the code.");
         }
+        // Make items show themself in the game.
         showItems();
     }
-
+    
     /**
-     * Load inventory list from previously saved game file.
+     * Load inventory from data collected from file. Iterate through the data
+     * and instantiate items according to item name and parameters.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
      */
-    public void loadInventory() {
-        // File IO try/catch.
-        try {
-            // Buffer, reader, file-path.
-            BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SaveInventoryTest.txt")));
+    public void loadInventory(ArrayList<ArrayList<String>> data) {
+        // Clear inventory list.
+        player.inventory().getInventory().clear();
+        
+        // Iterate through the load data.
+        for (ArrayList<String> invenData: data) {
+            if (invenData.size() > 0) {
+                switch (invenData.get(0)) {
+                    // If adderall, add to inventory list.
+                    case "Adderal":
+                        Adderall d = new Adderall(0,
+                                0,
+                                64,
+                                64,
+                                null);
+                        player.inventory().addItem(d);
+                        break;
 
-            // Clear inventory list.
-            player.inventory().getInventory().clear();
+                    // If coffee, add to inventory list.
+                    case "Coffee":
+                        Coffee c = new Coffee(0,
+                                0,
+                                64,
+                                64,
+                                null);
+                        player.inventory().addItem(c);
+                        break;
 
-            String line;
+                    // If assignment, add to inventory list.
+                    case "Assignment":
+                        Assignment a = new Assignment(
+                                0,
+                                0,
+                                64,
+                                64,
+                                null);
+                        player.inventory().addItem(a);
+                        break;
 
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line
-                String[] tokens = line.split(",");
-                // If line is not empty.
-                if (tokens.length > 0) {
-                    // Check for first token in line.
-                    switch (tokens[0]) {
-                        // If adderall, add to inventory list.
-                        case "Adderal":
-                            Adderall d = new Adderall(0,
-                                    0,
-                                    64,
-                                    64,
-                                    null);
-                            player.inventory().addItem(d);
-                            break;
+                    // If key, add to inventory list.
+                    case "Key":
+                        Key k = new Key(0,
+                                0,
+                                64,
+                                64,
+                                null);
+                        player.inventory().addItem(k);
+                        break;
 
-                        // If coffee, add to inventory list.
-                        case "Coffee":
-                            Coffee c = new Coffee(0,
-                                    0,
-                                    64,
-                                    64,
-                                    null);
-                            player.inventory().addItem(c);
-                            break;
+                    // If energy drink, add to inventory list.
+                    case "EnergyDrink":
+                        EnergyDrink e = new EnergyDrink(
+                                0,
+                                0,
+                                64,
+                                64,
+                                null);
+                        player.inventory().addItem(e);
+                        break;
 
-                        // If assignment, add to inventory list.
-                        case "Assignment":
-                            Assignment a = new Assignment(
-                                    0,
-                                    0,
-                                    64,
-                                    64,
-                                    null);
-                            player.inventory().addItem(a);
-                            break;
-
-                        // If key, add to inventory list.
-                        case "Key":
-                            Key k = new Key(0,
-                                    0,
-                                    64,
-                                    64,
-                                    null);
-                            player.inventory().addItem(k);
-                            break;
-
-                        // If energy drink, add to inventory list.
-                        case "EnergyDrink":
-                            EnergyDrink e = new EnergyDrink(
-                                    0,
-                                    0,
-                                    64,
-                                    64,
-                                    null);
-                            player.inventory().addItem(e);
-                            break;
-
-                        // Ignore anything else.
-                        default:
-                            break;
-                    }
+                    // Ignore anything else.
+                    default:
+                        break;
                 }
             }
-
-            // Flush and then close file stream.
-            fileReader.close();
-
-        } catch (IOException e) { // File read error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
-                    + "please check the save directory in the code.");
         }
     }
-
+    
     /**
-     * Load player from previously saved game file.
+     * Update player with load data. Parse retrieved data and assign the new
+     * values.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with loaded data.
      */
-    public void loadPlayers() {
-        // File IO try/catch.
-        try {
-            // Buffer, reader, file-path.
-            BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SavePlayersTest.txt")));
-            // Set player to null.
-
-            String line;
-            // While file is not empty continue.
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line.
-                String[] tokens = line.split(",");
-                // If line is not empty.
-                if (tokens.length > 0) {
-                    // If player, instantiate player.
-
-                    player.setX(Integer.parseInt(tokens[0]));
-                    player.setY(Integer.parseInt(tokens[1]));
-                    player.setName(tokens[2]);
-                    player.setCurrentRoom((Room) rm.getRoomlist().get(tokens[3]));
-                    player.setAssignmentProgress(Integer.parseInt(tokens[4]));
-                    player.setGradedAssignments(Integer.parseInt(tokens[5]));
-                    player.setEnergyCap(Integer.parseInt(tokens[8]));
-                    player.setEnergy(Integer.parseInt(tokens[7]));
-                    player.setHasKey(Boolean.parseBoolean(tokens[6]));
-                }
+    public void loadPlayers(ArrayList<ArrayList<String>> data) {
+        // Iterate through the data.
+        for (ArrayList<String> playerData: data) {
+            if (playerData.size() > 0) {
+                // Set X grid position.
+                player.setX(Integer.parseInt(playerData.get(0)));
+                // Set Y grid position.
+                player.setY(Integer.parseInt(playerData.get(1)));
+                // Set Player name.
+                player.setName(playerData.get(2));
+                // Set currently located in -room.
+                player.setCurrentRoom((Room) rm.getRoomlist().get(
+                        playerData.get(3)));
+                // Set assignment progress.
+                player.setAssignmentProgress(Integer.parseInt(
+                        playerData.get(4)));
+                // Set graded assignment count.
+                player.setGradedAssignments(Integer.parseInt(
+                        playerData.get(5)));
+                // Set player's energy capacity.
+                player.setEnergyCap(Integer.parseInt(playerData.get(8)));
+                // Set player's energy level.
+                player.setEnergy(Integer.parseInt(playerData.get(7)));
+                // Set boolean for if player has key.
+                player.setHasKey(Boolean.parseBoolean(playerData.get(6)));
             }
-
-            // Flush and then close file stream.
-            fileReader.close();
-
-        } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD PLAYERS... "
-                    + "please check the save directory in the code.");
         }
     }
-
-    /**
-     * Load student list from previously saved game file.
-     */
-    public void loadStudents() {
-        // File IO try/catch.
-        try {
-            // Buffer, reader, file-path.
-            BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SaveStudentTest.txt")));
-            String line;
-            // While file in not empty, continue.
-            int i = 0;
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line.
-                String[] tokens = line.split(",");
-                // If line is not empty.
-
-                if (tokens.length > 0) {
-                    Student student = studentlist.get(i);
-                    student.getCurrentRoom().removeEntity(student);
-                    student.setCurrentRoom((Room) (rm.getRoomlist().get(tokens[2])));
-                    student.setX(Integer.parseInt(tokens[0]));
-                    student.setY(Integer.parseInt(tokens[1]));
-                    student.setCurrentRoom((Room) (rm.getRoomlist().get(tokens[2])));
-                    student.setHasQuestionToPlayer(Boolean.parseBoolean(tokens[3]));
-                    student.getCurrentRoom().setEntity(student);
-                    i += 1;
-                }
+    
+    public void loadStudents(ArrayList<ArrayList<String>> data) {
+        // Iterator int.
+        int i = 0;
+        // Iterate through data for each student.
+        for (ArrayList<String> studentData: data) {
+            if (studentData.size() > 0) {
+                // Get student that will get new data.
+                Student student = studentlist.get(i);
+                // Remove student from old location in the game.
+                student.getCurrentRoom().removeEntity(student);
+                // Set X grid position.
+                student.setX(Integer.parseInt(studentData.get(0)));
+                // Set Y grid position.
+                student.setY(Integer.parseInt(studentData.get(1)));
+                // Set student's current room.
+                student.setCurrentRoom((Room) (rm.getRoomlist().get(
+                        studentData.get(2))));
+                // Set student's boolean if he has question for player.
+                student.setHasQuestionToPlayer(Boolean.parseBoolean(
+                        studentData.get(3)));
+                // Place student at his new position in the game.
+                student.getCurrentRoom().setEntity(student);
+                // Increment the iterator.
+                i += 1;
             }
-            showStudents();
-            // Flush and then close file stream.
-            fileReader.close();
-
-        } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD STUDENTS... "
-                    + "please check the save directory in the code.");
         }
+        // Make the students appear in the game.
+        showStudents();
     }
-
+    
     /**
-     * Load furniture list from previously saved game file.
+     * Retrieve list with save files's path.
+     * 
+     * @return      ArrayList<String>, list with save files.
      */
-    public void loadFurniture() {
-        // File IO try/catch.
-        try {
-            // Buffer, reader, file-path.
-            BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + ("\\Documents\\zuul\\SaveItemsTest.txt")));
-            // Clear student list.
-            furniturelist.clear();
-
-            String line;
-            // While file in not empty, continue.
-            while ((line = fileReader.readLine()) != null) {
-                // Get all tokens available in line.
-                String[] tokens = line.split(",");
-                // If line is not empty.
-                if (tokens.length > 0) {
-                    // Switch case for what furniture the data is about.
-                    switch (tokens[0]) {
-                        /* If chair, instantiate furniture and add to furniture
-                           list. */
-                        case "Chair":
-                            Chair c = new Chair(Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[2]),
-                                    tokens[3]);
-                            furniturelist.add(c);
-                            break;
-
-                        /* If table, instantiate furniture and add to furniture
-                           list. */
-                        case "Table":
-                            Table t = new Table(Integer.parseInt(tokens[0]),
-                                    Integer.parseInt(tokens[1]),
-                                    64,
-                                    64,
-                                    (Room) rm.getRoomlist().get(tokens[2]),
-                                    true,
-                                    2);
-                            furniturelist.add(t);
-                            break;
-
-                        // If anything else, then ignore.
-                        default:
-                            break;
-                    }
-                }
-            }
-
-            // Flush and then close file stream.
-            fileReader.close();
-
-        } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD FURNITURE... "
-                    + "please check the save directory in the code.");
-        }
+    public ArrayList<String> getSaveFiles() {
+        ArrayList<String> saveFiles = new ArrayList<>();
+        // The order of this list is important!
+        // ParseLoading method follows the order.
+        saveFiles.add("\\Documents\\zuul\\SaveStudentTest.txt");
+        saveFiles.add("\\Documents\\zuul\\SavePlayersTest.txt");
+        saveFiles.add("\\Documents\\zuul\\SaveInventoryTest.txt");
+        saveFiles.add("\\Documents\\zuul\\SaveItemsTest.txt");
+        // Return list with file paths.
+        return saveFiles;
     }
 }

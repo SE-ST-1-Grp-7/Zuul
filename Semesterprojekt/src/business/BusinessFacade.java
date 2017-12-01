@@ -2,13 +2,16 @@ package business;
 
 import Acq.IBusiness;
 import Acq.IData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
 
 /**
  *
- * @author Niclas Johansen & J
+ * @author Niclas Johansen & J & Rasmus Willer
  */
 public class BusinessFacade implements IBusiness {
 
@@ -72,11 +75,61 @@ public class BusinessFacade implements IBusiness {
             return "testSquare.png";
         }
     }
-
+    
+    /**
+     * Override, upon save game from the business layer.
+     * The parsed data to be saved is fetched from the entity manager, grouped
+     * so the data has an associated file path where they are destined to end
+     * up. Each save to file process is iterated through.
+     */
     @Override
     public void saveGame() {
-        // entityManager.saveGame();
-        data.saveGame();
+        // Get parsed data.
+        HashMap savePackage = entityManager.parseForSave();
+        // Get file paths in a set (also assures no saving to the same file).
+        Set<String> paths = savePackage.keySet();
+        // Iterate through the file paths and call the data layer.
+        for (String path: paths) {
+            data.saveGame(path,
+                    (ArrayList<ArrayList<String>>)savePackage.get(path));
+        }
+    }
+    
+    /**
+     * Override, upon load game from the business layer.
+     * Player is temporarily removed from the map, but placed again after the
+     * data collection is complete and new values can be assigned.
+     * Data is collected file after file and when all done, passed to entity
+     * manager for parsing and implementing.
+     */
+    @Override
+    public void loadGame() {
+        // Set old player's entity location to null.
+        entityManager.getPlayer().getCurrentRoom().getEntities()
+                [entityManager.getPlayer().getY()]
+                [entityManager.getPlayer().getX()] = null;
+        
+        // Instantiate the load package that will contain all the loaded data.
+        HashMap<String, ArrayList<ArrayList<String>>> loadPackage = new
+         HashMap<>();
+        
+        // Retrieve the file paths for the save files.
+        ArrayList<String> saveFiles = entityManager.getSaveFiles();
+        /* Iterate through file paths, collect data from those files, and put
+           the data along with the file path into the HashMap. */
+        for (String file: saveFiles) {
+            ArrayList<ArrayList<String>> dataSet = data.loadGame(file);
+            loadPackage.put(file, dataSet);
+        }
+        // Call the parsing of the loaded data in entity manager.
+        entityManager.parseLoading(loadPackage);
+        
+        // Place the player with the newly updated data.
+        entityManager.getPlayer().getCurrentRoom().getEntities()
+                [entityManager.getPlayer().getY()]
+                [entityManager.getPlayer().getX()] = entityManager.getPlayer();
+        // Update player's currently located at -room.
+        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override
@@ -88,14 +141,6 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void loadXML() {
         data.loadXML();
-    }
-
-    @Override
-    public void loadGame() {
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = null;
-        entityManager.loadGame();
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = entityManager.getPlayer();
-        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override
