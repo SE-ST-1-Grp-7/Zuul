@@ -85,10 +85,6 @@ public class Student extends Person {
                     }
             }
             
-            
-            
-            
-            
         }
         
     }
@@ -141,7 +137,7 @@ public class Student extends Person {
             }
 
         }
-        if(rand.nextInt(100) == 100){
+        if(rand.nextInt(100) >= 95){
             setHasQuestionToPlayer(true);
         }
         
