@@ -163,7 +163,6 @@ public class FXMLDocumentController implements Initializable {
                 roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
                 if (wincodition() == true) {
-                   wincodition();
                    loop.stop();
                 }
                 
@@ -281,8 +280,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private boolean wincodition() {
         if (ib.processinAssignments() >= 2) {
-            bottomTextArea.appendText("You have won the game, you are the best professer around");
+            bottomTextArea.appendText("You have won the game, you are the best professer around" + "\n");
             canvasId.setVisible(false);
+            ib.loadXML();
+            ib.displayHighscore();
+            bottomTextArea.appendText("The highscore list for World of SDU\n");
+            bottomTextArea.appendText("---------------------------------\n");
+            bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
+            bottomTextArea.appendText(ib.displayHighscore());
             return true;
         } 
         return false;
