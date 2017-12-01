@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Entity Manager class. Keeps track of all the entities currently in the game.
+ * Entity Manager classL. Keeps track of all the entities currently in the game.
  *
  * @author Rasmus Willer & Søren Bendtsen
  */
@@ -588,13 +588,15 @@ public class EntityManager {
                         64,
                         rm.getRoom(name),
                         "/textures/chair1.png"));
+                break;
             case "ID71":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/chair4.png"));
+                        "/textures/chair2.png"));
+                break;
             case "ID72":
                 furniturelist.add(new Chair(j,
                         i,
@@ -822,7 +824,46 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench3.png"));
                 break;
-
+            case "ID96":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name), false, 0,
+                        "/textures/blackboard2.png"));
+                break;
+            case "ID97":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/toilet.png"));
+                break;
+            case "ID98":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),false,0,
+                        "/textures/teachertable1.png"));
+                break;
+            case "ID99":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),false,0,
+                        "/textures/teachertable2.png"));
+                break;
+            case "ID100":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),false,0,
+                        "/textures/teachertable3.png"));
+                break;
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum

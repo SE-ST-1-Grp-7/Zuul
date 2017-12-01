@@ -95,11 +95,15 @@ public class RoomManager {
                 roomlist.get("teacher room"));
         roomlist.get("dininghall").setExit("south",
                 roomlist.get("lecturehall 2"));
+        roomlist.get("dininghall").setExit("east",
+                roomlist.get("hallway 2"));
         roomlist.get("dininghall").setExit("west", roomlist.get("hallway 1"));
 
         /* Define exit-waypoints:
            From 'hallway 2' Room instance. */
         roomlist.get("hallway 2").setExit("north", roomlist.get("pub"));
+        
+        roomlist.get("hallway 2").setExit("west", roomlist.get("dininghall"));
         roomlist.get("hallway 2").setExit("south", roomlist.get("toilet"));
 
         /* Define exit-waypoints:
@@ -162,6 +166,9 @@ public class RoomManager {
         tiles.put("ID41", new Tile("/textures/wall2.png", true));
         tiles.put("ID42", new Tile("/textures/wall6.png", true));
         tiles.put("ID43", new Tile("/textures/wall1.png", true));
+        tiles.put("ID44", new Tile("/textures/blackboard.png",true));
+        tiles.put("ID45", new Tile("/textures/sink.png",true));
+        
     }
 
     /**
