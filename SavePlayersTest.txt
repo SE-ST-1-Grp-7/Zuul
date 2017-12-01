@@ -1,1 +1,1 @@
-3,5,Pete,hallway 3,0,0,false,86,100
+1,8,Pete,garden,0,0,false,92,100
