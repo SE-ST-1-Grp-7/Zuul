@@ -6,7 +6,7 @@ package business;
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
-    private String imagePath = "/textures/key.png";
+    private String imagePath = "/textures/key1.png";
     
     /**
      * Constructor for Key class
@@ -23,7 +23,8 @@ public class Key extends Item {
         super(x, y, width, height, currentRoom, 
                 "Key",                  // Name of item.
                 "Used to open doors",   // Description of item.
-                1);                     // Weight of item.
+                1);                      // Weight of item.
+         
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }

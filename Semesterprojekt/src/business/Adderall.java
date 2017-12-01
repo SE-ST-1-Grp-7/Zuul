@@ -34,7 +34,8 @@ public class Adderall extends Item{
                 currentRoom,
                 "Adderall",                                 // Name of item.
                 "Energy restore and cap increase. Yay!",    // Item description.
-                1);                                         // Weight of item.
+                1);                                          // Weight of item.
+
         // Pass path of texture to superclass.
         super.setEntityImage(adderallImage);
     }

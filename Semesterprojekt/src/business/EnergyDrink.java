@@ -33,7 +33,8 @@ public class EnergyDrink extends Item {
                 currentRoom,                // Placed in this room.
                 "Energy drink",             // Name of item.
                 "A can of Monster. Yum!",   // Description of item.
-                10);                        // Weight of item.
+                10);                         // Weight of item.
+                
         // Pass path of texture to superclass.
         super.setEntityImage(energydrinkImage);
     }

@@ -87,6 +87,12 @@ public class EntityManager {
             i.getCurrentRoom().setEntity(i);
         }
     }
+    
+    public void nullItems() {
+        for (Item i : itemlist) {
+            i.getCurrentRoom().setEntityWithXY(i.getX(),i.getY(),null);
+        }
+    }
 
     /**
      * Add initialized furniture to the furniture list.
@@ -602,7 +608,7 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        false, 0));
+                        false, 0,"/textures/table1.png"));
                 break;
 
             // Bookcase, left end, facing south.
@@ -667,22 +673,27 @@ public class EntityManager {
 
             // Plant, hedge.
             case "ID80":
-                furniturelist.add(new Plant(j,
+                Table pool1 = new Table(j,
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        "/textures/hedge1.png"));
-                break;
+                        rm.getRoom(name), false, 0,
+                        "/textures/pooltable2.png");
+                pool1.setFurnitureDescription("This is a pooltable!, "
+                        + "i wish i could play pool...");
+                furniturelist.add(pool1);
 
             // Plant, pot plant.
             case "ID81":
-                furniturelist.add(new Plant(j,
+                Table pool2 = new Table(j,
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        "/textures/potplant.png"));
+                        rm.getRoom(name), false, 0,
+                        "/textures/pooltable2.png");
+                pool2.setFurnitureDescription("This is a pooltable!, "
+                        + "i wish i could play pool...");
+                furniturelist.add(pool2);
                 break;
 
             // Key item, for unlocking doors.
@@ -922,6 +933,7 @@ public class EntityManager {
      * @return      ArrayList<ArrayList<String>>, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveItems() {
+        System.out.println("itemlist"+itemlist);
         // 2D list to contain the data.
         ArrayList<ArrayList<String>> itemsData = new ArrayList<>();
         // Iterate through all items in the game and gather their data.
@@ -1060,9 +1072,13 @@ public class EntityManager {
      * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
+        System.out.println("before nullitems"+itemlist);
+        nullItems();
+        System.out.println("after nullitems"+itemlist);
         // Clear item list.
         itemlist.clear();
-
+        System.out.println("after clear"+itemlist);
+        
         // Iterate through data of all items for loading.
         for (ArrayList<String> itemData: data) {
             // If not empty, check for type of item.
@@ -1070,7 +1086,7 @@ public class EntityManager {
                 // Switch case based on the name of the item.
                 switch (itemData.get(0)) {
                     // If adderall, add item to item list.
-                    case "Adderal":
+                    case "Adderall":
                         Adderall d = new Adderall(
                                 Integer.parseInt(itemData.get(1)),
                                 Integer.parseInt(itemData.get(2)),

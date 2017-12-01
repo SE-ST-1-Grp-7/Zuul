@@ -119,8 +119,6 @@ public abstract class Item extends Entity {
                 getCurrentRoom().getEntities()[getY()][getX()] = null;
                 ((Player) p).getEntityManager().getItemList().remove(this);
             }
-
-            // also remove from entitymanager
         }
     }
 }
