@@ -141,7 +141,7 @@ public class Student extends Person {
             }
 
         }
-        if(rand.nextInt(10) == 0){
+        if(rand.nextInt(100) == 0){
             setHasQuestionToPlayer(true);
         }
         
