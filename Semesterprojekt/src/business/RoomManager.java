@@ -169,7 +169,7 @@ public class RoomManager {
         tiles.put("ID43", new Tile("/textures/wall1.png", true));
         tiles.put("ID44", new Tile("/textures/blackboard.png",true));
         tiles.put("ID45", new Tile("/textures/sink.png",true));
-        
+        tiles.put("ID46", new Tile("/textures/carpet.png"));
     }
 
     /**

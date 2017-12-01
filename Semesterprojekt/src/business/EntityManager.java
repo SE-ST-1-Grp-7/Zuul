@@ -703,7 +703,7 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/bookcase8.png"));
+                        "/textures/bookcase19.png"));
                 break;
 
             // Bookcase, right end, facing south.
@@ -733,7 +733,7 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/bookcase11.png"));
+                        "/textures/bookcase20.png"));
                 break;
 
             // Bookcase, left end, facing north.
@@ -871,6 +871,53 @@ public class EntityManager {
                         64,
                         rm.getRoom(name),
                         "/textures/teacherchair1.png"));
+                break;
+            case "ID102":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/teacherchair2.png"));
+                break;
+            case "ID103":
+                itemlist.add(new EnergyDrink(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name)));
+                break;
+                case "ID104":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name), false, 0,
+                        "/textures/dinnertable1.png"));
+                break;
+                case "ID105":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name), false, 0,
+                        "/textures/dinnertable2.png"));
+                break;
+                case "ID106":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name), false, 0,
+                        "/textures/dinnertable3.png"));
+                break;
+                case "ID107":
+                furniturelist.add(new Table(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name), false, 0,
+                        "/textures/dinnertable4.png"));
                 break;
             // In case the ID is not recognized.
             default:
