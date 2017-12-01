@@ -46,10 +46,11 @@ public class Adderall extends Item{
      * @param p     Player, player is the one using the item.
      */
     @Override
-    public void use(Player p) {
+    public boolean use(Player p) {
         // Increase energy cap.
         p.setEnergyCap(p.getEnergyCap() + ENERGY_CAP_INCREASE);
         // Replenish energy.
         p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+        return true;
     }
 }

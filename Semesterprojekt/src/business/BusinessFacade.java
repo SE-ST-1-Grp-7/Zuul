@@ -191,7 +191,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void itemUse(Object o) {
         Item toUse = (Item) o;
-        toUse.use(entityManager.getPlayer());
+        if (toUse.use(entityManager.getPlayer()))
         entityManager.getPlayer().inventory().removeItem(toUse);
     }
 
@@ -219,4 +219,9 @@ public class BusinessFacade implements IBusiness {
         return entityManager.getPlayer().getEnergy();
     }
 
+    @Override
+    public int processinAssignments() {
+    return entityManager.getPlayer().getGradedAssignments();
+}
+    
 }

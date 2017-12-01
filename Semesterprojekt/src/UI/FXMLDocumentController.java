@@ -23,6 +23,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import sun.font.TrueTypeFont;
 
 /**
  *
@@ -111,8 +112,9 @@ public class FXMLDocumentController implements Initializable {
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         loop.start();
-
-    }
+            
+        }
+    
 
     /**
      * fills a 2d ImageView array with images and then adds them to the gridpane
@@ -160,6 +162,12 @@ public class FXMLDocumentController implements Initializable {
                 drawImages(canvasId.getGraphicsContext2D());
                 roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
+                if (wincodition() == true) {
+                   wincodition();
+                   loop.stop();
+                }
+                
+                
             }
         };
 
@@ -177,8 +185,8 @@ public class FXMLDocumentController implements Initializable {
                 }
 
             }
-        }
-    }
+        }    
+    } 
 
     /**
      * returns an image depending on entity image string
@@ -270,5 +278,14 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You have no selected items to drop." + "\n");
         }
     }
+    @FXML
+    private boolean wincodition() {
+        if (ib.processinAssignments() >= 2) {
+            bottomTextArea.appendText("You have won the game, you are the best professer around");
+            canvasId.setVisible(false);
+            return true;
+        } 
+        return false;
+    }     
 
 }

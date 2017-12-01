@@ -43,7 +43,7 @@ public abstract class Item extends Entity {
     }
 
     // Apply functionality of use for this class.
-    public abstract void use(Player p);
+    public abstract boolean use(Player p);
 
     // GETTERS & SETTERS
     /**

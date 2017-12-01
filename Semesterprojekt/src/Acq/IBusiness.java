@@ -51,4 +51,7 @@ public interface IBusiness {
     void resetGame();
   
     int playerEnergy();
+    
+    int processinAssignments();
+    
 }

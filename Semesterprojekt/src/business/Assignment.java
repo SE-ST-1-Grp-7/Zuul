@@ -44,7 +44,7 @@ public class Assignment extends Item {
      * @param p     Player, player is the one doing the item.
      */
     @Override
-    public void use(Player p) {
+    public boolean use(Player p) {
         //if you have more than or equal to 20 energy
         if (p.getEnergy() >= 20 && p.getCurrentRoom().getName().equals("teacher room")) {
             //we remove energy and add assignment progress 5 times
@@ -78,7 +78,8 @@ public class Assignment extends Item {
             }
         }else{ // If not enough energy, do the following.
             System.out.println("You do not have enough energy or you are not in your own room");
+            return false;
         }
-        
+            return true;
     }
 }
