@@ -20,7 +20,7 @@ public class Load {
      * @param filePath  String, path of file to make/write in.
      * @return          ArrayList<ArrayList<String>>, list with gathered data.
      */
-    public ArrayList<ArrayList<String>> Load(String filePath) {
+    public Load(String filePath) {
         // File IO try/catch.
         try {
             // Buffer, reader, file-path.
@@ -53,7 +53,9 @@ public class Load {
             System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
                     + "please check the save directory in the code.");
         }
-        
+    }
+    
+    public ArrayList<ArrayList<String>> getData() {
         // Return 2D list of collected data from file.
         return data;
     }

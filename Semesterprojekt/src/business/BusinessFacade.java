@@ -2,6 +2,9 @@ package business;
 
 import Acq.IBusiness;
 import Acq.IData;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ListView;
 
@@ -75,8 +78,28 @@ public class BusinessFacade implements IBusiness {
 
     @Override
     public void saveGame() {
-        // entityManager.saveGame();
-        data.saveGame();
+        HashMap savePackage = entityManager.parseForSave();
+        Set<String> paths = savePackage.keySet();
+        for (String path: paths) {
+            data.saveGame(path,
+                    (ArrayList<ArrayList<String>>)savePackage.get(path));
+        }
+    }
+    
+    @Override
+    public void loadGame() {
+        HashMap<String, ArrayList<ArrayList<String>>> loadPackage = new
+         HashMap<>();
+        ArrayList<String> saveFiles = entityManager.getSaveFiles();
+        for (String file: saveFiles) {
+            ArrayList<ArrayList<String>> dataSet = data.loadGame(file);
+            loadPackage.put(file, dataSet);
+        }
+        entityManager.parseLoading(loadPackage);
+        
+//        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = null;
+//        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = entityManager.getPlayer();
+//        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override
@@ -88,14 +111,6 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void loadXML() {
         data.loadXML();
-    }
-
-    @Override
-    public void loadGame() {
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = null;
-        entityManager.loadGame();
-        entityManager.getPlayer().getCurrentRoom().getEntities()[entityManager.getPlayer().getY()][entityManager.getPlayer().getX()] = entityManager.getPlayer();
-        roomManager.setCurrentRoom(entityManager.getPlayer().getCurrentRoom());
     }
 
     @Override

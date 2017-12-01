@@ -1,6 +1,7 @@
 package data;
 
 import Acq.IData;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,8 +33,15 @@ public class DataFacade implements IData {
     }
 
     @Override
-    public void saveGame() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void saveGame(String path, ArrayList<ArrayList<String>> data) {
+        new Save(path, data);
+    }
+    
+    @Override
+    public ArrayList<ArrayList<String>> loadGame(String filePath) {
+        Load load = new Load(filePath);
+        ArrayList<ArrayList<String>> data = load.getData();
+        return data;
     }
     
     @Override
