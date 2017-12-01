@@ -57,13 +57,33 @@ public class Student extends Person {
     }
 
     public void chasePlayer() {
-        double distanceToPlayer = Math.sqrt(Math.pow(getEntityManager().getPlayer().getX() - getX(),2 ) +
-                 (Math.pow(getEntityManager().getPlayer().getY() - getY(),2 )));
+        double distanceToPlayer = Math.sqrt(Math.pow(getEntityManager().getPlayer().getX() - this.getX(),2 ) +
+                 (Math.pow(getEntityManager().getPlayer().getY() - this.getY(),2 )));
+        System.out.println(distanceToPlayer);
         if(distanceToPlayer <= 1) {
             getEntityManager().getPlayer().onInteract(this);
+            setHasQuestionToPlayer(false);
         } else {
-            
-            
+            if(this.getX() < getEntityManager().getPlayer().getX()){
+                if (!checkCollision(getX() + 1, getY())) {
+                        move((getX()+1),(getY()));
+                    }
+            }
+            if(this.getY() < getEntityManager().getPlayer().getY()){
+                if (!checkCollision(getX(), getY() + 1)) {
+                        move((getX()),(getY()+1));
+                    }
+            }
+            if(this.getX() > getEntityManager().getPlayer().getX()){
+                if (!checkCollision(getX() - 1, getY())) {
+                        move((getX()-1),(getY()));
+                    }
+            }
+            if(this.getY() > getEntityManager().getPlayer().getY()){
+                if (!checkCollision(getX(), getY() - 1)) {
+                        move((getX()),(getY()-1));
+                    }
+            }
             
             
             
@@ -80,8 +100,7 @@ public class Student extends Person {
     public void idleMove() {
         if (getEntityManager().getPlayer().getCurrentRoom() == getCurrentRoom() && hasQuestionToPlayer) {
             chasePlayer();
-            return;
-        }
+        } else
         // Assumes that this gets executed once per second.
 
         if (rand.nextBoolean()) { // If true, move.
@@ -117,12 +136,15 @@ public class Student extends Person {
                         getCurrentRoom().getEntities()[getY() + 1][getX() + 1].onInteract(this);
                     } else if (!checkCollision(getX(), getY() + 1)) {
                         move(getX(), getY() + 1);
-
                     }
                     break;
             }
 
         }
+        if(rand.nextInt(10) == 0){
+            setHasQuestionToPlayer(true);
+        }
+        
     }
 
     /**
