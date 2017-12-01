@@ -72,6 +72,7 @@ public class FXMLDocumentController implements Initializable {
     private Label roomViewer;
     @FXML
     private Label energyViewer;
+
     @FXML
     private void newGameButton(ActionEvent event) {
         loop.stop();
@@ -105,9 +106,6 @@ public class FXMLDocumentController implements Initializable {
                         ib.playerInteract();
                         break;
                 }
-
-                roomViewer.setText("Current Room: "+ib.playerCurrentRoom());
-                energyViewer.setText("Energy: "+ib.playerEnergy());
             }
         });
         // current time in nano time
@@ -156,11 +154,12 @@ public class FXMLDocumentController implements Initializable {
                     // calls gameloop
                     ib.loop();
                     prevNanoTime = currentNanoTime;
-
                 }
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
                 drawImages(canvasId.getGraphicsContext2D());
+                roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
+                energyViewer.setText("Energy: " + ib.playerEnergy());
             }
         };
 
