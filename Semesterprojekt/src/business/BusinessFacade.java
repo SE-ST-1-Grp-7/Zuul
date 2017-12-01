@@ -208,4 +208,9 @@ public class BusinessFacade implements IBusiness {
         return entityManager.getPlayer().getCurrentRoom().getName();
     }
 
+    @Override
+    public int playerEnergy() {
+        return entityManager.getPlayer().getEnergy();
+    }
+
 }
