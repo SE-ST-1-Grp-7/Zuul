@@ -845,7 +845,7 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),false,0,
+                        rm.getRoom(name), false, 0,
                         "/textures/teachertable1.png"));
                 break;
             case "ID99":
@@ -853,7 +853,7 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),false,0,
+                        rm.getRoom(name), false, 0,
                         "/textures/teachertable2.png"));
                 break;
             case "ID100":
@@ -861,8 +861,16 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),false,0,
+                        rm.getRoom(name), false, 0,
                         "/textures/teachertable3.png"));
+                break;
+            case "ID101":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/teacherchair1.png"));
                 break;
             // In case the ID is not recognized.
             default:

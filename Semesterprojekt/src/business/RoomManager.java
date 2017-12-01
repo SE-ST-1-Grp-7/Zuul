@@ -151,6 +151,7 @@ public class RoomManager {
         tiles.put("ID14", new Tile("/textures/floor2.png"));
         tiles.put("ID15", new Tile("/textures/floor4.png"));
         tiles.put("ID17", new Tile("/textures/floor6.png"));
+        tiles.put("ID18", new Tile("/textures/floor25.png"));
         tiles.put("ID19", new Tile("/textures/floor11.png"));
         tiles.put("ID23", new Tile("/textures/floor5.png", true));
         tiles.put("ID30", new Tile("/textures/HedgeWall10.png", true));
