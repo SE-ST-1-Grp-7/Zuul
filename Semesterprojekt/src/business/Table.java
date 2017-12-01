@@ -14,7 +14,7 @@ public class Table extends Furniture /*implements Inspectable*/{
     private int maxAmountOfItems; // Max amount of items on table.
     // List of items on table.
     private List<Item> itemsOnTable = new ArrayList<>();
-    private String tableImage = "/textures/table1.png"; // Path to texture.
+     // Path to texture.
     
     /**
      * Constructor for Table class.
@@ -33,7 +33,7 @@ public class Table extends Furniture /*implements Inspectable*/{
             int height,
             Room currentRoom,
             boolean canHaveItems,
-            int maxAmountOfItems){
+            int maxAmountOfItems, String imagePath){
         
         // Pass arguments for superclass
         super(x,
@@ -44,7 +44,7 @@ public class Table extends Furniture /*implements Inspectable*/{
                 "Table",                        // Item name.
                 "It might contain items!");     // Item description.
         // Pass path of texture to superclass.
-        super.setEntityImage(tableImage);
+        super.setEntityImage(imagePath);
         
         // Parameters are assigned to attributes.
         this.canHaveItems = canHaveItems; 

@@ -603,7 +603,7 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        false, 0));
+                        false, 0,"/textures/table1.png"));
                 break;
 
             // Bookcase, left end, facing south.
@@ -668,22 +668,27 @@ public class EntityManager {
 
             // Plant, hedge.
             case "ID80":
-                furniturelist.add(new Plant(j,
+                Table pool1 = new Table(j,
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        "/textures/hedge1.png"));
-                break;
+                        rm.getRoom(name), false, 0,
+                        "/textures/pooltable2.png");
+                pool1.setFurnitureDescription("This is a pooltable!, "
+                        + "i wish i could play pool...");
+                furniturelist.add(pool1);
 
             // Plant, pot plant.
             case "ID81":
-                furniturelist.add(new Plant(j,
+                Table pool2 = new Table(j,
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        "/textures/potplant.png"));
+                        rm.getRoom(name), false, 0,
+                        "/textures/pooltable2.png");
+                pool2.setFurnitureDescription("This is a pooltable!, "
+                        + "i wish i could play pool...");
+                furniturelist.add(pool2);
                 break;
 
             // Key item, for unlocking doors.
