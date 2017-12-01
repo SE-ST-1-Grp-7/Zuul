@@ -47,4 +47,5 @@ public interface IBusiness {
     void itemDrop(Object o);
     
     String playerCurrentRoom();
+    int playerEnergy();
 }
