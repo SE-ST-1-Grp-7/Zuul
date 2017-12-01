@@ -11,7 +11,6 @@ public abstract class Item extends Entity {
     private String itemDescription; // Description of item.
     private int weight; // Weight of item, for inventory application.
     private String imagePath;
-    private EntityManager em;
 
     /**
      * Constructor for Item class.
@@ -24,7 +23,6 @@ public abstract class Item extends Entity {
      * @param itemName String, name of item.
      * @param itemDescription String, description of item.
      * @param weight int, weight of item.
-     * @param em entitymanager for deleting items in the itemlist
      */
     public Item(int x,
             int y,
@@ -33,7 +31,7 @@ public abstract class Item extends Entity {
             Room currentRoom,
             String itemName,
             String itemDescription,
-            int weight, EntityManager em) {
+            int weight) {
 
         // Pass arguments to superclass.
         super(x, y, width, height, currentRoom);
@@ -42,7 +40,6 @@ public abstract class Item extends Entity {
         this.itemName = itemName;
         this.itemDescription = itemDescription;
         this.weight = weight;
-        this.em = em;
     }
 
     // Apply functionality of use for this class.
@@ -121,7 +118,7 @@ public abstract class Item extends Entity {
             ((Player) p).inventory().addItem(this);
             getCurrentRoom().getEntities()[getY()][getX()] = null;
             // also remove from entitymanager
-            em.getItemList().remove(this);
+            //em.getItemList().remove(this);
         }
     }
 }
