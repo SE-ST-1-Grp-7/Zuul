@@ -46,7 +46,7 @@ public class Assignment extends Item {
     @Override
     public void use(Player p) {
         //if you have more than or equal to 20 energy
-        if (p.getEnergy() >= 20 && p.currentRoom.getName().equals("teacher room")) {
+        if (p.getEnergy() >= 20 && p.getCurrentRoom().getName().equals("teacher room")) {
             //we remove energy and add assignment progress 5 times
             for (int i = 0; i < 5; i++) {
                 //we remove the required amount of energy/5 so it will be 20

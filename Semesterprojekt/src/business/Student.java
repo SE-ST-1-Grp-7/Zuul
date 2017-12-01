@@ -112,8 +112,8 @@ public class Student extends Person {
      * @param newY int, new vertical grid position.
      */
     public void move(int newX, int newY) {
-        currentRoom.getEntities()[getY()][getX()] = null; // set current position in array to null
-        currentRoom.getEntities()[newY][newX] = this; // place student in new position
+        getCurrentRoom().getEntities()[getY()][getX()] = null; // set current position in array to null
+        getCurrentRoom().getEntities()[newY][newX] = this; // place student in new position
         // update x & y
         setX(newX);
         setY(newY);
@@ -127,7 +127,7 @@ public class Student extends Person {
      * @return boolean, true if empty field, false otherwise.
      */
     public boolean isLegal(int newX, int newY) {
-        return currentRoom.getEntities()[newY][newX] == null;
+        return getCurrentRoom().getEntities()[newY][newX] == null;
     }
 
     // GETTERS & SETTERS
