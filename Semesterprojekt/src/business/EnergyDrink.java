@@ -23,8 +23,7 @@ public class EnergyDrink extends Item {
                        int y,
                        int width,
                        int height,
-                       Room currentRoom,
-                       EntityManager em) {
+                       Room currentRoom) {
         
         // Pass arguments to superclass
         super(x,                            // X grid position in room.
@@ -34,8 +33,8 @@ public class EnergyDrink extends Item {
                 currentRoom,                // Placed in this room.
                 "Energy drink",             // Name of item.
                 "A can of Monster. Yum!",   // Description of item.
-                10,                         // Weight of item.
-                em);                        //Entitymanager
+                10);                         // Weight of item.
+                
         // Pass path of texture to superclass.
         super.setEntityImage(energydrinkImage);
     }

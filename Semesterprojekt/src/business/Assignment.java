@@ -22,7 +22,7 @@ public class Assignment extends Item {
             int y,
             int width,
             int height,
-            Room currentRoom, EntityManager em) {
+            Room currentRoom) {
         
         // Pass arguments to superclass.
         super(x,
@@ -32,9 +32,9 @@ public class Assignment extends Item {
                 currentRoom,
                 "Assignment",                   // Name of item.
                 "An assigment you can grade.",  // Description of item.
-                1,                              // Weight of item.
-                em);                            // Entitymanager             
-        // Pass path of texture to superclass.
+                1);                              // Weight of item.
+
+                // Pass path of texture to superclass.
         super.setEntityImage(assignmentImage);
     }
     

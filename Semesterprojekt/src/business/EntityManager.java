@@ -87,6 +87,12 @@ public class EntityManager {
             i.getCurrentRoom().setEntity(i);
         }
     }
+    
+    public void nullItems() {
+        for (Item i : itemlist) {
+            i.getCurrentRoom().setEntityWithXY(i.getX(),i.getY(),null);
+        }
+    }
 
     /**
      * Add initialized furniture to the furniture list.
@@ -573,8 +579,7 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        this));
+                        rm.getRoom(name)));
 
             // Chair facing north.
             case "ID71":
@@ -697,18 +702,17 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name),
-                        this));
+                        rm.getRoom(name)));
                 break;
 
             // Coffee item.
             case "ID83":
-                itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name),this));
+                itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
                 break;
                 
             // Adderall item.
             case "ID84":
-                itemlist.add(new Adderall(j, i, 64, 64, rm.getRoom(name), this));
+                itemlist.add(new Adderall(j, i, 64, 64, rm.getRoom(name)));
                 break;
 
             // Bench facing west, top end part.
@@ -929,7 +933,7 @@ public class EntityManager {
      * @return      ArrayList<ArrayList<String>>, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveItems() {
-        System.out.println(itemlist);
+        System.out.println("itemlist"+itemlist);
         // 2D list to contain the data.
         ArrayList<ArrayList<String>> itemsData = new ArrayList<>();
         // Iterate through all items in the game and gather their data.
@@ -1068,9 +1072,13 @@ public class EntityManager {
      * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
+        System.out.println("before nullitems"+itemlist);
+        nullItems();
+        System.out.println("after nullitems"+itemlist);
         // Clear item list.
         itemlist.clear();
-
+        System.out.println("after clear"+itemlist);
+        
         // Iterate through data of all items for loading.
         for (ArrayList<String> itemData: data) {
             // If not empty, check for type of item.
@@ -1078,13 +1086,13 @@ public class EntityManager {
                 // Switch case based on the name of the item.
                 switch (itemData.get(0)) {
                     // If adderall, add item to item list.
-                    case "Adderal":
+                    case "Adderall":
                         Adderall d = new Adderall(
                                 Integer.parseInt(itemData.get(1)),
                                 Integer.parseInt(itemData.get(2)),
                                 64,
                                 64,
-                                (Room) rm.getRoomlist().get(itemData.get(3)), this);
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
                         itemlist.add(d);
                         break;
 
@@ -1095,7 +1103,7 @@ public class EntityManager {
                                 Integer.parseInt(itemData.get(2)),
                                 64,
                                 64,
-                                (Room) rm.getRoomlist().get(itemData.get(3)),this);
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
                         itemlist.add(c);
                         break;
 
@@ -1106,7 +1114,7 @@ public class EntityManager {
                                 Integer.parseInt(itemData.get(2)),
                                 64,
                                 64,
-                                (Room) rm.getRoomlist().get(itemData.get(3)),this);
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
                         itemlist.add(a);
                         break;
 
@@ -1116,7 +1124,7 @@ public class EntityManager {
                                 Integer.parseInt(itemData.get(2)),
                                 64,
                                 64,
-                                (Room) rm.getRoomlist().get(itemData.get(3)),this);
+                                (Room) rm.getRoomlist().get(itemData.get(3)));
                         itemlist.add(k);
                         break;
 
@@ -1127,7 +1135,7 @@ public class EntityManager {
                                 Integer.parseInt(itemData.get(2)),
                                 64,
                                 64,
-                                rm.getCurrentRoom().getExit(itemData.get(3)),this);
+                                rm.getCurrentRoom().getExit(itemData.get(3)));
                         itemlist.add(e);
                         break;
 
@@ -1162,7 +1170,7 @@ public class EntityManager {
                                 0,
                                 64,
                                 64,
-                                null, this);
+                                null);
                         player.inventory().addItem(d);
                         break;
 
@@ -1172,7 +1180,7 @@ public class EntityManager {
                                 0,
                                 64,
                                 64,
-                                null,this);
+                                null);
                         player.inventory().addItem(c);
                         break;
 
@@ -1183,7 +1191,7 @@ public class EntityManager {
                                 0,
                                 64,
                                 64,
-                                null, this);
+                                null);
                         player.inventory().addItem(a);
                         break;
 
@@ -1193,7 +1201,7 @@ public class EntityManager {
                                 0,
                                 64,
                                 64,
-                                null,this);
+                                null);
                         player.inventory().addItem(k);
                         break;
 
@@ -1204,7 +1212,7 @@ public class EntityManager {
                                 0,
                                 64,
                                 64,
-                                null,this);
+                                null);
                         player.inventory().addItem(e);
                         break;
 
