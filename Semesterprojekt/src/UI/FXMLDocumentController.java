@@ -67,6 +67,8 @@ public class FXMLDocumentController implements Initializable {
     private TextArea bottomTextArea;
     @FXML
     private Label timeLabel;
+    @FXML
+    private Label roomViewer;
     
     @FXML
     private void newGameButton(ActionEvent event) {
@@ -99,6 +101,7 @@ public class FXMLDocumentController implements Initializable {
                         ib.playerInteract();
                         break;
                 }
+                roomViewer.setText(ib.playerCurrentRoom()+ "\n");
             }
         });
         // current time in nano time

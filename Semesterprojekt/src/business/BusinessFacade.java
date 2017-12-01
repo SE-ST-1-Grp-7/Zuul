@@ -203,4 +203,9 @@ public class BusinessFacade implements IBusiness {
     public void playerDropItem(int index) {
     }
 
+    @Override
+    public String playerCurrentRoom() {
+        return entityManager.getPlayer().getCurrentRoom().getName();
+    }
+
 }
