@@ -581,7 +581,21 @@ public class EntityManager {
                         rm.getRoom(name)));
 
             // Chair facing north.
+            case "ID70":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/chair1.png"));
             case "ID71":
+                furniturelist.add(new Chair(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/chair4.png"));
+            case "ID72":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -591,7 +605,7 @@ public class EntityManager {
                 break;
 
             // Chair facing east.
-            case "ID72":
+            case "ID73":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -601,7 +615,7 @@ public class EntityManager {
                 break;
 
             // Table furniture.
-            case "ID73":
+            case "ID74":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -611,7 +625,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, left end, facing south.
-            case "ID74":
+            case "ID75":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -621,7 +635,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, middle section, facing south, open book on top.
-            case "ID75":
+            case "ID76":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -631,7 +645,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, right end, facing south.
-            case "ID76":
+            case "ID77":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -641,7 +655,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, right end, facing north.
-            case "ID77":
+            case "ID78":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -651,7 +665,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, middle section, facing north.
-            case "ID78":
+            case "ID79":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -661,7 +675,7 @@ public class EntityManager {
                 break;
 
             // Bookcase, left end, facing north.
-            case "ID79":
+            case "ID80":
                 furniturelist.add(new Bookcase(j,
                         i,
                         64,
@@ -670,9 +684,69 @@ public class EntityManager {
                         "/textures/bookcase6.png"));
                 break;
 
+            // Bookcase, left end, facing south.
+            case "ID81":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase7.png"));
+                break;
+
+            // Bookcase, middle section, facing south, open book on top.
+            case "ID82":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase8.png"));
+                break;
+
+            // Bookcase, right end, facing south.
+            case "ID83":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase9.png"));
+                break;
+
+            // Bookcase, right end, facing north.
+            case "ID84":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase10.png"));
+                break;
+
+            // Bookcase, middle section, facing north.
+            case "ID85":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase11.png"));
+                break;
+
+            // Bookcase, left end, facing north.
+            case "ID86":
+                furniturelist.add(new Bookcase(j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name),
+                        "/textures/bookcase12.png"));
+                break;
+
             // Table, pooltable.
-            case "ID80":
-                
+            case "ID87":
+
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -681,7 +755,7 @@ public class EntityManager {
                         "/textures/pooltable1.png"));
                 break;
             // Table pooltable.
-            case "ID81":
+            case "ID88":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -691,7 +765,7 @@ public class EntityManager {
                 break;
 
             // Key item, for unlocking doors.
-            case "ID82":
+            case "ID89":
                 itemlist.add(new Key(j,
                         i,
                         64,
@@ -700,17 +774,17 @@ public class EntityManager {
                 break;
 
             // Coffee item.
-            case "ID83":
+            case "ID90":
                 itemlist.add(new Coffee(j, i, 64, 64, rm.getRoom(name)));
                 break;
 
             // Adderall item.
-            case "ID84":
+            case "ID91":
                 itemlist.add(new Adderall(j, i, 64, 64, rm.getRoom(name)));
                 break;
 
             // Bench facing west, top end part.
-            case "ID85":
+            case "ID92":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -720,7 +794,7 @@ public class EntityManager {
                 break;
 
             // Bench facing west, bottom end part.
-            case "ID86":
+            case "ID93":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -730,7 +804,7 @@ public class EntityManager {
                 break;
 
             // Bench facing east, bottom end part.
-            case "ID87":
+            case "ID94":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -740,7 +814,7 @@ public class EntityManager {
                 break;
 
             // Bench facing east, top end part.
-            case "ID88":
+            case "ID95":
                 furniturelist.add(new Chair(j,
                         i,
                         64,
@@ -748,7 +822,6 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench3.png"));
                 break;
-            
 
             // In case the ID is not recognized.
             default:
