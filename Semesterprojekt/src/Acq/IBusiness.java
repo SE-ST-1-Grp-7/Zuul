@@ -45,4 +45,6 @@ public interface IBusiness {
     Inventory playerGetInventory();
     void itemUse(Object o);
     void itemDrop(Object o);
+    
+    String playerCurrentRoom();
 }
