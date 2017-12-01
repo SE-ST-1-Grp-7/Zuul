@@ -7,10 +7,10 @@ package business;
  * @author Group 7
  */
 public abstract class Entity {
-    protected int x, y;             // X and Y grid position in room.
-    protected int width, height;    // Pixel width and height of entity.
-    protected Room currentRoom;     // Placed in this room.
-    protected String entityImage;   // Path of texture of entity.
+    private int x, y;             // X and Y grid position in room.
+    private int width, height;    // Pixel width and height of entity.
+    private Room currentRoom;     // Placed in this room.
+    private String entityImage;   // Path of texture of entity.
     
     /**
      * Constructor of Entity class.

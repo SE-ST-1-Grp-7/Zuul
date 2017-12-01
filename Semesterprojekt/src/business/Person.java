@@ -9,7 +9,7 @@ public abstract class Person extends Entity {
     protected static final int DEFAULT_PERSON_WIDTH = 64,
                                DEFAULT_PERSON_HEIGHT = 64;
     protected String name; // Person name
-    
+    private EntityManager em;
     /**
      * Person 1st constructor, without given name.
      * 
@@ -19,11 +19,12 @@ public abstract class Person extends Entity {
      * @param height        int, pixel height of person.
      * @param currentRoom   Room, currently in this room.
      */
-    public Person(int x, int y, int width, int height, Room currentRoom) {
+    public Person(int x, int y, int width, int height, Room currentRoom, EntityManager em) {
         // Pass arguments to superclass.
         super(x, y, width, height, currentRoom);
         // Get random name as name for person.
         name = getRandomName();
+        this.em = em;
     }
         /**
      * Method for collision check.
@@ -55,11 +56,12 @@ public abstract class Person extends Entity {
             int width,
             int height,
             Room currentRoom,
-            String name) {
+            String name, EntityManager em) {
         // Pass arguments to superclass.
         super(x, y, width, height, currentRoom);
         // Assign given name.
         this.name = name;
+        this.em = em;
     }
     
     /**
@@ -98,6 +100,10 @@ public abstract class Person extends Entity {
         int index = (int) (Math.random() * names.length);
         // Return chosen String name.
         return names[index];
+    }
+    
+    public EntityManager getEntityManager(){
+        return this.em;
     }
 }
 

@@ -102,6 +102,7 @@ public class Inventory {
             i.setX(p.getX());//set the item's x to where the player is standing when dropping the item
             i.setY(p.getY());//sets the item's y just like with x
             p.setTempItem(i); //set the item you want to drop at the temp item
+            p.getEntityManager().getItemList().add(i);
             //p.placeItem(); //call the placeItem that places the tempItem
         } else {
             System.out.println("You can't drop here");

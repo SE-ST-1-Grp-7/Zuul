@@ -1,1 +1,1 @@
-6,5,Pete,garden,0,0,false,94,100
+1,8,Pete,garden,0,0,false,92,100

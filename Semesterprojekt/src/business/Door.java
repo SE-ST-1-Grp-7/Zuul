@@ -38,13 +38,14 @@ public class Door extends Furniture {
             if (this.isLocked == true && ((Player) p).getHasKey()) {
                 System.out.println("you unlock the door and go through");
                 goThroughDoorMethod((Player) p);
-            } else if (this.isLocked == true) {
+            } else if (this.isLocked) {
                 System.out.println("the door is locked, you need a key to open it");
             } else {
                 goThroughDoorMethod((Player) p);
             }
-        } else {
-            goThroughDoorMethod2((Student ) p);
+        } else if(p instanceof Student) {
+            if(!this.isLocked)
+                goThroughDoorMethod2((Student ) p);
         }
 
     }

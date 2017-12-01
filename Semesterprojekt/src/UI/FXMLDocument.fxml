@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="837.0" minWidth="10.0" prefWidth="837.0" />
@@ -112,6 +112,22 @@
                   <Image url="@../../res/assets/Box.png" />
                </image>
             </ImageView>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="303.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <children>
+                  <Label fx:id="energyViewer" text="Energy" />
+               </children>
+            </StackPane>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="37.0" prefWidth="303.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+               <children>
+                  <Label fx:id="roomViewer" text="Current Room" />
+               </children>
+            </StackPane>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
                <children>
                   <Label fx:id="timeLabel" contentDisplay="CENTER" text="TIME">

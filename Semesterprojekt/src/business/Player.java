@@ -9,8 +9,6 @@ public class Player extends Person {
 
     private int energy; // Current energy level.
     private int energyCap; // Max amount of energy.
-    private int fatigue; // Current fatiuge level.
-    private int fatigueCap; // Max amount of fatiuge.
     private Inventory inventory; // The player's inventory.
     private int gradedAssignments; // Amount of graded assignments.
     private int assignmentProgress; // Progress of grading an assignment.
@@ -19,7 +17,6 @@ public class Player extends Person {
     private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
-    private EntityManager em;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -35,21 +32,18 @@ public class Player extends Person {
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                currentRoom);
+                currentRoom, em);
         // Pass image path to Superclass.
         super.setEntityImage(playerImage);
 
         // PLAYER STATS
         this.energy = 100; // Assign energy level to start at 100.
         this.energyCap = 100; // Assign energy capacity to 100.
-        this.fatigue = 0; // Current amount of fatigue starts at 0.
-        this.fatigueCap = 100; // Assign fatigue capacity to 100.
         inventory = new Inventory(); // Instantiate inventory.
         this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
         this.hasKey = false;
-        this.em = em;
     }
 
     /**
@@ -87,7 +81,7 @@ public class Player extends Person {
         if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
             if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
                 inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-                em.getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                getEntityManager().getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
                 getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;                
             }
         }
@@ -129,13 +123,11 @@ public class Player extends Person {
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
-            currentRoom.getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
-            em.getItemList().add(tempItem);
+            tempItem.setCurrentRoom(getCurrentRoom());
+            getCurrentRoom().getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            getEntityManager().getItemList().add(tempItem);
             dont = true; // dont set previous field to null
         }
-    }
-    public EntityManager getEntityManager() {
-        return this.em;
     }
 
     /**
@@ -237,42 +229,6 @@ public class Player extends Person {
     }
 
     /**
-     * Getter for the current fatigue.
-     *
-     * @return int, current value for fatigue stat.
-     */
-    public int getFatigue() {
-        return this.fatigue;
-    }
-
-    /**
-     * Setter for the current fatigue.
-     *
-     * @param fatigue int, value to become the current fatigue level.
-     */
-    public void setFatigue(int fatigue) {
-        this.fatigue = fatigue;
-    }
-
-    /**
-     * Getter for the fatiuge capacity.
-     *
-     * @return int, value of fatigue capacity.
-     */
-    public int getFatigueCap() {
-        return this.fatigueCap;
-    }
-
-    /**
-     * Setter for fatiuge capacity.
-     *
-     * @param fatigueCap int, change fatigue capacity to this value.
-     */
-    public void setFatigueCap(int fatigueCap) {
-        this.fatigueCap = fatigueCap;
-    }
-
-    /**
      * Getter for graded assignments.
      *
      * @return int, value of current assignments graded.
@@ -315,6 +271,7 @@ public class Player extends Person {
     @Override
     public void onInteract(Person p) {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
+        setEnergy(getEnergy()-35);
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }

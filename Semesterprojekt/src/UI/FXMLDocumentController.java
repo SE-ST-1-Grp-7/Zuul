@@ -40,6 +40,7 @@ public class FXMLDocumentController implements Initializable {
     private int seconds = 0;
     private int minutes = 0;
     private Highscore h = new Highscore();
+    private AnimationTimer loop;
     private long diff = 0;
     private Pane pane;
     private Canvas c;
@@ -67,9 +68,15 @@ public class FXMLDocumentController implements Initializable {
     private TextArea bottomTextArea;
     @FXML
     private Label timeLabel;
-    
+    @FXML
+    private Label roomViewer;
+    @FXML
+    private Label energyViewer;
+
     @FXML
     private void newGameButton(ActionEvent event) {
+        loop.stop();
+        ib.resetGame();
         bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest game on SDU.\n");
         GraphicsContext gc = canvasId.getGraphicsContext2D();
         //link the listView to the inventory
@@ -103,27 +110,7 @@ public class FXMLDocumentController implements Initializable {
         });
         // current time in nano time
         final long startNanoTime = System.nanoTime();
-        new AnimationTimer() {
-            @Override
-            public void handle(long currentNanoTime) {
-                // ensures that the loop only gets called once per second
-                diff = currentNanoTime - prevNanoTime;
-                if (diff >= 1000000000) {
-                    startSeconds--;
-                    minutes = startSeconds / 60;
-                    seconds = startSeconds % 60;
-                    timeLabel.setText("Time LEFT: " + Integer.toString(minutes) + ":" + Integer.toString(seconds));
-                 //   timeLabel.setText("TIME LEFT: " + Integer.toString(seconds));
-                    // calls gameloop
-                    ib.loop();
-                    prevNanoTime = currentNanoTime;
-                    
-                }
-                // draw room 60 times per second
-                canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
-                drawImages(gc);
-            }
-        }.start();
+        loop.start();
 
     }
 
@@ -151,8 +138,30 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(highscoreButton, highscoretip);
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
-        
+
         timeLabel.setText("TIME LEFT: " + "05:00");
+        loop = new AnimationTimer() {
+            @Override
+            public void handle(long currentNanoTime) {
+                // ensures that the loop only gets called once per second
+                diff = currentNanoTime - prevNanoTime;
+                if (diff >= 1000000000) {
+                    startSeconds--;
+                    minutes = startSeconds / 60;
+                    seconds = startSeconds % 60;
+                    timeLabel.setText("Time LEFT: " + Integer.toString(minutes) + ":" + Integer.toString(seconds));
+                    //   timeLabel.setText("TIME LEFT: " + Integer.toString(seconds));
+                    // calls gameloop
+                    ib.loop();
+                    prevNanoTime = currentNanoTime;
+                }
+                // draw room 60 times per second
+                canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
+                drawImages(canvasId.getGraphicsContext2D());
+                roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
+                energyViewer.setText("Energy: " + ib.playerEnergy());
+            }
+        };
 
     }
 
@@ -239,11 +248,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void useButton(ActionEvent event) {
         if ((listView.getSelectionModel().getSelectedItem() != null)) {
-        bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n" );
-        ib.itemUse(listView.getSelectionModel().getSelectedItem());
-        } 
-        else {
-            bottomTextArea.appendText("You have no selected items to use in inventory." + "\n" );
+            bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
+            ib.itemUse(listView.getSelectionModel().getSelectedItem());
+        } else {
+            bottomTextArea.appendText("You have no selected items to use in inventory." + "\n");
         }
 
     }
@@ -258,10 +266,9 @@ public class FXMLDocumentController implements Initializable {
         if ((listView.getSelectionModel().getSelectedItem() != null)) {
             bottomTextArea.appendText("You just dropped " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
             ib.itemDrop(listView.getSelectionModel().getSelectedItem());
+        } else {
+            bottomTextArea.appendText("You have no selected items to drop." + "\n");
         }
-        else {
-            bottomTextArea.appendText("You have no selected items to drop." + "\n" );
-        }
-    } 
+    }
 
 }
