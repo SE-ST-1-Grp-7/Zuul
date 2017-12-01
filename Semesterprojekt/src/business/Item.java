@@ -113,6 +113,8 @@ public abstract class Item extends Entity {
         if(p instanceof Player) {
             if(((Player) p).inventory().addItem(this))
                 getCurrentRoom().getEntities()[getY()][getX()] = null;
+                ((Player) p).getEntityManager().getItemList().remove(this);
+                
             // also remove from entitymanager
     }
     }
