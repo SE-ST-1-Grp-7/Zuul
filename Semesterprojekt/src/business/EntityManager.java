@@ -1165,7 +1165,7 @@ public class EntityManager {
             if (invenData.size() > 0) {
                 switch (invenData.get(0)) {
                     // If adderall, add to inventory list.
-                    case "Adderal":
+                    case "Adderall":
                         Adderall d = new Adderall(0,
                                 0,
                                 64,
