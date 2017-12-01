@@ -106,8 +106,8 @@ public class FXMLDocumentController implements Initializable {
                         break;
                 }
 
-                roomViewer.setText(ib.playerCurrentRoom());
-                energyViewer.setText(""+ib.playerEnergy());
+                roomViewer.setText("Current Room: "+ib.playerCurrentRoom());
+                energyViewer.setText("Energy: "+ib.playerEnergy());
             }
         });
         // current time in nano time
