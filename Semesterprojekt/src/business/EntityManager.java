@@ -347,7 +347,7 @@ public class EntityManager {
             // Instance of white t-shirt, brunette student.
             case "ID51":
                 studentlist.add(new Student(j, i, rm.getRoom(name), false,
-                        "/textures/student1.png"));
+                        "/textures/student1.png", this));
                 break;
 
             // Instance of red t-shirt, brunette student.
@@ -356,7 +356,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student2.png"));
+                        "/textures/student2.png", this));
                 break;
 
             // Instance of green t-shirt, brunette student.
@@ -365,7 +365,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student3.png"));
+                        "/textures/student3.png", this));
                 break;
 
             // Instance of white t-shirt, blond student.
@@ -374,7 +374,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student4.png"));
+                        "/textures/student4.png", this));
                 break;
 
             // Instance of red t-shirt, blond student.
@@ -383,7 +383,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student5.png"));
+                        "/textures/student5.png", this));
                 break;
 
             // Instance of green t-shirt, blond student.
@@ -392,7 +392,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student6.png"));
+                        "/textures/student6.png", this));
                 break;
 
             // Instance of white t-shirt, black student.
@@ -401,7 +401,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student7.png"));
+                        "/textures/student7.png", this));
                 break;
 
             // Instance of red t-shirt, black student.
@@ -410,7 +410,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student8.png"));
+                        "/textures/student8.png", this));
                 break;
 
             // Instance of green t-shirt, black student.
@@ -419,7 +419,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student9.png"));
+                        "/textures/student9.png", this));
                 break;
 
             // Instance of white t-shirt, asian student.
@@ -428,7 +428,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student10.png"));
+                        "/textures/student10.png", this));
                 break;
 
             // Instance of red t-shirt, asian student.
@@ -437,7 +437,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student11.png"));
+                        "/textures/student11.png", this));
                 break;
 
             // Instance of green t-shirt, asian student.
@@ -446,7 +446,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student12.png"));
+                        "/textures/student12.png", this));
                 break;
 
             // Door, inner, vertical.
@@ -784,7 +784,7 @@ public class EntityManager {
             // Instance of peaceful kouhai (face covered by hair).
             case "ID51":
                 studentlist.add(new Student(j, i, rm.getRoom(name), false,
-                        "/textures/kouhai1.png"));
+                        "/textures/kouhai1.png", this));
                 break;
 
             // Instance of hostile kouhai (red eye).
@@ -793,7 +793,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/kouhai3.png"));
+                        "/textures/kouhai3.png", this));
                 break;
 
             // Instance of peaceful kouhai (black eye).
@@ -802,7 +802,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai2.png"));
+                        "/textures/kouhai2.png", this));
                 break;
 
             // Instance of peaceful kouhai (face covered by hair).
@@ -811,7 +811,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai1.png"));
+                        "/textures/kouhai1.png", this));
                 break;
 
             // Instance of hostile kouhai (red eye).
@@ -820,7 +820,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/kouhai3.png"));
+                        "/textures/kouhai3.png", this));
                 break;
 
             // Instance of peaceful kouhai (black eye).
@@ -829,7 +829,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai2.png"));
+                        "/textures/kouhai2.png", this));
                 break;
 
             // Instance of peaceful kouhai (face covered by hair).
@@ -838,7 +838,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai1.png"));
+                        "/textures/kouhai1.png", this));
                 break;
 
             // Instance of hostile kouhai (red eye).
@@ -847,7 +847,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/kouhai3.png"));
+                        "/textures/kouhai3.png", this));
                 break;
 
             // Instance of peaceful kouhai (black eye).
@@ -856,7 +856,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai2.png"));
+                        "/textures/kouhai2.png", this));
                 break;
 
             // Instance of peaceful kouhai (face covered by hair).
@@ -865,7 +865,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai1.png"));
+                        "/textures/kouhai1.png", this));
                 break;
 
             // Instance of hostile kouhai (red eye).
@@ -874,7 +874,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/kouhai3.png"));
+                        "/textures/kouhai3.png", this));
                 break;
 
             // Instance of peaceful kouhai (black eye).
@@ -883,7 +883,7 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/kouhai2.png"));
+                        "/textures/kouhai2.png", this));
                 break;
 
             /* In case the ID is not a special case, instantiate entity from

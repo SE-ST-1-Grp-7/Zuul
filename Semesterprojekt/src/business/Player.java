@@ -19,7 +19,6 @@ public class Player extends Person {
     private String playerImage = "/textures/player.png"; // String of image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
-    private EntityManager em;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -35,7 +34,7 @@ public class Player extends Person {
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                currentRoom);
+                currentRoom, em);
         // Pass image path to Superclass.
         super.setEntityImage(playerImage);
 
@@ -49,7 +48,6 @@ public class Player extends Person {
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
         this.hasKey = false;
-        this.em = em;
     }
 
     /**
@@ -87,7 +85,7 @@ public class Player extends Person {
         if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
             if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
                 inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-                em.getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
+                getEntityManager().getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
                 getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;                
             }
         }
@@ -131,12 +129,9 @@ public class Player extends Person {
         if (tempItem != null) { // if tempItem exists
             tempItem.setCurrentRoom(getCurrentRoom());
             getCurrentRoom().getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
-            em.getItemList().add(tempItem);
+            getEntityManager().getItemList().add(tempItem);
             dont = true; // dont set previous field to null
         }
-    }
-    public EntityManager getEntityManager() {
-        return this.em;
     }
 
     /**
