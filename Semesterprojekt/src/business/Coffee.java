@@ -23,7 +23,7 @@ public class Coffee extends Item {
                     int y,
                     int width,
                     int height,
-                    Room currentRoom) {
+                    Room currentRoom, EntityManager em) {
         
         // Pass arguments to superclass
         super(x,                            // X grid position in room.
@@ -33,7 +33,8 @@ public class Coffee extends Item {
                 currentRoom,                // Placed in this room.
                 "Coffee",                   // Name of item.
                 "A cup of coffee. Yum!",    // Description of item.
-                5);                         // Weight of item.
+                5,                          // Weight of item.
+                em);                        // Entitymanager
         // Pass path of texture to superclass.
         super.setEntityImage(coffeeImage);
     }
