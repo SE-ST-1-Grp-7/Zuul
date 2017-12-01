@@ -45,7 +45,7 @@ public class Save {
                 // Initial data segment.
                 fileWriter.append(dataSegment.get(0));
                 // Iterate through the remaining.
-                for (int i = 1; i < data.size();i++) {
+                for (int i = 1; i < dataSegment.size();i++) {
                     // Separator.
                     fileWriter.append(",");
                     // New data segment.

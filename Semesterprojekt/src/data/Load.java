@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Rasmus Willer
  */
 public class Load {
+    // 2D list the collected data will be placed in.
     private ArrayList<ArrayList<String>> data = new ArrayList<>();
     
     /**
@@ -55,6 +56,11 @@ public class Load {
         }
     }
     
+    /**
+     * Retrieve the data collected from file.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list of data.
+     */
     public ArrayList<ArrayList<String>> getData() {
         // Return 2D list of collected data from file.
         return data;

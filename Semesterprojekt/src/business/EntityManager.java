@@ -1,12 +1,8 @@
 package business;
 
 // IMPORTS
-import java.io.BufferedWriter;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Writer;
+
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -306,11 +302,10 @@ public class EntityManager {
                     } else {
                         entityTypes(i, j, name, playerName, IDnum);
                     }
-                    // Place entities in their respective rooms.
-
                 }
             }
         }
+        // Place entities in their respective rooms.
         showStudents();
         showFurniture();
         showItems();
@@ -921,55 +916,116 @@ public class EntityManager {
         return savePackage;
     }
     
+    /**
+     * Parse data for saving items in the game.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
+     */
     public ArrayList<ArrayList<String>> saveItems() {
+        // 2D list to contain the data.
         ArrayList<ArrayList<String>> itemsData = new ArrayList<>();
+        // Iterate through all items in the game and gather their data.
         for (Item item : itemlist) {
+            // Sub-list to store the individual item data.
             ArrayList<String> itemData = new ArrayList<>();
+            // Gatherig item name.
             itemData.add(item.getName());
+            // Gathering X grid position.
             itemData.add(String.valueOf(item.getX()));
+            // Gathering Y grid position.
             itemData.add(String.valueOf(item.getY()));
+            // Gathering the item's current room.
             itemData.add(item.getCurrentRoom().getName());
+            
+            // Add sub-list to main 2D list.
             itemsData.add(itemData);
         }
+        // Return gathered data.
         return itemsData;
     }
     
+    /**
+     * Parse data for saving player's inventory status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
+     */
     public ArrayList<ArrayList<String>> saveInventory() {
+        // 2D list to contain the data.
         ArrayList<ArrayList<String>> invenData = new ArrayList<>();
+        /* Iterate through player's inventory and assign item name to sub-list
+           before adding sub-list to the main 2D list. */
         for (Item item : player.inventory().getInventory()) {
             ArrayList<String> itemData = new ArrayList<>();
             itemData.add(item.getName());
             invenData.add(itemData);
         }
+        // Return gathered data.
         return invenData;
     }
     
+    /**
+     * Parse data for saving player's status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
+     */
     public ArrayList<ArrayList<String>> savePlayers() {
+        // 2D list to contain the data.
         ArrayList<ArrayList<String>> playersData = new ArrayList<>();
+        // Sub-list for holding the player's data.
+        /* Not directly necessary, but this way it will work without making
+           dedicated code for handling this type save data. */
         ArrayList<String> playerData = new ArrayList<>();
+        
+        // Gathering X grid position.
         playerData.add(String.valueOf(player.getX()));
+        // Gathering Y grid position.
         playerData.add(String.valueOf(player.getY()));
+        // Gathering player's name.
         playerData.add(player.getName());
+        // Gathering player's current room.
         playerData.add(String.valueOf(player.getCurrentRoom().getName()));
+        // Gathering assignment progress.
         playerData.add(String.valueOf(player.getAssignmentProgress()));
+        // Gathering assignment graded count.
         playerData.add(String.valueOf(player.getGradedAssignments()));
+        // Gathering if player has key or not.
         playerData.add(String.valueOf(player.getHasKey()));
+        // Gathering player energy level.
         playerData.add(String.valueOf(player.getEnergy()));
+        // Gathering player energy capacity.
         playerData.add(String.valueOf(player.getEnergyCap()));
+        
+        // Add sub-list to main list.
         playersData.add(playerData);
+        
+        // Return parsed data.
         return playersData;
     }
     
+    /**
+     * Parse data for saving student's status.
+     * 
+     * @return      ArrayList<ArrayList<String>>, 2D list with save data.
+     */
     public ArrayList<ArrayList<String>> saveStudents() {
+        // 2D list to contain the data.
         ArrayList<ArrayList<String>> studentsData = new ArrayList<>();
+        // Iterate through all the students and collect the data.
         for (Student student : studentlist) {
+            // Sub-list instantiation.
             ArrayList<String> studData = new ArrayList<>();
+            // Gathering X grid position.
             studData.add(String.valueOf(student.getX()));
+            // Gathering Y grid position.
             studData.add(String.valueOf(student.getY()));
+            // Gathering name of current room.
             studData.add(student.getCurrentRoom().getName());
+            // Gathering String version of boolean for has question for player.
             studData.add(String.valueOf(student.getHasQuestionToPlayer()));
+            // Add sub-list to main list.
             studentsData.add(studData);
         }
+        // Return parsed data for saving.
         return studentsData;
     }
     
@@ -979,7 +1035,9 @@ public class EntityManager {
      * @param loadPackage   HashMap<String, ArrayList<ArrayList<String>>>,
      *                      key is file path, value is 2D list with data.
      */
-    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>> loadPackage) {
+    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>>
+            loadPackage) {
+        // Retrieve list with save file paths.
         ArrayList<String> saveFiles = getSaveFiles();
         
         // Call student load with student data as parameter.
@@ -993,9 +1051,14 @@ public class EntityManager {
         
         // Call item load with item data as parameter.
         loadItems(loadPackage.get(saveFiles.get(3)));
-        
     }
     
+    /**
+     * Load items from collected data. Iterate through load data and instantiate
+     * items based on item name and parameters.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
+     */
     public void loadItems(ArrayList<ArrayList<String>> data) {
         // Clear item list.
         itemlist.clear();
@@ -1067,13 +1130,21 @@ public class EntityManager {
 
             }
         }
+        // Make items show themself in the game.
         showItems();
     }
     
+    /**
+     * Load inventory from data collected from file. Iterate through the data
+     * and instantiate items according to item name and parameters.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with load data.
+     */
     public void loadInventory(ArrayList<ArrayList<String>> data) {
         // Clear inventory list.
         player.inventory().getInventory().clear();
-
+        
+        // Iterate through the load data.
         for (ArrayList<String> invenData: data) {
             if (invenData.size() > 0) {
                 switch (invenData.get(0)) {
@@ -1137,40 +1208,76 @@ public class EntityManager {
         }
     }
     
+    /**
+     * Update player with load data. Parse retrieved data and assign the new
+     * values.
+     * 
+     * @param data      ArrayList<ArrayList<String>>, 2D list with loaded data.
+     */
     public void loadPlayers(ArrayList<ArrayList<String>> data) {
+        // Iterate through the data.
         for (ArrayList<String> playerData: data) {
             if (playerData.size() > 0) {
+                // Set X grid position.
                 player.setX(Integer.parseInt(playerData.get(0)));
+                // Set Y grid position.
                 player.setY(Integer.parseInt(playerData.get(1)));
+                // Set Player name.
                 player.setName(playerData.get(2));
-                player.setCurrentRoom((Room) rm.getRoomlist().get(playerData.get(3)));
-                player.setAssignmentProgress(Integer.parseInt(playerData.get(4)));
-                player.setGradedAssignments(Integer.parseInt(playerData.get(5)));
+                // Set currently located in -room.
+                player.setCurrentRoom((Room) rm.getRoomlist().get(
+                        playerData.get(3)));
+                // Set assignment progress.
+                player.setAssignmentProgress(Integer.parseInt(
+                        playerData.get(4)));
+                // Set graded assignment count.
+                player.setGradedAssignments(Integer.parseInt(
+                        playerData.get(5)));
+                // Set player's energy capacity.
                 player.setEnergyCap(Integer.parseInt(playerData.get(8)));
+                // Set player's energy level.
                 player.setEnergy(Integer.parseInt(playerData.get(7)));
+                // Set boolean for if player has key.
                 player.setHasKey(Boolean.parseBoolean(playerData.get(6)));
             }
         }
     }
     
     public void loadStudents(ArrayList<ArrayList<String>> data) {
+        // Iterator int.
         int i = 0;
+        // Iterate through data for each student.
         for (ArrayList<String> studentData: data) {
             if (studentData.size() > 0) {
+                // Get student that will get new data.
                 Student student = studentlist.get(i);
+                // Remove student from old location in the game.
                 student.getCurrentRoom().removeEntity(student);
-                student.setCurrentRoom((Room) (rm.getRoomlist().get(studentData.get(2))));
+                // Set X grid position.
                 student.setX(Integer.parseInt(studentData.get(0)));
+                // Set Y grid position.
                 student.setY(Integer.parseInt(studentData.get(1)));
-                student.setCurrentRoom((Room) (rm.getRoomlist().get(studentData.get(2))));
-                student.setHasQuestionToPlayer(Boolean.parseBoolean(studentData.get(3)));
+                // Set student's current room.
+                student.setCurrentRoom((Room) (rm.getRoomlist().get(
+                        studentData.get(2))));
+                // Set student's boolean if he has question for player.
+                student.setHasQuestionToPlayer(Boolean.parseBoolean(
+                        studentData.get(3)));
+                // Place student at his new position in the game.
                 student.getCurrentRoom().setEntity(student);
+                // Increment the iterator.
                 i += 1;
             }
         }
+        // Make the students appear in the game.
         showStudents();
     }
     
+    /**
+     * Retrieve list with save files's path.
+     * 
+     * @return      ArrayList<String>, list with save files.
+     */
     public ArrayList<String> getSaveFiles() {
         ArrayList<String> saveFiles = new ArrayList<>();
         // The order of this list is important!
@@ -1179,6 +1286,7 @@ public class EntityManager {
         saveFiles.add("\\Documents\\zuul\\SavePlayersTest.txt");
         saveFiles.add("\\Documents\\zuul\\SaveInventoryTest.txt");
         saveFiles.add("\\Documents\\zuul\\SaveItemsTest.txt");
+        // Return list with file paths.
         return saveFiles;
     }
 }
