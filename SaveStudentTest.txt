@@ -1,16 +1,16 @@
-8,1,dinninghall,false
-8,1,lecturehall2,true
-8,1,hallway 1,false
-8,1,lecturehall 1,false
-8,1,toilet,false
-8,1,outside,true
-8,1,garden,false
-3,2,garden,false
-3,4,garden,false
-2,6,garden,false
-2,8,garden,false
-8,1,pub,false
-8,1,teacher room,false
-8,1,hallway 2,true
-8,1,relaxing room,true
-8,1,hallway 3,false
+8,1,dininghall,false
+8,1,lecturehall 2,true
+4,3,hallway 1,false
+7,1,lecturehall 1,false
+7,1,toilet,false
+7,2,outside,true
+2,1,garden,true
+6,1,garden,true
+3,2,garden,true
+2,4,garden,false
+1,6,garden,false
+3,8,garden,true
+7,1,pub,false
+7,2,teacher room,false
+3,4,relaxing room,true
+3,6,hallway 3,false
