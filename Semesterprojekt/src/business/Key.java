@@ -6,7 +6,7 @@ package business;
  * @author J & Rasmus Willer
  */
 public class Key extends Item {
-    private String imagePath = "/textures/key.png";
+    private String imagePath = "/textures/key1.png";
     
     /**
      * Constructor for Key class
