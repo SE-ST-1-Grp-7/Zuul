@@ -111,8 +111,8 @@ public abstract class Item extends Entity {
     @Override
     public void onInteract(Person p) {
         if(p instanceof Player) {
-            ((Player) p).inventory().addItem(this);
-            getCurrentRoom().getEntities()[getY()][getX()] = null;
+            if(((Player) p).inventory().addItem(this))
+                getCurrentRoom().getEntities()[getY()][getX()] = null;
             // also remove from entitymanager
     }
     }
