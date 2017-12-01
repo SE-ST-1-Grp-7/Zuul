@@ -25,14 +25,14 @@ public class Student extends Person {
     public Student(int x,
             int y,
             Room currentRoom,
-            boolean hasQ) {
+            boolean hasQ, EntityManager em) {
 
         // Pass arguments to superclass.
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
-                currentRoom);
+                currentRoom, em);
 
         if ("".equals(studentImage)) {
             // Generate random choice of student texture, 12 options.
@@ -48,9 +48,9 @@ public class Student extends Person {
             int y,
             Room currentRoom,
             boolean hasQ,
-            String studentImage) {
+            String studentImage, EntityManager em) {
         // Pass arguments to other constructor.
-        this(x, y, currentRoom, hasQ);
+        this(x, y, currentRoom, hasQ, em);
         this.studentImage = studentImage;
         super.setEntityImage(studentImage);
         getCurrentRoom().getEntities()[getY()][getX()] = null;
