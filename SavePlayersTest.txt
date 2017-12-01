@@ -1,1 +1,1 @@
-1,5,Rasmus,relaxing room
+6,5,Pete,garden,0,0,false,94,100

@@ -133,6 +133,9 @@ public class Player extends Person {
             dont = true; // dont set previous field to null
         }
     }
+    public EntityManager getEntityManager() {
+        return this.em;
+    }
 
     /**
      * Teleportation movement.
