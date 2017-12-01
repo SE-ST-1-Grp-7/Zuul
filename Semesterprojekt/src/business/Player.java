@@ -129,7 +129,7 @@ public class Player extends Person {
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
-            tempItem.setCurrentRoom(currentRoom);
+            tempItem.setCurrentRoom(getCurrentRoom());
             currentRoom.getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
             em.getItemList().add(tempItem);
             dont = true; // dont set previous field to null
