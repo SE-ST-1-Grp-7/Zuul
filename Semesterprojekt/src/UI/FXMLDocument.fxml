@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="837.0" minWidth="10.0" prefWidth="837.0" />
@@ -169,19 +169,20 @@
                   <Insets bottom="5.0" />
                </padding>
             </StackPane>
-            <Button fx:id="useButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#useButton" styleClass="use-button" stylesheets="@style.css" text="USE ITEM">
-               <padding>
-                  <Insets bottom="20.0" left="42.0" right="42.0" top="15.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="15.0" />
-               </VBox.margin>
-            </Button>
-            <Button fx:id="dropButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropButton" styleClass="drop-button" stylesheets="@style.css" text="DROP ITEM">
-               <padding>
-                  <Insets bottom="20.0" left="35.0" right="35.0" top="15.0" />
-               </padding>
-            </Button>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="useButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#useButton" scaleX="0.9" scaleY="0.9" styleClass="use-button" stylesheets="@style.css" text="USE ITEM">
+                     <padding>
+                        <Insets bottom="20.0" left="42.0" right="42.0" top="15.0" />
+                     </padding>
+                  </Button>
+                  <Button fx:id="dropButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropButton" scaleX="0.9" scaleY="0.9" styleClass="drop-button" stylesheets="@style.css" text="DROP ITEM">
+                     <padding>
+                        <Insets bottom="20.0" left="35.0" right="35.0" top="15.0" />
+                     </padding>
+                  </Button>
+               </children>
+            </HBox>
          </children>
       </VBox>
       <TextArea fx:id="bottomTextArea" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="630.0" styleClass="text-field" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1">
