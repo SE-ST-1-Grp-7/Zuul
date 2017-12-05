@@ -54,4 +54,6 @@ public interface IBusiness {
     
     int processinAssignments();
     
+    int amountOfGradedAssignments();
+    
 }

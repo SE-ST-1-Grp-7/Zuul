@@ -226,5 +226,10 @@ public class BusinessFacade implements IBusiness {
     public int processinAssignments() {
     return entityManager.getPlayer().getGradedAssignments();
 }
+
+    @Override
+    public int amountOfGradedAssignments() {
+        return entityManager.getPlayer().getGradedAssignments();
+    }
     
 }

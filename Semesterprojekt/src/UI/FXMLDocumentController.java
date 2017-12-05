@@ -73,6 +73,8 @@ public class FXMLDocumentController implements Initializable {
     private Label roomViewer;
     @FXML
     private Label energyViewer;
+    @FXML
+    private Label gradedAssignmentViewer;
 
     @FXML
     private void newGameButton(ActionEvent event) {
@@ -162,6 +164,7 @@ public class FXMLDocumentController implements Initializable {
                 drawImages(canvasId.getGraphicsContext2D());
                 roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
+                gradedAssignmentViewer.setText(ib.amountOfGradedAssignments() + "/10 assignments graded");
                 if (wincodition() == true) {
                    loop.stop();
                 }
@@ -277,7 +280,6 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You have no selected items to drop." + "\n");
         }
     }
-    @FXML
     private boolean wincodition() {
         if (ib.processinAssignments() >= 10) {
             bottomTextArea.appendText("You have won the game, you are the best professer around" + "\n");
