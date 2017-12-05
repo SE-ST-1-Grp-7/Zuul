@@ -137,9 +137,10 @@ public class Student extends Person {
             }
 
         }
-        if(rand.nextInt(100) >= 95){
-            setHasQuestionToPlayer(true);
-        }
+        //this will make the students chase the player after some time
+//        if(rand.nextInt(100) >= 95){
+//            setHasQuestionToPlayer(true);
+//        }
         
     }
 
