@@ -408,7 +408,7 @@ public class EntityManager {
                 studentlist.add(new Student(j,
                         i,
                         rm.getRoom(name),
-                        true,
+                        false,
                         "/textures/student8.png", this));
                 break;
 
@@ -417,7 +417,7 @@ public class EntityManager {
                 studentlist.add(new Student(j,
                         i,
                         rm.getRoom(name),
-                        false,
+                        true,
                         "/textures/student9.png", this));
                 break;
 
