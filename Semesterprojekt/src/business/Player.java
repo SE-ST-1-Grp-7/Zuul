@@ -271,7 +271,7 @@ public class Player extends Person {
     @Override
     public void onInteract(Person p) {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
-        setEnergy(getEnergy()-35);
+        setEnergy(getEnergy()-40);
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }
