@@ -57,7 +57,7 @@ public class Assignment extends Item {
                 //we print the progress
                 System.out.println("Energy = " + p.getEnergy() +
                         " and assignmentProgress = " +
-                        p.getAssignmentProgress());
+                        p.getAssignmentProgress() + "%");
             }
             /*if the progress is 100 we set the progress to 0 and add 1 to the
             gradedAssignments and removes it from the inventory*/
