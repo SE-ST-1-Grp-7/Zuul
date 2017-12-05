@@ -47,7 +47,7 @@ public class EnergyDrink extends Item {
     @Override
     public boolean use(Player p) {
         // If it does not max out player energy, restore energy.
-        if (p.getEnergyCap() < ENERGY_RESTORE + p.getEnergy()) {
+        if (p.getEnergyCap() > ENERGY_RESTORE + p.getEnergy()) {
             p.setEnergy(ENERGY_RESTORE + p.getEnergy());
             
         // Otherwise set energy to max of capacity.
