@@ -69,11 +69,11 @@ public class Assignment extends Item {
                 //removes this assignment from the player's inventory
                 p.inventory().removeItem(this);
                 
-                //if you have graded 10 assignments; you win and quit the game
-                if(p.getGradedAssignments() >= 2){
-                    System.out.println("you won");
-                    //quit game
-                }
+//                //if you have graded 10 assignments; you win and quit the game
+//                if(p.getGradedAssignments() >= 10){
+//                    System.out.println("you won");
+//                    //quit game
+//                }
 
             }
         }else{ // If not enough energy, do the following.

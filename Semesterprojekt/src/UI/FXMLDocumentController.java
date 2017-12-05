@@ -279,7 +279,7 @@ public class FXMLDocumentController implements Initializable {
     }
     @FXML
     private boolean wincodition() {
-        if (ib.processinAssignments() >= 2) {
+        if (ib.processinAssignments() >= 10) {
             bottomTextArea.appendText("You have won the game, you are the best professer around" + "\n");
             canvasId.setVisible(false);
             ib.loadXML();
