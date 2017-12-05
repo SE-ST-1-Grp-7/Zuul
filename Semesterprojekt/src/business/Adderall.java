@@ -49,8 +49,15 @@ public class Adderall extends Item{
     public boolean use(Player p) {
         // Increase energy cap.
         p.setEnergyCap(p.getEnergyCap() + ENERGY_CAP_INCREASE);
-        // Replenish energy.
-        p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+        
+        if (p.getEnergyCap() > ENERGY_RESTORE + p.getEnergy()) {
+            // Replenish energy.
+            p.setEnergy(ENERGY_RESTORE + p.getEnergy());
+
+            // Otherwise set energy to max of capacity.
+        } else {
+            p.setEnergy(p.getEnergyCap());
+        }
         return true;
     }
 }
