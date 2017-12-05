@@ -168,7 +168,10 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void loop() {
-
+        if(entityManager.getPlayer().getEnergy() <= 0) {
+            System.exit(0);
+        }
+        
         // call idleMove on all students in the game
         for (Student s : entityManager.getStudentList()) {
             s.idleMove();
