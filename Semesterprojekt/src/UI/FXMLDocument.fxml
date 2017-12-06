@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="837.0" minWidth="10.0" prefWidth="837.0" />
@@ -207,6 +207,7 @@
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" style="-fx-background-image: url(&quot;/assets/frame1.png&quot;);" GridPane.halignment="CENTER">
          <children>
             <Canvas fx:id="canvasId" height="640.0" style="padding: 10px;" width="640.0" />
+            <Button fx:id="tryAgainButton" mnemonicParsing="false" text="Try Again" visible="false" StackPane.alignment="CENTER" />
          </children>
          <GridPane.margin>
             <Insets top="15.0" />

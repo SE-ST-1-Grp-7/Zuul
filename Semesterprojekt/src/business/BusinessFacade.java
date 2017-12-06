@@ -7,8 +7,6 @@ import Acq.IData;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
-import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
 /**
  *
@@ -16,6 +14,7 @@ import javafx.scene.control.ListView;
  */
 public class BusinessFacade implements IBusiness {
 
+    private boolean gameOver = false;
     private EntityManager entityManager;
     private RoomManager roomManager;
     private IData data;
@@ -50,12 +49,14 @@ public class BusinessFacade implements IBusiness {
     
     /**
      * Override; set the game to New Game state. Instantiating new room- and 
-     * entity-managers and update all doors in the game.
+     * entity-managers and update all doors in the game, along with setting
+     * gameOver to false.
      */
     @Override
     public void resetGame() {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
+        gameOver = false;
         
         // Iterate through the length of furniture list.
         for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
@@ -207,6 +208,14 @@ public class BusinessFacade implements IBusiness {
             return "testSquare.png";
         }
     }
+    /**
+     * Override: Checks if the player has lost the game.
+     * @return Boolean, whether or not the game is over.
+     */
+    @Override
+    public boolean isGameOver() {
+        return this.gameOver;
+    }
 
     /**
      * Override; The game loop. Responsible for moving students and managing
@@ -216,7 +225,8 @@ public class BusinessFacade implements IBusiness {
     public void loop() {
         // If energy reached zero, exit game.
         if(entityManager.getPlayer().getEnergy() <= 0) {
-            System.exit(0);
+            gameOver = true;
+            return;
         }
         
         // For all students, call check idleMove.
