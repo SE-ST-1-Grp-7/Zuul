@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
@@ -73,6 +74,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label gradedAssignmentViewer;
     private Button tryAgainButton;
+    @FXML
+    private TextField nameField;
 
     /**
      *
@@ -81,6 +84,14 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void newGameButton(ActionEvent event) {
+        if(nameField.getText().length() <= 12 && nameField.getText().length() >= 4) {
+            ib.playerSetName(nameField.getText());
+            nameField.setVisible(false);
+        } else {
+            bottomTextArea.appendText("Your name must be shorter than or equal to 12 characters\n" +
+                    "and more than or equal to 4 characters ");
+            return;
+        }
         loop.stop();
         ib.resetGame();
         // Display welcome message.
@@ -146,7 +157,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(highscoreButton, highscoretip);
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
-
+        canvasId.getGraphicsContext2D().drawImage(new Image("assets/start1.png"), 0, 0);
         timeLabel.setText("TIME LEFT: " + "05:00");
         loop = new AnimationTimer() {
             @Override
@@ -157,8 +168,8 @@ public class FXMLDocumentController implements Initializable {
 
                 if (diff >= 1000000000) {
                     startSeconds--;
-                    minutes = startSeconds / 60;
-                    seconds = startSeconds % 60;
+                    minutes = ib.getSeconds() / 60;
+                    seconds = ib.getSeconds() % 60;
                     timeLabel.setText("Time LEFT: "
                             + Integer.toString(minutes)
                             + ":" + Integer.toString(seconds));
@@ -334,4 +345,5 @@ public class FXMLDocumentController implements Initializable {
         }
         return false;
     }
+
 }

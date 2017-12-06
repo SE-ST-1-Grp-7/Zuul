@@ -8,6 +8,9 @@ import business.Inventory;
  * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
+    // sets name of player
+    void playerSetName(String name);
+    
     // Gets value of gameOver
     boolean isGameOver();
     
@@ -64,5 +67,8 @@ public interface IBusiness {
     
     // Retrieve the value of how many assignments have been graded.
     int amountOfGradedAssignments();
+    
+    // Get amount of seconds left
+    int getSeconds();
     
 }

@@ -18,6 +18,8 @@ public class BusinessFacade implements IBusiness {
     private EntityManager entityManager;
     private RoomManager roomManager;
     private IData data;
+    // amount of seconds you have left
+    private int seconds = 120;
 
     /**
      * No-arg constructor; call game reset, to start game from fresh.
@@ -224,7 +226,7 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void loop() {
         // If energy reached zero, exit game.
-        if(entityManager.getPlayer().getEnergy() <= 0) {
+        if(entityManager.getPlayer().getEnergy() <= 0 || seconds <= 0) {
             gameOver = true;
             return;
         }
@@ -233,10 +235,14 @@ public class BusinessFacade implements IBusiness {
         for (Student s : entityManager.getStudentList()) {
             s.idleMove();
         }
-        
+        if(entityManager.getPlayer().getCurrentAssignment() != null) {
+            entityManager.getPlayer().getCurrentAssignment().tick(entityManager.getPlayer());
+        }
         // Reduce player's current energy by 1 each second.
         entityManager.getPlayer().setEnergy(
                 entityManager.getPlayer().getEnergy() - 1);
+        // Reduce seconds by 1
+        seconds--;
         
         System.out.println(entityManager.getPlayer().getEnergy());
     }
@@ -308,5 +314,19 @@ public class BusinessFacade implements IBusiness {
     @Override
     public int amountOfGradedAssignments() {
         return entityManager.getPlayer().getGradedAssignments();
+    }
+ /**
+  * Override: Set player's name
+  * 
+  * @param name String, desired name of player
+  */
+    @Override
+    public void playerSetName(String name) {
+        entityManager.getPlayer().setName(name);
+    }
+
+    @Override
+    public int getSeconds() {
+        return this.seconds;
     }
 }
