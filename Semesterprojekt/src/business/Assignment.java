@@ -13,11 +13,11 @@ public class Assignment extends Item {
     /**
      * Constructor for Assignment class.
      *
-     * @param x int, horizontal position in room grid.
-     * @param y int, vertical position in room grid.
-     * @param width int, pixel width of assignment.
-     * @param height int, pixel height of assignment.
-     * @param currentRoom Room, currently in this room.
+     * @param x             int, horizontal position in room grid.
+     * @param y             int, vertical position in room grid.
+     * @param width         int, pixel width of assignment.
+     * @param height        int, pixel height of assignment.
+     * @param currentRoom   Room, currently in this room.
      */
     public Assignment(int x,
             int y,
@@ -27,13 +27,16 @@ public class Assignment extends Item {
 
         // Pass arguments to superclass.
         super(x,
-                y,
-                width,
-                height,
-                currentRoom,
-                "Assignment", // Name of item.
-                "An assigment you can grade.", // Description of item.
-                1);                              // Weight of item.
+              y,
+              width,
+              height,
+              currentRoom,
+              // Name of item.
+              "Assignment",
+              // Description of item.
+              "An assigment you can grade.",
+              // Weight of item.
+              1);
 
         // Pass path of texture to superclass.
         super.setEntityImage(assignmentImage);
@@ -42,7 +45,7 @@ public class Assignment extends Item {
     /**
      * Override, upon use of item.
      *
-     * @param p Player, player is the one doing the item.
+     * @param p     Player, player is the one using the item.
      */
     @Override
     public boolean use(Player p) {
