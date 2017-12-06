@@ -68,4 +68,7 @@ public interface IBusiness {
     // Retrieve the value of how many assignments have been graded.
     int amountOfGradedAssignments();
     
+    // Get amount of seconds left
+    int getSeconds();
+    
 }

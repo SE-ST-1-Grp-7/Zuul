@@ -168,8 +168,8 @@ public class FXMLDocumentController implements Initializable {
 
                 if (diff >= 1000000000) {
                     startSeconds--;
-                    minutes = startSeconds / 60;
-                    seconds = startSeconds % 60;
+                    minutes = ib.getSeconds() / 60;
+                    seconds = ib.getSeconds() % 60;
                     timeLabel.setText("Time LEFT: "
                             + Integer.toString(minutes)
                             + ":" + Integer.toString(seconds));
