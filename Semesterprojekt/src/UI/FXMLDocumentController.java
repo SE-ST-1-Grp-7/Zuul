@@ -152,7 +152,7 @@ public class FXMLDocumentController implements Initializable {
             @Override
             public void handle(long currentNanoTime) {
                 // ensures that the loop only gets called once per second
-                diff += currentNanoTime - prevNanoTime;
+                diff = currentNanoTime - prevNanoTime;
                 
                 if (diff >= 1000000000) {
                     startSeconds--;
@@ -170,7 +170,6 @@ public class FXMLDocumentController implements Initializable {
                     
                     ib.loop();
                     prevNanoTime = currentNanoTime;
-                    diff -= 1000000000;
                 }
                 
                 // draw room 60 times per second
