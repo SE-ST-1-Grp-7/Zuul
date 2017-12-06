@@ -14,7 +14,7 @@ public class Player extends Person {
     private int assignmentProgress; // Progress of grading an assignment.
     private Item tempItem; // Temporary holder for item to be dropped.
     private boolean dont = false; // Avoid tempItem overlap with other items.
-    private String playerImage = "/textures/player.png"; // String of image path.
+    private String playerImage = "/textures/player.png"; // Image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
 
@@ -22,12 +22,18 @@ public class Player extends Person {
      * Constructor for player. Passes all relevant arguments to Superclass and
      * sets the attributes for the player.
      *
-     * @param x int, horizontal positioning in grid.
-     * @param y int, vertical positioning in grid.
-     * @param currentRoom Room, placed currently in this room.
-     * @param name String, name of player.
+     * @param x             int, horizontal positioning in grid.
+     * @param y             int, vertical positioning in grid.
+     * @param currentRoom   Room, placed currently in this room.
+     * @param name          String, name of player.
+     * @param em            EntityManager, 
      */
-    public Player(int x, int y, String name, Room currentRoom, EntityManager em) {
+    public Player(int x,
+            int y,
+            String name,
+            Room currentRoom,
+            EntityManager em) {
+        
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,

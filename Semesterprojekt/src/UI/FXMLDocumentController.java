@@ -1,13 +1,11 @@
 package UI;
 
 import Acq.IBusiness;
-import Acq.IUI;
 import data.Highscore;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
 import javafx.application.Platform;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,7 +21,6 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import sun.font.TrueTypeFont;
 
 /**
  *
@@ -76,11 +73,18 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label gradedAssignmentViewer;
 
+    /**
+     * 
+     * 
+     * @param event 
+     */
     @FXML
     private void newGameButton(ActionEvent event) {
         loop.stop();
         ib.resetGame();
-        bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest games on SDU.\n");
+        // Display welcome message.
+        bottomTextArea.appendText("Welcome to the Professor Game!\n" +
+                "One of the hardest games on SDU.\n");
         GraphicsContext gc = canvasId.getGraphicsContext2D();
         //link the listView to the inventory
         listView.setItems(ib.playerGetInventory().getInventory());
@@ -148,33 +152,46 @@ public class FXMLDocumentController implements Initializable {
             @Override
             public void handle(long currentNanoTime) {
                 // ensures that the loop only gets called once per second
-                diff = currentNanoTime - prevNanoTime;
+                diff += currentNanoTime - prevNanoTime;
+                
                 if (diff >= 1000000000) {
                     startSeconds--;
                     minutes = startSeconds / 60;
                     seconds = startSeconds % 60;
-                    timeLabel.setText("Time LEFT: " + Integer.toString(minutes) + ":" + Integer.toString(seconds));
-                    //   timeLabel.setText("TIME LEFT: " + Integer.toString(seconds));
+                    timeLabel.setText("Time LEFT: " +
+                            Integer.toString(minutes) +
+                            ":" + Integer.toString(seconds));
+                    
+                    
+                    //   timeLabel.setText("TIME LEFT: " +
+                    //           Integer.toString(seconds));
                     // calls gameloop
+                    
+                    
                     ib.loop();
                     prevNanoTime = currentNanoTime;
+                    diff--;
                 }
+                
                 // draw room 60 times per second
-                canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640); // good guy rasmus
+                canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640);
                 drawImages(canvasId.getGraphicsContext2D());
                 roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
-                gradedAssignmentViewer.setText(ib.amountOfGradedAssignments() + "/10 assignments graded");
+                gradedAssignmentViewer.setText(ib.amountOfGradedAssignments() +
+                        "/10 assignments graded");
                 if (wincodition() == true) {
                    loop.stop();
                 }
-                
-                
             }
         };
-
     }
-
+    
+    /**
+     * 
+     * 
+     * @param gc 
+     */
     public void drawImages(GraphicsContext gc) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
@@ -185,7 +202,6 @@ public class FXMLDocumentController implements Initializable {
                 if (!ib.entityGetImage(i, j).equals("testSquare.png")) {
                     gc.drawImage(choosePic(i, j), X * j, Y * i);
                 }
-
             }
         }    
     } 
@@ -267,10 +283,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void useButton(ActionEvent event) {
         if ((listView.getSelectionModel().getSelectedItem() != null)) {
-            bottomTextArea.appendText("You just used " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
+            bottomTextArea.appendText("You just used " +
+                    listView.getSelectionModel().getSelectedItem().toString() +
+                    "\n");
             ib.itemUse(listView.getSelectionModel().getSelectedItem());
         } else {
-            bottomTextArea.appendText("You have no selected items to use in inventory." + "\n");
+            bottomTextArea.appendText("You have no selected items to use in " +
+                    "inventory.\n");
         }
 
     }
@@ -283,15 +302,25 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void dropButton(ActionEvent event) {
         if ((listView.getSelectionModel().getSelectedItem() != null)) {
-            bottomTextArea.appendText("You just dropped " + listView.getSelectionModel().getSelectedItem().toString() + "\n");
+            bottomTextArea.appendText("You just dropped " +
+                    listView.getSelectionModel().getSelectedItem().toString() +
+                    "\n");
             ib.itemDrop(listView.getSelectionModel().getSelectedItem());
         } else {
-            bottomTextArea.appendText("You have no selected items to drop." + "\n");
+            bottomTextArea.appendText("You have no selected items to drop." +
+                    "\n");
         }
     }
+    
+    /**
+     * 
+     * 
+     * @return 
+     */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
-            bottomTextArea.appendText("You have won the game, you are the best professer around" + "\n");
+            bottomTextArea.appendText("You have won the game, you are the " +
+                    "best professer around" + "\n");
             canvasId.setVisible(false);
             ib.loadXML();
             ib.displayHighscore();
@@ -300,8 +329,7 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
             bottomTextArea.appendText(ib.displayHighscore());
             return true;
-        } 
+        }
         return false;
-    }     
-
+    }
 }

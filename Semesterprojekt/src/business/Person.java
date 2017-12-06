@@ -18,6 +18,7 @@ public abstract class Person extends Entity {
      * @param width         int, pixel width of person.
      * @param height        int, pixel height of person.
      * @param currentRoom   Room, currently in this room.
+     * @param em
      */
     public Person(int x, int y, int width, int height, Room currentRoom, EntityManager em) {
         // Pass arguments to superclass.

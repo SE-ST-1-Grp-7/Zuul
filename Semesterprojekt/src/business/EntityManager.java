@@ -1,6 +1,7 @@
 package business;
 
 // IMPORTS
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -244,7 +245,7 @@ public class EntityManager {
                            array as the value. */
                         String[][] idList = new String[10][10];
                         entityCSV.put(roomName, idList);
-                        // Otherwise assign ID to grid position in hashmap value[][] 
+                    // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         /* Iterate through each x-coordinate in room grid in CSV
                            file and look for ID numbers. */
@@ -1067,7 +1068,8 @@ public class EntityManager {
      */
     public HashMap parseForSave() {
         // Instantiate the HashMap.
-        HashMap<String, ArrayList<ArrayList<String>>> savePackage = new HashMap<>();
+        HashMap<String, ArrayList<ArrayList<String>>> savePackage = new
+         HashMap<>();
 
         // Place collected data about students in HashMap.
         savePackage.put("\\Documents\\zuul\\SaveStudentTest.txt",
@@ -1209,7 +1211,8 @@ public class EntityManager {
      * @param loadPackage HashMap<String, ArrayList<ArrayList<String>>>, key is
      * file path, value is 2D list with data.
      */
-    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>> loadPackage) {
+    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>>
+            loadPackage) {
         // Retrieve list with save file paths.
         ArrayList<String> saveFiles = getSaveFiles();
 
