@@ -39,21 +39,30 @@ public class Door extends Furniture {
                 System.out.println("you unlock the door and go through");
                 goThroughDoorMethod((Player) p);
             } else if (this.isLocked) {
-                System.out.println("the door is locked," +
-                        " you need a key to open it");
+                System.out.println("the door is locked,"
+                        + " you need a key to open it");
             } else {
                 goThroughDoorMethod((Player) p);
             }
-        } else if(p instanceof Student) {
-            if(!this.isLocked)
-                goThroughDoorMethod2((Student ) p);
+        } else if (p instanceof Student) {
+            if (!this.isLocked) {
+                goThroughDoorMethod2((Student) p);
+            }
         }
 
     }
 
     private void goThroughDoorMethod(Player player) {
-        roomManager.getCurrentRoom().setEntityWithXY(
-                player.getX(), player.getY(), null);
+        //Place tempItem if it exists
+        if (player.getTempItem() != null) { 
+            roomManager.getCurrentRoom().setEntityWithXY(
+                    player.getX(), player.getY(), player.getTempItem());
+            player.setTempItem(null);
+        } else { // else set prev position to null
+            roomManager.getCurrentRoom().setEntityWithXY(
+                    player.getX(), player.getY(), null);
+        }
+
         useDoor(player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(player);
     }
