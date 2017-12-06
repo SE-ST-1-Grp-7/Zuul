@@ -8,7 +8,7 @@ import business.Inventory;
  * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
-    
+    // Gets value of gameOver
     boolean isGameOver();
     
     // Inject Data Facade

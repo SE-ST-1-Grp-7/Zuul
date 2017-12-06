@@ -179,6 +179,7 @@ public class FXMLDocumentController implements Initializable {
                 if (ib.isGameOver()) { // checks if gameOver
                     canvasId.getGraphicsContext2D().drawImage(new Image("assets/gameOver.png"), 0, 0); // draw gameover image
                     loop.stop();
+                    bottomTextArea.appendText("You've lost the game");
                 }
                 if (wincodition() == true) {
                     loop.stop();
