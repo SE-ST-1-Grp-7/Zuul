@@ -170,7 +170,7 @@ public class FXMLDocumentController implements Initializable {
                     
                     ib.loop();
                     prevNanoTime = currentNanoTime;
-                    diff--;
+                    diff -= 1000000000;
                 }
                 
                 // draw room 60 times per second
