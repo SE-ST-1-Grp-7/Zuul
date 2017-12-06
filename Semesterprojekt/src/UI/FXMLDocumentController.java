@@ -323,7 +323,7 @@ public class FXMLDocumentController implements Initializable {
         if (ib.amountOfGradedAssignments() >= 10) {
             bottomTextArea.appendText("You have won the game, you are the "
                     + "best professer around" + "\n");
-            canvasId.setVisible(false);
+            canvasId.getGraphicsContext2D().drawImage(new Image("assets/win2.png"), 0, 0); // draw win screen image
             ib.loadXML();
             ib.displayHighscore();
             bottomTextArea.appendText("The highscore list for World of SDU\n");
