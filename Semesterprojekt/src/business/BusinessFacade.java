@@ -309,4 +309,13 @@ public class BusinessFacade implements IBusiness {
     public int amountOfGradedAssignments() {
         return entityManager.getPlayer().getGradedAssignments();
     }
+ /**
+  * Override: Set player's name
+  * 
+  * @param name String, desired name of player
+  */
+    @Override
+    public void playerSetName(String name) {
+        entityManager.getPlayer().setName(name);
+    }
 }

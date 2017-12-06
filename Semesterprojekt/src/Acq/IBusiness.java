@@ -8,6 +8,9 @@ import business.Inventory;
  * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
+    // sets name of player
+    void playerSetName(String name);
+    
     // Gets value of gameOver
     boolean isGameOver();
     
