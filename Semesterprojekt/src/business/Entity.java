@@ -126,11 +126,3 @@ public abstract class Entity {
     public abstract void onInteract(Person p);    
     
 }
-//    public BufferedImage getGraphics() {
-//        return graphics;
-//    }
-//
-//    public void setGraphics(BufferedImage graphics) {
-//        this.graphics = graphics;
-//    }
-//}
