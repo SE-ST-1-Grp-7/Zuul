@@ -235,7 +235,9 @@ public class BusinessFacade implements IBusiness {
         for (Student s : entityManager.getStudentList()) {
             s.idleMove();
         }
-        
+        if(entityManager.getPlayer().getCurrentAssignment() != null) {
+            entityManager.getPlayer().getCurrentAssignment().tick(entityManager.getPlayer());
+        }
         // Reduce player's current energy by 1 each second.
         entityManager.getPlayer().setEnergy(
                 entityManager.getPlayer().getEnergy() - 1);

@@ -12,6 +12,7 @@ public class Player extends Person {
     private Inventory inventory; // The player's inventory.
     private int gradedAssignments; // Amount of graded assignments.
     private int assignmentProgress; // Progress of grading an assignment.
+    private Assignment currentAssignment;
     private Item tempItem; // Temporary holder for item to be dropped.
     private boolean dont = false; // Avoid tempItem overlap with other items.
     private String playerImage = "/textures/player.png"; // Image path.
@@ -288,5 +289,11 @@ public class Player extends Person {
 
     public void setHasKey(boolean hasKey) {
         this.hasKey = hasKey;
+    }
+    public Assignment getCurrentAssignment() {
+        return this.currentAssignment;
+    }
+    public void setCurrentAssignment(Assignment currentAssignment) {
+        this.currentAssignment = currentAssignment;
     }
 }
