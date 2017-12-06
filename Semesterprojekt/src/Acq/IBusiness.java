@@ -34,26 +34,33 @@ public interface IBusiness {
     void saveGame();
 
     // Load game from memory.
-    void loadGame();
+    boolean loadGame();
 
-    // Get tiles
+    // Get tile image file name.
     String getTileImage(int row, int col);
 
-    void goThroughDoor();
-
+    // Game loop.
     void loop();
+    
+    // Retrieve player inventory.
     Inventory playerGetInventory();
+    
+    // Use item.
     void itemUse(Object o);
+    
+    // Drop item from inventory.
     void itemDrop(Object o);
     
+    // Retrieve name of the room player is currently in.
     String playerCurrentRoom();
-
+    
+    // Set game to initial state.
     void resetGame();
-  
+    
+    // Retrive player's current energy level.
     int playerEnergy();
     
-    int processinAssignments();
-    
+    // Retrieve the value of how many assignments have been graded.
     int amountOfGradedAssignments();
     
 }

@@ -43,7 +43,8 @@ public class Load {
                         dataSegment.add(str.trim());
                     }
                     // Finally add sub-list to top level list.
-                    data.add(dataSegment);
+                    if (!dataSegment.isEmpty())
+                        data.add(dataSegment);
                 }
             }
             

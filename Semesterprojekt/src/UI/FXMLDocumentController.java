@@ -80,7 +80,7 @@ public class FXMLDocumentController implements Initializable {
     private void newGameButton(ActionEvent event) {
         loop.stop();
         ib.resetGame();
-        bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest game on SDU.\n");
+        bottomTextArea.appendText("Welcome to the Professor Game!\nOne of the hardest games on SDU.\n");
         GraphicsContext gc = canvasId.getGraphicsContext2D();
         //link the listView to the inventory
         listView.setItems(ib.playerGetInventory().getInventory());
@@ -214,14 +214,23 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * loads save files
+     * Load data from files if there is any previous save data.
      *
-     * @param event
+     * @param event     ActionEvent, when button is pushed.
      */
     @FXML
     private void loadButton(ActionEvent event) {
-        bottomTextArea.appendText("The game is now loaded.\n");
-        ib.loadGame();
+        // Call load game and get a boolean back, true is successfull.
+        boolean status = ib.loadGame();
+        
+        // If successfull print load message to screen.
+        if (status) {
+            bottomTextArea.appendText("The game is now loaded.\n");
+            
+        // Otherwise print there was no data.
+        } else {
+            bottomTextArea.appendText("There is no load data.\n");
+        }
     }
 
     /**
@@ -281,7 +290,7 @@ public class FXMLDocumentController implements Initializable {
         }
     }
     private boolean wincodition() {
-        if (ib.processinAssignments() >= 10) {
+        if (ib.amountOfGradedAssignments() >= 10) {
             bottomTextArea.appendText("You have won the game, you are the best professer around" + "\n");
             canvasId.setVisible(false);
             ib.loadXML();

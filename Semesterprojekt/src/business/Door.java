@@ -39,7 +39,8 @@ public class Door extends Furniture {
                 System.out.println("you unlock the door and go through");
                 goThroughDoorMethod((Player) p);
             } else if (this.isLocked) {
-                System.out.println("the door is locked, you need a key to open it");
+                System.out.println("the door is locked," +
+                        " you need a key to open it");
             } else {
                 goThroughDoorMethod((Player) p);
             }
@@ -51,13 +52,15 @@ public class Door extends Furniture {
     }
 
     private void goThroughDoorMethod(Player player) {
-        roomManager.getCurrentRoom().setEntityWithXY(player.getX(), player.getY(), null);
+        roomManager.getCurrentRoom().setEntityWithXY(
+                player.getX(), player.getY(), null);
         useDoor(player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(player);
     }
 
     private void goThroughDoorMethod2(Student student) {
-        student.getCurrentRoom().setEntityWithXY(student.getX(), student.getY(), null);
+        student.getCurrentRoom().setEntityWithXY(
+                student.getX(), student.getY(), null);
         useDoor(student, this.roomManager);
         student.getCurrentRoom().setEntity(student);
     }
@@ -100,7 +103,8 @@ public class Door extends Furniture {
      * @param roomManager
      * @param direction
      */
-    private void setPersonToNewRoom(Person person, RoomManager roomManager, String direction) {
+    private void setPersonToNewRoom(Person person, RoomManager roomManager,
+            String direction) {
         person.setCurrentRoom(getCurrentRoom().getExit(direction));
         if (person instanceof Player) {
             roomManager.setCurrentRoom(getCurrentRoom().getExit(direction));
