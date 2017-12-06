@@ -72,7 +72,6 @@ public class FXMLDocumentController implements Initializable {
     private Label energyViewer;
     @FXML
     private Label gradedAssignmentViewer;
-    @FXML
     private Button tryAgainButton;
 
     /**
@@ -312,12 +311,6 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You have no selected items to drop."
                     + "\n");
         }
-    }
-
-    private void tryAgainButton(ActionEvent event) {
-        ib.resetGame();
-        tryAgainButton.setVisible(false);
-
     }
 
     /**

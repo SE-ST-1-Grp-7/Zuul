@@ -207,7 +207,6 @@
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" style="-fx-background-image: url(&quot;/assets/frame1.png&quot;);" GridPane.halignment="CENTER">
          <children>
             <Canvas fx:id="canvasId" height="640.0" style="padding: 10px;" width="640.0" />
-            <Button fx:id="tryAgainButton" mnemonicParsing="false" text="Try Again" visible="false" StackPane.alignment="CENTER" />
          </children>
          <GridPane.margin>
             <Insets top="15.0" />
