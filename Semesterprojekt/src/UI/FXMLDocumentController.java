@@ -229,7 +229,7 @@ public class FXMLDocumentController implements Initializable {
 
         };
 
-        minimapViewer.setImage(new Image(ib.minimapImage()));
+        minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
     }
 
     /**
