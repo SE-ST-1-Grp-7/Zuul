@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -35,7 +36,6 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
-    private int startSeconds = 300;
     private int seconds = 0;
     private int minutes = 0;
     private Highscore h = new Highscore();
@@ -158,7 +158,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
         canvasId.getGraphicsContext2D().drawImage(new Image("assets/start1.png"), 0, 0);
-        timeLabel.setText("TIME LEFT: " + "05:00");
+        timeLabel.setText("TIME LEFT");
         loop = new AnimationTimer() {
             @Override
             public void handle(long currentNanoTime) {
@@ -167,7 +167,6 @@ public class FXMLDocumentController implements Initializable {
                 diff = currentNanoTime - prevNanoTime;
 
                 if (diff >= 1000000000) {
-                    startSeconds--;
                     minutes = ib.getSeconds() / 60;
                     seconds = ib.getSeconds() % 60;
                     timeLabel.setText("Time LEFT: "
@@ -344,6 +343,11 @@ public class FXMLDocumentController implements Initializable {
             return true;
         }
         return false;
+    }
+
+    @FXML
+    private void nameFieldClick(MouseEvent event) {
+        nameField.clear();
     }
 
 }
