@@ -9,15 +9,30 @@
    
 }
 
-.text-field{
+.infobox {
+    -fx-max-width: 270px;
+    -fx-max-height: 60px;
+}
+.list-view-new{
+    -fx-max-width: 267px;
+}
+
+.entername{
+    -fx-background-color:white;
+    -fx-background-image:transparent;
+     -fx-font-size: 20px;
+   -fx-font-family: "Bangers";
+}
+
+.text-field1{
     -fx-font-size: 20px;
    -fx-font-family: "Bangers";
 }
-.text-field .scroll-bar{
+.text-field1 .scroll-bar{
     -fx-background-color:transparent;
 }
-.text-field .scroll-bar:horizontal .thumb,
-.text-field  .scroll-bar:vertical .thumb {
+.text-field1 .scroll-bar:horizontal .thumb,
+.text-field1  .scroll-bar:vertical .thumb {
     -fx-background-color:derive(black,90%);
 
 }
@@ -27,7 +42,7 @@
     -fx-background-size: cover;
 }
 
-.text-field{
+.text-field1{
     -fx-background-color: transparent;
     -fx-background-image: url("/assets/textfield.png");
     -fx-background-repeat:no-repeat;
