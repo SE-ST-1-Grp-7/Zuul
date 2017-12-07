@@ -42,6 +42,26 @@ public class FXMLDocumentController implements Initializable {
     private AnimationTimer loop;
     private long diff = 0;
     private Pane pane;
+    // Keyhandler that moves the player around
+    private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
+                switch (event.getCode()) {
+                    case D:
+                        ib.playerMove("right");
+                        break;
+                    case A:
+                        ib.playerMove("left");
+                        break;
+                    case W:
+                        ib.playerMove("up");
+                        break;
+                    case S:
+                        ib.playerMove("down");
+                        break;
+                    case Z:
+                        ib.playerInteract();
+                        break;
+                }
+        };
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -105,28 +125,8 @@ public class FXMLDocumentController implements Initializable {
         // set focus on canvas
         gp.setFocusTraversable(true);
         //set keylistener
-        gp.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case D:
-                        ib.playerMove("right");
-                        break;
-                    case A:
-                        ib.playerMove("left");
-                        break;
-                    case W:
-                        ib.playerMove("up");
-                        break;
-                    case S:
-                        ib.playerMove("down");
-                        break;
-                    case Z:
-                        ib.playerInteract();
-                        break;
-                }
-            }
-        });
+        gp.setOnKeyPressed(movementhandler);
+   
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         loop.start();
