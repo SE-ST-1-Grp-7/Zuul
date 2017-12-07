@@ -42,26 +42,7 @@ public class FXMLDocumentController implements Initializable {
     private long diff = 0;
     private Pane pane;
     private String tempPlayerName;
-    // Keyhandler that moves the player around
-    private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
-        switch (event.getCode()) {
-            case D:
-                ib.playerMove("right");
-                break;
-            case A:
-                ib.playerMove("left");
-                break;
-            case W:
-                ib.playerMove("up");
-                break;
-            case S:
-                ib.playerMove("down");
-                break;
-            case Z:
-                ib.playerInteract();
-                break;
-        }
-    };
+    // Keyhandler that moves the player around 
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -96,6 +77,45 @@ public class FXMLDocumentController implements Initializable {
     private Button tryAgainButton;
     @FXML
     private TextField nameField;
+    private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
+        switch (event.getCode()) {
+            case D:
+                ib.playerMove("right");
+                break;
+            case A:
+                ib.playerMove("left");
+                break;
+            case W:
+                ib.playerMove("up");
+                break;
+            case S:
+                ib.playerMove("down");
+                break;
+            case Z:
+                ib.playerInteract();
+                break;
+            case DIGIT1:
+                listView.getSelectionModel().clearAndSelect(0);
+                useItem((IItem) listView.getSelectionModel().getSelectedItem());
+                break;
+            case DIGIT2:
+                listView.getSelectionModel().clearAndSelect(1);
+                useItem((IItem) listView.getSelectionModel().getSelectedItem());
+                break;
+            case DIGIT3:
+                listView.getSelectionModel().clearAndSelect(2);
+                useItem((IItem) listView.getSelectionModel().getSelectedItem());
+                break;
+            case DIGIT4:
+                listView.getSelectionModel().clearAndSelect(3);
+                useItem((IItem) listView.getSelectionModel().getSelectedItem());
+                break;
+            case DIGIT5:
+                listView.getSelectionModel().clearAndSelect(4);
+                useItem((IItem) listView.getSelectionModel().getSelectedItem());
+                break;
+        }
+    };
 
     /**
      *
@@ -305,32 +325,30 @@ public class FXMLDocumentController implements Initializable {
         // If nothing, do nothing.
         if (listView.getSelectionModel().getSelectedItem() == null) {
             bottomTextArea.appendText("You have not selected a item to use" + "\n");
-
             // If false, use item.
-        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == false) {
-            bottomTextArea.appendText("You just used "
-                    + listView.getSelectionModel().getSelectedItem().toString()
-                    + "\n");
-            ib.itemUse((IItem) listView.getSelectionModel().getSelectedItem());
-
-            // If true, use assignment.
-        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == true) {
-            if (ib.playerEnergy() > 20 && ib.playerCurrentRoom().matches("teacher room")) {
-                bottomTextArea.appendText("You just used "
-                        + listView.getSelectionModel().getSelectedItem().toString()
-                        + "\n");
-                ib.itemUse((IItem) listView.getSelectionModel().getSelectedItem());
-            } else if (ib.playerEnergy() < 20) {
-                bottomTextArea.appendText("You do not have enough energy!" + "\n");
-            } else {
-                bottomTextArea.appendText("You are not in your own room!" + "\n");
-            }
-
-            // Error catch.
         } else {
-            System.out.println("Error in use button handling.");
+            useItem((IItem) listView.getSelectionModel().getSelectedItem());
         }
 
+    }
+
+    private void useItem(IItem item) {
+        if (item == null) {
+            bottomTextArea.appendText("No item selected" + "\n");
+            return;
+        }
+
+        if (ib.itemUse(item)) {
+            bottomTextArea.appendText("You just used " + item.getName() + "\n");
+        } else {
+            if (ib.isAssignment(item)) {
+                if (ib.playerEnergy() < 20) {
+                    bottomTextArea.appendText("You don't have enough energy" + "\n");
+                } else {
+                    bottomTextArea.appendText("You're not in the teacher's room" + "\n");
+                }
+            }
+        }
     }
 
     /**
