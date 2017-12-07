@@ -128,14 +128,14 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void newGameButton(ActionEvent event) {
-        if (nameField.getText().length() <= 12 && nameField.getText().length() >= 4) {
+        if (nameField.getText().length() <= 8 && nameField.getText().length() >= 1) {
             //ib.playerSetName(nameField.getText());
             tempPlayerName = nameField.getText();
             nameField.setVisible(false);
             game();
         } else {
-            bottomTextArea.appendText("Your name must be shorter than or equal to 12 characters\n"
-                    + "and more than or equal to 4 characters ");
+            bottomTextArea.appendText("Your name must be shorter than or equal to 8 characters\n"
+                    + "and more than or equal to 1 characters ");
         }
 
     }
@@ -205,6 +205,9 @@ public class FXMLDocumentController implements Initializable {
 
                     //   timeLabel.setText("TIME LEFT: " +
                     //           Integer.toString(seconds));
+                    if(ib.playerHasAssignment()) {
+                        bottomTextArea.appendText("Assignment progress: " + ib.playerAssignmentProgress() + "%\n");
+                    }
                     // calls gameloop
                     ib.loop();
                     prevNanoTime = currentNanoTime;
@@ -353,8 +356,10 @@ public class FXMLDocumentController implements Initializable {
             if (ib.isAssignment(item)) {
                 if (ib.playerEnergy() < 20) {
                     bottomTextArea.appendText("You don't have enough energy" + "\n");
-                } else {
+                } else if(!ib.playerCurrentRoomName().equals("teacher room")) {
                     bottomTextArea.appendText("You're not in the teacher's room" + "\n");
+                } else {
+                    bottomTextArea.appendText("You're busy grading another assignment" + "\n");
                 }
             }
         }

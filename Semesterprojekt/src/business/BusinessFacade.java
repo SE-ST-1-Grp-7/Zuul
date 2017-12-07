@@ -352,5 +352,19 @@ public class BusinessFacade implements IBusiness {
     public String minimapImage(){
         return entityManager.getPlayer().getCurrentRoom().getMinimapPath();
     }
+    
+    @Override
+    public int playerAssignmentProgress() {
+        return this.entityManager.getPlayer().getAssignmentProgress();
+    }
+    
+    @Override
+    public boolean playerHasAssignment() {
+        if(entityManager.getPlayer().getCurrentAssignment() != null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
