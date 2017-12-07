@@ -20,6 +20,9 @@ public interface IBusiness {
     //display highscore
     String displayHighscore();
     
+    //save highscore
+    void saveHighscore();
+    
     //Load the XML-file highscore.xml
     void loadXML();
    

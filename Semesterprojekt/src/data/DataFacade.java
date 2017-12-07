@@ -23,15 +23,9 @@ public class DataFacade implements IData {
      */
     @Override
     public String displayHighscore() {
-        String text = "";
-        int i = 1;
-        for (Score score : highscore.highScore) {
-            text += i + ".\t\t" + score.getName() + "\t\t  " +
-                    score.getScore() + "\n";
-            i++;
-        }
-        return text;
+        return highscore.displayHighscore();
     }
+    
     /**
      * Override, upon save game. Call the save process along with file path and
      * parsed data to be written to file.
@@ -62,10 +56,24 @@ public class DataFacade implements IData {
         // Return the retrieved data.
         return data;
     }
-    
+    /**
+     *  Load the xml file.
+     */
     @Override
     public void loadXML(){
         highscore.loadXML();
     }
+    
+    /**
+     * 
+     * @param playerName
+     * @param seconds 
+     */
+    @Override
+    public void saveHighscore(String playerName, int seconds){
+        highscore.saveHighscore(playerName,seconds);
+    }
+    
+
     
 }
