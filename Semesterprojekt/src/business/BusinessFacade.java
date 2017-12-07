@@ -293,7 +293,7 @@ public class BusinessFacade implements IBusiness {
      * @return      String, name of the room, the player is in.
      */
     @Override
-    public String playerCurrentRoom() {
+    public String playerCurrentRoomName() {
         return entityManager.getPlayer().getCurrentRoom().getName();
     }
     
@@ -335,4 +335,10 @@ public class BusinessFacade implements IBusiness {
     public boolean isAssignment(Object o) {
        return o instanceof Assignment;
     }
+
+    @Override
+    public String minimapImage(){
+        return entityManager.getPlayer().getCurrentRoom().getMinimapPath();
+    }
+
 }

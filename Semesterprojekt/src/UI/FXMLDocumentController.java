@@ -19,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -42,6 +43,21 @@ public class FXMLDocumentController implements Initializable {
     private long diff = 0;
     private Pane pane;
     private String tempPlayerName;
+
+    private Image minimapGarden = new Image("/assets/Minimap/curRoomGarden.png");
+    private Image minimapRelaxingRoom = new Image("/assets/Minimap/curRoomRelaxRoom.png");
+    private Image minimapTeacherRoom = new Image("/assets/Minimap/curRoomTeachRoom.png");
+    private Image minimapPub = new Image("/assets/Minimap/curRoomPub.png");
+    private Image minimapOutside = new Image("/assets/Minimap/curRoomOutside.png");
+    private Image minimapHallway1 = new Image("/assets/Minimap/curRoomhallway1.png");
+    private Image minimapDininghall = new Image("/assets/Minimap/curRoomDinnerRoom.png");
+    private Image minimapHallway2 = new Image("/assets/Minimap/curRoomHallway2.png");
+    private Image minimapLecturehall1 = new Image("/assets/Minimap/curRoomLecturehall1.png");
+    private Image minimapHallway3 = new Image("/assets/Minimap/curRoomhallway3.png");
+    private Image minimapLecturehall2 = new Image("/assets/Minimap/curRoomLecturehall2.png");
+    private Image minimapToilet = new Image("/assets/Minimap/curRoomToilet.png");
+    private Image minimap = new Image("/assets/Minimap/minimap.png");
+
     // Keyhandler that moves the player around
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
         switch (event.getCode()) {
@@ -96,6 +112,8 @@ public class FXMLDocumentController implements Initializable {
     private Button tryAgainButton;
     @FXML
     private TextField nameField;
+    @FXML
+    private ImageView minimapViewer;
 
     /**
      *
@@ -188,10 +206,11 @@ public class FXMLDocumentController implements Initializable {
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640);
                 drawImages(canvasId.getGraphicsContext2D());
-                roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
+                roomViewer.setText("Current Room: " + ib.playerCurrentRoomName());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
                 gradedAssignmentViewer.setText(ib.amountOfGradedAssignments()
                         + "/10 assignments graded");
+                minimapViewer.setImage(new Image(ib.minimapImage()));
                 if (ib.isGameOver()) { // checks if gameOver
                     canvasId.getGraphicsContext2D().drawImage(new Image("assets/gameOver.png"), 0, 0); // draw gameover image
                     loop.stop();
@@ -203,6 +222,8 @@ public class FXMLDocumentController implements Initializable {
             }
 
         };
+
+        minimapViewer.setImage(minimap);
     }
 
     /**
@@ -315,7 +336,7 @@ public class FXMLDocumentController implements Initializable {
 
             // If true, use assignment.
         } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == true) {
-            if (ib.playerEnergy() > 20 && ib.playerCurrentRoom().matches("teacher room")) {
+            if (ib.playerEnergy() > 20 && ib.playerCurrentRoomName().matches("teacher room")) {
                 bottomTextArea.appendText("You just used "
                         + listView.getSelectionModel().getSelectedItem().toString()
                         + "\n");
@@ -376,5 +397,4 @@ public class FXMLDocumentController implements Initializable {
     private void nameFieldClick(MouseEvent event) {
         nameField.clear();
     }
-
 }
