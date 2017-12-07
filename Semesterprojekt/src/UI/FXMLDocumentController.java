@@ -118,6 +118,8 @@ public class FXMLDocumentController implements Initializable {
                 break;
         }
     };
+    @FXML
+    private ImageView minimapViewer;
 
     @FXML
     private ImageView minimapViewer;
@@ -231,7 +233,7 @@ public class FXMLDocumentController implements Initializable {
 
         };
 
-        minimapViewer.setImage(minimap);
+        minimapViewer.setImage(new Image(ib.minimapImage()));
     }
 
     /**
@@ -339,7 +341,6 @@ public class FXMLDocumentController implements Initializable {
             useItem((IItem) listView.getSelectionModel().getSelectedItem());
         }
     }
-
 
     private void useItem(IItem item) {
         if (item == null) {
