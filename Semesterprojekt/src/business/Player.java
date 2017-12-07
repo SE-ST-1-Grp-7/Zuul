@@ -23,18 +23,18 @@ public class Player extends Person {
      * Constructor for player. Passes all relevant arguments to Superclass and
      * sets the attributes for the player.
      *
-     * @param x             int, horizontal positioning in grid.
-     * @param y             int, vertical positioning in grid.
-     * @param currentRoom   Room, placed currently in this room.
-     * @param name          String, name of player.
-     * @param em            EntityManager, 
+     * @param x int, horizontal positioning in grid.
+     * @param y int, vertical positioning in grid.
+     * @param currentRoom Room, placed currently in this room.
+     * @param name String, name of player.
+     * @param em EntityManager,
      */
     public Player(int x,
             int y,
             String name,
             Room currentRoom,
             EntityManager em) {
-        
+
         super(x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
@@ -89,7 +89,7 @@ public class Player extends Person {
             if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
                 inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
                 getEntityManager().getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;                
+                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
             }
         }
     }
@@ -144,29 +144,24 @@ public class Player extends Person {
      * @param newY int, new Y coordinate in room.
      */
     public void move(int newX, int newY) {
-        try {
-            if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
-                placeItem(); // places tempItem if it exists
-                if (getCurrentRoom().hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
-                    if (inventory.addItem((Item) getCurrentRoom().getEntities()[newY][newX])) { // if addItem was successful
-                    } else { // if not
-                        tempItem = (Item) getCurrentRoom().getEntities()[newY][newX]; // set temp item to be whatevers in pos x & y
-                    }
+
+        if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
+            placeItem(); // places tempItem if it exists
+            if (getCurrentRoom().hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
+                if (inventory.addItem((Item) getCurrentRoom().getEntities()[newY][newX])) { // if addItem was successful
+                } else { // if not
+                    tempItem = (Item) getCurrentRoom().getEntities()[newY][newX]; // set temp item to be whatevers in pos x & y
                 }
-                getCurrentRoom().getEntities()[newY][newX] = this; // move the player to another location
-                if (!dont) {
-                    getCurrentRoom().getEntities()[getY()][getX()] = null; // reset current position
-                } else {
-                    dont = false;
-                    tempItem = null;
-                }
-                setX(newX);
-                setY(newY);
-            } else { // if a collision is detected
-                System.out.println("Collision occurred, ouch!!");
             }
-        } catch (Exception ex) { // catches the out of bounds exception that occurs when you try to move outside the limits of the array
-            System.out.println("You hit the wall. Ouch.");
+            getCurrentRoom().getEntities()[newY][newX] = this; // move the player to another location
+            if (!dont) {
+                getCurrentRoom().getEntities()[getY()][getX()] = null; // reset current position
+            } else {
+                dont = false;
+                tempItem = null;
+            }
+            setX(newX);
+            setY(newY);
         }
 
     }
@@ -186,8 +181,8 @@ public class Player extends Person {
      *
      * @return Item, return the tempItem object.
      */
-        public Item getTempItem() {
-            return this.tempItem;
+    public Item getTempItem() {
+        return this.tempItem;
     }
 
     /**
@@ -278,7 +273,7 @@ public class Player extends Person {
     @Override
     public void onInteract(Person p) {
         System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
-        setEnergy(getEnergy()-40);
+        setEnergy(getEnergy() - 40);
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }
@@ -290,9 +285,11 @@ public class Player extends Person {
     public void setHasKey(boolean hasKey) {
         this.hasKey = hasKey;
     }
+
     public Assignment getCurrentAssignment() {
         return this.currentAssignment;
     }
+
     public void setCurrentAssignment(Assignment currentAssignment) {
         this.currentAssignment = currentAssignment;
     }
