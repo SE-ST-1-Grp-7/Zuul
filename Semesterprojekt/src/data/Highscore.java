@@ -61,7 +61,8 @@ public class Highscore {
         String text = "";
         int i = 1;
         for (Score score : highScore) {
-            text += i + ".\t\t" + score.getName() + "\t\t  " + score.getScore() + "\n";
+            String temp = String.format("%-14d %-18s %4d\n", i, score.getName(), score.getScore());
+            text += temp;
             i++;
         }
         return text;
