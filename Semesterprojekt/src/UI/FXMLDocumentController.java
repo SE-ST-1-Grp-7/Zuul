@@ -353,8 +353,10 @@ public class FXMLDocumentController implements Initializable {
             if (ib.isAssignment(item)) {
                 if (ib.playerEnergy() < 20) {
                     bottomTextArea.appendText("You don't have enough energy" + "\n");
-                } else {
+                } else if(!ib.playerCurrentRoomName().equals("teacher room")) {
                     bottomTextArea.appendText("You're not in the teacher's room" + "\n");
+                } else {
+                    bottomTextArea.appendText("You're busy grading another assignment" + "\n");
                 }
             }
         }
