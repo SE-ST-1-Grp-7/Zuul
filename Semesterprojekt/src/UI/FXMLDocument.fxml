@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
+<GridPane fx:id="gp" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="1140.0" styleClass="main" stylesheets="@style.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.FXMLDocumentController">
 
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="837.0" minWidth="10.0" prefWidth="837.0" />
@@ -90,7 +90,7 @@
       </HBox>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
          <children>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
                   <Label contentDisplay="CENTER" text="MAP">
                      <StackPane.margin>
@@ -113,26 +113,30 @@
                   <Image url="@../../res/assets/Box.png" />
                </image>
             </ImageView>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <padding>
                   <Insets bottom="5.0" />
                </padding>
                <children>
                   <Label fx:id="gradedAssignmentViewer" text="Graded Assignments" />
                </children>
+               <VBox.margin>
+                  <Insets left="15.0" right="15.0" top="15.0" />
+               </VBox.margin>
             </StackPane>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
+            <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" spacing="30.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
+                  <Label fx:id="timeLabel" contentDisplay="CENTER" text="TIME" />
                   <Label fx:id="energyViewer" text="Energy" />
                </children>
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
-            </StackPane>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+               <padding>
+                  <Insets bottom="5.0" />
+               </padding>
+            </HBox>
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <padding>
                   <Insets bottom="5.0" />
                </padding>
@@ -143,27 +147,12 @@
                   <Insets left="15.0" right="15.0" top="15.0" />
                </VBox.margin>
             </StackPane>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
-               <children>
-                  <Label fx:id="timeLabel" contentDisplay="CENTER" text="TIME">
-                     <StackPane.margin>
-                        <Insets />
-                     </StackPane.margin>
-                  </Label>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets left="15.0" right="15.0" top="15.0" />
-               </VBox.margin>
-            </StackPane>
             <ListView fx:id="listView" focusTraversable="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="185.0" prefWidth="263.0" styleClass="list-view-new" stylesheets="@style.css">
                <VBox.margin>
                   <Insets left="20.0" right="20.0" top="15.0" />
                </VBox.margin>
             </ListView>
-            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;">
+            <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
                   <Label contentDisplay="CENTER" text="INVENTORY">
                      <StackPane.margin>
@@ -178,7 +167,7 @@
                   <Insets bottom="5.0" />
                </padding>
             </StackPane>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="infobox" stylesheets="@style.css">
                <children>
                   <Button fx:id="useButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#useButton" scaleX="0.9" scaleY="0.9" styleClass="use-button" stylesheets="@style.css" text="USE ITEM">
                      <padding>
@@ -191,10 +180,13 @@
                      </padding>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
             </HBox>
          </children>
       </VBox>
-      <TextArea fx:id="bottomTextArea" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="630.0" styleClass="text-field" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <TextArea fx:id="bottomTextArea" editable="false" focusTraversable="false" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="140.0" prefWidth="630.0" styleClass="text-field1" stylesheets="@style.css" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="5.0" left="15.0" right="15.0" top="10.0" />
          </GridPane.margin>
@@ -208,7 +200,7 @@
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" style="-fx-background-image: url(&quot;/assets/frame1.png&quot;);" GridPane.halignment="CENTER">
          <children>
             <Canvas fx:id="canvasId" height="640.0" style="padding: 10px;" width="640.0" />
-            <TextField fx:id="nameField" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#nameFieldClick" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" stylesheets="@style.css" text="Enter name here" StackPane.alignment="CENTER" />
+            <TextField fx:id="nameField" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#nameFieldClick" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" styleClass="entername" stylesheets="@style.css" text="Enter name here" StackPane.alignment="CENTER" />
          </children>
          <GridPane.margin>
             <Insets top="15.0" />
