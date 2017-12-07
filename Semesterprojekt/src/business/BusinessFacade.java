@@ -28,7 +28,7 @@ public class BusinessFacade implements IBusiness {
      * No-arg constructor; call game reset, to start game from fresh.
      */
     public BusinessFacade() {
-      //  resetGame();
+        resetGame();
     }
     
     /**
@@ -274,10 +274,14 @@ public class BusinessFacade implements IBusiness {
      * @param i IItem, item to be used
      */
     @Override
-    public void itemUse(IItem i) {
-        if (((Item)i).use(entityManager.getPlayer()))
+    public boolean itemUse(IItem i) {
+        if (((Item)i).use(entityManager.getPlayer())) {
         entityManager.getPlayer().inventory().removeItem((Item) i);
+        return true;
+    } else {
+    return false;
     }
+}
 
     /**
      * Override; upon item drop. Drops a chosen item from player's inventory.
@@ -340,8 +344,8 @@ public class BusinessFacade implements IBusiness {
     }
 
     @Override
-    public boolean isAssignment(Object o) {
-       return o instanceof Assignment;
+    public boolean isAssignment(IItem item) {
+       return item instanceof Assignment;
     }
 
     @Override

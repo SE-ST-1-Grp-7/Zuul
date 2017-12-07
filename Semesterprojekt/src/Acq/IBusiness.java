@@ -55,7 +55,7 @@ public interface IBusiness {
     ObservableList<IItem> playerGetInventory();
     
     // Use item.
-    void itemUse(IItem i);
+    boolean itemUse(IItem i);
     
     // Drop item from inventory.
     void itemDrop(IItem i);
@@ -75,7 +75,7 @@ public interface IBusiness {
     // Get amount of seconds left
     int getSeconds();
     
-    boolean isAssignment(Object o);
+    boolean isAssignment(IItem item);
     
     String minimapImage();
     
