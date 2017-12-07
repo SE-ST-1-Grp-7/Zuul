@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Highscore>
-  <score name="Rasmus" score="10000"/>
-  <score name="Niclas" score="9998"/>
-  <score name="Søren" score="6000"/>
-  <score name="Niclas" score="5000"/>
+  <person name="Pete1" score="299"/>
+  <person name="Pete2" score="299"/>
+  <person name="Pete3" score="299"/>
+  <person name="Pete" score="256"/>
+  <person name="Pete4" score="239"/>
 </Highscore>

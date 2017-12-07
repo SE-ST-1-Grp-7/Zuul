@@ -19,9 +19,8 @@
 
 .entername{
     -fx-background-color:white;
-    -fx-background-image:transparent;
-     -fx-font-size: 20px;
-   -fx-font-family: "Bangers";
+    -fx-font-size: 20px;
+    -fx-font-family: "Bangers";
 }
 
 .text-field1{

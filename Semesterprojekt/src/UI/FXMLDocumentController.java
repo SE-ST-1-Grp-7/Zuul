@@ -309,11 +309,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void highscoreButton(ActionEvent event) {
         ib.loadXML();
-        ib.displayHighscore();
         bottomTextArea.appendText("\nThe highscore list for World of SDU\n");
         bottomTextArea.appendText("---------------------------------\n");
         bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
         bottomTextArea.appendText(ib.displayHighscore());
+        
     }
 
     /**
@@ -379,11 +379,10 @@ public class FXMLDocumentController implements Initializable {
      */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
+            bottomTextArea.clear();
             bottomTextArea.appendText("You have won the game, you are the "
                     + "best professer around" + "\n");
             canvasId.getGraphicsContext2D().drawImage(new Image("assets/win2.png"), 0, 0); // draw win screen image
-            ib.loadXML();
-            ib.displayHighscore();
             bottomTextArea.appendText("The highscore list for World of SDU\n");
             bottomTextArea.appendText("---------------------------------\n");
             bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");

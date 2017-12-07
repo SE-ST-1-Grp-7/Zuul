@@ -18,4 +18,7 @@ public interface IData {
     
     // Load the XML file
     void loadXML();
+    
+    //Save the highscore
+    void saveHighscore(String playerName, int seconds);
 }
