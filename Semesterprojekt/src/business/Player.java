@@ -44,8 +44,8 @@ public class Player extends Person {
         super.setEntityImage(playerImage);
 
         // PLAYER STATS
-        this.energy = 100; // Assign energy level to start at 100.
-        this.energyCap = 100; // Assign energy capacity to 100.
+        this.energy = 200; // Assign energy level at the start.
+        this.energyCap = 200; // Assign energy capacity.
         inventory = new Inventory(); // Instantiate inventory.
         this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
         // Progress of grading an assignment starts at 0.
