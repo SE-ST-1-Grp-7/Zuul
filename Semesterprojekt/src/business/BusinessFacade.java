@@ -28,7 +28,7 @@ public class BusinessFacade implements IBusiness {
      * No-arg constructor; call game reset, to start game from fresh.
      */
     public BusinessFacade() {
-        resetGame();
+      //  resetGame();
     }
     
     /**
