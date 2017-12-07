@@ -8,6 +8,12 @@
     -fx-font-size: 22px;
    
 }
+.alertBox .button {
+    -fx-font-family: "Bangers";
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: black;
+}
 
 .infobox {
     -fx-max-width: 270px;
