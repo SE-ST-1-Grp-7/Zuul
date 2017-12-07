@@ -335,4 +335,10 @@ public class BusinessFacade implements IBusiness {
     public boolean isAssignment(Object o) {
        return o instanceof Assignment;
     }
+
+    @Override
+    public String minimapImage(){
+        return entityManager.getPlayer().getCurrentRoom().getMinimapPath();
+    }
+
 }

@@ -210,7 +210,7 @@ public class FXMLDocumentController implements Initializable {
                 energyViewer.setText("Energy: " + ib.playerEnergy());
                 gradedAssignmentViewer.setText(ib.amountOfGradedAssignments()
                         + "/10 assignments graded");
-                showMinimap(ib.playerCurrentRoomName());
+                minimapViewer.setImage(new Image(ib.minimapImage()));
                 if (ib.isGameOver()) { // checks if gameOver
                     canvasId.getGraphicsContext2D().drawImage(new Image("assets/gameOver.png"), 0, 0); // draw gameover image
                     loop.stop();
@@ -397,48 +397,4 @@ public class FXMLDocumentController implements Initializable {
     private void nameFieldClick(MouseEvent event) {
         nameField.clear();
     }
-
-    private void showMinimap(String room) {
-
-        switch (room) {
-            case "garden":
-                minimapViewer.setImage(minimapGarden);
-                break;
-            case "relaxing room":
-                minimapViewer.setImage(minimapRelaxingRoom);
-                break;
-            case "teacher room":
-                minimapViewer.setImage(minimapTeacherRoom);
-                break;
-            case "pub":
-                minimapViewer.setImage(minimapPub);
-                break;
-            case "outside":
-                minimapViewer.setImage(minimapOutside);
-                break;
-            case "hallway 1":
-                minimapViewer.setImage(minimapHallway1);
-                break;
-            case "dininghall":
-                minimapViewer.setImage(minimapDininghall);
-                break;
-            case "hallway 2":
-                minimapViewer.setImage(minimapHallway2);
-                break;
-            case "lecturehall 1":
-                minimapViewer.setImage(minimapLecturehall1);
-                break;
-            case "hallway 3":
-                minimapViewer.setImage(minimapHallway3);
-                break;
-            case "lecturehall 2":
-                minimapViewer.setImage(minimapLecturehall2);
-                break;
-            case "toilet":
-                minimapViewer.setImage(minimapToilet);
-                break;
-        }
-
-    }
-
 }

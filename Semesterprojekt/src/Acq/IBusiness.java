@@ -74,4 +74,6 @@ public interface IBusiness {
     
     boolean isAssignment(Object o);
     
+    String minimapImage();
+    
 }
