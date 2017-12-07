@@ -207,6 +207,9 @@ public class FXMLDocumentController implements Initializable {
             }
 
         };
+        
+        Image minimap = new Image("/assets/Minimap/minimap.png");
+                minimapViewer.setImage(minimap);
     }
 
     /**
@@ -433,8 +436,7 @@ public class FXMLDocumentController implements Initializable {
                 minimapViewer.setImage(minimapToilet);
                 break;
             default:
-                Image minimap = new Image("/assets/Minimap/minimap.png");
-                minimapViewer.setImage(minimap);
+                
                 break;
         }
         
