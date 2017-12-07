@@ -1438,6 +1438,7 @@ public class EntityManager {
                 player.setHasKey(Boolean.parseBoolean(playerData.get(6)));
             }
         }
+        this.rm.getCurrentRoom().setEntity(player);
     }
 
     public void loadStudents(ArrayList<ArrayList<String>> data) {
