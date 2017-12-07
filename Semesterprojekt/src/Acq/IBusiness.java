@@ -1,6 +1,7 @@
 package Acq;
 
 import business.Inventory;
+import javafx.collections.ObservableList;
 
 /**
  * IBusiness interface.
@@ -48,13 +49,13 @@ public interface IBusiness {
     void loop();
     
     // Retrieve player inventory.
-    Inventory playerGetInventory();
+    ObservableList<IItem> playerGetInventory();
     
     // Use item.
-    void itemUse(Object o);
+    void itemUse(IItem i);
     
     // Drop item from inventory.
-    void itemDrop(Object o);
+    void itemDrop(IItem i);
     
     // Retrieve name of the room player is currently in.
     String playerCurrentRoom();

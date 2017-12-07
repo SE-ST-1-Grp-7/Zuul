@@ -4,9 +4,11 @@ package business;
 
 import Acq.IBusiness;
 import Acq.IData;
+import Acq.IItem;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -253,33 +255,32 @@ public class BusinessFacade implements IBusiness {
      * @return      Inventory, inventory object to retrieve.
      */
     @Override
-    public Inventory playerGetInventory() {
-        return entityManager.getPlayer().inventory();
+    public ObservableList<IItem> playerGetInventory() {
+        return entityManager.getPlayer().inventory().getInventory();
     }
 
     /**
      * Override; upon item use. Call any effects to player and remove item from
      * the game.
      *
-     * @param o     Object, later cast to Item type and processed.
+     * @param i IItem, item to be used
      */
     @Override
-    public void itemUse(Object o) {
-        Item toUse = (Item) o;
-        if (toUse.use(entityManager.getPlayer()))
-        entityManager.getPlayer().inventory().removeItem(toUse);
+    public void itemUse(IItem i) {
+        if (((Item)i).use(entityManager.getPlayer()))
+        entityManager.getPlayer().inventory().removeItem((Item) i);
     }
 
     /**
      * Override; upon item drop. Drops a chosen item from player's inventory.
      *
-     * @param o     Object, later cast to Item type and processed.
+     * @param i     IItem, item to be dropped
      */
     @Override
-    public void itemDrop(Object o) {
+    public void itemDrop(IItem i) {
         // Call dropItem method in inventory.
         entityManager.getPlayer().inventory().dropItem(
-                (Item) o, entityManager.getPlayer());
+                (Item) i, entityManager.getPlayer());
     }
 
     @Override
