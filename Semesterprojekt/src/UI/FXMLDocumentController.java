@@ -121,10 +121,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ImageView minimapViewer;
 
-    @FXML
-    private ImageView minimapViewer;
-
-
     /**
      *
      *
