@@ -78,6 +78,7 @@ public class FXMLDocumentController implements Initializable {
     private Button tryAgainButton;
     @FXML
     private TextField nameField;
+
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
         switch (event.getCode()) {
             case D:
@@ -119,6 +120,10 @@ public class FXMLDocumentController implements Initializable {
     };
     @FXML
     private ImageView minimapViewer;
+
+    @FXML
+    private ImageView minimapViewer;
+
 
     /**
      *
@@ -335,10 +340,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             useItem((IItem) listView.getSelectionModel().getSelectedItem());
         }
-
     }
-
-        
 
     private void useItem(IItem item) {
         if (item == null) {
