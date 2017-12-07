@@ -938,6 +938,7 @@ public class EntityManager {
                     break;
                     case "ID111":
                         itemlist.add(new Gun(j,i,64,64,rm.getRoom(name)));
+                        break;
                     
                     
             // In case the ID is not recognized.
