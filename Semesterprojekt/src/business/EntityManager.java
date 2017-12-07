@@ -936,6 +936,8 @@ public class EntityManager {
                     studentlist.add(new Tutor(j, i, rm.getRoom(name), 
                             "/textures/tutor3.png", this));
                     break;
+                    case "ID111":
+                        itemlist.add(new Gun(j,i,64,64,rm.getRoom(name)));
                     
                     
             // In case the ID is not recognized.
