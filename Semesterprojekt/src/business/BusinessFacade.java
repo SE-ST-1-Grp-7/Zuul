@@ -293,7 +293,7 @@ public class BusinessFacade implements IBusiness {
      * @return      String, name of the room, the player is in.
      */
     @Override
-    public String playerCurrentRoom() {
+    public String playerCurrentRoomName() {
         return entityManager.getPlayer().getCurrentRoom().getName();
     }
     
