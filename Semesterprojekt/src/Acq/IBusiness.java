@@ -79,4 +79,8 @@ public interface IBusiness {
     
     String minimapImage();
     
+    int playerAssignmentProgress();
+    
+    boolean playerHasAssignment();
+    
 }
