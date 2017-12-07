@@ -316,8 +316,9 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void highscoreButton(ActionEvent event) {
+        bottomTextArea.clear();
         ib.loadXML();
-        bottomTextArea.appendText("\nThe highscore list for World of SDU\n");
+        bottomTextArea.appendText("The highscore list for World of SDU\n");
         bottomTextArea.appendText("---------------------------------\n");
         bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
         bottomTextArea.appendText(ib.displayHighscore());
