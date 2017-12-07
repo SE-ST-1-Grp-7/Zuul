@@ -24,7 +24,7 @@ public abstract class Person extends Entity {
         // Pass arguments to superclass.
         super(x, y, width, height, currentRoom);
         // Get random name as name for person.
-        name = getRandomName();
+        //name = getRandomName();
         this.em = em;
     }
         /**

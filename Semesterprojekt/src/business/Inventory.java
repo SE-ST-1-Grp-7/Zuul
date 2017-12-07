@@ -1,6 +1,6 @@
 package business;
 
-import java.util.ArrayList;
+import Acq.IItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -14,7 +14,7 @@ public class Inventory {
     private final int MAX_WEIGHT = 200;
     private int currentWeight;
     // ObservableList allows us to connect a javafx listview directly to the inventory
-    private ObservableList<Item> items = FXCollections.observableArrayList();
+    private ObservableList<IItem> items = FXCollections.observableArrayList();
 
     public Inventory() {
 
@@ -30,16 +30,11 @@ public class Inventory {
      */
     public boolean addItem(Item item) {
         // check if theres less than 10 items & less than 200 weight in the inventory
-        if (items.size() < CAPACITY
-                && (currentWeight + item.getWeight() <= MAX_WEIGHT)) {
-            items.add(item);
-            currentWeight += item.getWeight();
+        if (items.size() < CAPACITY) {
+            items.add((IItem)item);
             return true;
-        } else if (items.size() == CAPACITY) { // checks if theres less than 10 items
+        } else { // checks if theres less than 10 items
             System.out.println("Not enough space");
-            return false;
-        } else {
-            System.out.println("The item is too heavy");
             return false;
         }
     }
@@ -51,7 +46,7 @@ public class Inventory {
      * @return
      */
     public Item getItem(int index) {
-        return items.get(index);
+        return (Item)items.get(index);
     }
 
     /**
@@ -69,16 +64,11 @@ public class Inventory {
      *
      * @return
      */
-    public ObservableList<Item> getInventory() {
+    public ObservableList<IItem> getInventory() {
         return items;
     }
 
-    /**
-     * prints the inventory list to the console
-     */
-    public void printInventory() {
-        System.out.println(getInventory());
-    }
+
 
     /**
      * a method to loot items on the ground

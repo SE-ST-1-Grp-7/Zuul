@@ -2,6 +2,7 @@ package business;
 
 // IMPORTS
 
+import Acq.IItem;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -33,7 +34,7 @@ public class EntityManager {
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
         loadPresetEntities();           // Load entity IDs from CSV file.
-        String playerName = "Pete";    // Temp define for player name.
+        String playerName = "tempPlayerName";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
         player.setName(playerName);
     }
@@ -303,7 +304,7 @@ public class EntityManager {
                         continue;
                     }
                     // Call instantiation of entity based on ID number.
-                    if (playerName.equals("Peter")) {
+                    if (playerName.equalsIgnoreCase("Peter")) {
                         senpaiTypes(i, j, name, playerName, IDnum);
                     } else {
                         entityTypes(i, j, name, playerName, IDnum);
@@ -935,6 +936,8 @@ public class EntityManager {
                     studentlist.add(new Tutor(j, i, rm.getRoom(name), 
                             "/textures/tutor3.png", this));
                     break;
+                    case "ID111":
+                        itemlist.add(new Gun(j,i,64,64,rm.getRoom(name)));
                     
                     
             // In case the ID is not recognized.
@@ -1147,7 +1150,7 @@ public class EntityManager {
         ArrayList<ArrayList<String>> invenData = new ArrayList<>();
         /* Iterate through player's inventory and assign item name to sub-list
            before adding sub-list to the main 2D list. */
-        for (Item item : player.inventory().getInventory()) {
+        for (IItem item : player.inventory().getInventory()) {
             ArrayList<String> itemData = new ArrayList<>();
             itemData.add(item.getName());
             invenData.add(itemData);
