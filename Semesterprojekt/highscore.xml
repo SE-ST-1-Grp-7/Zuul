@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Highscore>
   <person name="Soren" score="299"/>
-  <person name="Jonas" score="2"/>
-  <person name="Rasmus" score="231"/>
-  <person name="Niclas" score="256"/>
-  <person name="Robin" score="239"/>
-  <person name="Magnus" score="292"/>
+  <person name="Soren" score="2"/>
+  <person name="Soren" score="231"/>
 </Highscore>
