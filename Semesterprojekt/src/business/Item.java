@@ -1,11 +1,13 @@
 package business;
 
+import Acq.IItem;
+
 /**
  * Subclass of Entity, Item class.
  *
  * @author Gruppe 7
  */
-public abstract class Item extends Entity {
+public abstract class Item extends Entity implements IItem {
 
     private String itemName; // Name of item.
     private String itemDescription; // Description of item.
@@ -111,6 +113,7 @@ public abstract class Item extends Entity {
 
     /**
      * Override, upon interaction with item.
+     * @param p
      */
     @Override
     public void onInteract(Person p) {
@@ -121,4 +124,5 @@ public abstract class Item extends Entity {
             }
         }
     }
+
 }

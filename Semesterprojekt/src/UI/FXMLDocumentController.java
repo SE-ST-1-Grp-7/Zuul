@@ -1,7 +1,7 @@
 package UI;
 
 import Acq.IBusiness;
-import data.Highscore;
+import Acq.IItem;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.AnimationTimer;
@@ -38,7 +38,6 @@ public class FXMLDocumentController implements Initializable {
     private int startSeconds = 300;
     private int seconds = 0;
     private int minutes = 0;
-    private Highscore h = new Highscore();
     private AnimationTimer loop;
     private long diff = 0;
     private Pane pane;
@@ -119,7 +118,7 @@ public class FXMLDocumentController implements Initializable {
                 + "One of the hardest games on SDU.\n");
         GraphicsContext gc = canvasId.getGraphicsContext2D();
         //link the listView to the inventory
-        listView.setItems(ib.playerGetInventory().getInventory());
+        listView.setItems(ib.playerGetInventory());
 
         // We have to move to to another place cause it is movement
         // set focus on canvas
@@ -299,7 +298,7 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You just used "
                     + listView.getSelectionModel().getSelectedItem().toString()
                     + "\n");
-            ib.itemUse(listView.getSelectionModel().getSelectedItem());
+            ib.itemUse((IItem)listView.getSelectionModel().getSelectedItem());
         } else {
             bottomTextArea.appendText("You have no selected items to use in "
                     + "inventory.\n");
@@ -318,7 +317,7 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You just dropped "
                     + listView.getSelectionModel().getSelectedItem().toString()
                     + "\n");
-            ib.itemDrop(listView.getSelectionModel().getSelectedItem());
+            ib.itemDrop((IItem)listView.getSelectionModel().getSelectedItem());
         } else {
             bottomTextArea.appendText("You have no selected items to drop."
                     + "\n");

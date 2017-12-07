@@ -2,6 +2,7 @@ package business;
 
 // IMPORTS
 
+import Acq.IItem;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -1130,7 +1131,7 @@ public class EntityManager {
         ArrayList<ArrayList<String>> invenData = new ArrayList<>();
         /* Iterate through player's inventory and assign item name to sub-list
            before adding sub-list to the main 2D list. */
-        for (Item item : player.inventory().getInventory()) {
+        for (IItem item : player.inventory().getInventory()) {
             ArrayList<String> itemData = new ArrayList<>();
             itemData.add(item.getName());
             invenData.add(itemData);
