@@ -243,8 +243,6 @@ public class BusinessFacade implements IBusiness {
                 entityManager.getPlayer().getEnergy() - 1);
         // Reduce seconds by 1
         seconds--;
-        
-        System.out.println(entityManager.getPlayer().getEnergy());
     }
     
     /**

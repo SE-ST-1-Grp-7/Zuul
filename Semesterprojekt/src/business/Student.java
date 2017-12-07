@@ -59,7 +59,6 @@ public class Student extends Person {
     public void chasePlayer() {
         double distanceToPlayer = Math.sqrt(Math.pow(getEntityManager().getPlayer().getX() - this.getX(),2 ) +
                  (Math.pow(getEntityManager().getPlayer().getY() - this.getY(),2 )));
-        System.out.println(distanceToPlayer);
         if(distanceToPlayer <= 1) {
             getEntityManager().getPlayer().onInteract(this);
             setHasQuestionToPlayer(false);
