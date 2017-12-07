@@ -135,7 +135,7 @@ public class RoomManager {
 
         /* Assign the Room object reference 'teacher room' as the
         currentRoom object.*/
-        currentRoom = roomlist.get("hallway 1");
+        currentRoom = roomlist.get("garden");
     }
     
     /**
