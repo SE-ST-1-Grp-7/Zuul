@@ -34,7 +34,7 @@ public class EntityManager {
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
         loadPresetEntities();           // Load entity IDs from CSV file.
-        String playerName = "Pete";    // Temp define for player name.
+        String playerName = "tempPlayerName";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
         player.setName(playerName);
     }
@@ -304,7 +304,7 @@ public class EntityManager {
                         continue;
                     }
                     // Call instantiation of entity based on ID number.
-                    if (playerName.equals("Peter")) {
+                    if (playerName.equalsIgnoreCase("Peter")) {
                         senpaiTypes(i, j, name, playerName, IDnum);
                     } else {
                         entityTypes(i, j, name, playerName, IDnum);
@@ -921,6 +921,23 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable4.png"));
                 break;
+                
+                case "ID108":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor1.png", this));
+                    break;
+                
+                    case "ID109":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor2.png", this));
+                    break;
+                    
+                    case "ID110":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor3.png", this));
+                    break;
+                    
+                    
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum
@@ -1422,6 +1439,7 @@ public class EntityManager {
                 player.setHasKey(Boolean.parseBoolean(playerData.get(6)));
             }
         }
+        this.rm.getCurrentRoom().setEntity(player);
     }
 
     public void loadStudents(ArrayList<ArrayList<String>> data) {

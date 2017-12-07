@@ -72,4 +72,6 @@ public interface IBusiness {
     // Get amount of seconds left
     int getSeconds();
     
+    boolean isAssignment(Object o);
+    
 }

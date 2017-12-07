@@ -20,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
@@ -35,32 +36,32 @@ public class FXMLDocumentController implements Initializable {
     private final int Y = 64;
     // used for handling the gameloop
     private long prevNanoTime = System.nanoTime();
-    private int startSeconds = 300;
     private int seconds = 0;
     private int minutes = 0;
     private AnimationTimer loop;
     private long diff = 0;
     private Pane pane;
+    private String tempPlayerName;
     // Keyhandler that moves the player around
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
-                switch (event.getCode()) {
-                    case D:
-                        ib.playerMove("right");
-                        break;
-                    case A:
-                        ib.playerMove("left");
-                        break;
-                    case W:
-                        ib.playerMove("up");
-                        break;
-                    case S:
-                        ib.playerMove("down");
-                        break;
-                    case Z:
-                        ib.playerInteract();
-                        break;
-                }
-        };
+        switch (event.getCode()) {
+            case D:
+                ib.playerMove("right");
+                break;
+            case A:
+                ib.playerMove("left");
+                break;
+            case W:
+                ib.playerMove("up");
+                break;
+            case S:
+                ib.playerMove("down");
+                break;
+            case Z:
+                ib.playerInteract();
+                break;
+        }
+    };
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -103,14 +104,20 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void newGameButton(ActionEvent event) {
-        if(nameField.getText().length() <= 12 && nameField.getText().length() >= 4) {
-            ib.playerSetName(nameField.getText());
+        if (nameField.getText().length() <= 12 && nameField.getText().length() >= 4) {
+            //ib.playerSetName(nameField.getText());
+            tempPlayerName = nameField.getText();
             nameField.setVisible(false);
+            game();
         } else {
-            bottomTextArea.appendText("Your name must be shorter than or equal to 12 characters\n" +
-                    "and more than or equal to 4 characters ");
-            return;
+            bottomTextArea.appendText("Your name must be shorter than or equal to 12 characters\n"
+                    + "and more than or equal to 4 characters ");
         }
+
+    }
+
+    private void game() {
+
         loop.stop();
         ib.resetGame();
         // Display welcome message.
@@ -125,11 +132,11 @@ public class FXMLDocumentController implements Initializable {
         gp.setFocusTraversable(true);
         //set keylistener
         gp.setOnKeyPressed(movementhandler);
-   
+
+        ib.playerSetName(tempPlayerName);
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         loop.start();
-
     }
 
     /**
@@ -157,7 +164,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
         canvasId.getGraphicsContext2D().drawImage(new Image("assets/start1.png"), 0, 0);
-        timeLabel.setText("TIME LEFT: " + "05:00");
+        timeLabel.setText("TIME LEFT");
         loop = new AnimationTimer() {
             @Override
             public void handle(long currentNanoTime) {
@@ -166,7 +173,6 @@ public class FXMLDocumentController implements Initializable {
                 diff = currentNanoTime - prevNanoTime;
 
                 if (diff >= 1000000000) {
-                    startSeconds--;
                     minutes = ib.getSeconds() / 60;
                     seconds = ib.getSeconds() % 60;
                     timeLabel.setText("Time LEFT: "
@@ -248,6 +254,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void loadButton(ActionEvent event) {
+        game();
+        nameField.setVisible(false);
         // Call load game and get a boolean back, true is successfull.
         boolean status = ib.loadGame();
 
@@ -294,14 +302,33 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void useButton(ActionEvent event) {
-        if ((listView.getSelectionModel().getSelectedItem() != null)) {
+        // If nothing, do nothing.
+        if (listView.getSelectionModel().getSelectedItem() == null) {
+            bottomTextArea.appendText("You have not selected a item to use" + "\n");
+
+            // If false, use item.
+        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == false) {
             bottomTextArea.appendText("You just used "
                     + listView.getSelectionModel().getSelectedItem().toString()
                     + "\n");
-            ib.itemUse((IItem)listView.getSelectionModel().getSelectedItem());
+            ib.itemUse((IItem) listView.getSelectionModel().getSelectedItem());
+
+            // If true, use assignment.
+        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == true) {
+            if (ib.playerEnergy() > 20 && ib.playerCurrentRoom().matches("teacher room")) {
+                bottomTextArea.appendText("You just used "
+                        + listView.getSelectionModel().getSelectedItem().toString()
+                        + "\n");
+                ib.itemUse((IItem) listView.getSelectionModel().getSelectedItem());
+            } else if (ib.playerEnergy() < 20) {
+                bottomTextArea.appendText("You do not have enough energy!" + "\n");
+            } else {
+                bottomTextArea.appendText("You are not in your own room!" + "\n");
+            }
+
+            // Error catch.
         } else {
-            bottomTextArea.appendText("You have no selected items to use in "
-                    + "inventory.\n");
+            System.out.println("Error in use button handling.");
         }
 
     }
@@ -317,7 +344,7 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.appendText("You just dropped "
                     + listView.getSelectionModel().getSelectedItem().toString()
                     + "\n");
-            ib.itemDrop((IItem)listView.getSelectionModel().getSelectedItem());
+            ib.itemDrop((IItem) listView.getSelectionModel().getSelectedItem());
         } else {
             bottomTextArea.appendText("You have no selected items to drop."
                     + "\n");
@@ -343,6 +370,11 @@ public class FXMLDocumentController implements Initializable {
             return true;
         }
         return false;
+    }
+
+    @FXML
+    private void nameFieldClick(MouseEvent event) {
+        nameField.clear();
     }
 
 }
