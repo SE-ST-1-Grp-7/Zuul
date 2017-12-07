@@ -12,7 +12,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.ListView;
@@ -316,12 +320,28 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void highscoreButton(ActionEvent event) {
-        bottomTextArea.clear();
+        // Loads
         ib.loadXML();
-        bottomTextArea.appendText("The highscore list for World of SDU\n");
-        bottomTextArea.appendText("---------------------------------\n");
-        bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
-        bottomTextArea.appendText(ib.displayHighscore());
+        
+        Alert alert = new Alert(AlertType.CONFIRMATION);
+        DialogPane dialogPane = alert.getDialogPane();
+        dialogPane.getStylesheets().add(
+        getClass().getResource("style.css").toExternalForm());
+        dialogPane.getStyleClass().add("alertBox");
+        
+        alert.setGraphic(null);
+        alert.setTitle("HIGHSCORES");
+        alert.setHeaderText("WHO'S BEST?" );
+        alert.setContentText( "The highscore list for World of SDU\n" +"---------------------------------\n" + "NO.\t\tNAME\t\t SCORE\n" +
+                ib.displayHighscore());
+        
+        alert.getButtonTypes().remove(1);
+        ButtonType buttonTypeClose = new ButtonType("CLOSE");
+        
+        alert.getButtonTypes().set(0, buttonTypeClose);
+        
+        alert.showAndWait();
+        
         
     }
 
