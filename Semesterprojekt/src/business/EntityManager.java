@@ -1447,7 +1447,7 @@ public class EntityManager {
                 player.setTimeLeft(Integer.parseInt(playerData.get(9)));
             }
         }
-        this.rm.getCurrentRoom().setEntity(player);
+        player.getCurrentRoom().setEntity(player);
     }
 
     public void loadStudents(ArrayList<ArrayList<String>> data) {
