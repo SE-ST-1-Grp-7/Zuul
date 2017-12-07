@@ -33,7 +33,7 @@ public class EntityManager {
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
         loadPresetEntities();           // Load entity IDs from CSV file.
-        String playerName = "Pete";    // Temp define for player name.
+        String playerName = "tempPlayerName";    // Temp define for player name.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
         player.setName(playerName);
     }
@@ -303,7 +303,7 @@ public class EntityManager {
                         continue;
                     }
                     // Call instantiation of entity based on ID number.
-                    if (playerName.equals("Peter")) {
+                    if (playerName.equalsIgnoreCase("Peter")) {
                         senpaiTypes(i, j, name, playerName, IDnum);
                     } else {
                         entityTypes(i, j, name, playerName, IDnum);

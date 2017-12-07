@@ -42,6 +42,7 @@ public class FXMLDocumentController implements Initializable {
     private AnimationTimer loop;
     private long diff = 0;
     private Pane pane;
+    private String tempPlayerName;
     // Keyhandler that moves the player around
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
                 switch (event.getCode()) {
@@ -105,13 +106,19 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void newGameButton(ActionEvent event) {
         if(nameField.getText().length() <= 12 && nameField.getText().length() >= 4) {
-            ib.playerSetName(nameField.getText());
+            //ib.playerSetName(nameField.getText());
+            tempPlayerName = nameField.getText();
             nameField.setVisible(false);
+            game();
         } else {
             bottomTextArea.appendText("Your name must be shorter than or equal to 12 characters\n" +
                     "and more than or equal to 4 characters ");
-            return;
         }
+        
+
+    }
+    private void game(){
+        
         loop.stop();
         ib.resetGame();
         // Display welcome message.
@@ -127,10 +134,10 @@ public class FXMLDocumentController implements Initializable {
         //set keylistener
         gp.setOnKeyPressed(movementhandler);
    
+        ib.playerSetName(tempPlayerName);
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         loop.start();
-
     }
 
     /**
@@ -248,6 +255,8 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void loadButton(ActionEvent event) {
+        game();
+        nameField.setVisible(false);
         // Call load game and get a boolean back, true is successfull.
         boolean status = ib.loadGame();
 
