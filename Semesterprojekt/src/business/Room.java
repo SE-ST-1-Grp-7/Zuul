@@ -19,6 +19,7 @@ public class Room {
     private Entity[][] entityArray;
     // Map type (key/value -pairs data structure)
     private HashMap<String, Room> exits;
+    private String minimapPath;
 
     /**
      * One-arg constructor with description String.
@@ -36,6 +37,7 @@ public class Room {
         fillTenTenArray(tileArray);
          entityArray = new Entity[10][10];
         fillTenTenArray(entityArray);
+        this.minimapPath = "/assets/Minimap/"+ this.getName() + ".png";
     }
 
     /**
@@ -202,5 +204,9 @@ public class Room {
     
     public Entity[][] getEntities() {
         return this.entityArray;
+    }
+    
+    public String getMinimapPath(){
+        return this.minimapPath;
     }
 }

@@ -21,6 +21,9 @@ public interface IBusiness {
     //display highscore
     String displayHighscore();
     
+    //save highscore
+    void saveHighscore();
+    
     //Load the XML-file highscore.xml
     void loadXML();
    
@@ -58,7 +61,7 @@ public interface IBusiness {
     void itemDrop(IItem i);
     
     // Retrieve name of the room player is currently in.
-    String playerCurrentRoom();
+    String playerCurrentRoomName();
     
     // Set game to initial state.
     void resetGame();
@@ -73,5 +76,7 @@ public interface IBusiness {
     int getSeconds();
     
     boolean isAssignment(IItem item);
+    
+    String minimapImage();
     
 }

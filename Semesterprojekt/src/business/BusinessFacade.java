@@ -182,7 +182,6 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public String displayHighscore() {
-        data.displayHighscore();
         return data.displayHighscore();
     }
     
@@ -192,6 +191,11 @@ public class BusinessFacade implements IBusiness {
     @Override
     public void loadXML() {
         data.loadXML();
+    }
+    
+    @Override
+    public void saveHighscore(){
+        data.saveHighscore(entityManager.getPlayer().getName(), seconds);
     }
     
     /**
@@ -244,9 +248,13 @@ public class BusinessFacade implements IBusiness {
         }
         // Reduce player's current energy by 1 each second.
         entityManager.getPlayer().setEnergy(
-                entityManager.getPlayer().getEnergy() - 1);
+                entityManager.getPlayer().getEnergy() - 1);         
         // Reduce seconds by 1
         seconds--;
+        
+        if(entityManager.getPlayer().getGradedAssignments() >= 10){
+        data.saveHighscore(entityManager.getPlayer().getName(), seconds);
+        }
     }
     
     /**
@@ -297,7 +305,7 @@ public class BusinessFacade implements IBusiness {
      * @return      String, name of the room, the player is in.
      */
     @Override
-    public String playerCurrentRoom() {
+    public String playerCurrentRoomName() {
         return entityManager.getPlayer().getCurrentRoom().getName();
     }
     
@@ -339,4 +347,10 @@ public class BusinessFacade implements IBusiness {
     public boolean isAssignment(IItem item) {
        return item instanceof Assignment;
     }
+
+    @Override
+    public String minimapImage(){
+        return entityManager.getPlayer().getCurrentRoom().getMinimapPath();
+    }
+
 }
