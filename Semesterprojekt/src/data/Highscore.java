@@ -81,7 +81,7 @@ public class Highscore {
             doc.appendChild(highscore);
 
             for (Score score : highScore) {
-                Element scoreNode = doc.createElement("score");
+                Element scoreNode = doc.createElement("person");
                 scoreNode.setAttribute("name", score.getName());
                 scoreNode.setAttribute("score", Integer.toString(score.getScore()));
                 highscore.appendChild(scoreNode);
@@ -106,20 +106,20 @@ public class Highscore {
      * This method loads the XML file highscore.xml.
      */
     public void loadXML() {
-        try {
+        highScore.clear();
 
+        try {
             File fXmlFile = new File("highscore.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
 
-            NodeList nList = doc.getElementsByTagName("Highscore");
-            Node child = nList.item(0);
-            NodeList nL = child.getChildNodes();
-            for (int temp = 0; temp < nL.getLength(); temp++) {
+            NodeList list = doc.getElementsByTagName("person");
 
-                Node nNode = nL.item(temp);
+            for (int i = 0; i < list.getLength(); i++) {
+
+                Node nNode = list.item(i);
 
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
@@ -132,31 +132,11 @@ public class Highscore {
         }
     }
 
-    public void saveHighscore() {
-        long startTime = System.currentTimeMillis() / 1000L;
-        long startPoint = 10000;
-
+    public void saveHighscore(String playerName, int seconds) {
         loadXML();
-
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Do you want to save your score? (Yes or no)");
-        String s = input.nextLine();
-        if (s.equalsIgnoreCase("Yes")) {
-
-            long playedTime = System.currentTimeMillis() / 1000L;
-            long elapsedTime = playedTime - startTime;
-            long finalScore = startPoint - elapsedTime;
-            System.out.println("Please enter your name to save your score: ");
-            String playerName = input.nextLine();
-            add(playerName, (int) finalScore);
-            createXML();
-
-        } else {
-            System.out.println("You didn't save your score!");
-
-        }
-        printHighscore();
+        add(playerName, seconds);
+        createXML();
+        displayHighscore();
 
     }
 

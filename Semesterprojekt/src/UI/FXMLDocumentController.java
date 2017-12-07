@@ -19,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -42,7 +43,7 @@ public class FXMLDocumentController implements Initializable {
     private long diff = 0;
     private Pane pane;
     private String tempPlayerName;
-    // Keyhandler that moves the player around 
+
     private Canvas c;
     @FXML
     private GridPane gp;
@@ -77,6 +78,7 @@ public class FXMLDocumentController implements Initializable {
     private Button tryAgainButton;
     @FXML
     private TextField nameField;
+
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
         switch (event.getCode()) {
             case D:
@@ -116,6 +118,10 @@ public class FXMLDocumentController implements Initializable {
                 break;
         }
     };
+
+    @FXML
+    private ImageView minimapViewer;
+
 
     /**
      *
@@ -208,10 +214,11 @@ public class FXMLDocumentController implements Initializable {
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640);
                 drawImages(canvasId.getGraphicsContext2D());
-                roomViewer.setText("Current Room: " + ib.playerCurrentRoom());
+                roomViewer.setText("Current Room: " + ib.playerCurrentRoomName());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
                 gradedAssignmentViewer.setText(ib.amountOfGradedAssignments()
                         + "/10 assignments graded");
+                minimapViewer.setImage(new Image(ib.minimapImage()));
                 if (ib.isGameOver()) { // checks if gameOver
                     canvasId.getGraphicsContext2D().drawImage(new Image("assets/gameOver.png"), 0, 0); // draw gameover image
                     loop.stop();
@@ -223,6 +230,8 @@ public class FXMLDocumentController implements Initializable {
             }
 
         };
+
+        minimapViewer.setImage(minimap);
     }
 
     /**
@@ -308,11 +317,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void highscoreButton(ActionEvent event) {
         ib.loadXML();
-        ib.displayHighscore();
         bottomTextArea.appendText("\nThe highscore list for World of SDU\n");
         bottomTextArea.appendText("---------------------------------\n");
         bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
         bottomTextArea.appendText(ib.displayHighscore());
+        
     }
 
     /**
@@ -329,8 +338,8 @@ public class FXMLDocumentController implements Initializable {
         } else {
             useItem((IItem) listView.getSelectionModel().getSelectedItem());
         }
-
     }
+
 
     private void useItem(IItem item) {
         if (item == null) {
@@ -376,11 +385,10 @@ public class FXMLDocumentController implements Initializable {
      */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
+            bottomTextArea.clear();
             bottomTextArea.appendText("You have won the game, you are the "
                     + "best professer around" + "\n");
             canvasId.getGraphicsContext2D().drawImage(new Image("assets/win2.png"), 0, 0); // draw win screen image
-            ib.loadXML();
-            ib.displayHighscore();
             bottomTextArea.appendText("The highscore list for World of SDU\n");
             bottomTextArea.appendText("---------------------------------\n");
             bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
@@ -394,5 +402,4 @@ public class FXMLDocumentController implements Initializable {
     private void nameFieldClick(MouseEvent event) {
         nameField.clear();
     }
-
 }
