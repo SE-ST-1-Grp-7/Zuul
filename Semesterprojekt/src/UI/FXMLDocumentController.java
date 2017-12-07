@@ -294,16 +294,35 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void useButton(ActionEvent event) {
-        if ((listView.getSelectionModel().getSelectedItem() != null)) {
+        // If nothing, do nothing.
+        if (listView.getSelectionModel().getSelectedItem() == null) {
+            bottomTextArea.appendText("You have not selected a item to use" + "\n");
+            
+        // If false, use item.
+        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == false) {
             bottomTextArea.appendText("You just used "
-                    + listView.getSelectionModel().getSelectedItem().toString()
-                    + "\n");
+                + listView.getSelectionModel().getSelectedItem().toString()
+                + "\n");
             ib.itemUse(listView.getSelectionModel().getSelectedItem());
+            
+        // If true, use assignment.
+        } else if (ib.isAssignment(listView.getSelectionModel().getSelectedItem()) == true) {
+            if(ib.playerEnergy() > 20 && ib.playerCurrentRoom().matches("teacher room")) {
+                bottomTextArea.appendText("You just used "
+                + listView.getSelectionModel().getSelectedItem().toString()
+                + "\n");
+                ib.itemUse(listView.getSelectionModel().getSelectedItem());
+            }   else if(ib.playerEnergy()< 20) {
+                        bottomTextArea.appendText("You do not have enough energy!"+"\n");
+            }   else {
+                        bottomTextArea.appendText("You are not in your own room!"+"\n");
+            }
+            
+        // Error catch.
         } else {
-            bottomTextArea.appendText("You have no selected items to use in "
-                    + "inventory.\n");
+            System.out.println("Error in use button handling.");
         }
-
+        
     }
 
     /**

@@ -329,4 +329,9 @@ public class BusinessFacade implements IBusiness {
     public int getSeconds() {
         return this.seconds;
     }
+
+    @Override
+    public boolean isAssignment(Object o) {
+       return o instanceof Assignment;
+    }
 }
