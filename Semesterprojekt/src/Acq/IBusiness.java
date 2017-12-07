@@ -72,8 +72,11 @@ public interface IBusiness {
     // Retrieve the value of how many assignments have been graded.
     int amountOfGradedAssignments();
     
-    // Get amount of seconds left
+    // Get amount of seconds left.
     int getSeconds();
+    
+    // Set amount of seconds left.
+    void setSeconds(int seconds);
     
     boolean isAssignment(IItem item);
     

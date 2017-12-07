@@ -132,6 +132,7 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
+    
     /**
      * Get player object.
      *
@@ -153,7 +154,7 @@ public class EntityManager {
     /**
      * Get student list.
      *
-     * @return ArrayList<Student>, student list to retrieve.
+     * @return ArrayList< Student >, student list to retrieve.
      */
     public ArrayList<Student> getStudentList() {
         return studentlist;
@@ -162,7 +163,7 @@ public class EntityManager {
     /**
      * Replace student list.
      *
-     * @param studentlist ArrayList<Student>, student list to assign.
+     * @param studentlist ArrayList< Student >, student list to assign.
      */
     public void setStudentList(ArrayList<Student> studentlist) {
         this.studentlist = studentlist;
@@ -171,7 +172,7 @@ public class EntityManager {
     /**
      * Get furniture list.
      *
-     * @return ArrayList<Furniture>, furniture list to retrieve.
+     * @return ArrayList< Furniture >, furniture list to retrieve.
      */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
@@ -180,7 +181,7 @@ public class EntityManager {
     /**
      * Replace furniture list.
      *
-     * @param furniturelist ArrayList<Student>, furniture list to assign.
+     * @param furniturelist ArrayList< Student >, furniture list to assign.
      */
     public void setFurnitureList(ArrayList<Furniture> furniturelist) {
         this.furniturelist = furniturelist;
@@ -189,7 +190,7 @@ public class EntityManager {
     /**
      * Get item list.
      *
-     * @return ArrayList<Item>, item list to retrieve.
+     * @return ArrayList< Item >, item list to retrieve.
      */
     public ArrayList<Item> getItemList() {
         return itemlist;
@@ -198,7 +199,7 @@ public class EntityManager {
     /**
      * Replace item list.
      *
-     * @param itemlist ArrayList<Item>, item list to assign.
+     * @param itemlist ArrayList< Item >, item list to assign.
      */
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
@@ -1191,6 +1192,8 @@ public class EntityManager {
         playerData.add(String.valueOf(player.getEnergy()));
         // Gathering player energy capacity.
         playerData.add(String.valueOf(player.getEnergyCap()));
+        // Gather time left from player attribute.
+        playerData.add(String.valueOf(player.getTimeLeft()));
 
         // Add sub-list to main list.
         playersData.add(playerData);
@@ -1434,12 +1437,14 @@ public class EntityManager {
                 // Set graded assignment count.
                 player.setGradedAssignments(Integer.parseInt(
                         playerData.get(5)));
-                // Set player's energy capacity.
-                player.setEnergyCap(Integer.parseInt(playerData.get(8)));
-                // Set player's energy level.
-                player.setEnergy(Integer.parseInt(playerData.get(7)));
                 // Set boolean for if player has key.
                 player.setHasKey(Boolean.parseBoolean(playerData.get(6)));
+                // Set player's energy level.
+                player.setEnergy(Integer.parseInt(playerData.get(7)));
+                // Set player's energy capacity.
+                player.setEnergyCap(Integer.parseInt(playerData.get(8)));
+                // Set player's remaining time.
+                player.setTimeLeft(Integer.parseInt(playerData.get(9)));
             }
         }
         this.rm.getCurrentRoom().setEntity(player);

@@ -18,6 +18,7 @@ public class Player extends Person {
     private String playerImage = "/textures/player.png"; // Image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
+    private int timeLeft;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -167,6 +168,7 @@ public class Player extends Person {
     }
 
     // GETTERS & SETTERS
+    
     /**
      * Method call/get the player's inventory.
      *
@@ -292,5 +294,23 @@ public class Player extends Person {
 
     public void setCurrentAssignment(Assignment currentAssignment) {
         this.currentAssignment = currentAssignment;
+    }
+    
+    /**
+     * Get method for retrieving the time left after loading.
+     * 
+     * @return      int, time left of the game in seconds at time of loading.
+     */
+    public int getTimeLeft() {
+        return timeLeft;
+    }
+
+    /**
+     * Set method for setting the remaining time at saving point.
+     * 
+     * @param timeLeft      int, time left in seconds at saving point.
+     */
+    public void setTimeLeft(int timeLeft) {
+        this.timeLeft = timeLeft;
     }
 }

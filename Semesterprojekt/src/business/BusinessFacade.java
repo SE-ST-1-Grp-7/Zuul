@@ -112,6 +112,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void saveGame() {
+        entityManager.getPlayer().setTimeLeft(seconds);
         // Get parsed data.
         HashMap savePackage = entityManager.parseForSave();
         // Get file paths in a set (also assures no saving to the same file).
@@ -167,6 +168,8 @@ public class BusinessFacade implements IBusiness {
             // Update player's currently located at -room.
             roomManager.setCurrentRoom(
                     entityManager.getPlayer().getCurrentRoom());
+            // Refresh time remaining with loaded value saved under player.
+            seconds = entityManager.getPlayer().getTimeLeft();
         } else {
             status = false;
         }
@@ -322,25 +325,40 @@ public class BusinessFacade implements IBusiness {
     /**
      * Override; retrieve number of graded assignments.
      * 
-     * @return  int, number of assignments graded.
+     * @return      int, number of assignments graded.
      */
     @Override
     public int amountOfGradedAssignments() {
         return entityManager.getPlayer().getGradedAssignments();
     }
  /**
-  * Override: Set player's name
+  * Override; set player's name
   * 
-  * @param name String, desired name of player
+  * @param name     String, desired name of player
   */
     @Override
     public void playerSetName(String name) {
         entityManager.getPlayer().setName(name);
     }
 
+    /**
+     * Override; retrieve seconds left after loading previous save game.
+     * 
+     * @return      int, time left in seconds.
+     */
     @Override
     public int getSeconds() {
         return this.seconds;
+    }
+
+    /**
+     * Override; set the seconds remaining for saving process.
+     * 
+     * @param seconds   int, time left in seconds.
+     */
+    @Override
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
     }
 
     @Override
