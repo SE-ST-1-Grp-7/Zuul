@@ -13,11 +13,11 @@ public class Assignment extends Item {
     /**
      * Constructor for Assignment class.
      *
-     * @param x             int, horizontal position in room grid.
-     * @param y             int, vertical position in room grid.
-     * @param width         int, pixel width of assignment.
-     * @param height        int, pixel height of assignment.
-     * @param currentRoom   Room, currently in this room.
+     * @param x int, horizontal position in room grid.
+     * @param y int, vertical position in room grid.
+     * @param width int, pixel width of assignment.
+     * @param height int, pixel height of assignment.
+     * @param currentRoom Room, currently in this room.
      */
     public Assignment(int x,
             int y,
@@ -27,16 +27,16 @@ public class Assignment extends Item {
 
         // Pass arguments to superclass.
         super(x,
-              y,
-              width,
-              height,
-              currentRoom,
-              // Name of item.
-              "Assignment",
-              // Description of item.
-              "An assigment you can grade.",
-              // Weight of item.
-              1);
+                y,
+                width,
+                height,
+                currentRoom,
+                // Name of item.
+                "Assignment",
+                // Description of item.
+                "An assigment you can grade.",
+                // Weight of item.
+                1);
 
         // Pass path of texture to superclass.
         super.setEntityImage(assignmentImage);
@@ -45,11 +45,11 @@ public class Assignment extends Item {
     /**
      * Override, upon use of item.
      *
-     * @param p     Player, player is the one using the item.
+     * @param p Player, player is the one using the item.
      */
     @Override
     public boolean use(Player p) {
-        if (p.getCurrentAssignment() == null &&  p.getCurrentRoom().getName().equals("teacher room") ) {
+        if (p.getCurrentAssignment() == null && p.getCurrentRoom().getName().equals("teacher room")) {
             p.setCurrentAssignment(this);
             return true;
         } else {
@@ -67,18 +67,14 @@ public class Assignment extends Item {
             //removes this assignment from the player's inventory
             p.inventory().removeItem(this);
             p.setCurrentAssignment(null);
+            return;
         }
         //if you have more than or equal to 20 energy
-        if (p.getEnergy() >= 20 && p.getCurrentRoom().getName().equals("teacher room")) {
-            p.setAssignmentProgress(p.getAssignmentProgress() + 20);
-            p.setEnergy(p.getEnergy() - 5);
-            //we remove energy and add assignment progress 5 times
-            /*if the progress is 100 we set the progress to 0 and add 1 to the
+
+        p.setAssignmentProgress(p.getAssignmentProgress() + 20);
+        p.setEnergy(p.getEnergy() - 5);
+        //we remove energy and add assignment progress 5 times
+        /*if the progress is 100 we set the progress to 0 and add 1 to the
             gradedAssignments and removes it from the inventory*/
-        } else { // If not enough energy, do the following.
-            System.out.println("You do not have enough energy or you are not in your own room");
-
-        }
-
     }
 }

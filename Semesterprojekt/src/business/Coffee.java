@@ -7,7 +7,7 @@ package business;
  */
 public class Coffee extends Item {
 
-    private final int ENERGY_RESTORE = 15; // Energy restore value upon use.
+    private final int ENERGY_RESTORE = 30; // Energy restore value upon use.
     // Path of texture for coffee.
     private final String coffeeImage = "/textures/coffee1.png";
 
