@@ -43,6 +43,21 @@ public class FXMLDocumentController implements Initializable {
     private long diff = 0;
     private Pane pane;
     private String tempPlayerName;
+
+    private Image minimapGarden = new Image("/assets/Minimap/curRoomGarden.png");
+    private Image minimapRelaxingRoom = new Image("/assets/Minimap/curRoomRelaxRoom.png");
+    private Image minimapTeacherRoom = new Image("/assets/Minimap/curRoomTeachRoom.png");
+    private Image minimapPub = new Image("/assets/Minimap/curRoomPub.png");
+    private Image minimapOutside = new Image("/assets/Minimap/curRoomOutside.png");
+    private Image minimapHallway1 = new Image("/assets/Minimap/curRoomhallway1.png");
+    private Image minimapDininghall = new Image("/assets/Minimap/curRoomDinnerRoom.png");
+    private Image minimapHallway2 = new Image("/assets/Minimap/curRoomHallway2.png");
+    private Image minimapLecturehall1 = new Image("/assets/Minimap/curRoomLecturehall1.png");
+    private Image minimapHallway3 = new Image("/assets/Minimap/curRoomhallway3.png");
+    private Image minimapLecturehall2 = new Image("/assets/Minimap/curRoomLecturehall2.png");
+    private Image minimapToilet = new Image("/assets/Minimap/curRoomToilet.png");
+    private Image minimap = new Image("/assets/Minimap/minimap.png");
+
     // Keyhandler that moves the player around
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
         switch (event.getCode()) {
@@ -207,9 +222,8 @@ public class FXMLDocumentController implements Initializable {
             }
 
         };
-        
-        Image minimap = new Image("/assets/Minimap/minimap.png");
-                minimapViewer.setImage(minimap);
+
+        minimapViewer.setImage(minimap);
     }
 
     /**
@@ -383,63 +397,48 @@ public class FXMLDocumentController implements Initializable {
     private void nameFieldClick(MouseEvent event) {
         nameField.clear();
     }
-    
-    private void showMinimap(String room){
-        
-        switch (room){
+
+    private void showMinimap(String room) {
+
+        switch (room) {
             case "garden":
-                Image minimapGarden = new Image("/assets/Minimap/curRoomGarden.png");
                 minimapViewer.setImage(minimapGarden);
                 break;
             case "relaxing room":
-                Image minimapRelaxingRoom = new Image("/assets/Minimap/curRoomRelaxRoom.png");
                 minimapViewer.setImage(minimapRelaxingRoom);
                 break;
             case "teacher room":
-                Image minimapTeacherRoom = new Image("/assets/Minimap/curRoomTeachRoom.png");
                 minimapViewer.setImage(minimapTeacherRoom);
                 break;
             case "pub":
-                Image minimapPub = new Image("/assets/Minimap/curRoomPub.png");
                 minimapViewer.setImage(minimapPub);
                 break;
             case "outside":
-                Image minimapOutside = new Image("/assets/Minimap/curRoomOutside.png");
                 minimapViewer.setImage(minimapOutside);
                 break;
             case "hallway 1":
-                Image minimapHallway1 = new Image("/assets/Minimap/curRoomhallway1.png");
                 minimapViewer.setImage(minimapHallway1);
                 break;
             case "dininghall":
-                Image minimapDininghall = new Image("/assets/Minimap/curRoomDinnerRoom.png");
                 minimapViewer.setImage(minimapDininghall);
                 break;
             case "hallway 2":
-                Image minimapHallway2 = new Image("/assets/Minimap/curRoomHallway2.png");
                 minimapViewer.setImage(minimapHallway2);
                 break;
             case "lecturehall 1":
-                Image minimapLecturehall1 = new Image("/assets/Minimap/curRoomLecturehall1.png");
                 minimapViewer.setImage(minimapLecturehall1);
                 break;
             case "hallway 3":
-                Image minimapHallway3 = new Image("/assets/Minimap/curRoomhallway3.png");
                 minimapViewer.setImage(minimapHallway3);
                 break;
             case "lecturehall 2":
-                Image minimapLecturehall2 = new Image("/assets/Minimap/curRoomLecturehall2.png");
                 minimapViewer.setImage(minimapLecturehall2);
                 break;
             case "toilet":
-                Image minimapToilet = new Image("/assets/Minimap/curRoomToilet.png");
                 minimapViewer.setImage(minimapToilet);
                 break;
-            default:
-                
-                break;
         }
-        
+
     }
 
 }
