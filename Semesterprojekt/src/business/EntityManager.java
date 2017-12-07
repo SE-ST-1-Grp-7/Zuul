@@ -920,6 +920,23 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable4.png"));
                 break;
+                
+                case "ID108":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor1.png", this));
+                    break;
+                
+                    case "ID109":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor2.png", this));
+                    break;
+                    
+                    case "ID110":
+                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
+                            "/textures/tutor3.png", this));
+                    break;
+                    
+                    
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum

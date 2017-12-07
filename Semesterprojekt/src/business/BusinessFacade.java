@@ -18,8 +18,9 @@ public class BusinessFacade implements IBusiness {
     private EntityManager entityManager;
     private RoomManager roomManager;
     private IData data;
+    private int startSeconds = 300;
     // amount of seconds you have left
-    private int seconds = 120;
+    private int seconds = startSeconds;
 
     /**
      * No-arg constructor; call game reset, to start game from fresh.
@@ -59,6 +60,7 @@ public class BusinessFacade implements IBusiness {
         roomManager = new RoomManager();
         entityManager = new EntityManager(roomManager);
         gameOver = false;
+        this.seconds = startSeconds;
         
         // Iterate through the length of furniture list.
         for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
