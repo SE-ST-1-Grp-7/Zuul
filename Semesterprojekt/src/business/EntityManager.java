@@ -141,7 +141,7 @@ public class EntityManager {
     public Player getPlayer() {
         return player;
     }
-
+    
     /**
      * Replace player object.
      *

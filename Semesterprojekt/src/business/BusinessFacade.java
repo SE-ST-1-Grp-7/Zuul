@@ -385,4 +385,24 @@ public class BusinessFacade implements IBusiness {
         }
     }
 
+    @Override
+    public boolean getInteractionHappend() {
+        return entityManager.getPlayer().getInteractionHappend();
+    }
+
+    @Override
+    public void setInteractionHappend(boolean b) {
+        entityManager.getPlayer().setInteractionHappend(b);
+    }
+
+//    @Override
+//    public boolean getTutorAsked() {
+//        return entityManager.getTutor().getTutorAsked();
+//    }
+//    
+//    @Override
+//    public void setTutorAsked(boolean b) {
+//        entityManager.getTutor().setTutorAsked(b);
+//    }
+
 }

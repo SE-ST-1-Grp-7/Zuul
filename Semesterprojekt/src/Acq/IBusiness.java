@@ -84,6 +84,14 @@ public interface IBusiness {
     
     int playerAssignmentProgress();
     
-    boolean playerHasAssignment();
+    boolean playerHasAssignment();   
+    
+    boolean getInteractionHappend();
+    
+    void setInteractionHappend(boolean b);
+//    
+//    boolean getTutorAsked();
+//    
+//    void setTutorAsked(boolean b);
     
 }
