@@ -1448,6 +1448,7 @@ public class EntityManager {
             }
         }
         player.getCurrentRoom().setEntity(player);
+        this.rm.setCurrentRoom(player.getCurrentRoom());
     }
 
     public void loadStudents(ArrayList<ArrayList<String>> data) {
