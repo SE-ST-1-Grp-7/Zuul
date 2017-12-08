@@ -303,6 +303,7 @@ public class FXMLDocumentController implements Initializable {
         } else {
             bottomTextArea.appendText("There is no load data.\n");
         }
+        listView.setItems(ib.playerGetInventory());
     }
 
     /**
