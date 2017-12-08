@@ -62,7 +62,7 @@ public interface IBusiness {
     String playerCurrentRoomName();
     
     // Set game to initial state.
-    void resetGame();
+    void resetGame(String playerName);
     
     // Retrive player's current energy level.
     int playerEnergy();
