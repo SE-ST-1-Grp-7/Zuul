@@ -357,14 +357,20 @@ public class EntityManager {
                         j,
                         i,
                         this.playerName,
-                        rm.getRoom(name), this);
+                        rm.getRoom(name),
+                        this);
                 this.rm.getRoom(name).setEntity(this.player);
                 break;
 
             // Instance of white t-shirt, brunette student.
             case "ID51":
-                studentlist.add(new Student(id, j, i, rm.getRoom(name), false,
-                        "/textures/student1.png", this));
+                studentlist.add(new Student(id,
+                        j,
+                        i,
+                        rm.getRoom(name),
+                        false,
+                        "/textures/student1.png",
+                        this));
                 break;
 
             // Instance of red t-shirt, brunette student.
@@ -374,7 +380,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student2.png", this));
+                        "/textures/student2.png",
+                        this));
                 break;
 
             // Instance of green t-shirt, brunette student.
@@ -384,7 +391,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student3.png", this));
+                        "/textures/student3.png",
+                        this));
                 break;
 
             // Instance of white t-shirt, blond student.
@@ -394,7 +402,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student4.png", this));
+                        "/textures/student4.png",
+                        this));
                 break;
 
             // Instance of red t-shirt, blond student.
@@ -404,7 +413,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student5.png", this));
+                        "/textures/student5.png",
+                        this));
                 break;
 
             // Instance of green t-shirt, blond student.
@@ -414,7 +424,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student6.png", this));
+                        "/textures/student6.png",
+                        this));
                 break;
 
             // Instance of white t-shirt, black student.
@@ -424,7 +435,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student7.png", this));
+                        "/textures/student7.png",
+                        this));
                 break;
 
             // Instance of red t-shirt, black student.
@@ -434,7 +446,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student8.png", this));
+                        "/textures/student8.png",
+                        this));
                 break;
 
             // Instance of green t-shirt, black student.
@@ -444,7 +457,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student9.png", this));
+                        "/textures/student9.png",
+                        this));
                 break;
 
             // Instance of white t-shirt, asian student.
@@ -454,7 +468,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student10.png", this));
+                        "/textures/student10.png",
+                        this));
                 break;
 
             // Instance of red t-shirt, asian student.
@@ -464,7 +479,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         true,
-                        "/textures/student11.png", this));
+                        "/textures/student11.png",
+                        this));
                 break;
 
             // Instance of green t-shirt, asian student.
@@ -474,7 +490,8 @@ public class EntityManager {
                         i,
                         rm.getRoom(name),
                         false,
-                        "/textures/student12.png", this));
+                        "/textures/student12.png",
+                        this));
                 break;
 
             // Door, inner, vertical.
@@ -533,7 +550,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door12.png", false));
+                        "/textures/door12.png",
+                        false));
                 break;
 
             // Door, outer, vertical handle down, locked
@@ -544,7 +562,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door12.png", true));
+                        "/textures/door12.png",
+                        true));
                 break;
 
             // Door, outer, vertical, handle up.
@@ -555,7 +574,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door11.png", false));
+                        "/textures/door11.png",
+                        false));
                 break;
 
             // Door, outer, vertical, handle up. locked
@@ -566,7 +586,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door11.png", true));
+                        "/textures/door11.png",
+                        true));
                 break;
 
             // Door, outer, horizontal, handle right.
@@ -577,7 +598,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door13.png", false));
+                        "/textures/door13.png",
+                        false));
                 break;
 
             // Door, outer, horizontal, handle right, locked.
@@ -588,7 +610,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door13.png", true));
+                        "/textures/door13.png",
+                        true));
                 break;
 
             // Door, outer, horizontal, handle left.
@@ -599,7 +622,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door14.png", false));
+                        "/textures/door14.png",
+                        false));
                 break;
 
             // Door, outer, horizontal, handle left, locked.
@@ -610,7 +634,8 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name),
-                        "/textures/door14.png", true));
+                        "/textures/door14.png",
+                        true));
                 break;
 
             // Assignment item                
@@ -632,6 +657,7 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair1.png"));
                 break;
+                
             case "ID71":
                 furniturelist.add(new Chair(id,
                         j,
@@ -641,6 +667,7 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair2.png"));
                 break;
+                
             case "ID72":
                 furniturelist.add(new Chair(id,
                         j,
@@ -813,7 +840,9 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name), false, 0,
+                        rm.getRoom(name),
+                        false,
+                        0,
                         "/textures/pooltable1.png"));
                 break;
             // Table pooltable.
@@ -823,7 +852,9 @@ public class EntityManager {
                         i,
                         64,
                         64,
-                        rm.getRoom(name), false, 0,
+                        rm.getRoom(name),
+                        false,
+                        0,
                         "/textures/pooltable2.png"));
                 break;
 
@@ -840,12 +871,21 @@ public class EntityManager {
             // Coffee item.
             case "ID90":
                 itemlist.add(new Coffee(id,
-                        j, i, 64, 64, rm.getRoom(name)));
+                        j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name)));
                 break;
 
             // Adderall item.
             case "ID91":
-                itemlist.add(new Adderall(id, j, i, 64, 64, rm.getRoom(name)));
+                itemlist.add(new Adderall(id,
+                        j,
+                        i,
+                        64,
+                        64,
+                        rm.getRoom(name)));
                 break;
 
             // Bench facing west, top end part.
@@ -1266,7 +1306,6 @@ public class EntityManager {
      * @return ArrayList< ArrayList < String > >, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveItems() {
-        System.out.println("itemlist" + itemlist);
         // 2D list to contain the data.
         ArrayList<ArrayList<String>> itemsData = new ArrayList<>();
         // Iterate through all items in the game and gather their data.
@@ -1414,6 +1453,8 @@ public class EntityManager {
      * @param data ArrayList< ArrayList < String > >, 2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
+        // Set item allocations in rooms to null.
+        nullItems();
         // Clear item list.
         itemlist.clear();
 
@@ -1427,16 +1468,13 @@ public class EntityManager {
                         // y position in room grid.
                         Integer.parseInt(itemData.get(3)),
                         // Room name.
-                        itemData.get(3),
+                        itemData.get(4),
                         // Player name.
                         playerName,
                         // ID of item.
                         itemData.get(0));
             }
         }
-        //------------------------------------------------------------------------------------------------------------------
-        System.out.println("Inventory list: " + itemlist);
-        //------------------------------------------------------------------------------------------------------------------
         showItems();
     }
 

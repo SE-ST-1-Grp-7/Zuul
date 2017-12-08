@@ -167,7 +167,6 @@ public class BusinessFacade implements IBusiness {
         
         // If the load package is not empty, otherwise do nothing.
         if (!loadPackage.isEmpty()) {
-            System.out.println(loadPackage.get("\\Documents\\zuul\\SavePlayersTest.txt"));
             // Set old player's entity location to null.
             entityManager.getPlayer().getCurrentRoom().getEntities()
                     [entityManager.getPlayer().getY()]
