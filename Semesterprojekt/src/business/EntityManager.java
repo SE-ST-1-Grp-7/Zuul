@@ -25,18 +25,18 @@ public class EntityManager {
     // Container for entity IDs from CSV file.
     private static HashMap<String, String[][]> entityCSV = new HashMap<>();
     private static RoomManager rm;
+    String playerName;
 
     /**
      * Primary constructor for the EntityManager class.
      *
      * @param rm RoomManager, used to assign entities to a specific room.
      */
-    public EntityManager(RoomManager rm) {
+    public EntityManager(RoomManager rm, String playerName) {
         this.rm = rm;                   // Assign room manager object to class.
         loadPresetEntities();           // Load entity IDs from CSV file.
-        String playerName = "tempPlayerName";    // Temp define for player name.
+        this.playerName = playerName;    // Assign player name to attribute.
         addEntitiesToRooms(playerName); // Instantiate entities defined in CSV.
-        player.setName(playerName);
     }
 
     // ENTITY MANAGMENT METHODS
