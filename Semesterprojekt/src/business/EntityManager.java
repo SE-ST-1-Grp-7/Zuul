@@ -327,6 +327,10 @@ public class EntityManager {
                 }
             }
         }
+        // Place entities in their rooms.
+        showStudents();
+        showFurniture();
+        showItems();
     }
 
     /**
@@ -349,9 +353,6 @@ public class EntityManager {
         switch (id.toUpperCase()) {
             // Instance of player to be added.
             case "ID50":
-                //-----------------------------------------------------------
-                System.out.println("entityTypes: " + this.playerName);
-                //-----------------------------------------------------------
                 player = new Player(id,
                         j,
                         i,
@@ -1239,10 +1240,6 @@ public class EntityManager {
         // Instantiate the HashMap.
         HashMap<String, ArrayList<ArrayList<String>>> savePackage = new HashMap<>();
 
-        //-------------------------------------------------------------------
-        System.out.println("parseForSave: " + player.getName());
-        //-------------------------------------------------------------------
-        
         // Place collected data about player in HashMap.
         savePackage.put("\\Documents\\zuul\\SavePlayersTest.txt",
                 savePlayers());
@@ -1332,11 +1329,6 @@ public class EntityManager {
         playerData.add(String.valueOf(player.getX()));
         // Gathering Y grid position.
         playerData.add(String.valueOf(player.getY()));
-        
-        //-------------------------------------------------------------------
-        System.out.println("savePlayers: " + player.getName());
-        //-------------------------------------------------------------------
-        
         // Gathering player's name.
         playerData.add(player.getName());
         // Gathering player's current room.
@@ -1536,10 +1528,7 @@ public class EntityManager {
      *
      * @param data ArrayList< ArrayList < String > >, 2D list with loaded data.
      */
-    public void loadPlayers(ArrayList<ArrayList<String>> data) {
-        //---------------------------------------------------------------------
-        System.out.println(data);
-        //---------------------------------------------------------------------        
+    public void loadPlayers(ArrayList<ArrayList<String>> data) {      
         // Iterate through the data.
         for (ArrayList<String> playerData : data) {
             // Assign loaded name to entity manager
