@@ -6,7 +6,7 @@ package business;
  * @author Jonas Bjørstorp & Frederik Bauer & Rasmus Willer
  */
 public class EnergyDrink extends Item {
-    private final int ENERGY_RESTORE = 40; // Energy restore upon use.
+    private final int ENERGY_RESTORE = 30; // Energy restore upon use.
     // Path of tecture for energy drink.
     private final String energydrinkImage = "/textures/energydrink.png";
     
