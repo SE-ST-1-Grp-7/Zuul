@@ -11,6 +11,17 @@ public class Door extends Furniture {
     private RoomManager roomManager;
     private boolean isLocked;
 
+     /**
+     * Constructor for Door class.
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of adderall.
+     * @param height            int, pixel height of adderall.
+     * @param currentRoom       Room, currently in this room.
+     * @param imagePath         string, path to get the door image.
+     * @param isLocked          boolean, check if the door is locked or not
+     */
     public Door(int x, int y, int width, int height,
             Room currentRoom, String imagePath, boolean isLocked) {
 
