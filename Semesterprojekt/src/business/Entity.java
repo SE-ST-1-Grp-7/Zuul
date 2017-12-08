@@ -7,10 +7,11 @@ package business;
  * @author Group 7
  */
 public abstract class Entity {
-    private int x, y;             // X and Y grid position in room.
-    private int width, height;    // Pixel width and height of entity.
-    private Room currentRoom;     // Placed in this room.
-    private String entityImage;   // Path of texture of entity.
+    private int x, y;               // X and Y grid position in room.
+    private int width, height;      // Pixel width and height of entity.
+    private Room currentRoom;       // Placed in this room.
+    private String entityImage;     // Path of texture of entity.
+    private String id;              // ID number identifying the entity.
     
     /**
      * Constructor of Entity class.
@@ -21,8 +22,9 @@ public abstract class Entity {
      * @param height        int, pixel height of coffee.
      * @param currentRoom   Room, currently in this room.
      */
-    public Entity(int x, int y, int width, int height, Room currentRoom) {
+    public Entity(String id, int x, int y, int width, int height, Room currentRoom) {
         // Assign parameters to variables.
+        this.id = id;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -118,6 +120,14 @@ public abstract class Entity {
 
     public void setEntityImage(String entityImage) {
         this.entityImage = entityImage;
+    }
+    
+    public String getID() {
+        return id;
+    }
+
+    public void setID(String id) {
+        this.id = id;
     }
     
     /**

@@ -16,14 +16,16 @@ public class Plant extends Furniture /*implements Interactable*/{
      * @param currentRoom       Room, currently in this room.
      * @param imagePath
      */
-    public Plant(int x,
+    public Plant(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
-        super(x,
+        super(id,
+                x,
                 y,
                 width,
                 height,

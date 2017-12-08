@@ -19,14 +19,16 @@ public class Assignment extends Item {
      * @param height int, pixel height of assignment.
      * @param currentRoom Room, currently in this room.
      */
-    public Assignment(int x,
+    public Assignment(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom) {
 
         // Pass arguments to superclass.
-        super(x,
+        super(id,
+                x,
                 y,
                 width,
                 height,

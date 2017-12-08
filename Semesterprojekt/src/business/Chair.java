@@ -17,14 +17,16 @@ public class Chair extends Furniture {
      * @param currentRoom       Room, currently in this room.
      * @param imagePath         String, path of texture.
      */
-    public Chair(int x,
+    public Chair(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
-        super(x,                    // X grid position in room.
+        super(id,
+                x,                    // X grid position in room.
                 y,                  // Y grid position in room.
                 width,              // Pixel width.
                 height,             // Pixel height.

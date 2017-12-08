@@ -20,14 +20,16 @@ public class Coffee extends Item {
      * @param height int, pixel height of coffee.
      * @param currentRoom Room, currently in this room.
      */
-    public Coffee(int x,
+    public Coffee(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom) {
 
         // Pass arguments to superclass
-        super(x, // X grid position in room.
+        super(id,
+                x, // X grid position in room.
                 y, // Y grid position in room.
                 width, // Pixel width.
                 height, // Pixel height.

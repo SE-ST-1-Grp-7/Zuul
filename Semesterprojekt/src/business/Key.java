@@ -17,10 +17,15 @@ public class Key extends Item {
      * @param height            int, pixel height of key.
      * @param currentRoom       Room, currently in this room.
      */
-    public Key(int x, int y, int width, int height, Room currentRoom) {
+    public Key(String id,
+            int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom) {
         
         // Arguments for superclass
-        super(x, y, width, height, currentRoom, 
+        super(id, x, y, width, height, currentRoom, 
                 "Key",                  // Name of item.
                 "Used to open doors",   // Description of item.
                 1);                      // Weight of item.

@@ -148,6 +148,8 @@ public class FXMLDocumentController implements Initializable {
 
         loop.stop();
         ib.resetGame();
+        // Instantiate entities in the game.
+        ib.initGame(tempPlayerName);
         // Display welcome message.
         bottomTextArea.appendText("Welcome to the Professor Game!\n"
                 + "One of the hardest games on SDU.\n");
@@ -160,8 +162,6 @@ public class FXMLDocumentController implements Initializable {
         gp.setFocusTraversable(true);
         //set keylistener
         gp.setOnKeyPressed(movementhandler);
-
-        ib.playerSetName(tempPlayerName);
         // current time in nano time
         final long startNanoTime = System.nanoTime();
         loop.start();

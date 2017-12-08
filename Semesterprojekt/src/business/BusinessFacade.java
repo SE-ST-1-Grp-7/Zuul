@@ -73,6 +73,21 @@ public class BusinessFacade implements IBusiness {
             }
         }
     }
+    
+    @Override
+    public void initGame(String playerName) {
+        entityManager.newGameEnts(playerName);
+        this.seconds = startSeconds;
+        
+        // Iterate through the length of furniture list.
+        for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
+            // If entity is a door, update its room manager.
+            if (entityManager.getFurnitureList().get(i) instanceof Door) {
+                Door d = (Door) entityManager.getFurnitureList().get(i);
+                d.setRoomManager(roomManager);
+            }
+        }
+    }
 
     /**
      * Override; upon interaction with player.

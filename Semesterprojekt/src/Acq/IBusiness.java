@@ -64,6 +64,9 @@ public interface IBusiness {
     // Set game to initial state.
     void resetGame();
     
+    // Activate instantiations in entity manager
+    public void initGame(String playerName);
+    
     // Retrive player's current energy level.
     int playerEnergy();
     

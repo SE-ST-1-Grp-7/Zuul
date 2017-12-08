@@ -22,13 +22,15 @@ public class Student extends Person {
      * @param currentRoom Room, placed currently in this room.
      * @param hasQ boolean, true if student has a questions.
      */
-    public Student(int x,
+    public Student(String id,
+            int x,
             int y,
             Room currentRoom,
             boolean hasQ, EntityManager em) {
 
         // Pass arguments to superclass.
-        super(x,
+        super(id,
+                x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
@@ -44,13 +46,14 @@ public class Student extends Person {
         this.hasQuestionToPlayer = hasQ; // Student has a question to player.
     }
 
-    public Student(int x,
+    public Student(String id,
+            int x,
             int y,
             Room currentRoom,
             boolean hasQ,
             String studentImage, EntityManager em) {
         // Pass arguments to other constructor.
-        this(x, y, currentRoom, hasQ, em);
+        this(id, x, y, currentRoom, hasQ, em);
         this.studentImage = studentImage;
         super.setEntityImage(studentImage);
         getCurrentRoom().getEntities()[getY()][getX()] = null;
