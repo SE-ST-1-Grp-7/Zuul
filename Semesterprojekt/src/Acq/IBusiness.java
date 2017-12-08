@@ -9,7 +9,8 @@ import javafx.collections.ObservableList;
  * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
-    // sets name of player
+    
+// sets name of player
     void playerSetName(String name);
     
     // Gets value of gameOver
@@ -75,12 +76,16 @@ public interface IBusiness {
     // Set amount of seconds left.
     void setSeconds(int seconds);
     
+    //check if item is an assignment
     boolean isAssignment(IItem item);
     
+    // Retrieve path to minimap image 
     String minimapImage();
     
+    // Retrieve the progress of grading an assignment
     int playerAssignmentProgress();
     
+    // Check if player is grading an assignment
     boolean playerHasAssignment();
     
 }
