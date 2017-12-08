@@ -1414,12 +1414,8 @@ public class EntityManager {
      * @param data ArrayList< ArrayList < String > >, 2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
-        System.out.println("before nullitems" + itemlist);
-        nullItems();
-        System.out.println("after nullitems" + itemlist);
         // Clear item list.
         itemlist.clear();
-        System.out.println("after clear" + itemlist);
 
         // Iterate through data of all items for loading.
         for (ArrayList<String> itemData : data) {
@@ -1438,6 +1434,10 @@ public class EntityManager {
                         itemData.get(0));
             }
         }
+        //------------------------------------------------------------------------------------------------------------------
+        System.out.println("Inventory list: " + itemlist);
+        //------------------------------------------------------------------------------------------------------------------
+        showItems();
     }
 
     /**
