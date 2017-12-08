@@ -1501,7 +1501,7 @@ public class EntityManager {
                             break;
 
                         // If energy drink, add to inventory list.
-                        case "EnergyDrink":
+                        case "Energy drink":
                             EnergyDrink e = new EnergyDrink("ID103",
                                     0,
                                     0,
@@ -1510,7 +1510,18 @@ public class EntityManager {
                                     null);
                             player.inventory().addItem(e);
                             break;
-
+                            
+                        // If gun, add to inventory list.
+                        case "Sawed-off":
+                            Gun g = new Gun("ID111",
+                                    0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(g);
+                            break;
+                            
                         // Ignore anything else.
                         default:
                             break;
