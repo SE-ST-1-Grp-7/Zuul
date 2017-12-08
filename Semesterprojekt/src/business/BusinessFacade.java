@@ -28,6 +28,7 @@ public class BusinessFacade implements IBusiness {
      * No-arg constructor; call game reset, to start game from fresh.
      */
     public BusinessFacade() {
+        resetGame();
     }
     
     /**
@@ -55,13 +56,11 @@ public class BusinessFacade implements IBusiness {
      * Override; set the game to New Game state. Instantiating new room- and 
      * entity-managers and update all doors in the game, along with setting
      * gameOver to false.
-     * 
-     * @param playerName    String, name of player.
      */
     @Override
-    public void resetGame(String playerName) {
+    public void resetGame() {
         roomManager = new RoomManager();
-        entityManager = new EntityManager(roomManager, playerName);
+        entityManager = new EntityManager(roomManager);
         gameOver = false;
         this.seconds = startSeconds;
         
