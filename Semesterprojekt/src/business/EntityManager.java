@@ -357,7 +357,7 @@ public class EntityManager {
                         j,
                         i,
                         this.playerName,
-                        rm.getCurrentRoom(), this);
+                        rm.getRoom(name), this);
                 this.rm.getRoom(name).setEntity(this.player);
                 break;
 
