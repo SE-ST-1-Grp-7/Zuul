@@ -646,7 +646,7 @@ public class EntityManager {
                         64,
                         64,
                         rm.getRoom(name)));
-
+                break;
             // Chair facing north.
             case "ID70":
                 furniturelist.add(new Chair(id,
