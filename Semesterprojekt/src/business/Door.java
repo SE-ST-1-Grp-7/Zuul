@@ -44,9 +44,9 @@ public class Door extends Furniture {
     }
 
     /**
-     * Override; on interact with door, checks if Person is an instance of 
+     * Override; on interact with door. Checks if Person is an instance of 
      * player, if the door is locked, then the player needs a key
-     * to go through, if the door is not locked, then the 
+     * to go through it. When the door is not locked, then the 
      * goThroughDoormethod is called for both player and student.
      * 
      * @param p  Person, this means all subclasses of person can interact
@@ -71,7 +71,11 @@ public class Door extends Furniture {
         }
 
     }
-    
+    /**
+     * Method for going for through doors for player object.
+     * 
+     * @param player        Player, only the player object will move.
+     */
     private void goThroughDoorMethod(Player player) {
         //Place tempItem if it exists
         if (player.getTempItem() != null) { 
@@ -86,7 +90,12 @@ public class Door extends Furniture {
         useDoor(player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(player);
     }
-
+    
+    /**
+     * Method for going for through doors for student objects.
+     * 
+     * @param student        Student, only the student object will move.
+     */
     private void goThroughDoorMethod2(Student student) {
         student.getCurrentRoom().setEntityWithXY(
                 student.getX(), student.getY(), null);
@@ -140,12 +149,21 @@ public class Door extends Furniture {
         }
 
     }
-
+    /**
+     * Override; Retreive x coordinate for door object.
+     * 
+     * @return int, horizontal position in room grid.
+     */
     @Override
     public int getX() {
         return super.getX();
     }
-
+    
+    /**
+     * Override; Retreive y coordinate for door object.
+     * 
+     * @return int, vertical position in room grid.
+     */
     @Override
     public int getY() {
         return super.getY();
