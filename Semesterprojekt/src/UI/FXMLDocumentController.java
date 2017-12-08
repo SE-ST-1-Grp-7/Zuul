@@ -136,7 +136,7 @@ public class FXMLDocumentController implements Initializable {
             //ib.playerSetName(nameField.getText());
             tempPlayerName = nameField.getText();
             nameField.setVisible(false);
-            game();
+            game(nameField.getText());
         } else {
             bottomTextArea.appendText("Your name must be shorter than or equal to 8 characters\n"
                     + "and more than or equal to 1 characters ");
@@ -144,12 +144,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    private void game() {
+    private void game(String playerName) {
 
         loop.stop();
         ib.resetGame();
         // Instantiate entities in the game.
-        ib.initGame(tempPlayerName);
+        ib.initGame(playerName);
         // Display welcome message.
         bottomTextArea.appendText("Welcome to the Professor Game!\n"
                 + "One of the hardest games on SDU.\n");
@@ -290,7 +290,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void loadButton(ActionEvent event) {
-        game();
+        game(ib.getLoadName());
         nameField.setVisible(false);
         // Call load game and get a boolean back, true is successfull.
         boolean status = ib.loadGame();

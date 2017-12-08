@@ -21,4 +21,7 @@ public interface IData {
     
     //Save the highscore
     void saveHighscore(String playerName, int seconds);
+    
+    // Retrieve player name.
+    String retrieveName(String path);
 }

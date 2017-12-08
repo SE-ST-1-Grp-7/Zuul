@@ -43,12 +43,13 @@ public class EntityManager {
         loadPresetEntities();
         // Instantiate entities defined in CSV.
         addEntitiesToRooms(playerName);
-        //-----------------------------------------------------------
-        System.out.println("newGameEnts: " + player.getName());
-        //-----------------------------------------------------------
     }
     
-    private void makeEnt(int x, int y, String name, String playerName, String IDnum) {
+    private void makeEnt(int x,
+            int y,
+            String name,
+            String playerName,
+            String IDnum) {
         // Call instantiation of entity based on ID number.
         if (this.playerName.equalsIgnoreCase("Peter")) {
             senpaiTypes(y, x, name, this.playerName, IDnum);
@@ -326,10 +327,6 @@ public class EntityManager {
                 }
             }
         }
-        // Place entities in their respective rooms.
-        showStudents();
-        showFurniture();
-        showItems();
     }
 
     /**
@@ -1406,7 +1403,7 @@ public class EntityManager {
         
         // Important player is loaded first.
         // Call player load with player data as parameter.
-        loadPlayers(loadPackage.get(saveFiles.get(2)));
+        loadPlayers(loadPackage.get(saveFiles.get(0)));
         
         // Call student load with student data as parameter.
         loadStudents(loadPackage.get(saveFiles.get(1)));
@@ -1449,8 +1446,6 @@ public class EntityManager {
                         itemData.get(0));
             }
         }
-        // Make items show themself in the game.
-        showItems();
     }
 
     /**
@@ -1602,8 +1597,6 @@ public class EntityManager {
                         studentData.get(0));
             }
         }
-        // Make the students appear in the game.
-        showStudents();
     }
 
     /**

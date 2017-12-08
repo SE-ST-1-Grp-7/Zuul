@@ -91,4 +91,5 @@ public interface IBusiness {
     // Check if player is grading an assignment
     boolean playerHasAssignment();
     
+    public String getLoadName();
 }

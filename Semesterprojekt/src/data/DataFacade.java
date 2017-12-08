@@ -74,6 +74,14 @@ public class DataFacade implements IData {
         highscore.saveHighscore(playerName,seconds);
     }
     
-
+    @Override
+    public String retrieveName(String path) {
+        // Instantiate load object.
+        Load load = new Load(path);
+        // Retrieve collected data from the getData method.
+        ArrayList<ArrayList<String>> data = load.getData();
+        // Return the retrieved data.
+        return data.get(0).get(3);
+    }
     
 }
