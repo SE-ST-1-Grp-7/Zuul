@@ -207,7 +207,7 @@ public class EntityManager {
     /**
      * Read entity IDs from CSV file.
      */
-    public static void loadPresetEntities() {
+    public void loadPresetEntities() {
         // Path of CSV file.
         String csvFile = "res/presets/roomEntities.csv";
         // Declare a buffer for the file reader.
