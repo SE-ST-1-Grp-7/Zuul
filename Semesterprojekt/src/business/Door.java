@@ -1,7 +1,7 @@
 package business;
 
 /**
- * subclass of furniture
+ * subclass of furniture, door class.
  * 
  * @author Magnus Mortensen & Robin Petersen
  */
