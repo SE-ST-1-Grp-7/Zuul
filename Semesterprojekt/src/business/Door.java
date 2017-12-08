@@ -43,6 +43,15 @@ public class Door extends Furniture {
         this.roomManager = rm;
     }
 
+    /**
+     * Override; on interact with door, checks if Person is an instance of 
+     * player, if the door is locked, then the player needs a key
+     * to go through, if the door is not locked, then the 
+     * goThroughDoormethod is called for both player and student.
+     * 
+     * @param p  Person, this means all subclasses of person can interact
+     * with doors.
+     */
     @Override
     public void onInteract(Person p) {
         if (p instanceof Player) {
@@ -62,7 +71,7 @@ public class Door extends Furniture {
         }
 
     }
-
+    
     private void goThroughDoorMethod(Player player) {
         //Place tempItem if it exists
         if (player.getTempItem() != null) { 
