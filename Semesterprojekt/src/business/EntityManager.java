@@ -1635,6 +1635,7 @@ public class EntityManager {
                         studentData.get(0));
             }
         }
+        showStudents();
     }
 
     /**
