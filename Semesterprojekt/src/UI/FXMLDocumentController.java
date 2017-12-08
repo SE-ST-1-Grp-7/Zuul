@@ -97,7 +97,7 @@ public class FXMLDocumentController implements Initializable {
             case S:
                 ib.playerMove("down");
                 break;
-            case Z:
+            case e:
                 ib.playerInteract();
                 break;
             case DIGIT1:
