@@ -88,6 +88,9 @@ public class EntityManager {
         }
     }
 
+    /**
+     * Removes items from rooms.
+     */
     public void nullItems() {
         for (Item i : itemlist) {
             i.getCurrentRoom().setEntityWithXY(i.getX(), i.getY(), null);
@@ -590,6 +593,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair1.png"));
                 break;
+            
+            // Chair facing west.    
             case "ID71":
                 furniturelist.add(new Chair(j,
                         i,
@@ -598,6 +603,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair2.png"));
                 break;
+            
+            // Chair facing south.    
             case "ID72":
                 furniturelist.add(new Chair(j,
                         i,
@@ -825,6 +832,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench3.png"));
                 break;
+                
+            //blackboard (check søren)  
             case "ID96":
                 furniturelist.add(new Table(j,
                         i,
@@ -833,6 +842,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/blackboard2.png"));
                 break;
+                
+            //instance of toilet. 
             case "ID97":
                 furniturelist.add(new Chair(j,
                         i,
@@ -841,6 +852,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/toilet.png"));
                 break;
+             
+            //instance of teacher table.     
             case "ID98":
                 furniturelist.add(new Table(j,
                         i,
@@ -849,6 +862,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable1.png"));
                 break;
+                
+            //instance of teacher table.    
             case "ID99":
                 furniturelist.add(new Table(j,
                         i,
@@ -857,6 +872,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable2.png"));
                 break;
+                
+            //instance of teacher table.      
             case "ID100":
                 furniturelist.add(new Table(j,
                         i,
@@ -865,6 +882,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable3.png"));
                 break;
+                
+            //instance of teacher chair.  
             case "ID101":
                 furniturelist.add(new Chair(j,
                         i,
@@ -873,6 +892,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/teacherchair1.png"));
                 break;
+                
+            //instance of teacher chair.  
             case "ID102":
                 furniturelist.add(new Chair(j,
                         i,
@@ -881,6 +902,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/teacherchair2.png"));
                 break;
+                
+            //instance of Energy drink. 
             case "ID103":
                 itemlist.add(new EnergyDrink(j,
                         i,
@@ -888,6 +911,8 @@ public class EntityManager {
                         64,
                         rm.getRoom(name)));
                 break;
+                
+            ////instance of dinnertable.
             case "ID104":
                 furniturelist.add(new Table(j,
                         i,
@@ -896,6 +921,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable1.png"));
                 break;
+                
+            ////instance of dinnertable.     
             case "ID105":
                 furniturelist.add(new Table(j,
                         i,
@@ -904,6 +931,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable2.png"));
                 break;
+                
+            //instance of dinnertable. 
             case "ID106":
                 furniturelist.add(new Table(j,
                         i,
@@ -912,6 +941,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable3.png"));
                 break;
+                
+            //instance of dinnertable.
             case "ID107":
                 furniturelist.add(new Table(j,
                         i,
@@ -921,20 +952,25 @@ public class EntityManager {
                         "/textures/dinnertable4.png"));
                 break;
 
+            //instance of tutor.
             case "ID108":
                 studentlist.add(new Tutor(j, i, rm.getRoom(name),
                         "/textures/tutor1.png", this));
                 break;
 
+            //instance of tutor.
             case "ID109":
                 studentlist.add(new Tutor(j, i, rm.getRoom(name),
                         "/textures/tutor2.png", this));
                 break;
 
+            //instance of tutor.
             case "ID110":
                 studentlist.add(new Tutor(j, i, rm.getRoom(name),
                         "/textures/tutor3.png", this));
                 break;
+             
+            //instance of gun.
             case "ID111":
                 itemlist.add(new Gun(j, i, 64, 64, rm.getRoom(name)));
                 break;
