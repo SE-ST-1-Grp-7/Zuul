@@ -32,9 +32,6 @@ public interface IBusiness {
 
     // Player interacts.
     void playerInteract();
-
-    // Drop item from player.
-    void playerDropItem(int index);
   
     // Get texture path for entity.
     String entityGetImage(int row, int col);
