@@ -106,18 +106,38 @@ public abstract class Entity {
         this.height = height;
     }
     
+    /**
+     * get the current room of entity.
+     * 
+     * @return the current room of entity 
+     */
     public Room getCurrentRoom() {
         return this.currentRoom;
     }
 
+    /**
+     * set the current room of entity.
+     * 
+     * @param currentRoom    Room, the room that the entity is in.
+     */
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
     }
 
+    /**
+     * get String with the path to the entity image.
+     * 
+     * @return  String with image path. 
+     */
     public String getEntityImage() {
         return entityImage;
     }
 
+    /**
+     * set method used for setting image of entity.
+     * 
+     * @param entityImage String, path to image.
+     */
     public void setEntityImage(String entityImage) {
         this.entityImage = entityImage;
     }

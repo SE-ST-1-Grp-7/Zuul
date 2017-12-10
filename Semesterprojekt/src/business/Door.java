@@ -1,7 +1,8 @@
 package business;
 
 /**
- *
+ * subclass of furniture, door class.
+ * 
  * @author Magnus Mortensen & Robin Petersen
  */
 public class Door extends Furniture {

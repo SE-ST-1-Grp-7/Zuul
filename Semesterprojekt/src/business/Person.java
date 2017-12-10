@@ -10,6 +10,11 @@ public abstract class Person extends Entity {
                                DEFAULT_PERSON_HEIGHT = 64;
     protected String name; // Person name
     private EntityManager em;
+    
+    /*two variables for checking when the player interacted with a student/tutor
+    - they are in Person.java because the onInteract method on Student and Tutor needs a Person*/
+    private boolean playerAskedStudent; // this is used to check if the player asked/interacted with a student
+    private boolean playerAskedTutor; // this is used to check if the player asked/interacted with a tutor
     /**
      * Person 1st constructor, without given name.
      * 
@@ -26,6 +31,8 @@ public abstract class Person extends Entity {
         // Get random name as name for person.
         //name = getRandomName();
         this.em = em;
+        this.playerAskedStudent = false;
+        this.playerAskedTutor = false;
     }
         /**
      * Method for collision check.
@@ -107,6 +114,40 @@ public abstract class Person extends Entity {
     public EntityManager getEntityManager(){
         return this.em;
     }
+
+    /**
+     * getter for checking if the player interacted with a student
+     * @return true if the player asked a student
+     */
+    public boolean getPlayerAskedStudent() {
+        return playerAskedStudent;
+    }
+
+    /**
+     * setter method to make the variable true when a student was asked
+     * @param playerAskedStudent used to set the playerAskedStudent attribute/variable 
+     */
+    public void setPlayerAskedStudent(boolean playerAskedStudent) {
+        this.playerAskedStudent = playerAskedStudent;
+    }
+
+    /**
+     * getter for checking if the player interacted with a tutor
+     * @return true if player asked a tutor
+     */
+    public boolean getPlayerAskedTutor() {
+        return playerAskedTutor;
+    }
+
+    /**
+     * setter method to make the variable true when a tutor was asked
+     * @param playerAskedTutor used to set the playerAskedTutor attribute/variable
+     */
+    public void setPlayerAskedTutor(boolean playerAskedTutor) {
+        this.playerAskedTutor = playerAskedTutor;
+    }
+    
+    
 }
 
         

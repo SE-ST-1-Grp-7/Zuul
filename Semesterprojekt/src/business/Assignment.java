@@ -59,7 +59,14 @@ public class Assignment extends Item {
             return false;
         }
     }
-
+    
+    /**
+     * tick method: Used on a assignment when grading them. When tick is called
+     * 20 points is added to assignment progress with each tick and when 
+     * progress is 100, the assignment is graded. 
+     * 
+     * @param p     Player, the player must have an assignemt. 
+     */
     public void tick(Player p) {
         if (p.getAssignmentProgress() >= 100) {
             p.setAssignmentProgress(0); //set the progress back to 0

@@ -28,6 +28,7 @@ public class BusinessFacade implements IBusiness {
      * No-arg constructor; call game reset, to start game from fresh.
      */
     public BusinessFacade() {
+        resetGame();
     }
     
     /**
@@ -436,5 +437,51 @@ public class BusinessFacade implements IBusiness {
     public String getLoadName() {
         String path = entityManager.getSaveFiles().get(0);
         return data.retrieveName(path);
+    }
+
+    @Override
+    public boolean getInteractionHappend() {
+        return entityManager.getPlayer().getInteractionHappend();
+    }
+
+    @Override
+    public void setInteractionHappend(boolean b) {
+        entityManager.getPlayer().setInteractionHappend(b);
+    }
+
+    /**
+     * getter for playerAskedStudent
+     * @return true if a student was asked
+     */
+    @Override
+    public boolean getPlayerAskedStudent() {
+        return entityManager.getPlayer().getPlayerAskedStudent();
+    }
+
+    /**
+     * setter for playerAskedStudent
+     * @param playerAskedStudent 
+     */
+    @Override
+    public void setPlayerAskedStudent(boolean playerAskedStudent) {
+        entityManager.getPlayer().setPlayerAskedStudent(playerAskedStudent);
+    }
+
+    /**
+     * getter for playerAskedTutor
+     * @return true if a tutor was asked
+     */
+    @Override
+    public boolean getPlayerAskedTutor() {
+        return entityManager.getPlayer().getPlayerAskedTutor();
+    }
+
+    /**
+     * setter for playerAskedTutor
+     * @param playerAskedTutor 
+     */
+    @Override
+    public void setPlayerAskedTutor(boolean playerAskedTutor) {
+        entityManager.getPlayer().setPlayerAskedTutor(playerAskedTutor);
     }
 }
