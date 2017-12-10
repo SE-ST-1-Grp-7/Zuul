@@ -10,6 +10,8 @@ public abstract class Person extends Entity {
                                DEFAULT_PERSON_HEIGHT = 64;
     protected String name; // Person name
     private EntityManager em;
+    private boolean playerAskedStudent;
+    private boolean playerAskedTutor;
     /**
      * Person 1st constructor, without given name.
      * 
@@ -26,6 +28,8 @@ public abstract class Person extends Entity {
         // Get random name as name for person.
         //name = getRandomName();
         this.em = em;
+        this.playerAskedStudent = false;
+        this.playerAskedTutor = false;
     }
         /**
      * Method for collision check.
@@ -106,6 +110,24 @@ public abstract class Person extends Entity {
     public EntityManager getEntityManager(){
         return this.em;
     }
+
+    public boolean getPlayerAskedStudent() {
+        return playerAskedStudent;
+    }
+
+    public void setPlayerAskedStudent(boolean playerAskedStudent) {
+        this.playerAskedStudent = playerAskedStudent;
+    }
+
+    public boolean getPlayerAskedTutor() {
+        return playerAskedTutor;
+    }
+
+    public void setPlayerAskedTutor(boolean playerAskedTutor) {
+        this.playerAskedTutor = playerAskedTutor;
+    }
+    
+    
 }
 
         

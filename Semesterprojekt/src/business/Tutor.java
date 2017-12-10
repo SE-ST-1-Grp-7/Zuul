@@ -16,18 +16,11 @@ public class Tutor extends Student {
 
     @Override
     public void onInteract(Person p) {
+        p.setPlayerAskedTutor(true);
         if (!hasGivenItem) {
             p.getEntityManager().getPlayer().inventory().addItem(new Coffee(p.getEntityManager().getPlayer().getX(), p.getEntityManager().getPlayer().getY(), 64, 64, p.getEntityManager().getPlayer().getCurrentRoom()));
             this.hasGivenItem = true;
             this.tutorAsked = true;
         }
-    }
-
-    public boolean getTutorAsked() {
-        return this.tutorAsked;
-    }
-
-    public void setTutorAsked(boolean b) {
-        this.tutorAsked = b;
     }
 }

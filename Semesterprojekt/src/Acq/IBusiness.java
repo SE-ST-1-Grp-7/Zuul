@@ -89,9 +89,11 @@ public interface IBusiness {
     boolean getInteractionHappend();
     
     void setInteractionHappend(boolean b);
-//    
-//    boolean getTutorAsked();
-//    
-//    void setTutorAsked(boolean b);
+    
+    boolean getPlayerAskedStudent();
+    void setPlayerAskedStudent(boolean playerAskedStudent);
+    
+    boolean getPlayerAskedTutor();
+    void setPlayerAskedTutor(boolean playerAskedTutor);
     
 }

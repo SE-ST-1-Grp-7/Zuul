@@ -195,5 +195,6 @@ public class Student extends Person {
     @Override
     public void onInteract(Person p) {
         System.out.println("Hello professor! :sunglasses: ");
+        p.setPlayerAskedStudent(true);
     }
 }

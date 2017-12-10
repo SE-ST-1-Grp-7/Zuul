@@ -239,15 +239,16 @@ public class FXMLDocumentController implements Initializable {
                     bottomTextArea.appendText("Student: Professor, professor i  got 10 questions for you!!\n");
                     ib.setInteractionHappend(false);
                 }
-                // Player interacts with student
-//                if (ib.getTutorAsked()) {
-//                    canvasId.getGraphicsContext2D().drawImage(new Image("assets/question-student.png"), 0, 0);
-//                    bottomTextArea.appendText("Me: Ouch!!\n");
-//                    bottomTextArea.appendText("Student: Professor, professor i  got 10 questions for you!!\n");
-//                    ib.setTutorAsked(false);
-//                }
+                
+                if(ib.getPlayerAskedStudent()){
+                    bottomTextArea.appendText("Me: Hello student\n");
+                    ib.setPlayerAskedStudent(false);
+                }
+                if(ib.getPlayerAskedTutor()){
+                    bottomTextArea.appendText("Me: Hello tutor\n");
+                    ib.setPlayerAskedTutor(false);
+                }
             }
-
         };
 
         minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
