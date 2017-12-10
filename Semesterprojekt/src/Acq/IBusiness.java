@@ -87,5 +87,17 @@ public interface IBusiness {
     
     // Check if player is grading an assignment
     boolean playerHasAssignment();
+  
+    boolean getInteractionHappend();
+    
+    void setInteractionHappend(boolean b);
+    
+    boolean getPlayerAskedStudent();
+    void setPlayerAskedStudent(boolean playerAskedStudent);
+    
+    boolean getPlayerAskedTutor();
+    void setPlayerAskedTutor(boolean playerAskedTutor);
+
+
     
 }

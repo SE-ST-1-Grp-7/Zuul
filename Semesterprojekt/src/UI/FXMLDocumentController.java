@@ -204,12 +204,12 @@ public class FXMLDocumentController implements Initializable {
                     minutes = ib.getSeconds() / 60;
                     seconds = ib.getSeconds() % 60;
                     timeLabel.setText("Time LEFT: "
-                            + Integer.toString(minutes)
-                            + ":" + Integer.toString(seconds));
+                            + String.format("%02d", minutes)
+                            + ":" + String.format("%02d", seconds));
 
                     //   timeLabel.setText("TIME LEFT: " +
                     //           Integer.toString(seconds));
-                    if(ib.playerHasAssignment()) {
+                    if (ib.playerHasAssignment()) {
                         bottomTextArea.appendText("Assignment progress: " + ib.playerAssignmentProgress() + "%\n");
                     }
                     // calls gameloop
@@ -232,10 +232,24 @@ public class FXMLDocumentController implements Initializable {
                 if (wincodition() == true) {
                     loop.stop();
                 }
+                // When student interacts with you write text and draw image.
+                if (ib.getInteractionHappend()) {
+                    canvasId.getGraphicsContext2D().drawImage(new Image("assets/question-student.png"), 0, 0);
+                    bottomTextArea.appendText("Me: Ouch!!\n");
+                    bottomTextArea.appendText("Student: Professor, professor i  got 10 questions for you!!\n");
+                    ib.setInteractionHappend(false);
+                }
+                
+                if(ib.getPlayerAskedStudent()){
+                    bottomTextArea.appendText("Me: Hello student\n");
+                    ib.setPlayerAskedStudent(false);
+                }
+                if(ib.getPlayerAskedTutor()){
+                    bottomTextArea.appendText("Me: Hello tutor\n");
+                    ib.setPlayerAskedTutor(false);
+                }
             }
-
         };
-
 
         minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
 
@@ -325,27 +339,26 @@ public class FXMLDocumentController implements Initializable {
     private void highscoreButton(ActionEvent event) {
         // Loads
         ib.loadXML();
-        
+
         Alert alert = new Alert(AlertType.CONFIRMATION);
         DialogPane dialogPane = alert.getDialogPane();
         dialogPane.getStylesheets().add(
-        getClass().getResource("style.css").toExternalForm());
+                getClass().getResource("style.css").toExternalForm());
         dialogPane.getStyleClass().add("alertBox");
-        
+
         alert.setGraphic(null);
         alert.setTitle("HIGHSCORES");
-        alert.setHeaderText("WHO'S BEST?" );
-        alert.setContentText( "The highscore list for World of SDU\n" +"---------------------------------\n" + "NO.\t\tNAME\t\t SCORE\n" +
-                ib.displayHighscore());
-        
+        alert.setHeaderText("WHO'S BEST?");
+        alert.setContentText("The highscore list for World of SDU\n" + "---------------------------------\n" + "NO.\t\tNAME\t\t SCORE\n"
+                + ib.displayHighscore());
+
         alert.getButtonTypes().remove(1);
         ButtonType buttonTypeClose = new ButtonType("CLOSE");
-        
+
         alert.getButtonTypes().set(0, buttonTypeClose);
-        
+
         alert.showAndWait();
-        
-        
+
     }
 
     /**
@@ -376,7 +389,7 @@ public class FXMLDocumentController implements Initializable {
             if (ib.isAssignment(item)) {
                 if (ib.playerEnergy() < 20) {
                     bottomTextArea.appendText("You don't have enough energy" + "\n");
-                } else if(!ib.playerCurrentRoomName().equals("teacher room")) {
+                } else if (!ib.playerCurrentRoomName().equals("teacher room")) {
                     bottomTextArea.appendText("You're not in the teacher's room" + "\n");
                 } else {
                     bottomTextArea.appendText("You're busy grading another assignment" + "\n");

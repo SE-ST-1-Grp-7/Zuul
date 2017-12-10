@@ -19,6 +19,7 @@ public class Player extends Person {
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
     private int timeLeft;
+    private boolean interactHappend;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -274,10 +275,18 @@ public class Player extends Person {
      */
     @Override
     public void onInteract(Person p) {
-        System.out.println("PLS ANSWER MY QUESTION PROFESSOR :(");
         setEnergy(getEnergy() - 40);
+        this.interactHappend = true;
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
+    }
+    
+    public boolean getInteractionHappend(){
+        return this.interactHappend;
+    }
+    
+    public void setInteractionHappend(boolean b){
+        this.interactHappend = b;
     }
 
     public boolean getHasKey() {
