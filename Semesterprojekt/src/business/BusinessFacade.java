@@ -419,21 +419,37 @@ public class BusinessFacade implements IBusiness {
         entityManager.getPlayer().setInteractionHappend(b);
     }
 
+    /**
+     * getter for playerAskedStudent
+     * @return true if a student was asked
+     */
     @Override
     public boolean getPlayerAskedStudent() {
         return entityManager.getPlayer().getPlayerAskedStudent();
     }
 
+    /**
+     * setter for playerAskedStudent
+     * @param playerAskedStudent 
+     */
     @Override
     public void setPlayerAskedStudent(boolean playerAskedStudent) {
         entityManager.getPlayer().setPlayerAskedStudent(playerAskedStudent);
     }
 
+    /**
+     * getter for playerAskedTutor
+     * @return true if a tutor was asked
+     */
     @Override
     public boolean getPlayerAskedTutor() {
         return entityManager.getPlayer().getPlayerAskedTutor();
     }
 
+    /**
+     * setter for playerAskedTutor
+     * @param playerAskedTutor 
+     */
     @Override
     public void setPlayerAskedTutor(boolean playerAskedTutor) {
         entityManager.getPlayer().setPlayerAskedTutor(playerAskedTutor);

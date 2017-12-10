@@ -16,7 +16,7 @@ public class Tutor extends Student {
 
     @Override
     public void onInteract(Person p) {
-        p.setPlayerAskedTutor(true);
+        p.setPlayerAskedTutor(true); //we set the variable to true. this variable will be sent trough the bussinesFacade to the UI where we write text for questions
         if (!hasGivenItem) {
             p.getEntityManager().getPlayer().inventory().addItem(new Coffee(p.getEntityManager().getPlayer().getX(), p.getEntityManager().getPlayer().getY(), 64, 64, p.getEntityManager().getPlayer().getCurrentRoom()));
             this.hasGivenItem = true;

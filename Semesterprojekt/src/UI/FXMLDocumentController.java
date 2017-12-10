@@ -240,10 +240,13 @@ public class FXMLDocumentController implements Initializable {
                     ib.setInteractionHappend(false);
                 }
                 
+                //if the player interacts with a student - write text and set playerAskedStudent back to false
                 if(ib.getPlayerAskedStudent()){
                     bottomTextArea.appendText("Me: Hello student\n");
                     ib.setPlayerAskedStudent(false);
                 }
+                
+                //if the player interacts with a tutor - write text and set playerAskedTutor back to false
                 if(ib.getPlayerAskedTutor()){
                     bottomTextArea.appendText("Me: Hello tutor\n");
                     ib.setPlayerAskedTutor(false);
