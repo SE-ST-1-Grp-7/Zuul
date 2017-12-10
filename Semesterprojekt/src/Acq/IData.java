@@ -1,6 +1,7 @@
 package Acq;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -21,4 +22,10 @@ public interface IData {
     
     //Save the highscore
     void saveHighscore(String playerName, int seconds);
+    
+    // Retrieve player name.
+    String retrieveName(String path);
+    
+    // Load presets.
+    HashMap<String, String[][]> loadPresetData(String path);
 }

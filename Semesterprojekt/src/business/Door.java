@@ -23,11 +23,11 @@ public class Door extends Furniture {
      * @param imagePath         string, path to get the door image.
      * @param isLocked          boolean, check if the door is locked or not
      */
-    public Door(int x, int y, int width, int height,
+    public Door(String id, int x, int y, int width, int height,
             Room currentRoom, String imagePath, boolean isLocked) {
 
         // Pass arguments to superclass.
-        super(x, y, width, height, currentRoom,
+        super(id, x, y, width, height, currentRoom,
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         super.setEntityImage(imagePath);

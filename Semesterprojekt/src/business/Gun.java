@@ -7,14 +7,16 @@ package business;
 public class Gun extends Item {
 
     private String gunImage = "/textures/shotgun.png";
-    public Gun(int x,
+    public Gun(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom) {
 
         // Pass arguments to superclass
-        super(x, // X grid position in room.
+        super(id,
+                x, // X grid position in room.
                 y, // Y grid position in room.
                 width, // Pixel width.
                 height, // Pixel height.

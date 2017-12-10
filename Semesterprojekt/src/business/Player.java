@@ -19,6 +19,7 @@ public class Player extends Person {
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
     private int timeLeft;
+    private String playerName;
     private boolean interactHappend;
 
     /**
@@ -31,13 +32,15 @@ public class Player extends Person {
      * @param name String, name of player.
      * @param em EntityManager,
      */
-    public Player(int x,
+    public Player(String id,
+            int x,
             int y,
             String name,
             Room currentRoom,
             EntityManager em) {
 
-        super(x,
+        super(id,
+                x,
                 y,
                 Person.DEFAULT_PERSON_WIDTH,
                 Person.DEFAULT_PERSON_HEIGHT,
@@ -46,6 +49,7 @@ public class Player extends Person {
         super.setEntityImage(playerImage);
 
         // PLAYER STATS
+        this.playerName = name;
         this.energy = 200; // Assign energy level at the start.
         this.energyCap = 200; // Assign energy capacity.
         inventory = new Inventory(); // Instantiate inventory.
@@ -169,6 +173,14 @@ public class Player extends Person {
     }
 
     // GETTERS & SETTERS
+    
+    public String getName() {
+        return playerName;
+    }
+
+    public void setName(String playerName) {
+        this.playerName = playerName;
+    }
     
     /**
      * Method call/get the player's inventory.

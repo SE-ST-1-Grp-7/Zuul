@@ -59,9 +59,32 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void resetGame() {
-        roomManager = new RoomManager();
+        HashMap<String, String[][]> csvData = data.loadPresetData("res/presets/roomTiles.csv");
+        roomManager = new RoomManager(csvData);
         entityManager = new EntityManager(roomManager);
         gameOver = false;
+        this.seconds = startSeconds;
+        
+        // Iterate through the length of furniture list.
+        for (int i = 0; i < entityManager.getFurnitureList().size(); i++) {
+            // If entity is a door, update its room manager.
+            if (entityManager.getFurnitureList().get(i) instanceof Door) {
+                Door d = (Door) entityManager.getFurnitureList().get(i);
+                d.setRoomManager(roomManager);
+            }
+        }
+    }
+    
+    /**
+     * Initialize game, especially regarding entities.
+     * 
+     * @param playerName    String, selected name of player.
+     */
+    @Override
+    public void initGame(String playerName) {
+        String path = "res/presets/roomEntities.csv";
+        HashMap<String, String[][]> csvData = data.loadPresetData(path);
+        entityManager.newGameEnts(playerName, csvData);
         this.seconds = startSeconds;
         
         // Iterate through the length of furniture list.
@@ -408,6 +431,13 @@ public class BusinessFacade implements IBusiness {
             return false;
         }
     }
+    
+    // Retrieve the saved player name.
+    @Override
+    public String getLoadName() {
+        String path = entityManager.getSaveFiles().get(0);
+        return data.retrieveName(path);
+    }
 
     @Override
     public boolean getInteractionHappend() {
@@ -454,6 +484,4 @@ public class BusinessFacade implements IBusiness {
     public void setPlayerAskedTutor(boolean playerAskedTutor) {
         entityManager.getPlayer().setPlayerAskedTutor(playerAskedTutor);
     }
-    
-
 }

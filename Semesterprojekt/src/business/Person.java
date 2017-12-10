@@ -25,9 +25,9 @@ public abstract class Person extends Entity {
      * @param currentRoom   Room, currently in this room.
      * @param em
      */
-    public Person(int x, int y, int width, int height, Room currentRoom, EntityManager em) {
+    public Person(String id, int x, int y, int width, int height, Room currentRoom, EntityManager em) {
         // Pass arguments to superclass.
-        super(x, y, width, height, currentRoom);
+        super(id, x, y, width, height, currentRoom);
         // Get random name as name for person.
         //name = getRandomName();
         this.em = em;
@@ -59,14 +59,15 @@ public abstract class Person extends Entity {
      * @param currentRoom   Room, currently in this room.
      * @param name          String, name of person.
      */
-    public Person(int x,
+    public Person(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom,
             String name, EntityManager em) {
         // Pass arguments to superclass.
-        super(x, y, width, height, currentRoom);
+        super(id, x, y, width, height, currentRoom);
         // Assign given name.
         this.name = name;
         this.em = em;

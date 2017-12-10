@@ -27,7 +27,8 @@ public class Table extends Furniture /*implements Inspectable*/{
      * @param canHaveItems      boolean, true if furniture can contain items.
      * @param maxAmountOfItems  int, number of items furniture can contain.
      */
-    public Table(int x,
+    public Table(String id,
+            int x,
             int y,
             int width,
             int height,
@@ -36,7 +37,8 @@ public class Table extends Furniture /*implements Inspectable*/{
             int maxAmountOfItems, String imagePath){
         
         // Pass arguments for superclass
-        super(x,
+        super(id,
+                x,
                 y,
                 width,
                 height,

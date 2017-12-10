@@ -20,14 +20,16 @@ public class Adderall extends Item{
      * @param height            int, pixel height of adderall.
      * @param currentRoom       Room, currently in this room.
      */
-    public Adderall(int x,
+    public Adderall(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom) {
         
         // Pass arguments to superclass
-        super(x,
+        super(id,
+                x,
                 y,
                 width,
                 height,

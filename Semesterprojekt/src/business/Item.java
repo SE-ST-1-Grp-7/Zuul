@@ -26,7 +26,8 @@ public abstract class Item extends Entity implements IItem {
      * @param itemDescription String, description of item.
      * @param weight int, weight of item.
      */
-    public Item(int x,
+    public Item(String id,
+            int x,
             int y,
             int width,
             int height,
@@ -36,7 +37,7 @@ public abstract class Item extends Entity implements IItem {
             int weight) {
 
         // Pass arguments to superclass.
-        super(x, y, width, height, currentRoom);
+        super(id, x, y, width, height, currentRoom);
 
         // Pass path of texture to superclass.
         this.itemName = itemName;

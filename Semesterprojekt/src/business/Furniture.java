@@ -21,12 +21,12 @@ public abstract class Furniture extends Entity {
      * @param furnitureName         String, name of furniture.
      * @param furnitureDescription  String, description of furniture.
      */
-    public Furniture(int x, int y, int width, int height,
+    public Furniture(String id, int x, int y, int width, int height,
             Room currentRoom, String furnitureName, 
             String furnitureDescription) {
         
         // Pass arguments to superclass
-        super(x, y, width, height, currentRoom);
+        super(id, x, y, width, height, currentRoom);
        
         //the attributes are set equal to the parimeters
         this.furnitureName = furnitureName;

@@ -15,14 +15,16 @@ public class Bookcase extends Furniture /*implements Interactable*/{
      * @param height            int, pixel height of chair.
      * @param currentRoom       Room, currently in this room.
      */
-    public Bookcase(int x,
+    public Bookcase(String id,
+            int x,
             int y,
             int width,
             int height,
             Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
-        super(x,                    // X grid position in room.
+        super(id,
+                x,                    // X grid position in room.
                 y,                  // Y grid position in room.
                 width,              // Pixel width.
                 height,             // Pixel height.
