@@ -6,11 +6,11 @@ package business;
  */
 public class Tutor extends Student {
     boolean hasGivenItem;
+    private boolean tutorAsked;
 
     public Tutor(String id, int x, int y, Room currentRoom, String studentImage, EntityManager em) {
         super(id, x, y, currentRoom, false, studentImage, em);
-  
-        private boolean tutorAsked;
+        
         this.hasGivenItem = false;
     }
 
