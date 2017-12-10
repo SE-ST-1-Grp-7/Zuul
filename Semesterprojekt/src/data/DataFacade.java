@@ -2,6 +2,7 @@ package data;
 
 import Acq.IData;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -74,6 +75,12 @@ public class DataFacade implements IData {
         highscore.saveHighscore(playerName,seconds);
     }
     
+    /**
+     * Override; retrieve player name from save data.
+     * 
+     * @param path      String, file path of CSV file.
+     * @return          String, retrieved data (name).
+     */
     @Override
     public String retrieveName(String path) {
         // Instantiate load object.
@@ -84,4 +91,18 @@ public class DataFacade implements IData {
         return data.get(0).get(3);
     }
     
+    /**
+     * Override; upon load preset data. With a file path passed, the method call
+     * for read of data and retrieve it before returning it to where it was
+     * requested.
+     * 
+     * @param path      String, file path of CSV file.
+     * @return          HashMap< String, String[][] >, key is name of room,
+     *                  value is 10x10 grid data.
+     */
+    @Override
+    public HashMap<String, String[][]> loadPresetData(String path) {
+        ReadPreset presetData = new ReadPreset(path);
+        return presetData.getData();
+    }
 }

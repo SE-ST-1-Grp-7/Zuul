@@ -12,23 +12,32 @@ import java.util.HashMap;
  */
 public class RoomManager {
     private Room currentRoom;
-    private static HashMap<String, Room> roomlist = new HashMap<>();
-    private static HashMap<String, Tile> tiles = new HashMap<>();
-    private static HashMap<String, String[][]> tileMap = new HashMap<>();
+    private HashMap<String, Room> roomlist = new HashMap<>();
+    private HashMap<String, Tile> tiles = new HashMap<>();
+    private HashMap<String, String[][]> tileMap;
 
-    public RoomManager() {
-        tileBase();         // Connect tile ID with texture file path.
-        loadTiles();        // Load tile ID from file.
-        createRooms();      // Instantiate rooms and define exit points.
-        addTilesToRooms();  // Add tiles to all grid positions in rooms.
+    /**
+     * Constructor for RoomManager. Tile data is given as parameter and the
+     * rooms are instantiated and tiles are added to the rooms.
+     * 
+     * @param tileMap   HashMap< String, String[][] >, key is name of the room,
+     *                  value is data in the 10x10 room grid.
+     */
+    public RoomManager(HashMap<String, String[][]> tileMap) {
+        // Assign tile data to local collection.
+        this.tileMap = tileMap;
+        // Connect tile ID with texture file path.
+        tileBase();
+        // Instantiate rooms and define exit points.
+        createRooms();
+        // Add tiles to all grid positions in rooms.
+        addTilesToRooms();
     }
 
     /**
      * Method declares and configure the rooms of the game.
      */
     private void createRooms() {
-        // Declare room objects.
-
         // Instantiate the rooms and their descriptions
         roomlist.put("garden", new Room(
                 "outside in the lovely garden... smells lovely of roses",
@@ -176,82 +185,10 @@ public class RoomManager {
     }
 
     /**
-     * Reads tile IDs from csv file.
-     */
-    public static void loadTiles() {
-        // CSV file.
-        String csvFile = "res/presets/roomTiles.csv";
-        // Declare buffer to make readback from file simpler.
-        BufferedReader fileReader = null;
-        // Temp variable to hold one line at a time during the readback.
-        String line = "";
-        // Designate which split operator the content is split by.
-        String splitBy = ",";
-        // Temp variable to hold the String name of the room getting handled.
-        String roomName = "";
-        // Keeps track of which iteration of line in a room is being handled.
-        int lineNo = 0;
-        
-        // Try catch for file IO operations. 
-        try {
-            // Instantiate buffer with file reader and file as parameter.
-            fileReader = new BufferedReader(new FileReader(csvFile));
-            // As long as there are more lines.
-            while ((line = fileReader.readLine()) != null) {
-                line = line.trim(); // Trim leading and tailing whitespaces.
-                // If line is not empty.
-                if (!"".equals(line)) {
-                    // Split line into String array at defined split operator.
-                    String[] segments = line.split(splitBy);
-                    
-                    // If reached new room in csv file, new entry in hashmap.
-                    if ("-".equals(segments[0])) {
-                        // Reset line count as it is a new room.
-                        lineNo = 0;
-                        // Parse the room name String from line.
-                        roomName = segments[1].trim();
-                        /* Create a two-dimensional array and make a HashMap
-                           entry with room String as key and the two dimensional
-                           array as the value. */
-                        String[][] idList = new String[10][10];
-                        tileMap.put(roomName, idList);
-                        
-                    // Otherwise assign ID to grid position in hashmap value[][] 
-                    } else {
-                        // Iterate through each parameter from split up line.
-                        for (int i = 0; i < segments.length; i++) {
-                            /* At the specified grid position assign the trimmed
-                               paramter to the HashMap value. */
-                            tileMap.get(roomName)[lineNo][i] =
-                                    segments[i].trim();
-                        }
-                        // Increment line count after operation.
-                        lineNo++;
-                    }
-                }
-            }
-        // Exception catching.
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        // Finally try to close file IO operation.
-        } finally {
-            if (fileReader != null) {
-                try {
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    /**
      * Method runs through all rooms and each grid position within and assigns
      * a tile to the position.
      */
-    public static void addTilesToRooms() {
+    public void addTilesToRooms() {
         // For each room.
         for (String name : roomlist.keySet()) {
             // Iterate through y-coordinates (rows).

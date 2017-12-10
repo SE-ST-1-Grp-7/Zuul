@@ -28,7 +28,6 @@ public class BusinessFacade implements IBusiness {
      * No-arg constructor; call game reset, to start game from fresh.
      */
     public BusinessFacade() {
-        resetGame();
     }
     
     /**
@@ -59,7 +58,8 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void resetGame() {
-        roomManager = new RoomManager();
+        HashMap<String, String[][]> csvData = data.loadPresetData("res/presets/roomTiles.csv");
+        roomManager = new RoomManager(csvData);
         entityManager = new EntityManager(roomManager);
         gameOver = false;
         this.seconds = startSeconds;
@@ -74,9 +74,16 @@ public class BusinessFacade implements IBusiness {
         }
     }
     
+    /**
+     * Initialize game, especially regarding entities.
+     * 
+     * @param playerName    String, selected name of player.
+     */
     @Override
     public void initGame(String playerName) {
-        entityManager.newGameEnts(playerName);
+        String path = "res/presets/roomEntities.csv";
+        HashMap<String, String[][]> csvData = data.loadPresetData(path);
+        entityManager.newGameEnts(playerName, csvData);
         this.seconds = startSeconds;
         
         // Iterate through the length of furniture list.
@@ -424,10 +431,10 @@ public class BusinessFacade implements IBusiness {
         }
     }
     
+    // Retrieve the saved player name.
     @Override
     public String getLoadName() {
         String path = entityManager.getSaveFiles().get(0);
         return data.retrieveName(path);
     }
-
 }

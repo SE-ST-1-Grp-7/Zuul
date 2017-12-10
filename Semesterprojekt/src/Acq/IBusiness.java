@@ -1,6 +1,5 @@
 package Acq;
 
-import business.Inventory;
 import javafx.collections.ObservableList;
 
 /**
@@ -91,5 +90,6 @@ public interface IBusiness {
     // Check if player is grading an assignment
     boolean playerHasAssignment();
     
-    public String getLoadName();
+    // Retrieve the saved player name.
+    String getLoadName();
 }

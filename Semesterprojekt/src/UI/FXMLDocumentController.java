@@ -1,5 +1,7 @@
 package UI;
 
+// IMPORTS
+
 import Acq.IBusiness;
 import Acq.IItem;
 import java.net.URL;
@@ -34,7 +36,6 @@ import javafx.scene.layout.Pane;
  * @author J
  */
 public class FXMLDocumentController implements Initializable {
-
     // business facade
     private IBusiness ib;
     private final int X = 64;
@@ -132,20 +133,21 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void newGameButton(ActionEvent event) {
-        if (nameField.getText().length() <= 8 && nameField.getText().length() >= 1) {
+        if (nameField.getText().length() <= 8 &&
+                nameField.getText().length() >= 1) {
             //ib.playerSetName(nameField.getText());
             tempPlayerName = nameField.getText();
             nameField.setVisible(false);
             game(nameField.getText());
         } else {
-            bottomTextArea.appendText("Your name must be shorter than or equal to 8 characters\n"
+            bottomTextArea.appendText(
+                    "Your name must be shorter than or equal to 8 characters\n"
                     + "and more than or equal to 1 characters ");
         }
 
     }
 
     private void game(String playerName) {
-
         loop.stop();
         ib.resetGame();
         // Instantiate entities in the game.
@@ -191,7 +193,8 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(highscoreButton, highscoretip);
         Tooltip.install(dropButton, dropItem);
         Tooltip.install(useButton, useItem);
-        canvasId.getGraphicsContext2D().drawImage(new Image("assets/start1.png"), 0, 0);
+        canvasId.getGraphicsContext2D().drawImage(
+                new Image("assets/start1.png"), 0, 0);
         timeLabel.setText("TIME LEFT");
         loop = new AnimationTimer() {
             @Override
@@ -210,7 +213,8 @@ public class FXMLDocumentController implements Initializable {
                     //   timeLabel.setText("TIME LEFT: " +
                     //           Integer.toString(seconds));
                     if(ib.playerHasAssignment()) {
-                        bottomTextArea.appendText("Assignment progress: " + ib.playerAssignmentProgress() + "%\n");
+                        bottomTextArea.appendText("Assignment progress: " +
+                                ib.playerAssignmentProgress() + "%\n");
                     }
                     // calls gameloop
                     ib.loop();
@@ -225,7 +229,9 @@ public class FXMLDocumentController implements Initializable {
                         + "/10 assignments graded");
                 minimapViewer.setImage(new Image(ib.minimapImage()));
                 if (ib.isGameOver()) { // checks if gameOver
-                    canvasId.getGraphicsContext2D().drawImage(new Image("assets/gameOver.png"), 0, 0); // draw gameover image
+                    // draw game over image
+                    canvasId.getGraphicsContext2D().drawImage(
+                            new Image("assets/gameOver.png"), 0, 0);
                     loop.stop();
                     bottomTextArea.appendText("You've lost the game");
                 }
@@ -235,7 +241,6 @@ public class FXMLDocumentController implements Initializable {
             }
 
         };
-
 
         minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
 
@@ -336,7 +341,9 @@ public class FXMLDocumentController implements Initializable {
         alert.setGraphic(null);
         alert.setTitle("HIGHSCORES");
         alert.setHeaderText("WHO'S BEST?" );
-        alert.setContentText( "The highscore list for World of SDU\n" +"---------------------------------\n" + "NO.\t\tNAME\t\t SCORE\n" +
+        alert.setContentText( "The highscore list for World of SDU\n" +
+                "---------------------------------\n" +
+                "NO.\t\tNAME\t\t SCORE\n" +
                 ib.displayHighscore());
         
         alert.getButtonTypes().remove(1);
@@ -358,7 +365,7 @@ public class FXMLDocumentController implements Initializable {
     private void useButton(ActionEvent event) {
         // If nothing, do nothing.
         if (listView.getSelectionModel().getSelectedItem() == null) {
-            bottomTextArea.appendText("You have not selected a item to use" + "\n");
+            bottomTextArea.appendText("You have not selected a item to use\n");
             // If false, use item.
         } else {
             useItem((IItem) listView.getSelectionModel().getSelectedItem());
@@ -376,11 +383,13 @@ public class FXMLDocumentController implements Initializable {
         } else {
             if (ib.isAssignment(item)) {
                 if (ib.playerEnergy() < 20) {
-                    bottomTextArea.appendText("You don't have enough energy" + "\n");
+                    bottomTextArea.appendText("You don't have enough energy\n");
                 } else if(!ib.playerCurrentRoomName().equals("teacher room")) {
-                    bottomTextArea.appendText("You're not in the teacher's room" + "\n");
+                    bottomTextArea.appendText("You're not in the teacher's room"
+                            + "\n");
                 } else {
-                    bottomTextArea.appendText("You're busy grading another assignment" + "\n");
+                    bottomTextArea.appendText("You're busy grading another " +
+                            "assignment" + "\n");
                 }
             }
         }
@@ -414,7 +423,9 @@ public class FXMLDocumentController implements Initializable {
             bottomTextArea.clear();
             bottomTextArea.appendText("You have won the game, you are the "
                     + "best professer around" + "\n");
-            canvasId.getGraphicsContext2D().drawImage(new Image("assets/win2.png"), 0, 0); // draw win screen image
+            // draw win screen image
+            canvasId.getGraphicsContext2D().drawImage(
+                    new Image("assets/win2.png"), 0, 0);
             bottomTextArea.appendText("The highscore list for World of SDU\n");
             bottomTextArea.appendText("---------------------------------\n");
             bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");

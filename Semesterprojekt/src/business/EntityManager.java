@@ -3,10 +3,6 @@ package business;
 // IMPORTS
 
 import Acq.IItem;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -23,8 +19,8 @@ public class EntityManager {
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
     // Container for entity IDs from CSV file.
-    private static HashMap<String, String[][]> entityCSV = new HashMap<>();
-    private static RoomManager rm;
+    private HashMap<String, String[][]> entityCSV;
+    private RoomManager rm;
     private String playerName;
 
     /**
@@ -36,15 +32,33 @@ public class EntityManager {
         this.rm = rm;                   // Assign room manager object to class.
     }
 
-    public void newGameEnts(String playerName) {
+    /**
+     * Set up entities according to starting a new game.
+     * 
+     * @param playerName    String, select entities based on player name.
+     * @param csvData       HashMap< String, String[][] >, key is the name of
+     *                      the room, value is entity data in a 10x10 grid.
+     */
+    public void newGameEnts(String playerName,
+            HashMap<String, String[][]> csvData) {
+        //Assign entity data from csv to local attribute.
+        this.entityCSV = csvData;
         // Assign player name to local attribute.
         this.playerName = playerName;
-        // Load entity IDs from CSV file.
-        loadPresetEntities();
         // Instantiate entities defined in CSV.
         addEntitiesToRooms(playerName);
     }
     
+    /**
+     * Call for creation of entity. Based on player name, the entity will be
+     * instantiated based on normal or easteregg edition of the game.
+     * 
+     * @param x
+     * @param y
+     * @param name
+     * @param playerName
+     * @param IDnum 
+     */
     private void makeEnt(int x,
             int y,
             String name,
@@ -222,84 +236,7 @@ public class EntityManager {
         this.itemlist = itemlist;
     }
 
-    // LOAD ENTITIES FROM CSV
-    
-    /**
-     * Read entity IDs from CSV file.
-     */
-    public void loadPresetEntities() {
-        // Path of CSV file.
-        String csvFile = "res/presets/roomEntities.csv";
-        // Declare a buffer for the file reader.
-        BufferedReader fileReader = null;
-        // Define a String to contain the data from a single line in the CSV.
-        String line = "";
-        // The split operator.
-        String splitBy = ",";
-        // Declare variable for temp holding the room name.
-        String roomName = "";
-        // Start line count of room to 0.
-        int lineNo = 0;
-
-        // Try catch for file IO operation exception handling.
-        try {
-            // Instantiate file reader on top of a buffer with path to CSV file.
-            fileReader = new BufferedReader(new FileReader(csvFile));
-            // While stil more lines left in file.
-            while ((line = fileReader.readLine()) != null) {
-                // Trim leading and tailing whitespaces.
-                line = line.trim();
-                // If line is not empty.
-                if (!"".equals(line)) {
-                    // Split the line by the defined split operator.
-                    String[] segments = line.split(splitBy);
-
-                    // If reached new room in csv file, new entry in hashmap.
-                    if ("-".equals(segments[0])) {
-                        // Reset room line count to 0.
-                        lineNo = 0;
-                        // Parse name of room from same line.
-                        roomName = segments[1].trim();
-                        /* Create a two-dimensional array and make a HashMap
-                           entry with room String as key and the two dimensional
-                           array as the value. */
-                        String[][] idList = new String[10][10];
-                        entityCSV.put(roomName, idList);
-                        // Otherwise assign ID to grid position in hashmap value[][] 
-                    } else {
-                        /* Iterate through each x-coordinate in room grid in CSV
-                           file and look for ID numbers. */
-                        for (int i = 0; i < segments.length; i++) {
-                            /* If parameter isn't blank assign ID number trimmed
-                               to room grid. */
-                            if (!"".equals(segments[i].trim())) {
-                                entityCSV.get(roomName)[lineNo][i]
-                                        = segments[i].trim();
-                            }
-                        }
-                        // Increment line count after operation.
-                        lineNo++;
-                    }
-                }
-            }
-
-            // Exception handling.
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-
-            // Finally try to close File IO operations.
-        } finally {
-            if (fileReader != null) {
-                try {
-                    fileReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    // ENTITY MANAGEMENT METHODS
 
     /**
      * Iterate through all rooms and their position grids and call instantiation
@@ -307,7 +244,7 @@ public class EntityManager {
      *
      * @param playerName String, name of player.
      */
-    public final void addEntitiesToRooms(String playerName) {
+    public void addEntitiesToRooms(String playerName) {
         String IDnum;
         // Get HashMap of all rooms and iterate through it based on keys.
         HashMap<String, Room> roomlist = rm.getRoomlist();
@@ -1119,7 +1056,7 @@ public class EntityManager {
      * @param j int, x-coordinate of grid position.
      * @param name String, name of room for entity to 'spawn' in.
      * @param playerName String, name of player.
-     * @param IDnum String, ID of the type of entity to be created.
+     * @param id String, ID of the type of entity to be created.
      */
     public void senpaiTypes(int i,
             int j,
@@ -1270,6 +1207,7 @@ public class EntityManager {
     }
 
     // LOAD & SAVE METHODS
+    
     /**
      * Method for gathering the data that must be saved during saving.
      *
