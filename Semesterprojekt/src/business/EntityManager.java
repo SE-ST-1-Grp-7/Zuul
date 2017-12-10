@@ -1,7 +1,6 @@
 package business;
 
 // IMPORTS
-
 import Acq.IItem;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -89,6 +88,9 @@ public class EntityManager {
         }
     }
 
+    /**
+     * Removes items from rooms.
+     */
     public void nullItems() {
         for (Item i : itemlist) {
             i.getCurrentRoom().setEntityWithXY(i.getX(), i.getY(), null);
@@ -132,7 +134,6 @@ public class EntityManager {
     }
 
     // SETTERS & GETTERS
-    
     /**
      * Get player object.
      *
@@ -247,7 +248,7 @@ public class EntityManager {
                            array as the value. */
                         String[][] idList = new String[10][10];
                         entityCSV.put(roomName, idList);
-                    // Otherwise assign ID to grid position in hashmap value[][] 
+                        // Otherwise assign ID to grid position in hashmap value[][] 
                     } else {
                         /* Iterate through each x-coordinate in room grid in CSV
                            file and look for ID numbers. */
@@ -592,6 +593,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair1.png"));
                 break;
+            
+            // Chair facing west.    
             case "ID71":
                 furniturelist.add(new Chair(j,
                         i,
@@ -600,6 +603,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/chair2.png"));
                 break;
+            
+            // Chair facing south.    
             case "ID72":
                 furniturelist.add(new Chair(j,
                         i,
@@ -827,6 +832,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/bench3.png"));
                 break;
+                
+            //blackboard (check søren)  
             case "ID96":
                 furniturelist.add(new Table(j,
                         i,
@@ -835,6 +842,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/blackboard2.png"));
                 break;
+                
+            //instance of toilet. 
             case "ID97":
                 furniturelist.add(new Chair(j,
                         i,
@@ -843,6 +852,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/toilet.png"));
                 break;
+             
+            //instance of teacher table.     
             case "ID98":
                 furniturelist.add(new Table(j,
                         i,
@@ -851,6 +862,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable1.png"));
                 break;
+                
+            //instance of teacher table.    
             case "ID99":
                 furniturelist.add(new Table(j,
                         i,
@@ -859,6 +872,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable2.png"));
                 break;
+                
+            //instance of teacher table.      
             case "ID100":
                 furniturelist.add(new Table(j,
                         i,
@@ -867,6 +882,8 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/teachertable3.png"));
                 break;
+                
+            //instance of teacher chair.  
             case "ID101":
                 furniturelist.add(new Chair(j,
                         i,
@@ -875,6 +892,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/teacherchair1.png"));
                 break;
+                
+            //instance of teacher chair.  
             case "ID102":
                 furniturelist.add(new Chair(j,
                         i,
@@ -883,6 +902,8 @@ public class EntityManager {
                         rm.getRoom(name),
                         "/textures/teacherchair2.png"));
                 break;
+                
+            //instance of Energy drink. 
             case "ID103":
                 itemlist.add(new EnergyDrink(j,
                         i,
@@ -890,7 +911,9 @@ public class EntityManager {
                         64,
                         rm.getRoom(name)));
                 break;
-                case "ID104":
+                
+            ////instance of dinnertable.
+            case "ID104":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -898,7 +921,9 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable1.png"));
                 break;
-                case "ID105":
+                
+            ////instance of dinnertable.     
+            case "ID105":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -906,7 +931,9 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable2.png"));
                 break;
-                case "ID106":
+                
+            //instance of dinnertable. 
+            case "ID106":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -914,7 +941,9 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable3.png"));
                 break;
-                case "ID107":
+                
+            //instance of dinnertable.
+            case "ID107":
                 furniturelist.add(new Table(j,
                         i,
                         64,
@@ -922,26 +951,30 @@ public class EntityManager {
                         rm.getRoom(name), false, 0,
                         "/textures/dinnertable4.png"));
                 break;
-                
-                case "ID108":
-                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
-                            "/textures/tutor1.png", this));
-                    break;
-                
-                    case "ID109":
-                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
-                            "/textures/tutor2.png", this));
-                    break;
-                    
-                    case "ID110":
-                    studentlist.add(new Tutor(j, i, rm.getRoom(name), 
-                            "/textures/tutor3.png", this));
-                    break;
-                    case "ID111":
-                        itemlist.add(new Gun(j,i,64,64,rm.getRoom(name)));
-                        break;
-                    
-                    
+
+            //instance of tutor.
+            case "ID108":
+                studentlist.add(new Tutor(j, i, rm.getRoom(name),
+                        "/textures/tutor1.png", this));
+                break;
+
+            //instance of tutor.
+            case "ID109":
+                studentlist.add(new Tutor(j, i, rm.getRoom(name),
+                        "/textures/tutor2.png", this));
+                break;
+
+            //instance of tutor.
+            case "ID110":
+                studentlist.add(new Tutor(j, i, rm.getRoom(name),
+                        "/textures/tutor3.png", this));
+                break;
+             
+            //instance of gun.
+            case "ID111":
+                itemlist.add(new Gun(j, i, 64, 64, rm.getRoom(name)));
+                break;
+
             // In case the ID is not recognized.
             default:
                 System.out.println("Error. Entity ID   " + IDnum
@@ -1090,8 +1123,7 @@ public class EntityManager {
      */
     public HashMap parseForSave() {
         // Instantiate the HashMap.
-        HashMap<String, ArrayList<ArrayList<String>>> savePackage = new
-         HashMap<>();
+        HashMap<String, ArrayList<ArrayList<String>>> savePackage = new HashMap<>();
 
         // Place collected data about students in HashMap.
         savePackage.put("\\Documents\\zuul\\SaveStudentTest.txt",
@@ -1235,8 +1267,7 @@ public class EntityManager {
      * @param loadPackage HashMap<String, ArrayList<ArrayList<String>>>, key is
      * file path, value is 2D list with data.
      */
-    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>>
-            loadPackage) {
+    public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>> loadPackage) {
         // Retrieve list with save file paths.
         ArrayList<String> saveFiles = getSaveFiles();
 
@@ -1345,70 +1376,74 @@ public class EntityManager {
      * @param data ArrayList<ArrayList<String>>, 2D list with load data.
      */
     public void loadInventory(ArrayList<ArrayList<String>> data) {
-        // Clear inventory list.
-        player.inventory().getInventory().clear();
+        try {
+            // Clear inventory list.
+            player.inventory().getInventory().clear();
 
-        // Iterate through the load data.
-        for (ArrayList<String> invenData : data) {
-            if (invenData.size() > 0) {
-                switch (invenData.get(0)) {
-                    // If adderall, add to inventory list.
-                    case "Adderall":
-                        Adderall d = new Adderall(0,
-                                0,
-                                64,
-                                64,
-                                null);
-                        player.inventory().addItem(d);
-                        break;
+            // Iterate through the load data.
+            for (ArrayList<String> invenData : data) {
+                if (invenData.size() > 0) {
+                    switch (invenData.get(0)) {
+                        // If adderall, add to inventory list.
+                        case "Adderall":
+                            Adderall d = new Adderall(0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(d);
+                            break;
 
-                    // If coffee, add to inventory list.
-                    case "Coffee":
-                        Coffee c = new Coffee(0,
-                                0,
-                                64,
-                                64,
-                                null);
-                        player.inventory().addItem(c);
-                        break;
+                        // If coffee, add to inventory list.
+                        case "Coffee":
+                            Coffee c = new Coffee(0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(c);
+                            break;
 
-                    // If assignment, add to inventory list.
-                    case "Assignment":
-                        Assignment a = new Assignment(
-                                0,
-                                0,
-                                64,
-                                64,
-                                null);
-                        player.inventory().addItem(a);
-                        break;
+                        // If assignment, add to inventory list.
+                        case "Assignment":
+                            Assignment a = new Assignment(
+                                    0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(a);
+                            break;
 
-                    // If key, add to inventory list.
-                    case "Key":
-                        Key k = new Key(0,
-                                0,
-                                64,
-                                64,
-                                null);
-                        player.inventory().addItem(k);
-                        break;
+                        // If key, add to inventory list.
+                        case "Key":
+                            Key k = new Key(0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(k);
+                            break;
 
-                    // If energy drink, add to inventory list.
-                    case "EnergyDrink":
-                        EnergyDrink e = new EnergyDrink(
-                                0,
-                                0,
-                                64,
-                                64,
-                                null);
-                        player.inventory().addItem(e);
-                        break;
+                        // If energy drink, add to inventory list.
+                        case "EnergyDrink":
+                            EnergyDrink e = new EnergyDrink(
+                                    0,
+                                    0,
+                                    64,
+                                    64,
+                                    null);
+                            player.inventory().addItem(e);
+                            break;
 
-                    // Ignore anything else.
-                    default:
-                        break;
+                        // Ignore anything else.
+                        default:
+                            break;
+                    }
                 }
             }
+        } catch (NullPointerException s) {
+            System.out.println("Inventory is empty ");
         }
     }
 
@@ -1448,6 +1483,7 @@ public class EntityManager {
             }
         }
         player.getCurrentRoom().setEntity(player);
+        this.rm.setCurrentRoom(player.getCurrentRoom());
     }
 
     public void loadStudents(ArrayList<ArrayList<String>> data) {

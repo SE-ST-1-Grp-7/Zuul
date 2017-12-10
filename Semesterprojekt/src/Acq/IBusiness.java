@@ -9,7 +9,8 @@ import javafx.collections.ObservableList;
  * @author J, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
-    // sets name of player
+    
+// sets name of player
     void playerSetName(String name);
     
     // Gets value of gameOver
@@ -32,9 +33,6 @@ public interface IBusiness {
 
     // Player interacts.
     void playerInteract();
-
-    // Drop item from player.
-    void playerDropItem(int index);
   
     // Get texture path for entity.
     String entityGetImage(int row, int col);
@@ -78,14 +76,18 @@ public interface IBusiness {
     // Set amount of seconds left.
     void setSeconds(int seconds);
     
+    //check if item is an assignment
     boolean isAssignment(IItem item);
     
+    // Retrieve path to minimap image 
     String minimapImage();
     
+    // Retrieve the progress of grading an assignment
     int playerAssignmentProgress();
     
-    boolean playerHasAssignment();   
-    
+    // Check if player is grading an assignment
+    boolean playerHasAssignment();
+  
     boolean getInteractionHappend();
     
     void setInteractionHappend(boolean b);
@@ -95,5 +97,7 @@ public interface IBusiness {
     
     boolean getPlayerAskedTutor();
     void setPlayerAskedTutor(boolean playerAskedTutor);
+
+
     
 }

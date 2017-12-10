@@ -1,7 +1,8 @@
 package business;
 
 /**
- *
+ * subclass of furniture, door class.
+ * 
  * @author Magnus Mortensen & Robin Petersen
  */
 public class Door extends Furniture {
@@ -11,6 +12,17 @@ public class Door extends Furniture {
     private RoomManager roomManager;
     private boolean isLocked;
 
+     /**
+     * Constructor for Door class.
+     * 
+     * @param x                 int, horizontal position in room grid.
+     * @param y                 int, vertical position in room grid.
+     * @param width             int, pixel width of adderall.
+     * @param height            int, pixel height of adderall.
+     * @param currentRoom       Room, currently in this room.
+     * @param imagePath         string, path to get the door image.
+     * @param isLocked          boolean, check if the door is locked or not
+     */
     public Door(int x, int y, int width, int height,
             Room currentRoom, String imagePath, boolean isLocked) {
 
@@ -32,6 +44,15 @@ public class Door extends Furniture {
         this.roomManager = rm;
     }
 
+    /**
+     * Override; on interact with door. Checks if Person is an instance of 
+     * player, if the door is locked, then the player needs a key
+     * to go through it. When the door is not locked, then the 
+     * goThroughDoormethod is called for both player and student.
+     * 
+     * @param p  Person, this means all subclasses of person can interact
+     * with doors.
+     */
     @Override
     public void onInteract(Person p) {
         if (p instanceof Player) {
@@ -51,7 +72,11 @@ public class Door extends Furniture {
         }
 
     }
-
+    /**
+     * Method for going for through doors for player object.
+     * 
+     * @param player        Player, only the player object will move.
+     */
     private void goThroughDoorMethod(Player player) {
         //Place tempItem if it exists
         if (player.getTempItem() != null) { 
@@ -66,7 +91,12 @@ public class Door extends Furniture {
         useDoor(player, this.roomManager);
         roomManager.getCurrentRoom().setEntity(player);
     }
-
+    
+    /**
+     * Method for going for through doors for student objects.
+     * 
+     * @param student        Student, only the student object will move.
+     */
     private void goThroughDoorMethod2(Student student) {
         student.getCurrentRoom().setEntityWithXY(
                 student.getX(), student.getY(), null);
@@ -120,12 +150,21 @@ public class Door extends Furniture {
         }
 
     }
-
+    /**
+     * Override; Retreive x coordinate for door object.
+     * 
+     * @return int, horizontal position in room grid.
+     */
     @Override
     public int getX() {
         return super.getX();
     }
-
+    
+    /**
+     * Override; Retreive y coordinate for door object.
+     * 
+     * @return int, vertical position in room grid.
+     */
     @Override
     public int getY() {
         return super.getY();

@@ -195,7 +195,10 @@ public class BusinessFacade implements IBusiness {
     public void loadXML() {
         data.loadXML();
     }
-    
+    /**
+     * Override; Save highscore with player name and seconds it took 
+     * to beat the game.
+     */
     @Override
     public void saveHighscore(){
         data.saveHighscore(entityManager.getPlayer().getName(), seconds);
@@ -254,7 +257,7 @@ public class BusinessFacade implements IBusiness {
                 entityManager.getPlayer().getEnergy() - 1);         
         // Reduce seconds by 1
         seconds--;
-        
+        // If the game is won save players name and seconds it took.
         if(entityManager.getPlayer().getGradedAssignments() >= 10){
         data.saveHighscore(entityManager.getPlayer().getName(), seconds);
         }
@@ -273,8 +276,9 @@ public class BusinessFacade implements IBusiness {
     /**
      * Override; upon item use. Call any effects to player and remove item from
      * the game.
-     *
+     * 
      * @param i IItem, item to be used
+     * @return  boolean, 
      */
     @Override
     public boolean itemUse(IItem i) {
@@ -298,10 +302,7 @@ public class BusinessFacade implements IBusiness {
                 (Item) i, entityManager.getPlayer());
     }
 
-    @Override
-    public void playerDropItem(int index) {
-    }
-
+   
     /**
      * Override; retrieve player's current room location.
      * 
@@ -360,22 +361,45 @@ public class BusinessFacade implements IBusiness {
     public void setSeconds(int seconds) {
         this.seconds = seconds;
     }
-
+    /**
+     * Override; 
+     * 
+     * @param item,   IItem, item to check
+     * 
+     * @return boolean, return true if item is a instanceof Assignment object 
+     */
     @Override
     public boolean isAssignment(IItem item) {
        return item instanceof Assignment;
     }
-
+    
+    /**
+     * Override; path to get the minimapImage
+     * 
+     * @return string, with minimap path 
+     */
     @Override
     public String minimapImage(){
         return entityManager.getPlayer().getCurrentRoom().getMinimapPath();
     }
     
+    /**
+     * Override; get the individuel progress of each assignment
+     * when the player is grading it.
+     * 
+     * @return int, progress of assignment
+     */
     @Override
     public int playerAssignmentProgress() {
         return this.entityManager.getPlayer().getAssignmentProgress();
     }
     
+    /**
+     * Override; check if player is grading a assignment 
+     * 
+     * @return boolean, true if player is grading a assignment, 
+     * if not return false.
+     */
     @Override
     public boolean playerHasAssignment() {
         if(entityManager.getPlayer().getCurrentAssignment() != null) {
