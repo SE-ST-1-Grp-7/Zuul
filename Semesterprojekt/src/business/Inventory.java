@@ -25,11 +25,11 @@ public class Inventory {
      * @return          boolean, true if space to add item, otherwise false.
      */
     public boolean addItem(Item item) {
-        // Check if theres less than 10 items in the inventory.
+        // Check if theres less than 5 items 
         if (items.size() < CAPACITY) {
             items.add((IItem)item);
             return true;
-        } else { // checks if theres less than 10 items
+        } else { // checks if theres less than 5 items
             System.out.println("Not enough space");
             return false;
         }

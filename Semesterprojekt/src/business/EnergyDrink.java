@@ -34,6 +34,7 @@ public class EnergyDrink extends Item {
                 "Energy drink",
                 // Description of item.
                 "A can of Monster. Yum!");
+
                 
         // Pass path of texture to superclass.
         super.setEntityImage(energydrinkImage);

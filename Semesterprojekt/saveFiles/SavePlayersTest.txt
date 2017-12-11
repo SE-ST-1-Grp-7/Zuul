@@ -1,1 +1,1 @@
-ID50,7,7,1,garden,0,0,false,199,200,299
+ID50,1,6,sbe,hallway 1,0,0,false,-69,200,271
