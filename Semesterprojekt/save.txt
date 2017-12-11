@@ -1,0 +1,22 @@
+ID57,8,1,dininghall,false
+ID53,4,6,dininghall,false
+ID61,8,1,lecturehall 2,true
+ID58,5,6,hallway 1,false
+ID62,1,8,hallway 1,false
+ID59,8,1,lecturehall 1,true
+ID108,8,7,lecturehall 1,false
+ID61,3,2,toilet,true
+ID55,6,4,outside,true
+ID52,2,2,garden,true
+ID108,6,3,garden,false
+ID52,3,7,garden,true
+ID52,8,2,pub,true
+ID110,4,4,pub,false
+ID58,6,6,pub,false
+ID54,4,4,hallway 2,false
+ID52,3,5,relaxing room,true
+ID57,8,4,relaxing room,false
+ID109,5,4,relaxing room,false
+ID108,2,2,hallway 3,false
+ID59,7,3,hallway 3,true
+ID60,5,4,hallway 3,false

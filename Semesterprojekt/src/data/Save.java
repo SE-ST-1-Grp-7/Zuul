@@ -37,8 +37,7 @@ public class Save {
         try {
             // Buffer, writer, file-path.
             Writer fileWriter = new BufferedWriter(new OutputStreamWriter(
-                    new FileOutputStream(System.getProperty("user.home")
-                            + filePath)));
+                    new FileOutputStream(filePath)));
 
             // Write data segments to file.
             for (ArrayList<String> dataSegment: data) {
@@ -59,7 +58,7 @@ public class Save {
             fileWriter.close();
 
         } catch (IOException e) { // File IO error print.
-            System.err.println("BEEP BOOP, COULDNT SAVE PLAYERS... "
+            System.err.println("BEEP BOOP, COULDNT SAVE DATA... "
                     + "please check the save directory in the code.");
         }
     }
@@ -70,8 +69,7 @@ public class Save {
      * Create save folder if it does not exist.
      */
     public final void makeSaveFolder() {
-        File folder = new File(System.getProperty("user.home")
-                + "\\Documents\\zuul");
+        File folder = new File("\\Documents\\zuul");
         // If folder does not exist, create directory.
         if (!folder.exists()) {
             folder.mkdirs();
