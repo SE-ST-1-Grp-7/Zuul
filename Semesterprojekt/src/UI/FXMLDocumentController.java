@@ -138,7 +138,6 @@ public class FXMLDocumentController implements Initializable {
                 new Image("assets/start1.png"), 0, 0);
             loop.stop();
             nameField.setVisible(true);
-            
         }
         if (nameField.getText().length() <= 8 &&
                 nameField.getText().length() >= 1) {
