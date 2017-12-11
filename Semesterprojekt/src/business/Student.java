@@ -197,7 +197,6 @@ public class Student extends Person {
      */
     @Override
     public void onInteract(Person p) {
-        System.out.println("Hello professor! :sunglasses: ");
         p.setPlayerAskedStudent(true);//we set the variable to true. this variable will be sent trough the bussinesFacade to the UI where we write text for questions
     }
 }
