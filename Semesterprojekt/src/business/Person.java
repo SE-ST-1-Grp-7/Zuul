@@ -15,6 +15,7 @@ public abstract class Person extends Entity {
     /**
      * Person 1st constructor, without given name.
      * 
+     * @param id            String, ID of specific instantiation version.
      * @param x             int, horizontal position in room grid.
      * @param y             int, vertical position in room grid.
      * @param width         int, pixel width of person.
@@ -22,7 +23,13 @@ public abstract class Person extends Entity {
      * @param currentRoom   Room, currently in this room.
      * @param em
      */
-    public Person(String id, int x, int y, int width, int height, Room currentRoom, EntityManager em) {
+    public Person(String id,
+            int x,
+            int y,
+            int width,
+            int height,
+            Room currentRoom,
+            EntityManager em) {
         // Pass arguments to superclass.
         super(id, x, y, width, height, currentRoom);
         // Get random name as name for person.
@@ -30,7 +37,8 @@ public abstract class Person extends Entity {
         this.em = em;
 
     }
-        /**
+    
+    /**
      * Method for collision check.
      *
      * @param x int, X coordinate of grid location to be checked.
@@ -43,30 +51,6 @@ public abstract class Person extends Entity {
         } else {
             return getCurrentRoom().getEntities()[y][x] != null;
         }
-    }
-    
-    /**
-     * Person 2nd constructor, with given name.
-     * 
-     * @param x             int, horizontal position in room grid.
-     * @param y             int, vertical position in room grid.
-     * @param width         int, pixel width of person.
-     * @param height        int, pixel height of person.
-     * @param currentRoom   Room, currently in this room.
-     * @param name          String, name of person.
-     */
-    public Person(String id,
-            int x,
-            int y,
-            int width,
-            int height,
-            Room currentRoom,
-            String name, EntityManager em) {
-        // Pass arguments to superclass.
-        super(id, x, y, width, height, currentRoom);
-        // Assign given name.
-        this.name = name;
-        this.em = em;
     }
     
     /**
@@ -107,13 +91,14 @@ public abstract class Person extends Entity {
         return names[index];
     }
     
+    /**
+     * Retrieve entity manager.
+     * 
+     * @return      EntityManager, object to retrieve.
+     */
     public EntityManager getEntityManager(){
         return this.em;
-    }
-
-
-    
-    
+    }    
 }
 
         
