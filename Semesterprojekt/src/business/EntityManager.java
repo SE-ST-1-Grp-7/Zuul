@@ -74,24 +74,6 @@ public class EntityManager {
     }
 
     /**
-     * Add initialized student to the student list.
-     *
-     * @param s     Student, student to be added to studet list.
-     */
-    public void addStudent(Student s) {
-        studentlist.add(s);
-    }
-
-    /**
-     * Despawn student.
-     *
-     * @param s     Student, student that need to be removed from the game.
-     */
-    public void removeStudent(Student s) {
-        studentlist.remove(s);
-    }
-
-    /**
      * Spawn students in their respective active room, in the beginning of the
      * game.
      */
@@ -131,42 +113,6 @@ public class EntityManager {
         }
     }
 
-    /**
-     * Add initialized furniture to the furniture list.
-     *
-     * @param f     Furniture, to be placed in the furniture list.
-     */
-    public void addFurniture(Furniture f) {
-        furniturelist.add(f);
-    }
-
-    /**
-     * Remove furniture object from furniture list.
-     *
-     * @param f     Furniture, to be removed from furniture list.
-     */
-    public void removeFurniture(Furniture f) {
-        furniturelist.remove(f);
-    }
-
-    /**
-     * Add initializedd item to the item list.
-     *
-     * @param i     Item, to be placed in the item list.
-     */
-    public void addItem(Item i) {
-        itemlist.add(i);
-    }
-
-    /**
-     * Remove item object from item list.
-     *
-     * @param i     Item, to be removed from item list.
-     */
-    public void removeItem(Item i) {
-        itemlist.remove(i);
-    }
-
     // SETTERS & GETTERS
     
     /**
@@ -176,15 +122,6 @@ public class EntityManager {
      */
     public Player getPlayer() {
         return player;
-    }
-    
-    /**
-     * Replace player object.
-     *
-     * @param player    Player, the new player object to replace previous.
-     */
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     /**
@@ -197,30 +134,12 @@ public class EntityManager {
     }
 
     /**
-     * Replace student list.
-     *
-     * @param studentlist       ArrayList< Student >, student list to assign.
-     */
-    public void setStudentList(ArrayList<Student> studentlist) {
-        this.studentlist = studentlist;
-    }
-
-    /**
      * Get furniture list.
      *
      * @return      ArrayList< Furniture >, furniture list to retrieve.
      */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
-    }
-
-    /**
-     * Replace furniture list.
-     *
-     * @param furniturelist     ArrayList< Student >, furniture list to assign.
-     */
-    public void setFurnitureList(ArrayList<Furniture> furniturelist) {
-        this.furniturelist = furniturelist;
     }
 
     /**
@@ -232,22 +151,13 @@ public class EntityManager {
         return itemlist;
     }
 
-    /**
-     * Replace item list.
-     *
-     * @param itemlist      ArrayList< Item >, item list to assign.
-     */
-    public void setItemList(ArrayList<Item> itemlist) {
-        this.itemlist = itemlist;
-    }
-
     // ENTITY MANAGEMENT METHODS
 
     /**
      * Iterate through all rooms and their position grids and call instantiation
      * of entities where CSV file had defined one to be placed.
      *
-     * @param playerName String, name of player.
+     * @param playerName    String, name of player.
      */
     public void addEntitiesToRooms(String playerName) {
         String IDnum;
@@ -1077,7 +987,6 @@ public class EntityManager {
      * @param i int, y-coordinate of grid position.
      * @param j int, x-coordinate of grid position.
      * @param name String, name of room for entity to 'spawn' in.
-     * @param playerName String, name of player.
      * @param id String, ID of the type of entity to be created.
      */
     public void senpaiTypes(int i,
