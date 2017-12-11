@@ -317,26 +317,56 @@ public class Player extends Person {
         this.assignmentProgress = assignmentProgress;
     }
 
+    /**
+     * Retrieve interaction status.
+     * 
+     * @return      boolean, interaction status.
+     */
     public boolean getInteractionHappend() {
         return this.interactHappend;
     }
 
+    /**
+     * Set interaction status.
+     * 
+     * @param b     boolean, new interaction status.
+     */
     public void setInteractionHappend(boolean b) {
         this.interactHappend = b;
     }
 
+    /**
+     * Get has key.
+     * 
+     * @return      boolean, true if got key, otherwise false.
+     */
     public boolean getHasKey() {
         return this.hasKey;
     }
 
+    /**
+     * Set has key.
+     * 
+     * @param hasKey    boolean, set this as status of have key.
+     */
     public void setHasKey(boolean hasKey) {
         this.hasKey = hasKey;
     }
 
+    /**
+     * Get current assignment.
+     * 
+     * @return      Assignment, get the assignment getting graded.
+     */
     public Assignment getCurrentAssignment() {
         return this.currentAssignment;
     }
 
+    /**
+     * Set assignment to current.
+     * 
+     * @param currentAssignment     Assignment, to be set to current.
+     */
     public void setCurrentAssignment(Assignment currentAssignment) {
         this.currentAssignment = currentAssignment;
     }
@@ -344,7 +374,7 @@ public class Player extends Person {
     /**
      * Get method for retrieving the time left after loading.
      *
-     * @return int, time left of the game in seconds at time of loading.
+     * @return      int, time left of the game in seconds at time of loading.
      */
     public int getTimeLeft() {
         return timeLeft;
@@ -353,26 +383,25 @@ public class Player extends Person {
     /**
      * Set method for setting the remaining time at saving point.
      *
-     * @param timeLeft int, time left in seconds at saving point.
+     * @param timeLeft      int, time left in seconds at saving point.
      */
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
     }
 
     /**
-     * getter for checking if the player interacted with a student
+     * Get player interacted with a student.
      *
-     * @return true if the player asked a student
+     * @return      boolean, true if the player asked a student.
      */
     public boolean getPlayerAskedStudent() {
         return playerAskedStudent;
     }
 
     /**
-     * setter method to make the variable true when a student was asked
+     * Set true when a student was asked.
      *
-     * @param playerAskedStudent used to set the playerAskedStudent
-     * attribute/variable
+     * @param playerAskedStudent    boolean, set state.
      */
     public void setPlayerAskedStudent(boolean playerAskedStudent) {
         this.playerAskedStudent = playerAskedStudent;
@@ -388,10 +417,9 @@ public class Player extends Person {
     }
 
     /**
-     * setter method to make the variable true when a tutor was asked
+     * Set true when a tutor was asked.
      *
-     * @param playerAskedTutor used to set the playerAskedTutor
-     * attribute/variable
+     * @param playerAskedTutor      boolean, set state.
      */
     public void setPlayerAskedTutor(boolean playerAskedTutor) {
         this.playerAskedTutor = playerAskedTutor;
