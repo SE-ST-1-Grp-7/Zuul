@@ -69,7 +69,7 @@ public class Save {
      * Create save folder if it does not exist.
      */
     public final void makeSaveFolder() {
-        File folder = new File("\\Documents\\zuul");
+        File folder = new File("saveFiles\\");
         // If folder does not exist, create directory.
         if (!folder.exists()) {
             folder.mkdirs();
