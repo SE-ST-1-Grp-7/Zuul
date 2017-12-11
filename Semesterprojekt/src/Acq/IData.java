@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
+ * Interface for data layer.
+ * 
  * @author J, Niclas Johansen & Rasmus Willer
  */
 public interface IData {

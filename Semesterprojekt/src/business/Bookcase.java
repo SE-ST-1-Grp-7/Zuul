@@ -9,11 +9,12 @@ public class Bookcase extends Furniture /*implements Interactable*/{
 
     /**
      * Constructor for Chair class.
+     * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal postition in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of chair.
-     * @param height            int, pixel height of chair.
      * @param currentRoom       Room, currently in this room.
+     * @param imagePath         String, file path of texture.
      */
     public Bookcase(String id,
             int x,
@@ -22,11 +23,14 @@ public class Bookcase extends Furniture /*implements Interactable*/{
             
         // Pass arguments to superclass.
         super(id,
-                x,                    // X grid position in room.
-                y,                  // Y grid position in room.
-                currentRoom,        // Placed in this room.
-                "Bookcase",         // Item name.
-                "full of stuff");   // Item description.
+                x,
+                y,
+                // Placed in this room.
+                currentRoom,
+                // Item name.
+                "Bookcase",
+                // Item description
+                "full of stuff");
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
