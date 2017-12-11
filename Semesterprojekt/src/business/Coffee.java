@@ -16,23 +16,17 @@ public class Coffee extends Item {
      *
      * @param x int, horizontal position in room grid.
      * @param y int, vertical position in room grid.
-     * @param width int, pixel width of coffee.
-     * @param height int, pixel height of coffee.
      * @param currentRoom Room, currently in this room.
      */
     public Coffee(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
 
         // Pass arguments to superclass
         super(id,
                 x, // X grid position in room.
                 y, // Y grid position in room.
-                width, // Pixel width.
-                height, // Pixel height.
                 currentRoom, // Placed in this room.
                 "Coffee", // Name of item.
                 "A cup of coffee. Yum!", // Description of item.

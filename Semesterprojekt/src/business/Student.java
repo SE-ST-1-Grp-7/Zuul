@@ -32,8 +32,6 @@ public class Student extends Person {
         super(id,
                 x,
                 y,
-                Person.DEFAULT_PERSON_WIDTH,
-                Person.DEFAULT_PERSON_HEIGHT,
                 currentRoom, em);
 
         if ("".equals(studentImage)) {

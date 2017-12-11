@@ -12,24 +12,18 @@ public class Chair extends Furniture {
      * 
      * @param x                 int, horizontal postition in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of chair.
-     * @param height            int, pixel height of chair.
      * @param currentRoom       Room, currently in this room.
      * @param imagePath         String, path of texture.
      */
     public Chair(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom, String imagePath){
             
         // Pass arguments to superclass.
         super(id,
                 x,                    // X grid position in room.
                 y,                  // Y grid position in room.
-                width,              // Pixel width.
-                height,             // Pixel height.
                 currentRoom,        // Placed in this room.
                 "Chair",            // Item name.
                 "Nice to sit on");  // Item description.
@@ -38,6 +32,7 @@ public class Chair extends Furniture {
     }
     /**
      * Override, upon interaction with furniture.
+     * @param p                 //Player, effect of interacting with this.
      */
     @Override
     public void onInteract(Person p) {

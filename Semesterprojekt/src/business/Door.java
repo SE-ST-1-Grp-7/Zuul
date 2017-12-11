@@ -8,7 +8,6 @@ package business;
 public class Door extends Furniture {
 
     private String direction;
-    private String doorImage = "/textures/door2.png"; // Path to texture.
     private RoomManager roomManager;
     private boolean isLocked;
 
@@ -17,17 +16,15 @@ public class Door extends Furniture {
      * 
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of adderall.
-     * @param height            int, pixel height of adderall.
      * @param currentRoom       Room, currently in this room.
      * @param imagePath         string, path to get the door image.
      * @param isLocked          boolean, check if the door is locked or not
      */
-    public Door(String id, int x, int y, int width, int height,
+    public Door(String id, int x, int y, 
             Room currentRoom, String imagePath, boolean isLocked) {
 
         // Pass arguments to superclass.
-        super(id, x, y, width, height, currentRoom,
+        super(id, x, y, currentRoom,
                 "Door", // Item name.
                 "This is a door, maybe you should open it");  // Item description.
         super.setEntityImage(imagePath);

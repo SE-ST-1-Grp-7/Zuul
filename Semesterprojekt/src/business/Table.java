@@ -30,8 +30,6 @@ public class Table extends Furniture /*implements Inspectable*/{
     public Table(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom,
             boolean canHaveItems,
             int maxAmountOfItems, String imagePath){
@@ -40,8 +38,6 @@ public class Table extends Furniture /*implements Inspectable*/{
         super(id,
                 x,
                 y,
-                width,
-                height,
                 currentRoom,
                 "Table",                        // Item name.
                 "It might contain items!");     // Item description.

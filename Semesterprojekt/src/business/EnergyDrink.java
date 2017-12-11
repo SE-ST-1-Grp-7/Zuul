@@ -15,23 +15,17 @@ public class EnergyDrink extends Item {
      * 
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of energy drink.
-     * @param height            int, pixel height of energy drink.
      * @param currentRoom       Room, currently in this room.
      */
     public EnergyDrink(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
         
         // Pass arguments to superclass
         super(id,
                 x,                            // X grid position in room.
                 y,                          // Y grid position in room.
-                width,                      // Pixel width.
-                height,                     // Pixel height.
                 currentRoom,                // Placed in this room.
                 "Energy drink",             // Name of item.
                 "A can of Monster. Yum!",   // Description of item.

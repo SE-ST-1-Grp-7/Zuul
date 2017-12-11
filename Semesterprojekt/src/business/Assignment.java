@@ -15,23 +15,17 @@ public class Assignment extends Item {
      *
      * @param x int, horizontal position in room grid.
      * @param y int, vertical position in room grid.
-     * @param width int, pixel width of assignment.
-     * @param height int, pixel height of assignment.
      * @param currentRoom Room, currently in this room.
      */
     public Assignment(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
 
         // Pass arguments to superclass.
         super(id,
                 x,
                 y,
-                width,
-                height,
                 currentRoom,
                 // Name of item.
                 "Assignment",

@@ -19,8 +19,6 @@ public abstract class Item extends Entity implements IItem {
      *
      * @param x int, horizontal position in room grid.
      * @param y int, vertical position in room grid.
-     * @param width int, pixel width of item.
-     * @param height int, pixel height of item.
      * @param currentRoom Room, item is currently in this room.
      * @param itemName String, name of item.
      * @param itemDescription String, description of item.
@@ -29,15 +27,13 @@ public abstract class Item extends Entity implements IItem {
     public Item(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom,
             String itemName,
             String itemDescription,
             int weight) {
 
         // Pass arguments to superclass.
-        super(id, x, y, width, height, currentRoom);
+        super(id, x, y, currentRoom);
 
         // Pass path of texture to superclass.
         this.itemName = itemName;
