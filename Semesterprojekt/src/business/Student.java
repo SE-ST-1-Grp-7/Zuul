@@ -17,49 +17,45 @@ public class Student extends Person {
     /**
      * Student constructor, actions upon instantiation.
      *
-     * @param x int, horizontal positioning in grid.
-     * @param y int, vertical positioning in grid.
-     * @param currentRoom Room, placed currently in this room.
-     * @param hasQ boolean, true if student has a questions.
+     * @param id                String, ID of specific instantiation.
+     * @param x                 int, horizontal positioning in grid.
+     * @param y                 int, vertical positioning in grid.
+     * @param currentRoom       Room, placed currently in this room.
+     * @param hasQ              boolean, true if student has a questions.
+     * @param studentImage      String, file path to texture.
+     * @param em                EntityManager, used for giving items.
      */
     public Student(String id,
             int x,
             int y,
             Room currentRoom,
-            boolean hasQ, EntityManager em) {
+            boolean hasQ,
+            String studentImage,
+            EntityManager em) {
 
         // Pass arguments to superclass.
         super(id,
                 x,
                 y,
-                currentRoom, em);
-
-        if ("".equals(studentImage)) {
-            // Generate random choice of student texture, 12 options.
-            int number = (1 + (int) (Math.random() * 12));
-            studentImage = "/textures/student" + number + ".png";
-            // Pass the chosen texture path to superclass.
-            super.setEntityImage(studentImage);
-        }
-        this.hasQuestionToPlayer = hasQ; // Student has a question to player.
-    }
-
-    public Student(String id,
-            int x,
-            int y,
-            Room currentRoom,
-            boolean hasQ,
-            String studentImage, EntityManager em) {
-        // Pass arguments to other constructor.
-        this(id, x, y, currentRoom, hasQ, em);
+                currentRoom,
+                em);
+        // Student has a question to player.
+        this.hasQuestionToPlayer = hasQ;
+        
         this.studentImage = studentImage;
         super.setEntityImage(studentImage);
         getCurrentRoom().getEntities()[getY()][getX()] = null;
     }
 
+    /**
+     * Algorithm for students to chase player.
+     */
     public void chasePlayer() {
-        double distanceToPlayer = Math.sqrt(Math.pow(getEntityManager().getPlayer().getX() - this.getX(),2 ) +
-                 (Math.pow(getEntityManager().getPlayer().getY() - this.getY(),2 )));
+        double distanceToPlayer = Math.sqrt(Math.pow(getEntityManager()
+                .getPlayer().getX() - this.getX(),2 ) +
+                 (Math.pow(getEntityManager().getPlayer().getY()
+                         - this.getY(),2 )));
+        
         if(distanceToPlayer <= 1) {
             getEntityManager().getPlayer().onInteract(this);
             setHasQuestionToPlayer(false);
@@ -84,9 +80,7 @@ public class Student extends Person {
                         move((getX()),(getY()-1));
                     }
             }
-            
         }
-        
     }
 
     /**
@@ -94,15 +88,16 @@ public class Student extends Person {
      * direction with a 50% chance per call used by an idling student.
      */
     public void idleMove() {
-        if (getEntityManager().getPlayer().getCurrentRoom() == getCurrentRoom() && hasQuestionToPlayer) {
+        if (getEntityManager().getPlayer().getCurrentRoom() == getCurrentRoom()
+                && hasQuestionToPlayer) {
             chasePlayer();
-        } else
-        // Assumes that this gets executed once per second.
-
-        if (rand.nextBoolean()) { // If true, move.
+        // else if true, move.
+        } else if (rand.nextBoolean()) {
             String[] directions = {"left", "right", "up", "down"};
             // Roll for a random direction.
             String direction = directions[rand.nextInt(4)];
+            
+            // Random direction movement.
             switch (direction) {
                 case "left":
 
@@ -112,6 +107,7 @@ public class Student extends Person {
                         move(getX() - 1, getY());
                     }
                     break;
+                    
                 case "right":
 
                     if (getCurrentRoom().getEntities()[getY()][getX() + 1] instanceof Door) {
@@ -120,6 +116,7 @@ public class Student extends Person {
                         move(getX() + 1, getY());
                     }
                     break;
+                    
                 case "up":
                     if (getCurrentRoom().getEntities()[getY() - 1][getX()] instanceof Door) {
                         getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract(this);
@@ -127,6 +124,7 @@ public class Student extends Person {
                         move(getX(), getY() - 1);
                     }
                     break;
+                    
                 case "down":
                     if (getCurrentRoom().getEntities()[getY() + 1][getX() + 1] instanceof Door) {
                         getCurrentRoom().getEntities()[getY() + 1][getX() + 1].onInteract(this);
@@ -137,54 +135,41 @@ public class Student extends Person {
             }
 
         }
-        //this will make the students chase the player after some time
-//        if(rand.nextInt(100) >= 95){
-//            setHasQuestionToPlayer(true);
-//        }
-        
     }
 
     /**
      * The second movement method for student. Removes student from current
      * location and assign student to new location.
      *
-     * @param newX int, new horizontal grid position.
-     * @param newY int, new vertical grid position.
+     * @param newX      int, new horizontal grid position.
+     * @param newY      int, new vertical grid position.
      */
     public void move(int newX, int newY) {
-        getCurrentRoom().getEntities()[getY()][getX()] = null; // set current position in array to null
-        getCurrentRoom().getEntities()[newY][newX] = this; // place student in new position
-        // update x & y
+        // Set current position to null.
+        getCurrentRoom().getEntities()[getY()][getX()] = null;
+        // Place student at new location.
+        getCurrentRoom().getEntities()[newY][newX] = this;
+        // Update x & y.
         setX(newX);
         setY(newY);
     }
 
-    /**
-     * Checks if move is legal. (A move is legal if the desired field is null.)
-     *
-     * @param newX int, horizontal grid position to be checked.
-     * @param newY int, vertical grid position to be checked.
-     * @return boolean, true if empty field, false otherwise.
-     */
-    public boolean isLegal(int newX, int newY) {
-        return getCurrentRoom().getEntities()[newY][newX] == null;
-    }
-
     // GETTERS & SETTERS
+    
     /**
-     * Getter for hasQusetionForPlayer.
+     * Get has qusetion for player.
      *
-     * @return boolean, true if student has question for player, false
-     * otherwise.
+     * @return      boolean, true if student has question for player, false
+     *              otherwise.
      */
     public boolean getHasQuestionToPlayer() {
         return this.hasQuestionToPlayer;
     }
 
     /**
-     * Setter for hasQusetionForPlayer
+     * Set for has qusetion for player.
      *
-     * @param hasQuestionToPlayer boolean, set variable for student.
+     * @param hasQuestionToPlayer   boolean, set variable for student.
      */
     public void setHasQuestionToPlayer(boolean hasQuestionToPlayer) {
         this.hasQuestionToPlayer = hasQuestionToPlayer;
@@ -195,6 +180,7 @@ public class Student extends Person {
      */
     @Override
     public void onInteract(Person p) {
-        ((Player)p).setPlayerAskedStudent(true);//we set the variable to true. this variable will be sent trough the bussinesFacade to the UI where we write text for questions
+        // Set player attribute to true.
+        ((Player)p).setPlayerAskedStudent(true);
     }
 }

@@ -19,28 +19,31 @@ public class Table extends Furniture /*implements Inspectable*/{
     /**
      * Constructor for Table class.
      * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of table.
-     * @param height            int, pixel height of table.
      * @param currentRoom       Room, currently in this room.
      * @param canHaveItems      boolean, true if furniture can contain items.
      * @param maxAmountOfItems  int, number of items furniture can contain.
+     * @param imagePath         String, file path to texture.
      */
     public Table(String id,
             int x,
             int y,
             Room currentRoom,
             boolean canHaveItems,
-            int maxAmountOfItems, String imagePath){
+            int maxAmountOfItems,
+            String imagePath){
         
         // Pass arguments for superclass
         super(id,
                 x,
                 y,
                 currentRoom,
-                "Table",                        // Item name.
-                "It might contain items!");     // Item description.
+                // Item name.
+                "Table",
+                // Item description.
+                "It might contain items!");
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
         
@@ -51,39 +54,11 @@ public class Table extends Furniture /*implements Inspectable*/{
     }
     
     /**
-     * Method to place an item on table.
-     * 
-     * @param item      Item, give item to table.
-     */
-    public void placeItem(Item item){
-        // If true and capable, place item in table.
-        if(this.canHaveItems == true &&
-                currentAmountOfItems < maxAmountOfItems){
-            // Item is placed on table and added to item list of table.
-            itemsOnTable.add(item);
-        }
-    }
-    
-    /**
-     * Method to retrieve an item from table. (Not finished.)
-     * 
-     * @param item      Item, to be retrieved.
-     * @return          Item, to be retrieved.
-     */
-    public Item takeItem(Item item){
-        // Not yet fully implementet - need code to remove the item from list.
-        return item; 
-    }
-    
-    /**
      * Override, upon interaction with table.
+     *
+     * @param p     Person, whom is interacting with furniture.
      */
     @Override
     public void onInteract(Person p) {
-        System.out.println("this is a table");
-        if(currentAmountOfItems > 0) {
-            System.out.println("this is what is on it ;)");
-            System.out.println(itemsOnTable);
-        }
     }
 }

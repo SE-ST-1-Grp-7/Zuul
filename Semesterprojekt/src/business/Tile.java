@@ -1,13 +1,19 @@
 package business;
 
 /**
- *
+ * Tile class, contain all info for a single tile in a room.
+ * 
  * @author Rasmus Willer
  */
 class Tile {
     private boolean solid = false;
     private String image;
     
+    /**
+     * Constructor.
+     * 
+     * @param imgPath   String, file path of texture.
+     */
     public Tile(String imgPath) {
         this.image = imgPath;
     }
