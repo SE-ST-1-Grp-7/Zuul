@@ -42,7 +42,7 @@ public class Tutor extends Student {
     public void onInteract(Person p) {
         /* we set the variable to true. this variable will be sent trough the
            bussinesFacade to the UI where we write text for questions. */
-        p.setPlayerAskedTutor(true);
+        ((Player)p).setPlayerAskedTutor(true);
         // If haven't given item before.
         if (!hasGivenItem) {
             // Instantiate coffee to player's inventory.

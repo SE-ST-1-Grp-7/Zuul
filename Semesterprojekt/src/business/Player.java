@@ -22,6 +22,11 @@ public class Player extends Person {
     private String playerName;
     private boolean interactHappend;
 
+    /*two variables for checking when the player interacted with a student/tutor
+    - they are in Person.java because the onInteract method on Student and Tutor needs a Person*/
+    private boolean playerAskedStudent; // this is used to check if the player asked/interacted with a student
+    private boolean playerAskedTutor; // this is used to check if the player asked/interacted with a tutor
+
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
      * sets the attributes for the player.
@@ -57,6 +62,8 @@ public class Player extends Person {
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
         this.hasKey = false;
+        this.playerAskedStudent = false;
+        this.playerAskedTutor = false;
     }
 
     /**
@@ -173,7 +180,6 @@ public class Player extends Person {
     }
 
     // GETTERS & SETTERS
-    
     public String getName() {
         return playerName;
     }
@@ -181,7 +187,7 @@ public class Player extends Person {
     public void setName(String playerName) {
         this.playerName = playerName;
     }
-    
+
     /**
      * Method call/get the player's inventory.
      *
@@ -292,12 +298,12 @@ public class Player extends Person {
         // this gets called when an "evil" student interacts with the player
         // needs to pop up window/something to get input from the player
     }
-    
-    public boolean getInteractionHappend(){
+
+    public boolean getInteractionHappend() {
         return this.interactHappend;
     }
-    
-    public void setInteractionHappend(boolean b){
+
+    public void setInteractionHappend(boolean b) {
         this.interactHappend = b;
     }
 
@@ -316,11 +322,11 @@ public class Player extends Person {
     public void setCurrentAssignment(Assignment currentAssignment) {
         this.currentAssignment = currentAssignment;
     }
-    
+
     /**
      * Get method for retrieving the time left after loading.
-     * 
-     * @return      int, time left of the game in seconds at time of loading.
+     *
+     * @return int, time left of the game in seconds at time of loading.
      */
     public int getTimeLeft() {
         return timeLeft;
@@ -328,10 +334,48 @@ public class Player extends Person {
 
     /**
      * Set method for setting the remaining time at saving point.
-     * 
-     * @param timeLeft      int, time left in seconds at saving point.
+     *
+     * @param timeLeft int, time left in seconds at saving point.
      */
     public void setTimeLeft(int timeLeft) {
         this.timeLeft = timeLeft;
+    }
+
+    /**
+     * getter for checking if the player interacted with a student
+     *
+     * @return true if the player asked a student
+     */
+    public boolean getPlayerAskedStudent() {
+        return playerAskedStudent;
+    }
+
+    /**
+     * setter method to make the variable true when a student was asked
+     *
+     * @param playerAskedStudent used to set the playerAskedStudent
+     * attribute/variable
+     */
+    public void setPlayerAskedStudent(boolean playerAskedStudent) {
+        this.playerAskedStudent = playerAskedStudent;
+    }
+
+    /**
+     * getter for checking if the player interacted with a tutor
+     *
+     * @return true if player asked a tutor
+     */
+    public boolean getPlayerAskedTutor() {
+        return playerAskedTutor;
+    }
+
+    /**
+     * setter method to make the variable true when a tutor was asked
+     *
+     * @param playerAskedTutor used to set the playerAskedTutor
+     * attribute/variable
+     */
+    public void setPlayerAskedTutor(boolean playerAskedTutor) {
+        this.playerAskedTutor = playerAskedTutor;
     }
 }
