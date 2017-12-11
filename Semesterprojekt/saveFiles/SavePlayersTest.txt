@@ -1,1 +1,1 @@
-ID50,7,7,bug,garden,0,0,false,199,200,299
+ID50,7,7,1,garden,0,0,false,199,200,299

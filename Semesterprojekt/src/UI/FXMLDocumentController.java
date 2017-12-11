@@ -133,13 +133,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void newGameButton(ActionEvent event) {
-        if(nameField.isVisible() == false){
-            canvasId.getGraphicsContext2D().drawImage(
-                new Image("assets/start1.png"), 0, 0);
-            loop.stop();
-            ib.resetGame();
-            nameField.setVisible(true);
-        }
         if (nameField.getText().length() <= 8 &&
                 nameField.getText().length() >= 1) {
             //ib.playerSetName(nameField.getText());
