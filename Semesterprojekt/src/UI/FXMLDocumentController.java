@@ -180,6 +180,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         ib = UI.getUI().getBusiness();
+        // Instantiate the tooltips for the buttons.
         Tooltip exittip = new Tooltip("Exit the game");
         Tooltip savetip = new Tooltip("Save the game");
         Tooltip loadtip = new Tooltip("Load the game");
@@ -440,6 +441,7 @@ public class FXMLDocumentController implements Initializable {
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
             bottomTextArea.clear();
+            ib.saveHighscore();
             bottomTextArea.appendText("You have won the game, you are the "
                     + "best professer around" + "\n");
             // draw win screen image

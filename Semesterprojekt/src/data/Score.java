@@ -1,28 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
 
 import java.util.Comparator;
 
 /**
  *
- * @author niclasjohansen
+ * @author Niclas Johansen
  */
 
 public class Score implements Comparator<Score> {
     
-    /**
-     * Name of player.
-     */
-    private String name;
-
-    /**
-     * The int score for our HighScore.
-     */
-    private int score;
+    private String name; // Instantiate players name
+    private int score; // Instantiate score for player
 
     /**
      * No args construtor.
@@ -73,7 +61,12 @@ public class Score implements Comparator<Score> {
     public void setScore(int score) {
         this.score = score;
     }
-    
+    /**
+     * method for comparing scores so we can arrange them in the xml file.
+     * @param score1
+     * @param score2
+     * @return 
+     */
     @Override
     public int compare(Score score1, Score score2) {
         int a = score1.getScore();

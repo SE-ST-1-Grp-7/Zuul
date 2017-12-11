@@ -2,7 +2,7 @@ package Acq;
 
 /**
  *
- * @author J
+ * @author J & Niclas Johansen
  */
 public interface IUI {
     void injectBusiness(IBusiness businessFacade);

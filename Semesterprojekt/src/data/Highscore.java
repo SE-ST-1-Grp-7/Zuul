@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package data;
+
+// IMPORTS
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -23,14 +19,14 @@ import org.w3c.dom.NodeList;
 
 /**
  *
- * @author niclasjohansen
+ * @author Niclas Johansen
  */
 public class Highscore {
 
     /**
      * An ArrayList to store the players highScore.
      */
-    ArrayList<Score> highScore = new ArrayList();
+    private ArrayList<Score> highScore = new ArrayList();
 
     /**
      * An add method to add a name and a score to the ArrayList.
@@ -44,7 +40,7 @@ public class Highscore {
     }
 
     /**
-     * A method to sort the highScore so the one with the highest score is
+     * method to sort the highScore so the one with the highest score is
      * first.
      */
     private void sort() {
@@ -53,7 +49,7 @@ public class Highscore {
     }
 
     /**
-     * Method to return our highScore as an string with the toString method.
+     * Method to return our highScore as an string.
      *
      * @return string text
      */
@@ -76,10 +72,13 @@ public class Highscore {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
-
+            // Create the <Highscore> element
             Element highscore = doc.createElement("Highscore");
             doc.appendChild(highscore);
-
+            
+            // For each score in the arraylist highScore it creates a person
+            // which is called scoreNode. After it sets the attribute with
+            // the score name and the second attribute with the score.
             for (Score score : highScore) {
                 Element scoreNode = doc.createElement("person");
                 scoreNode.setAttribute("name", score.getName());
@@ -87,12 +86,11 @@ public class Highscore {
                 highscore.appendChild(scoreNode);
 
             }
-
+            // Formats the xml file so it looks nicely clean.
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             DOMSource source = new DOMSource(doc);
             StreamResult consoleResult = new StreamResult(new File("highscore.xml"));
             transformer.transform(source, consoleResult);
@@ -106,17 +104,20 @@ public class Highscore {
      * This method loads the XML file highscore.xml.
      */
     public void loadXML() {
+        // When loading the xml file we clear the arrayList to make sure
+        // that the arrayList is empty.
         highScore.clear();
 
         try {
+            // Instantiate the xml file
             File fXmlFile = new File("highscore.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(fXmlFile);
             doc.getDocumentElement().normalize();
-
+            // Get the person element in the xml file and sets it to list.
             NodeList list = doc.getElementsByTagName("person");
-
+            // A for loop that gets the names and score for each person.
             for (int i = 0; i < list.getLength(); i++) {
 
                 Node nNode = list.item(i);
@@ -131,7 +132,12 @@ public class Highscore {
 
         }
     }
-
+    /**
+     * This method first loads the existing xml file highscore.xml and then adds
+     * the new score from the new player.
+     * @param playerName
+     * @param seconds 
+     */
     public void saveHighscore(String playerName, int seconds) {
         loadXML();
         add(playerName, seconds);
@@ -139,13 +145,4 @@ public class Highscore {
         displayHighscore();
 
     }
-
-    public void printHighscore() {
-
-        System.out.println("The highscore list for World of SDU");
-        System.out.println("----------------------------");
-        System.out.println("NO.\tNAME\t SCORE");
-        System.out.println(this.toString());
-    }
-
 }

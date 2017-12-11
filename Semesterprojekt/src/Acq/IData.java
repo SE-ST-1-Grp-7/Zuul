@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author J & Rasmus Willer
+ * @author J, Niclas Johansen & Rasmus Willer
  */
 public interface IData {
     // Display the highscore
