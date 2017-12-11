@@ -3,7 +3,8 @@ package business;
 import java.util.HashMap;
 
 /**
- *
+ * Manager of rooms.
+ * 
  * @author Rasmus Willer & Søren Bendtsen & Jonas Bjørstorp
  */
 public class RoomManager {
@@ -35,31 +36,18 @@ public class RoomManager {
      */
     private void createRooms() {
         // Instantiate the rooms and their descriptions
-        roomlist.put("garden", new Room(
-                "outside in the lovely garden... smells lovely of roses",
-                "garden"));
-        roomlist.put("relaxing room", new Room(
-                "in a nice and cozy relaxing room", "relaxing room"));
-        roomlist.put("teacher room", new Room(
-                "in your own room, finaly some peace...", "teacher room"));
-        roomlist.put("pub", new Room("in the campus pub", "pub"));
-        roomlist.put("outside", new Room(
-                "outside the main entrance of the university", "outside"));
-        roomlist.put("hallway 1", new Room(
-                "moving along the hallway", "hallway 1"));
-        roomlist.put("dininghall", new Room(
-                "in the dining hall, time to nom!", "dininghall"));
-        roomlist.put("hallway 2", new Room(
-                "moving along the hallway", "hallway 2"));
-        roomlist.put("lecturehall 1", new Room(
-                "in a lecturehall, the lights are flickering...",
-                "lecturehall 1"));
-        roomlist.put("hallway 3", new Room(
-                "moving along the hallway", "hallway 3"));
-        roomlist.put("lecturehall 2", new Room(
-                "in a lecturehall, everything is working... weird...",
-                "lecturehall 2"));
-        roomlist.put("toilet", new Room("pooping", "toilet"));
+        roomlist.put("garden", new Room("garden"));
+        roomlist.put("relaxing room", new Room("relaxing room"));
+        roomlist.put("teacher room", new Room("teacher room"));
+        roomlist.put("pub", new Room("pub"));
+        roomlist.put("outside", new Room("outside"));
+        roomlist.put("hallway 1", new Room("hallway 1"));
+        roomlist.put("dininghall", new Room("dininghall"));
+        roomlist.put("hallway 2", new Room("hallway 2"));
+        roomlist.put("lecturehall 1", new Room("lecturehall 1"));
+        roomlist.put("hallway 3", new Room("hallway 3"));
+        roomlist.put("lecturehall 2", new Room("lecturehall 2"));
+        roomlist.put("toilet", new Room("toilet"));
 
         /* Define the exit-waypoints:
            From 'garden' Room instance. */
@@ -199,32 +187,6 @@ public class RoomManager {
             }
         }
     }
-
-    /**
-     * Go to a different room and update current room.
-     *
-     * @param direction String, north/west/south/east direction to next room.
-     * @param p         Player, the player object whos data requires updating.
-     */
-    public void goRoom(String direction, Player p) {
-        /* Assign next room according to matching direction defined in the
-           createRooms method */
-        Room nextRoom = currentRoom.getExit(direction);
-
-        // If there is no such direction print message. 
-        if (nextRoom == null) {
-            System.out.println("There is no door!");
-        } /* Update current room reference and print long description of new
-           current room. */ 
-        else {
-            currentRoom = nextRoom;
-            p.setX(5);
-            p.setY(5);
-            p.setCurrentRoom(nextRoom);
-            //p.spawnPlayer();
-            System.out.println(currentRoom.getLongDescription());
-        }
-    }
     
     // GETTERS & SETTERS
     
@@ -251,7 +213,7 @@ public class RoomManager {
     /**
      * Change the attribute currentRoom to a new room object.
      * 
-     * @param room  Room, new room to be the current room in focus.
+     * @param room      Room, new room to be the current room in focus.
      */
     public void setCurrentRoom(Room room) {
         this.currentRoom = room;

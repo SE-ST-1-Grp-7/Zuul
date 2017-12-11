@@ -13,7 +13,6 @@ public class Room {
 
     // instantiates room coordinates to set and get.
     // Declare attributes -section.
-    private String description;
     private String name;
     private Tile[][] tileArray = new Tile[10][10];
     private Entity[][] entityArray;
@@ -22,14 +21,12 @@ public class Room {
     private String minimapPath;
 
     /**
-     * One-arg constructor with description String.
+     * One-arg constructor with name String.
      *
-     * @param description Passed string argument providing room description.
-     * @param name
+     * @param name      String, name of room.
      */
-    public Room(String description, String name) {
-        // Assigning description argument to instance attribute.
-        this.description = description;
+    public Room(String name) {
+        // Assigning name argument to instance attribute.
         this.name = name;
         /* Instantiating map object with key of String type and
            value as Room object. */
@@ -107,60 +104,12 @@ public class Room {
     }
 
     /**
-     * Getter method for instance of room's description.
-     *
-     * @return      String, description of room instance.
-     */
-    public String getShortDescription() {
-        return description;
-    }
-
-    /**
      * Retrieve name of room.
      * 
      * @return      String, name of room.
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * Getter method for extended description of room with room descriptions and
-     * exit-waypoints from room.
-     *
-     * @return      String, description and exit-description.
-     */
-    public String getLongDescription() {
-        return "You are " + description + ".\n" + getExitString();
-    }
-
-    /**
-     * Getter method for extended description of student with room description.
-     *
-     * @return      String, student location description.
-     */
-    public String getStudentDescription() {
-        return "Student is " + description;
-    }
-
-    /**
-     * Getter method for String description of exit routes from room instance.
-     *
-     * @return      String, describes exit routes from room.
-     */
-    private String getExitString() {
-        // Declare returning String + start of String message.
-        String returnString = "Exits:";
-
-        // Declare and assign a Set object 'keys' with all 'exits' Strings.
-        Set<String> keys = exits.keySet();
-
-        // Add to returning String a list of exit points.
-        for (String exit : keys) {
-            returnString += " " + exit;
-        }
-        // Return structured String.
-        return returnString;
     }
 
     /**
@@ -173,15 +122,6 @@ public class Room {
      */
     public Room getExit(String direction) {
         return exits.get(direction);
-    }
-
-    /**
-     * Getter method, retrieve HashMap of exit points from current room.
-     * 
-     * @return      HashMap< String, Room >, map of exit point data.
-     */
-    public HashMap<String, Room> getExits() {
-        return this.exits;
     }
 
     /**
