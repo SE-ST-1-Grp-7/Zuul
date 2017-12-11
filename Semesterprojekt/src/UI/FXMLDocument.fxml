@@ -44,7 +44,7 @@
                   <Insets bottom="2.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadButton" styleClass="load-button" stylesheets="@style.css" text="LOAD GAME">
+            <Button fx:id="loadButton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loadButton" styleClass="load-button" stylesheets="@style.css" text="LOAD GAME">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -55,7 +55,7 @@
                   <Insets bottom="2.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveButton" styleClass="save-button" stylesheets="@style.css" text="SAVE GAME">
+            <Button fx:id="saveButton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#saveButton" styleClass="save-button" stylesheets="@style.css" text="SAVE GAME">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -63,7 +63,7 @@
                   <Insets bottom="20.0" left="34.0" right="34.0" top="15.0" />
                </padding>
             </Button>
-            <Button fx:id="highscoreButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#highscoreButton" styleClass="highscore-button" stylesheets="@style.css" text="HIGHSCORE">
+            <Button fx:id="highscoreButton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#highscoreButton" styleClass="highscore-button" stylesheets="@style.css" text="HIGHSCORE">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -71,7 +71,7 @@
                   <Insets bottom="20.0" left="33.0" right="33.0" top="15.0" />
                </padding>
             </Button>
-            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitButton" styleClass="exit-button" stylesheets="@style.css" text="EXIT GAME">
+            <Button fx:id="exitButton" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#exitButton" styleClass="exit-button" stylesheets="@style.css" text="EXIT GAME">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -91,7 +91,7 @@
          <children>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
-                  <Label contentDisplay="CENTER" text="MAP">
+                  <Label contentDisplay="CENTER" focusTraversable="false" text="MAP">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
@@ -110,7 +110,7 @@
                   <Insets bottom="5.0" />
                </padding>
                <children>
-                  <Label fx:id="gradedAssignmentViewer" text="Graded Assignments" />
+                  <Label fx:id="gradedAssignmentViewer" focusTraversable="false" text="Graded Assignments" />
                </children>
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
@@ -118,8 +118,8 @@
             </StackPane>
             <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" spacing="30.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
-                  <Label fx:id="timeLabel" contentDisplay="CENTER" text="TIME" />
-                  <Label fx:id="energyViewer" text="Energy" />
+                  <Label fx:id="timeLabel" contentDisplay="CENTER" focusTraversable="false" text="TIME" />
+                  <Label fx:id="energyViewer" focusTraversable="false" text="Energy" />
                </children>
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
@@ -133,7 +133,7 @@
                   <Insets bottom="5.0" />
                </padding>
                <children>
-                  <Label fx:id="roomViewer" text="Current Room" />
+                  <Label fx:id="roomViewer" focusTraversable="false" text="Current Room" />
                </children>
                <VBox.margin>
                   <Insets left="15.0" right="15.0" top="15.0" />
@@ -146,7 +146,7 @@
             </ListView>
             <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="200.0" style="-fx-background-image: url(&quot;/assets/box.png&quot;); -fx-background-repeat: no-repeat; -fx-background-size: cover;" styleClass="infobox" stylesheets="@style.css">
                <children>
-                  <Label contentDisplay="CENTER" text="INVENTORY">
+                  <Label contentDisplay="CENTER" focusTraversable="false" text="INVENTORY">
                      <StackPane.margin>
                         <Insets />
                      </StackPane.margin>
@@ -161,12 +161,12 @@
             </StackPane>
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" styleClass="infobox" stylesheets="@style.css">
                <children>
-                  <Button fx:id="useButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#useButton" scaleX="0.9" scaleY="0.9" styleClass="use-button" stylesheets="@style.css" text="USE ITEM">
+                  <Button fx:id="useButton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#useButton" scaleX="0.9" scaleY="0.9" styleClass="use-button" stylesheets="@style.css" text="USE ITEM">
                      <padding>
                         <Insets bottom="20.0" left="42.0" right="42.0" top="15.0" />
                      </padding>
                   </Button>
-                  <Button fx:id="dropButton" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropButton" scaleX="0.9" scaleY="0.9" styleClass="drop-button" stylesheets="@style.css" text="DROP ITEM">
+                  <Button fx:id="dropButton" focusTraversable="false" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#dropButton" scaleX="0.9" scaleY="0.9" styleClass="drop-button" stylesheets="@style.css" text="DROP ITEM">
                      <padding>
                         <Insets bottom="20.0" left="35.0" right="35.0" top="15.0" />
                      </padding>
@@ -191,7 +191,7 @@
       </TextArea>
       <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="660.0" style="-fx-background-image: url(&quot;/assets/frame1.png&quot;);" GridPane.halignment="CENTER">
          <children>
-            <Canvas fx:id="canvasId" height="640.0" style="padding: 10px;" width="640.0" />
+            <Canvas fx:id="canvasId" focusTraversable="true" height="640.0" style="padding: 10px;" width="640.0" />
             <TextField fx:id="nameField" maxHeight="50.0" maxWidth="150.0" minHeight="50.0" minWidth="150.0" onMouseClicked="#nameFieldClick" pickOnBounds="false" prefHeight="50.0" prefWidth="150.0" styleClass="entername" stylesheets="@style.css" text="Enter name here" StackPane.alignment="CENTER" />
          </children>
          <GridPane.margin>

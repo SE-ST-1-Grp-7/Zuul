@@ -20,6 +20,6 @@ ID90,Coffee,7,3,hallway 2
 ID103,Energy drink,1,8,hallway 2
 ID69,Assignment,2,1,relaxing room
 ID91,Adderall,8,1,relaxing room
-ID111,Sawed-off,4,4,relaxing room
+ID111,Shotgun,4,4,relaxing room
 ID69,Assignment,3,6,hallway 3
 ID103,Energy drink,7,7,hallway 3
