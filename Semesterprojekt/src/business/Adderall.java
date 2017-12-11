@@ -16,23 +16,17 @@ public class Adderall extends Item{
      * 
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of adderall.
-     * @param height            int, pixel height of adderall.
      * @param currentRoom       Room, currently in this room.
      */
     public Adderall(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
         
         // Pass arguments to superclass
         super(id,
                 x,
                 y,
-                width,
-                height,
                 currentRoom,
                 "Adderall",                                 // Name of item.
                 "Energy restore and cap increase. Yay!",    // Item description.

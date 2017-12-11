@@ -50,8 +50,6 @@ public class Tutor extends Student {
               new Coffee("ID90",
                          p.getEntityManager().getPlayer().getX(),
                          p.getEntityManager().getPlayer().getY(),
-                         64,
-                         64,
                          p.getEntityManager().getPlayer().getCurrentRoom()));
             // Set tutor to have been asked before.
             this.hasGivenItem = true;
