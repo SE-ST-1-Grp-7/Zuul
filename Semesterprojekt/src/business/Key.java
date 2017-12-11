@@ -9,8 +9,9 @@ public class Key extends Item {
     private String imagePath = "/textures/key1.png";
     
     /**
-     * Constructor for Key class
+     * Constructor for Key class.
      * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
      * @param currentRoom       Room, currently in this room.
@@ -21,19 +22,24 @@ public class Key extends Item {
             Room currentRoom) {
         
         // Arguments for superclass
-        super(id, x, y, currentRoom, 
-                "Key",                  // Name of item.
-                "Used to open doors",   // Description of item.
-                1);                      // Weight of item.
+        super(id,
+                x,
+                y,
+                currentRoom,
+                // Name of item.
+                "Key",
+                // Description of item.
+                "Used to open doors");
          
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
     
     /**
-     * Override, implement use in this class.
+     * Override; implement use in this class.
      * 
      * @param p     Player, player is the one using the item.
+     * @return      boolean, will return true.
      */
     @Override
     public boolean use(Player p) {

@@ -14,6 +14,7 @@ public class Door extends Furniture {
      /**
      * Constructor for Door class.
      * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
      * @param currentRoom       Room, currently in this room.

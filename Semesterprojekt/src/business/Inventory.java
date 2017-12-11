@@ -5,31 +5,27 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 /**
- *
+ * Inventory of player, containing items picked up by the player.
+ * 
  * @author Jonas Bjørstorp & Frederik Bauer
  */
 public class Inventory {
 
     private final int CAPACITY = 5;
-    private final int MAX_WEIGHT = 200;
-    private int currentWeight;
     // ObservableList allows us to connect a javafx listview directly to the inventory
     private ObservableList<IItem> items = FXCollections.observableArrayList();
-
-    public Inventory() {
-
-    }
     
     public int getCapacity(){
         return CAPACITY;
     }
     /**
-     * adds an item to the inventory
+     * Adds an item to the inventory
      *
-     * @param item
+     * @param item      Item, item to be added.
+     * @return          boolean, true if space to add item, otherwise false.
      */
     public boolean addItem(Item item) {
-        // check if theres less than 10 items & less than 200 weight in the inventory
+        // Check if theres less than 10 items in the inventory.
         if (items.size() < CAPACITY) {
             items.add((IItem)item);
             return true;
@@ -40,62 +36,39 @@ public class Inventory {
     }
 
     /**
-     * get an item from an indexnumber
+     * Remove an item from the inventory
      *
-     * @param index
-     * @return
-     */
-    public Item getItem(int index) {
-        return (Item)items.get(index);
-    }
-
-    /**
-     * remove an item from the inventory
-     *
-     * @param item
+     * @param item      Item, item to be removed.
      */
     public void removeItem(Item item) {
-        currentWeight -= item.getWeight();
         items.remove(item);
     }
 
     /**
      * getter for the inventory
      *
-     * @return
+     * @return      ObservableList< IItem >, returned list of inventory.
      */
     public ObservableList<IItem> getInventory() {
         return items;
     }
 
-
-
     /**
-     * a method to loot items on the ground
+     * Drop an item.
      *
-     * @param i
-     */
-    public void lootItem(Item i) {
-        addItem(i);
-        System.out.println(i.getName() + " added to inventory!");
-    }
-
-    /**
-     * method to drop an item
-     *
-     * @param index
-     * @param p
+     * @param i     Item, item to drop.
+     * @param p     Player, player who's inventory it will drop from.
      */
     public void dropItem(Item i, Player p) {
+        // If temp item attribute is null.
         if (p.getTempItem() == null) { //if the player has no tempItem
             removeItem(i); //remove the item from the inventory list
-            i.setX(p.getX());//set the item's x to where the player is standing when dropping the item
-            i.setY(p.getY());//sets the item's y just like with x
-            p.setTempItem(i); //set the item you want to drop at the temp item
+            // Place at player's X and Y.
+            i.setX(p.getX());
+            i.setY(p.getY());
+            // Place the item to drop at temp item attribute.
+            p.setTempItem(i);
             p.getEntityManager().getItemList().add(i);
-            //p.placeItem(); //call the placeItem that places the tempItem
-        } else {
-            System.out.println("You can't drop here");
         }
     }
 }

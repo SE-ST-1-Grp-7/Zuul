@@ -6,13 +6,15 @@ package business;
  * @author Jonas Bjørstorp & Frederik Bauer & Rasmus Willer
  */
 public class EnergyDrink extends Item {
-    private final int ENERGY_RESTORE = 30; // Energy restore upon use.
+    // Energy restore upon use.
+    private final int ENERGY_RESTORE = 30;
     // Path of tecture for energy drink.
     private final String energydrinkImage = "/textures/energydrink.png";
     
     /**
      * Constructor for EnergyDrink class.
      * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
      * @param currentRoom       Room, currently in this room.
@@ -24,12 +26,14 @@ public class EnergyDrink extends Item {
         
         // Pass arguments to superclass
         super(id,
-                x,                            // X grid position in room.
-                y,                          // Y grid position in room.
-                currentRoom,                // Placed in this room.
-                "Energy drink",             // Name of item.
-                "A can of Monster. Yum!",   // Description of item.
-                10);                         // Weight of item.
+                x,
+                y,
+                // Placed in this room.
+                currentRoom,
+                // Name of item.
+                "Energy drink",
+                // Description of item.
+                "A can of Monster. Yum!");
                 
         // Pass path of texture to superclass.
         super.setEntityImage(energydrinkImage);
@@ -39,6 +43,8 @@ public class EnergyDrink extends Item {
      * Override, upon use of energy drink.
      * 
      * @param p     Player, player is the one using the item.
+     * @return      boolean, if true restore energy, otherwise false and do
+     *              nothing.
      */
     @Override
     public boolean use(Player p) {
@@ -51,5 +57,5 @@ public class EnergyDrink extends Item {
             p.setEnergy(p.getEnergyCap());
         }
     return true; 
-}
+    }
 }

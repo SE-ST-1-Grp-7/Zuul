@@ -31,9 +31,7 @@ public class Assignment extends Item {
                 // Name of item.
                 "Assignment",
                 // Description of item.
-                "An assigment you can grade.",
-                // Weight of item.
-                1);
+                "An assigment you can grade.");
 
         // Pass path of texture to superclass.
         super.setEntityImage(assignmentImage);

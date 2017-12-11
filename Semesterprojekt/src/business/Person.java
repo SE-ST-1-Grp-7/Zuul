@@ -6,19 +6,17 @@ package business;
  */
 public abstract class Person extends Entity {
     // Define default values for size of person.
-   
-    private String name; // Person name
+    private String name;
     private EntityManager em;
     
-    
     /**
-     * Person 1st constructor, without given name.
+     * Person constructor, instantiate NPCs.
      * 
      * @param id            String, ID of specific instantiation version.
      * @param x             int, horizontal position in room grid.
      * @param y             int, vertical position in room grid.
      * @param currentRoom   Room, currently in this room.
-     * @param em
+     * @param em            EntityManager, used for persons giving items.
      */
     public Person(String id,
             int x,
@@ -30,15 +28,14 @@ public abstract class Person extends Entity {
         // Get random name as name for person.
         //name = getRandomName();
         this.em = em;
-
     }
     
     /**
      * Method for collision check.
      *
-     * @param x int, X coordinate of grid location to be checked.
-     * @param y int, Y coordinate of grid location to be checked.
-     * @return boolean, true if collision, false otherwise.
+     * @param x     int, X coordinate of grid location to be checked.
+     * @param y     int, Y coordinate of grid location to be checked.
+     * @return      boolean, true if collision, false otherwise.
      */ 
     public boolean checkCollision(int x, int y) {
         if(getCurrentRoom().getTiles()[y][x].isSolid()) {

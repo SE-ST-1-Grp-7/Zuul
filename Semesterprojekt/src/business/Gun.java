@@ -14,12 +14,13 @@ public class Gun extends Item {
 
         // Pass arguments to superclass
         super(id,
-                x, // X grid position in room.
-                y, // Y grid position in room.
-                currentRoom, // Placed in this room.
-                "Shotgun", // Name of item.
-                "A sawed-off shotgun!", // Description of item.
-                5);                          // Weight of item.
+                x,
+                y,
+                currentRoom,
+                // Name of item.
+                "Shotgun",
+                // Description of item.
+                "A sawed-off shotgun!");
 
         // Pass path of texture to superclass.
         super.setEntityImage(gunImage);

@@ -7,20 +7,24 @@ package business;
  * @author Group 7
  */
 public abstract class Entity {
-
-    private int x, y;               // X and Y grid position in room.
-    private int width = 64;         // Pixel width of entity.
-    private int height = 64;        // Pixel height of entity.
-    private Room currentRoom;       // Placed in this room.
-    private String entityImage;     // Path of texture of entity.
-    private String id;              // ID number identifying the entity.
+    // X and Y grid position in room.
+    private int x, y;
+    // Pixel width and height of entity.
+    private int width, height = 64;
+    // Currently in this room.
+    private Room currentRoom;
+    // Path of texture of entity.
+    private String entityImage;
+    // ID number identifying the entity.
+    private String id;
 
     /**
      * Constructor of Entity class.
      *
-     * @param x int, horizontal position in room grid.
-     * @param y int, vertical position in room grid.
-     * @param currentRoom Room, currently in this room.
+     * @param id            String, ID of specific instantiation.
+     * @param x             int, horizontal position in room grid.
+     * @param y             int, vertical position in room grid.
+     * @param currentRoom   Room, currently in this room.
      */
     public Entity(String id, int x, int y, Room currentRoom) {
         // Assign parameters to variables.
@@ -34,7 +38,7 @@ public abstract class Entity {
     /**
      * Retrieve int value of X grid position in room.
      *
-     * @return int, coordinate to retrieve.
+     * @return      int, coordinate to retrieve.
      */
     public int getX() {
         return x;
@@ -43,7 +47,7 @@ public abstract class Entity {
     /**
      * Set int value of X grid position in room.
      *
-     * @param x int, new X position.
+     * @param x     int, new X position.
      */
     public void setX(int x) {
         this.x = x;
@@ -52,7 +56,7 @@ public abstract class Entity {
     /**
      * Retrieve int value of Y grid position in room.
      *
-     * @return int, coordinate to retrieve.
+     * @return      int, coordinate to retrieve.
      */
     public int getY() {
         return y;
@@ -61,7 +65,7 @@ public abstract class Entity {
     /**
      * Set int value of Y grid position in room.
      *
-     * @param y int, new Y position.
+     * @param y     int, new Y position.
      */
     public void setY(int y) {
         this.y = y;
@@ -70,7 +74,7 @@ public abstract class Entity {
     /**
      * Retrieve int value of width of entity.
      *
-     * @return int, width to retrieve.
+     * @return      int, width to retrieve.
      */
     public int getWidth() {
         return width;
@@ -79,7 +83,7 @@ public abstract class Entity {
     /**
      * Set int value of width of entity.
      *
-     * @param width int, new width of entity.
+     * @param width     int, new width of entity.
      */
     public void setWidth(int width) {
         this.width = width;
@@ -88,7 +92,7 @@ public abstract class Entity {
     /**
      * Retrieve int value of height of entity.
      *
-     * @return int, height to retrieve.
+     * @return      int, height to retrieve.
      */
     public int getHeight() {
         return height;
@@ -97,25 +101,25 @@ public abstract class Entity {
     /**
      * Set int value of height of entity.
      *
-     * @param height int, new height of entity.
+     * @param height    int, new height of entity.
      */
     public void setHeight(int height) {
         this.height = height;
     }
 
     /**
-     * get the current room of entity.
+     * Get the current room of entity.
      *
-     * @return the current room of entity
+     * @return      Room, the current room of entity
      */
     public Room getCurrentRoom() {
         return this.currentRoom;
     }
 
     /**
-     * set the current room of entity.
+     * Set the current room of entity.
      *
-     * @param currentRoom Room, the room that the entity is in.
+     * @param currentRoom   Room, the room that the entity is in.
      */
     public void setCurrentRoom(Room currentRoom) {
         this.currentRoom = currentRoom;
@@ -124,7 +128,7 @@ public abstract class Entity {
     /**
      * get String with the path to the entity image.
      *
-     * @return String with image path.
+     * @return      String, with image path.
      */
     public String getEntityImage() {
         return entityImage;
@@ -133,22 +137,34 @@ public abstract class Entity {
     /**
      * set method used for setting image of entity.
      *
-     * @param entityImage String, path to image.
+     * @param entityImage   String, path to image.
      */
     public void setEntityImage(String entityImage) {
         this.entityImage = entityImage;
     }
 
+    /**
+     * Retrieve ID.
+     * 
+     * @return      String, ID retrieved.
+     */
     public String getID() {
         return id;
     }
 
+    /**
+     * Set ID to entity.
+     * 
+     * @param id    String, new ID to set.
+     */
     public void setID(String id) {
         this.id = id;
     }
 
     /**
-     * abstact method - gets called when entity is interacted with
+     * Upon interact with person. abstact method.
+     * 
+     * @param p     Person, whom is interacted with.
      */
     public abstract void onInteract(Person p);
 
