@@ -184,20 +184,20 @@ public class Room {
     }
 
     /**
+     * Place tile in room grid.
      * 
-     * 
-     * @param x
-     * @param y
-     * @param tile 
+     * @param x         int, X coordinate in room grid.
+     * @param y         int, Y coordinate in room grid.
+     * @param tile      Tile, tile object to be placed in room.
      */
     public void setTile(int x, int y, Tile tile) {
         tileArray[y][x] = tile;
     }
     
     /**
+     * Retrieve tile list.
      * 
-     * 
-     * @return 
+     * @return      Tile[][], 2D list of tile objects in room.
      */
     public Tile[][] getTiles() {
         return this.tileArray;
@@ -206,34 +206,36 @@ public class Room {
     /**
      * Set the entity to be shown on the GUI.
      * 
-     * @param entity 
+     * @param entity    Entity, to be placed in entity array of room.
      */
     public void setEntity (Entity entity) {
         entityArray[entity.getY()][entity.getX()] = entity;
     }
     
     /**
-     * Mostly for deleting the player from the room he is leaving.
+     * Place entity at new grid designated location.
      * 
-     * @param x
-     * @param y
-     * @param entity 
+     * @param x         int, X coordinate in room grid.
+     * @param y         int, Y coordinate in room grid.
+     * @param entity    Entity, to be placed at certain location in room.
      */
     public void setEntityWithXY(int x, int y, Entity entity){
         entityArray[y][x] = entity;
     }
     
     /**
+     * Retrieve entity array.
      * 
-     * @return 
+     * @return      Entity[][], 2D list with the room's entities.
      */
     public Entity[][] getEntities() {
         return this.entityArray;
     }
     
     /**
+     * Retrieve file path for minimap.
      * 
-     * @return 
+     * @return      String, path of minimap file.
      */
     public String getMinimapPath(){
         return this.minimapPath;
