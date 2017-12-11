@@ -25,8 +25,7 @@ public abstract class Person extends Entity {
             EntityManager em) {
         // Pass arguments to superclass.
         super(id, x, y, currentRoom);
-        // Get random name as name for person.
-        //name = getRandomName();
+        
         this.em = em;
     }
     
@@ -61,26 +60,6 @@ public abstract class Person extends Entity {
      */
     public void setName(String name) {
         this.name = name;
-    }
-    
-    /**
-     * Generate a (predefined) random name.
-     * 
-     * @return      String, generated name of person.
-     */
-    public static String getRandomName(){
-        // List of random names to choose from.
-        String[] names = {"Niclas",
-            "Rasmus",
-            "Søren",
-            "Robin",
-            "Jonas",
-            "Magnus",
-            "Frederik"};
-        // Random number for index selection.
-        int index = (int) (Math.random() * names.length);
-        // Return chosen String name.
-        return names[index];
     }
     
     /**

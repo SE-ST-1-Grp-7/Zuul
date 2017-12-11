@@ -5,10 +5,12 @@ package business;
  * 
  * @author Robin & Rasmus Willer
  */
-public class Plant extends Furniture /*implements Interactable*/{
+public class Plant extends Furniture {
 
     /**
      * Constructor for Chair class.
+     * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal postition in room grid.
      * @param y                 int, vertical position in room grid.
      * @param width             int, pixel width of chair.
@@ -28,18 +30,21 @@ public class Plant extends Furniture /*implements Interactable*/{
                 x,
                 y,
                 currentRoom,
-                "Plant",            // Item name.
-                "Looks so lovely");  // Item description.
+                // Item name.
+                "Plant",
+                // Item description.
+                "Looks so lovely");
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
+    
     /**
-     * Override, upon interaction with furniture.
+     * Override; upon interaction with furniture. Does nothing.
+     * 
+     * @param p    Person, whom is interacting.
      */
     @Override
     public void onInteract(Person p) {
-        System.out.println("This is a plant");
-        System.out.println("Looks lovely!");
     }
     
 }

@@ -31,11 +31,12 @@ public class Player extends Person {
      * Constructor for player. Passes all relevant arguments to Superclass and
      * sets the attributes for the player.
      *
-     * @param x int, horizontal positioning in grid.
-     * @param y int, vertical positioning in grid.
-     * @param currentRoom Room, placed currently in this room.
-     * @param name String, name of player.
-     * @param em EntityManager,
+     * @param id                Override; upon interaction with furniture.
+     * @param x                 int, horizontal positioning in grid.
+     * @param y                 int, vertical positioning in grid.
+     * @param currentRoom       Room, placed currently in this room.
+     * @param name              String, name of player.
+     * @param em                EntityManager, used for persons giving items.
      */
     public Player(String id,
             int x,
@@ -43,7 +44,8 @@ public class Player extends Person {
             String name,
             Room currentRoom,
             EntityManager em) {
-
+        
+        // Pass parameters to superclass.
         super(id,
                 x,
                 y,
@@ -68,40 +70,39 @@ public class Player extends Person {
      * Interacts with nearby interactable object.
      */
     public void interact() {
+        // Switch case with direction of facing.
         switch (facing) {
             case "right":
-                if (getCurrentRoom().getEntities()[getY()][getX() + 1] != null) {
-                    getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract(this);
+                if (getCurrentRoom().getEntities()
+                        [getY()][getX() + 1] != null) {
+                    getCurrentRoom().getEntities()
+                            [getY()][getX() + 1].onInteract(this);
                 }
                 break;
+                
             case "left":
-                if (getCurrentRoom().getEntities()[getY()][getX() - 1] != null) {
-                    getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract(this);
+                if (getCurrentRoom().getEntities()
+                        [getY()][getX() - 1] != null) {
+                    getCurrentRoom().getEntities()
+                            [getY()][getX() - 1].onInteract(this);
                 }
                 break;
+                
             case "up":
-                if (getCurrentRoom().getEntities()[getY() - 1][getX()] != null) {
-                    getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract(this);
+                if (getCurrentRoom().getEntities()
+                        [getY() - 1][getX()] != null) {
+                    getCurrentRoom().getEntities()
+                            [getY() - 1][getX()].onInteract(this);
                 }
                 break;
+                
             case "down":
-                if (getCurrentRoom().getEntities()[getY() + 1][getX()] != null) {
-                    getCurrentRoom().getEntities()[getY() + 1][getX()].onInteract(this);
+                if (getCurrentRoom().getEntities()
+                        [getY() + 1][getX()] != null) {
+                    getCurrentRoom().getEntities()
+                            [getY() + 1][getX()].onInteract(this);
                 }
                 break;
-        }
-        // check if square next to player != null
-        // if true - call .interact on the entity
-
-    }
-
-    private void pickUpItem(int yOffset, int xOffset) {
-        if (this.inventory.getInventory().size() < this.inventory.getCapacity()) {
-            if (getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] instanceof Item) {
-                inventory.addItem((Item) getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-                getEntityManager().getItemList().remove(getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset]);
-                getCurrentRoom().getEntities()[getY() + yOffset][getX() + xOffset] = null;
-            }
         }
     }
 
@@ -119,30 +120,35 @@ public class Player extends Person {
                 facing = "left";
                 move(getX() - 1, getY());
                 break;
+                
             case "right":
                 facing = "right";
                 move(getX() + 1, getY());
                 break;
+                
             case "down":
                 facing = "down";
                 move(getX(), getY() + 1);
                 break;
+                
             case "up":
                 facing = "up";
                 move(getX(), getY() - 1);
                 break;
-
         }
 //        System.out.println(currentRoom.getLongDescription());
     }
 
     /**
-     * Place item referenced by tempItem into the room
+     * Place item referenced by tempItem into the room.
      */
     public void placeItem() {
         if (tempItem != null) { // if tempItem exists
             tempItem.setCurrentRoom(getCurrentRoom());
-            getCurrentRoom().getEntities()[tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            
+            getCurrentRoom().getEntities()
+                    [tempItem.getY()][tempItem.getX()] = tempItem; // place it
+            
             getEntityManager().getItemList().add(tempItem);
             dont = true; // dont set previous field to null
         }
@@ -151,8 +157,8 @@ public class Player extends Person {
     /**
      * Teleportation movement.
      *
-     * @param newX int, new X coordinate in room.
-     * @param newY int, new Y coordinate in room.
+     * @param newX      int, new X coordinate in room.
+     * @param newY      int, new Y coordinate in room.
      */
     public void move(int newX, int newY) {
 
@@ -174,22 +180,48 @@ public class Player extends Person {
             setX(newX);
             setY(newY);
         }
-
     }
 
+    /**
+     * Override; upon interaction with player. (if students catch up to the
+     * professor.)
+     * 
+     * @param p     Person, person whom are interacting with player.
+     */
+    @Override
+    public void onInteract(Person p) {
+        setEnergy(getEnergy() - 40);
+        this.interactHappend = true;
+        // this gets called when an "evil" student interacts with the player
+        // needs to pop up window/something to get input from the player
+    }
+    
     // GETTERS & SETTERS
+    
+    /**
+     * Override; retrieve player name.
+     * 
+     * @return      String, name of player retrieved.
+     */
+    @Override
     public String getName() {
         return playerName;
     }
 
+    /**
+     * Override; set player name.
+     * 
+     * @param playerName    String, name to be set as player name.
+     */
+    @Override
     public void setName(String playerName) {
         this.playerName = playerName;
     }
 
     /**
-     * Method call/get the player's inventory.
+     * Get the player's inventory.
      *
-     * @return Inventory, returns the inventory object.
+     * @return      Inventory, returns the inventory object.
      */
     public Inventory inventory() {
         return this.inventory;
@@ -198,25 +230,25 @@ public class Player extends Person {
     /**
      * Getter for tempItem - used to drop an item.
      *
-     * @return Item, return the tempItem object.
+     * @return      Item, return the tempItem object.
      */
     public Item getTempItem() {
         return this.tempItem;
     }
 
     /**
-     * Setter for tempItem - used to set the tempitem to be dropped
+     * Set tempItem - used to set the tempitem to be dropped.
      *
-     * @param i Item, assigns an Item object to tempItem.
+     * @param i     Item, assigns an Item object to tempItem.
      */
     public void setTempItem(Item i) {
         this.tempItem = i;
     }
 
     /**
-     * Getter for the current energy level.
+     * Get current energy level.
      *
-     * @return int, current value of energy level.
+     * @return      int, current value of energy level.
      */
     public int getEnergy() {
         return this.energy;
@@ -225,34 +257,34 @@ public class Player extends Person {
     /**
      * Setter for the current energy level.
      *
-     * @param energy int, value to be current energy level.
+     * @param energy    int, value to be current energy level.
      */
     public void setEnergy(int energy) {
         this.energy = energy;
     }
 
     /**
-     * Getter for the energy capacity.
+     * Get energy capacity.
      *
-     * @return int, value of energy capacity.
+     * @return      int, value of energy capacity.
      */
     public int getEnergyCap() {
         return this.energyCap;
     }
 
     /**
-     * Setter for energyCap.
+     * Set energy capacity.
      *
-     * @param energyCap int, value to be energy capacity.
+     * @param energyCap     int, value to be energy capacity.
      */
     public void setEnergyCap(int energyCap) {
         this.energyCap = energyCap;
     }
 
     /**
-     * Getter for graded assignments.
+     * Get for graded assignments.
      *
-     * @return int, value of current assignments graded.
+     * @return      int, value of current assignments graded.
      */
     public int getGradedAssignments() {
         return this.gradedAssignments;
@@ -261,40 +293,28 @@ public class Player extends Person {
     /**
      * Setter for graded assignments.
      *
-     * @param assignment int, assign new value of graded assignments.
+     * @param assignment    int, assign new value of graded assignments.
      */
     public void setGradedAssignments(int assignment) {
         this.gradedAssignments = assignment;
     }
 
     /**
-     * Getter for assignment progress.
+     * Get assignment progress.
      *
-     * @return int, value representation of assignment progress.
+     * @return      int, value representation of assignment progress.
      */
     public int getAssignmentProgress() {
         return this.assignmentProgress;
     }
 
     /**
-     * Setter for assignment progress.
+     * Set assignment progress.
      *
-     * @param assignmentProgress int, change value of assignment progress.
+     * @param assignmentProgress    int, change value of assignment progress.
      */
     public void setAssignmentProgress(int assignmentProgress) {
         this.assignmentProgress = assignmentProgress;
-    }
-
-    /**
-     * Override, upon interaction with player. (if students catch up to the
-     * professor.)
-     */
-    @Override
-    public void onInteract(Person p) {
-        setEnergy(getEnergy() - 40);
-        this.interactHappend = true;
-        // this gets called when an "evil" student interacts with the player
-        // needs to pop up window/something to get input from the player
     }
 
     public boolean getInteractionHappend() {

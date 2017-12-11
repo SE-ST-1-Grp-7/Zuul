@@ -22,7 +22,6 @@ public class Key extends Item {
             Room currentRoom) {
         
         // Arguments for superclass
-<<<<<<< HEAD
         super(id,
                 x,
                 y,
@@ -31,12 +30,6 @@ public class Key extends Item {
                 "Key",
                 // Description of item.
                 "Used to open doors");
-=======
-        super(id, x, y, currentRoom, 
-                "Key",                  // Name of item.
-                "Used to open doors");   // Description of item.
-               
->>>>>>> 1b6f8b0203c1059792727e980499d62b692a745d
          
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
@@ -53,6 +46,4 @@ public class Key extends Item {
         p.setHasKey(true);
         return true;
     }
-    
-    
 }
