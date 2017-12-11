@@ -74,24 +74,6 @@ public class EntityManager {
     }
 
     /**
-     * Add initialized student to the student list.
-     *
-     * @param s     Student, student to be added to studet list.
-     */
-    public void addStudent(Student s) {
-        studentlist.add(s);
-    }
-
-    /**
-     * Despawn student.
-     *
-     * @param s     Student, student that need to be removed from the game.
-     */
-    public void removeStudent(Student s) {
-        studentlist.remove(s);
-    }
-
-    /**
      * Spawn students in their respective active room, in the beginning of the
      * game.
      */
@@ -131,42 +113,6 @@ public class EntityManager {
         }
     }
 
-    /**
-     * Add initialized furniture to the furniture list.
-     *
-     * @param f     Furniture, to be placed in the furniture list.
-     */
-    public void addFurniture(Furniture f) {
-        furniturelist.add(f);
-    }
-
-    /**
-     * Remove furniture object from furniture list.
-     *
-     * @param f     Furniture, to be removed from furniture list.
-     */
-    public void removeFurniture(Furniture f) {
-        furniturelist.remove(f);
-    }
-
-    /**
-     * Add initializedd item to the item list.
-     *
-     * @param i     Item, to be placed in the item list.
-     */
-    public void addItem(Item i) {
-        itemlist.add(i);
-    }
-
-    /**
-     * Remove item object from item list.
-     *
-     * @param i     Item, to be removed from item list.
-     */
-    public void removeItem(Item i) {
-        itemlist.remove(i);
-    }
-
     // SETTERS & GETTERS
     
     /**
@@ -176,15 +122,6 @@ public class EntityManager {
      */
     public Player getPlayer() {
         return player;
-    }
-    
-    /**
-     * Replace player object.
-     *
-     * @param player    Player, the new player object to replace previous.
-     */
-    public void setPlayer(Player player) {
-        this.player = player;
     }
 
     /**
@@ -197,30 +134,12 @@ public class EntityManager {
     }
 
     /**
-     * Replace student list.
-     *
-     * @param studentlist       ArrayList< Student >, student list to assign.
-     */
-    public void setStudentList(ArrayList<Student> studentlist) {
-        this.studentlist = studentlist;
-    }
-
-    /**
      * Get furniture list.
      *
      * @return      ArrayList< Furniture >, furniture list to retrieve.
      */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
-    }
-
-    /**
-     * Replace furniture list.
-     *
-     * @param furniturelist     ArrayList< Student >, furniture list to assign.
-     */
-    public void setFurnitureList(ArrayList<Furniture> furniturelist) {
-        this.furniturelist = furniturelist;
     }
 
     /**
@@ -232,22 +151,13 @@ public class EntityManager {
         return itemlist;
     }
 
-    /**
-     * Replace item list.
-     *
-     * @param itemlist      ArrayList< Item >, item list to assign.
-     */
-    public void setItemList(ArrayList<Item> itemlist) {
-        this.itemlist = itemlist;
-    }
-
     // ENTITY MANAGEMENT METHODS
 
     /**
      * Iterate through all rooms and their position grids and call instantiation
      * of entities where CSV file had defined one to be placed.
      *
-     * @param playerName String, name of player.
+     * @param playerName    String, name of player.
      */
     public void addEntitiesToRooms(String playerName) {
         String IDnum;
@@ -439,8 +349,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door2.png",
                         false));
@@ -451,8 +359,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door2.png",
                         true));
@@ -463,8 +369,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door1.png",
                         false));
@@ -475,8 +379,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door1.png",
                         true));
@@ -487,8 +389,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door12.png",
                         false));
@@ -499,8 +399,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door12.png",
                         true));
@@ -511,8 +409,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door11.png",
                         false));
@@ -523,8 +419,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door11.png",
                         true));
@@ -535,8 +429,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door13.png",
                         false));
@@ -547,8 +439,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door13.png",
                         true));
@@ -559,8 +449,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door14.png",
                         false));
@@ -571,8 +459,6 @@ public class EntityManager {
                 furniturelist.add(new Door(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/door14.png",
                         true));
@@ -583,8 +469,6 @@ public class EntityManager {
                 itemlist.add(new Assignment(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
             // Chair facing north.
@@ -592,8 +476,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/chair1.png"));
                 break;
@@ -603,8 +485,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/chair2.png"));
                 break;
@@ -614,8 +494,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/chair3.png"));
                 break;
@@ -625,8 +503,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/chair4.png"));
                 break;
@@ -636,8 +512,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false, 0, "/textures/table1.png"));
                 break;
@@ -647,8 +521,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase1.png"));
                 break;
@@ -658,8 +530,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase2.png"));
                 break;
@@ -669,8 +539,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase3.png"));
                 break;
@@ -680,8 +548,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase4.png"));
                 break;
@@ -691,8 +557,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase5.png"));
                 break;
@@ -702,8 +566,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase6.png"));
                 break;
@@ -713,8 +575,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase7.png"));
                 break;
@@ -724,8 +584,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase19.png"));
                 break;
@@ -735,8 +593,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase9.png"));
                 break;
@@ -746,8 +602,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase10.png"));
                 break;
@@ -757,8 +611,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase20.png"));
                 break;
@@ -768,8 +620,6 @@ public class EntityManager {
                 furniturelist.add(new Bookcase(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bookcase12.png"));
                 break;
@@ -780,8 +630,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -792,8 +640,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -805,8 +651,6 @@ public class EntityManager {
                 itemlist.add(new Key(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
 
@@ -815,8 +659,6 @@ public class EntityManager {
                 itemlist.add(new Coffee(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
 
@@ -825,8 +667,6 @@ public class EntityManager {
                 itemlist.add(new Adderall(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
 
@@ -835,8 +675,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bench6.png"));
                 break;
@@ -846,8 +684,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bench5.png"));
                 break;
@@ -857,8 +693,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bench4.png"));
                 break;
@@ -868,8 +702,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/bench3.png"));
                 break;
@@ -879,8 +711,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -892,8 +722,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/toilet.png"));
                 break;
@@ -903,8 +731,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -916,8 +742,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -929,8 +753,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -942,8 +764,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/teacherchair1.png"));
                 break;
@@ -953,8 +773,6 @@ public class EntityManager {
                 furniturelist.add(new Chair(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         "/textures/teacherchair2.png"));
                 break;
@@ -964,8 +782,6 @@ public class EntityManager {
                 itemlist.add(new EnergyDrink(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
                 
@@ -974,8 +790,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -987,8 +801,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -1001,8 +813,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -1014,8 +824,6 @@ public class EntityManager {
                 furniturelist.add(new Table(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name),
                         false,
                         0,
@@ -1057,8 +865,6 @@ public class EntityManager {
                 itemlist.add(new Gun(id,
                         j,
                         i,
-                        64,
-                        64,
                         rm.getRoom(name)));
                 break;
 
@@ -1077,7 +883,6 @@ public class EntityManager {
      * @param i int, y-coordinate of grid position.
      * @param j int, x-coordinate of grid position.
      * @param name String, name of room for entity to 'spawn' in.
-     * @param playerName String, name of player.
      * @param id String, ID of the type of entity to be created.
      */
     public void senpaiTypes(int i,
@@ -1456,8 +1261,6 @@ public class EntityManager {
                             Adderall d = new Adderall("ID91",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(d);
                             break;
@@ -1467,8 +1270,6 @@ public class EntityManager {
                             Coffee c = new Coffee("ID90",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(c);
                             break;
@@ -1478,8 +1279,6 @@ public class EntityManager {
                             Assignment a = new Assignment("ID69",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(a);
                             break;
@@ -1489,8 +1288,6 @@ public class EntityManager {
                             Key k = new Key("ID89",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(k);
                             break;
@@ -1500,8 +1297,6 @@ public class EntityManager {
                             EnergyDrink e = new EnergyDrink("ID103",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(e);
                             break;
@@ -1511,8 +1306,6 @@ public class EntityManager {
                             Gun g = new Gun("ID111",
                                     0,
                                     0,
-                                    64,
-                                    64,
                                     null);
                             player.inventory().addItem(g);
                             break;

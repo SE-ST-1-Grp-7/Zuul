@@ -375,15 +375,6 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * Override; set the seconds remaining for saving process.
-     * 
-     * @param seconds   int, time left in seconds.
-     */
-    @Override
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
-    }
-    /**
      * Override; 
      * 
      * @param item,   IItem, item to check

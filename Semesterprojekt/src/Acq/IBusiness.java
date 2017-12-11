@@ -9,7 +9,7 @@ import javafx.collections.ObservableList;
  */
 public interface IBusiness {
     
-// sets name of player
+    // sets name of player
     void playerSetName(String name);
     
     // Gets value of gameOver
@@ -75,9 +75,6 @@ public interface IBusiness {
     // Get amount of seconds left.
     int getSeconds();
     
-    // Set amount of seconds left.
-    void setSeconds(int seconds);
-    
     //check if item is an assignment
     boolean isAssignment(IItem item);
     
@@ -95,13 +92,13 @@ public interface IBusiness {
     void setInteractionHappend(boolean b);
     
     boolean getPlayerAskedStudent();
+    
     void setPlayerAskedStudent(boolean playerAskedStudent);
     
     boolean getPlayerAskedTutor();
+    
     void setPlayerAskedTutor(boolean playerAskedTutor);
 
-
-    
     // Retrieve the saved player name.
     String getLoadName();
 }

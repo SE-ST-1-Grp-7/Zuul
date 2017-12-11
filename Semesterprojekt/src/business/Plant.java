@@ -27,8 +27,6 @@ public class Plant extends Furniture /*implements Interactable*/{
         super(id,
                 x,
                 y,
-                width,
-                height,
                 currentRoom,
                 "Plant",            // Item name.
                 "Looks so lovely");  // Item description.

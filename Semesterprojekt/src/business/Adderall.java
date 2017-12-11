@@ -14,29 +14,25 @@ public class Adderall extends Item{
     /**
      * Constructor for Adderall class.
      * 
+     * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
      * @param y                 int, vertical position in room grid.
-     * @param width             int, pixel width of adderall.
-     * @param height            int, pixel height of adderall.
      * @param currentRoom       Room, currently in this room.
      */
     public Adderall(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
         
         // Pass arguments to superclass
         super(id,
                 x,
                 y,
-                width,
-                height,
                 currentRoom,
-                "Adderall",                                 // Name of item.
-                "Energy restore and cap increase. Yay!",    // Item description.
-                1);                                          // Weight of item.
+                // Name of item.
+                "Adderall",
+                // Item description.
+                "Energy restore and cap increase. Yay!");
 
         // Pass path of texture to superclass.
         super.setEntityImage(adderallImage);
@@ -46,6 +42,8 @@ public class Adderall extends Item{
      * Override, upon use of adderall.
      * 
      * @param p     Player, player is the one using the item.
+     * @return      boolean, false if added to energy, otherwise true and
+     *              nothing is done. 
      */
     @Override
     public boolean use(Player p) {

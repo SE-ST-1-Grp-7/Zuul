@@ -14,29 +14,26 @@ public class Coffee extends Item {
     /**
      * Constructor for Coffee class.
      *
-     * @param x int, horizontal position in room grid.
-     * @param y int, vertical position in room grid.
-     * @param width int, pixel width of coffee.
-     * @param height int, pixel height of coffee.
-     * @param currentRoom Room, currently in this room.
+     * @param id            String, ID of specific instantiation.
+     * @param x             int, horizontal position in room grid.
+     * @param y             int, vertical position in room grid.
+     * @param currentRoom   Room, currently in this room.
      */
     public Coffee(String id,
             int x,
             int y,
-            int width,
-            int height,
             Room currentRoom) {
 
         // Pass arguments to superclass
         super(id,
-                x, // X grid position in room.
-                y, // Y grid position in room.
-                width, // Pixel width.
-                height, // Pixel height.
-                currentRoom, // Placed in this room.
-                "Coffee", // Name of item.
-                "A cup of coffee. Yum!", // Description of item.
-                5);                          // Weight of item.
+                x,
+                y,
+                // Placed in this room.
+                currentRoom,
+                // Name of item.
+                "Coffee",
+                // Description of item.
+                "A cup of coffee. Yum!");
 
         // Pass path of texture to superclass.
         super.setEntityImage(coffeeImage);
@@ -45,7 +42,9 @@ public class Coffee extends Item {
     /**
      * Override, upon use of coffee.
      *
-     * @param p Player, player is the one using the item.
+     * @param p     Player, player is the one using the item.
+     * @return      boolean, if true restored energy, otherwise false and
+     *              nothing had been done.
      */
     @Override
     public boolean use(Player p) {
