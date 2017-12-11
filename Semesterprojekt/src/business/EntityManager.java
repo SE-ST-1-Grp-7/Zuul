@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Entity Manager classL. Keeps track of all the entities currently in the game.
+ * Entity Manager class. Keeps track of all the entities currently in the game.
  *
  * @author Rasmus Willer & Søren Bendtsen
  */
@@ -18,6 +18,7 @@ public class EntityManager {
     private Player player;
     private ArrayList<Student> studentlist = new ArrayList<>();
     private ArrayList<Furniture> furniturelist = new ArrayList<>();
+    
     // Container for entity IDs from CSV file.
     private HashMap<String, String[][]> entityCSV;
     private RoomManager rm;
@@ -26,7 +27,7 @@ public class EntityManager {
     /**
      * Primary constructor for the EntityManager class.
      *
-     * @param rm RoomManager, used to assign entities to a specific room.
+     * @param rm    RoomManager, used to assign entities to a specific room.
      */
     public EntityManager(RoomManager rm) {
         this.rm = rm;                   // Assign room manager object to class.
@@ -53,29 +54,29 @@ public class EntityManager {
      * Call for creation of entity. Based on player name, the entity will be
      * instantiated based on normal or easteregg edition of the game.
      * 
-     * @param x
-     * @param y
-     * @param name
-     * @param playerName
-     * @param IDnum 
+     * @param x             int, X coordinate grid position in room.
+     * @param y             int, Y coordinate grid position in room.
+     * @param name          String, name of the room entity is to be placed in.
+     * @param IDnum         String, id of the instantiation version.
      */
     private void makeEnt(int x,
             int y,
             String name,
-            String playerName,
             String IDnum) {
         // Call instantiation of entity based on ID number.
+        // If player name is Peter, instantiate easteregg edition objects.
         if (this.playerName.equalsIgnoreCase("Peter")) {
-            senpaiTypes(y, x, name, this.playerName, IDnum);
+            senpaiTypes(y, x, name, IDnum);
+        // Else instantiate normal edition objects.
         } else {
-            entityTypes(y, x, name, this.playerName, IDnum);
+            entityTypes(y, x, name, IDnum);
         }
     }
 
     /**
      * Add initialized student to the student list.
      *
-     * @param s Student, student to be added to studet list.
+     * @param s     Student, student to be added to studet list.
      */
     public void addStudent(Student s) {
         studentlist.add(s);
@@ -84,7 +85,7 @@ public class EntityManager {
     /**
      * Despawn student.
      *
-     * @param s Student, student that need to be removed from the game.
+     * @param s     Student, student that need to be removed from the game.
      */
     public void removeStudent(Student s) {
         studentlist.remove(s);
@@ -133,7 +134,7 @@ public class EntityManager {
     /**
      * Add initialized furniture to the furniture list.
      *
-     * @param f Furniture, to be placed in the furniture list.
+     * @param f     Furniture, to be placed in the furniture list.
      */
     public void addFurniture(Furniture f) {
         furniturelist.add(f);
@@ -142,7 +143,7 @@ public class EntityManager {
     /**
      * Remove furniture object from furniture list.
      *
-     * @param f Furniture, to be removed from furniture list.
+     * @param f     Furniture, to be removed from furniture list.
      */
     public void removeFurniture(Furniture f) {
         furniturelist.remove(f);
@@ -151,7 +152,7 @@ public class EntityManager {
     /**
      * Add initializedd item to the item list.
      *
-     * @param i Item, to be placed in the item list.
+     * @param i     Item, to be placed in the item list.
      */
     public void addItem(Item i) {
         itemlist.add(i);
@@ -160,17 +161,18 @@ public class EntityManager {
     /**
      * Remove item object from item list.
      *
-     * @param i Item, to be removed from item list.
+     * @param i     Item, to be removed from item list.
      */
     public void removeItem(Item i) {
         itemlist.remove(i);
     }
 
     // SETTERS & GETTERS
+    
     /**
      * Get player object.
      *
-     * @return Player, player object retrieved.
+     * @return      Player, player object retrieved.
      */
     public Player getPlayer() {
         return player;
@@ -179,7 +181,7 @@ public class EntityManager {
     /**
      * Replace player object.
      *
-     * @param player Player, the new player object to replace previous.
+     * @param player    Player, the new player object to replace previous.
      */
     public void setPlayer(Player player) {
         this.player = player;
@@ -188,7 +190,7 @@ public class EntityManager {
     /**
      * Get student list.
      *
-     * @return ArrayList< Student >, student list to retrieve.
+     * @return      ArrayList< Student >, student list to retrieve.
      */
     public ArrayList<Student> getStudentList() {
         return studentlist;
@@ -197,7 +199,7 @@ public class EntityManager {
     /**
      * Replace student list.
      *
-     * @param studentlist ArrayList< Student >, student list to assign.
+     * @param studentlist       ArrayList< Student >, student list to assign.
      */
     public void setStudentList(ArrayList<Student> studentlist) {
         this.studentlist = studentlist;
@@ -206,7 +208,7 @@ public class EntityManager {
     /**
      * Get furniture list.
      *
-     * @return ArrayList< Furniture >, furniture list to retrieve.
+     * @return      ArrayList< Furniture >, furniture list to retrieve.
      */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
@@ -215,7 +217,7 @@ public class EntityManager {
     /**
      * Replace furniture list.
      *
-     * @param furniturelist ArrayList< Student >, furniture list to assign.
+     * @param furniturelist     ArrayList< Student >, furniture list to assign.
      */
     public void setFurnitureList(ArrayList<Furniture> furniturelist) {
         this.furniturelist = furniturelist;
@@ -224,7 +226,7 @@ public class EntityManager {
     /**
      * Get item list.
      *
-     * @return ArrayList< Item >, item list to retrieve.
+     * @return      ArrayList< Item >, item list to retrieve.
      */
     public ArrayList<Item> getItemList() {
         return itemlist;
@@ -233,7 +235,7 @@ public class EntityManager {
     /**
      * Replace item list.
      *
-     * @param itemlist ArrayList< Item >, item list to assign.
+     * @param itemlist      ArrayList< Item >, item list to assign.
      */
     public void setItemList(ArrayList<Item> itemlist) {
         this.itemlist = itemlist;
@@ -263,7 +265,7 @@ public class EntityManager {
                         continue;
                     }
                     // Call instantiation of entity based on ID number.
-                    makeEnt(j, i, name, this.playerName, IDnum);
+                    makeEnt(j, i, name, IDnum);
                 }
             }
         }
@@ -277,16 +279,14 @@ public class EntityManager {
      * Instantiate entity objects based on ID number and add them to their
      * respective entity list.
      *
-     * @param i int, y-coordinate of grid position.
-     * @param j int, x-coordinate of grid position.
-     * @param name String, name of room for entity to 'spawn' in.
-     * @param playerName String, name of player.
-     * @param IDnum String, ID of the type of entity to be created.
+     * @param i             int, y-coordinate of grid position.
+     * @param j             int, x-coordinate of grid position.
+     * @param name          String, name of room for entity to 'spawn' in.
+     * @param id            String, ID of the type of entity to be created.
      */
     public void entityTypes(int i,
             int j,
             String name,
-            String playerName,
             String id) {
 
         // Switch cases for what type of entity it is
@@ -1083,7 +1083,6 @@ public class EntityManager {
     public void senpaiTypes(int i,
             int j,
             String name,
-            String playerName,
             String id) {
 
         // Switch cases for what type of entity it is
@@ -1223,7 +1222,7 @@ public class EntityManager {
             /* In case the ID is not a special case, instantiate entity from
                 the regular game edition. */
             default:
-                entityTypes(i, j, name, playerName, id);
+                entityTypes(i, j, name, id);
                 break;
         }
     }
@@ -1429,8 +1428,6 @@ public class EntityManager {
                         Integer.parseInt(itemData.get(3)),
                         // Room name.
                         itemData.get(4),
-                        // Player name.
-                        playerName,
                         // ID of item.
                         itemData.get(0));
             }
@@ -1549,8 +1546,6 @@ public class EntityManager {
                     Integer.parseInt(playerData.get(2)),
                     // Room name.
                     playerData.get(4),
-                    // Player name.
-                    this.playerName,
                     // ID of item.
                     playerData.get(0));
 
@@ -1589,8 +1584,6 @@ public class EntityManager {
                         Integer.parseInt(studentData.get(2)),
                         // Room name.
                         studentData.get(3),
-                        // Player name.
-                        playerName,
                         // ID of item.
                         studentData.get(0));
             }

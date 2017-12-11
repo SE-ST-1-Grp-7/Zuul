@@ -1,7 +1,6 @@
 package business;
 
-// importing standard libraries for managing datastructures.
-import java.util.ArrayList;
+// Importing standard libraries for managing datastructures.
 import java.util.Set;
 import java.util.HashMap;
 
@@ -33,7 +32,7 @@ public class Room {
         this.name = name;
         /* Instantiating map object with key of String type and
            value as Room object. */
-        exits = new HashMap<String, Room>();
+        exits = new HashMap<>();
         fillTenTenArray(tileArray);
          entityArray = new Entity[10][10];
         fillTenTenArray(entityArray);
@@ -41,13 +40,66 @@ public class Room {
     }
 
     /**
+     * Fill tile 2D array with nulls. Fail safe method for ensuring the fields
+     * are empty.
+     * 
+     * @param list      Tile[][], 2D list to be set to empty (nulls).
+     */
+    private void fillTenTenArray(Tile[][] list) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                list[i][j] = null;
+            }
+        }
+    }
+    
+    /**
+     * Fill entity 2D array with nulls. Fail safe method for ensuring the fields
+     * are empty.
+     * 
+     * @param list      Entity[][], 2D list to be set to empty (nulls).
+     */
+        private void fillTenTenArray(Entity[][] list) {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                list[i][j] = null;
+            }
+        }
+    }
+
+    /**
+     * Return if there is item in a certain grid position.
+     * 
+     * @param x     int, X coordinate in room grid.
+     * @param y     int, Y coordinate in room grid.
+     * @return      boolean, true if there is an item, otherwise false.
+     */
+    public boolean hasLoot(int x, int y) {
+        if (entityArray[y][x] != null) {
+            return entityArray[y][x] instanceof Item;
+        }
+        return false;
+    }
+    
+    /**
+     * Remove entity from its current location.
+     * 
+     * @param entity    Entity, to be removed.
+     */
+    public void removeEntity (Entity entity) {
+        entityArray[entity.getY()][entity.getX()] = null;
+    }
+    
+    // SETTERS & GETTERS
+    
+    /**
      * Method for designating direction of the exit point. A direction and a
      * neighboring room is passed as arguments to the method, that are then
      * added to the 'exits' map-object.
      *
-     * @param direction String describing a exit direction.
-     * @param neighbor Room object of neighboring room will be paired with
-     * description
+     * @param direction String, describing a exit direction.
+     * @param neighbor  Room, object of neighboring room will be paired with
+     *                  description.
      */
     public void setExit(String direction, Room neighbor) {
         exits.put(direction, neighbor);
@@ -56,12 +108,17 @@ public class Room {
     /**
      * Getter method for instance of room's description.
      *
-     * @return Returns String of description of room instance.
+     * @return      String, description of room instance.
      */
     public String getShortDescription() {
         return description;
     }
 
+    /**
+     * Retrieve name of room.
+     * 
+     * @return      String, name of room.
+     */
     public String getName() {
         return name;
     }
@@ -70,17 +127,16 @@ public class Room {
      * Getter method for extended description of room with room descriptions and
      * exit-waypoints from room.
      *
-     * @return Returns String with description and exit-description.
+     * @return      String, description and exit-description.
      */
     public String getLongDescription() {
         return "You are " + description + ".\n" + getExitString();
     }
 
     /**
-     * Getter method for extended description of room with room descriptions and
-     * exit-waypoints from room.
+     * Getter method for extended description of student with room description.
      *
-     * @return Returns String with description and exit-description.
+     * @return      String, student location description.
      */
     public String getStudentDescription() {
         return "Student is " + description;
@@ -89,13 +145,13 @@ public class Room {
     /**
      * Getter method for String description of exit routes from room instance.
      *
-     * @return Returns String describing exit routes from room.
+     * @return      String, describes exit routes from room.
      */
     private String getExitString() {
         // Declare returning String + start of String message.
         String returnString = "Exits:";
 
-        // Declare and assign a Set object 'keys' with all 'exits' Strings
+        // Declare and assign a Set object 'keys' with all 'exits' Strings.
         Set<String> keys = exits.keySet();
 
         // Add to returning String a list of exit points.
@@ -111,72 +167,45 @@ public class Room {
      * direction is passed to this method and the corresponding room reference
      * is returned.
      *
-     * @param direction String describing direction of other room.
-     * @return Return corresponding Room object reference.
+     * @param direction     String, describes direction of other room.
+     * @return              Room, teturn corresponding Room object reference.
      */
     public Room getExit(String direction) {
         return exits.get(direction);
     }
 
+    /**
+     * Getter method, retrieve HashMap of exit points from current room.
+     * 
+     * @return      HashMap< String, Room >, map of exit point data.
+     */
     public HashMap<String, Room> getExits() {
         return this.exits;
     }
 
-    private void fillTenTenArray(Tile[][] list) {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                list[i][j] = null;
-            }
-        }
-        /*Assignment a = new Assignment();
-        a.setX(3);
-        a.setY(0);
-        itemsInRoom.add(a);
-        Assignment b = new Assignment();
-        b.setX(3);
-        b.setY(1);
-        itemsInRoom.add(b);
-        for (Item i : itemsInRoom) {
-            roomArray[i.getY()][i.getX()] = i;
-        }*/
-    }
-        private void fillTenTenArray(Entity[][] list) {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                list[i][j] = null;
-            }
-        }
-        /*Assignment a = new Assignment();
-        a.setX(3);
-        a.setY(0);
-        itemsInRoom.add(a);
-        Assignment b = new Assignment();
-        b.setX(3);
-        b.setY(1);
-        itemsInRoom.add(b);
-        for (Item i : itemsInRoom) {
-            roomArray[i.getY()][i.getX()] = i;
-        }*/
-    }
-
-    public boolean hasLoot(int x, int y) {
-        if (entityArray[y][x] != null) {
-            return entityArray[y][x] instanceof Item;
-        }
-        return false;
-
-    }
-
+    /**
+     * 
+     * 
+     * @param x
+     * @param y
+     * @param tile 
+     */
     public void setTile(int x, int y, Tile tile) {
         tileArray[y][x] = tile;
     }
     
+    /**
+     * 
+     * 
+     * @return 
+     */
     public Tile[][] getTiles() {
         return this.tileArray;
     }
     
     /**
-     * this method will set the entity to be shown on the GUI
+     * Set the entity to be shown on the GUI.
+     * 
      * @param entity 
      */
     public void setEntity (Entity entity) {
@@ -184,16 +213,8 @@ public class Room {
     }
     
     /**
-     * Remove entity from its current location.
+     * Mostly for deleting the player from the room he is leaving.
      * 
-     * @param entity    Entity, to be removed.
-     */
-    public void removeEntity (Entity entity) {
-        entityArray[entity.getY()][entity.getX()] = null;
-    }
-    
-    /**
-     * this method is mostly for deleting the player from the room he is leaving
      * @param x
      * @param y
      * @param entity 
@@ -202,10 +223,18 @@ public class Room {
         entityArray[y][x] = entity;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public Entity[][] getEntities() {
         return this.entityArray;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public String getMinimapPath(){
         return this.minimapPath;
     }
