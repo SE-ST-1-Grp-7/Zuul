@@ -21,7 +21,7 @@ public class Gun extends Item {
                 width, // Pixel width.
                 height, // Pixel height.
                 currentRoom, // Placed in this room.
-                "Sawed-off", // Name of item.
+                "Shotgun", // Name of item.
                 "A sawed-off shotgun!", // Description of item.
                 5);                          // Weight of item.
 
