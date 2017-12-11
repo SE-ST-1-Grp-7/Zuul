@@ -49,6 +49,16 @@ public abstract class Item extends Entity implements IItem {
     public String getName() {
         return this.itemName;
     }
+    
+    /**
+     * To string method. Used to display text in GUI.
+     * 
+     * @return      String, return name of item.
+     */
+    @Override
+    public String toString() {
+        return getName();
+    }
 
     /**
      * Override; upon interaction with item.
