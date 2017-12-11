@@ -1,0 +1,25 @@
+ID69,Assignment,6,5,lecturehall 2
+ID90,Coffee,4,7,lecturehall 2
+ID69,Assignment,3,8,lecturehall 2
+ID90,Coffee,1,6,hallway 1
+ID69,Assignment,6,4,lecturehall 1
+ID90,Coffee,1,5,lecturehall 1
+ID69,Assignment,1,8,lecturehall 1
+ID69,Assignment,4,5,toilet
+ID89,Key,8,8,toilet
+ID69,Assignment,4,4,garden
+ID90,Coffee,7,1,pub
+ID91,Adderall,8,1,pub
+ID90,Coffee,7,2,pub
+ID90,Coffee,7,3,pub
+ID90,Coffee,7,4,pub
+ID69,Assignment,8,4,pub
+ID103,Energy drink,1,1,teacher room
+ID69,Assignment,1,8,teacher room
+ID90,Coffee,7,3,hallway 2
+ID103,Energy drink,1,8,hallway 2
+ID69,Assignment,2,1,relaxing room
+ID91,Adderall,8,1,relaxing room
+ID111,Sawed-off,4,4,relaxing room
+ID69,Assignment,3,6,hallway 3
+ID103,Energy drink,7,7,hallway 3

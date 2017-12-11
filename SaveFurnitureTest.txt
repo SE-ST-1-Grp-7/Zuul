@@ -1,2 +1,0 @@
-9,4,Door,garden
-9,5,Door,garden

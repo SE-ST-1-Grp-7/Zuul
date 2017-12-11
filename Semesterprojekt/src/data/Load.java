@@ -26,8 +26,7 @@ public class Load {
         try {
             // Buffer, reader, file-path.
             BufferedReader fileReader = new BufferedReader(
-                    new FileReader(System.getProperty("user.home")
-                            + filePath));
+                    new FileReader(filePath));
             
             String line;
             // Continue to iterate as long as there is file content.
@@ -52,7 +51,7 @@ public class Load {
             fileReader.close();
 
         } catch (IOException e) { // File read error print.
-            System.err.println("BEEP BOOP, COULDNT LOAD ITEMS... "
+            System.err.println("BEEP BOOP, COULDNT LOAD DATA... "
                     + "please check the save directory in the code.");
         }
     }
