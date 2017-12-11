@@ -137,6 +137,7 @@ public class FXMLDocumentController implements Initializable {
             canvasId.getGraphicsContext2D().drawImage(
                 new Image("assets/start1.png"), 0, 0);
             loop.stop();
+            ib.resetGame();
             nameField.setVisible(true);
         }
         if (nameField.getText().length() <= 8 &&
