@@ -340,6 +340,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void saveButton(ActionEvent event) {
+        if(ib.isGameOver()) {
+            bottomTextArea.appendText("\nu cant save ur ded lmao");
+            return;
+        }
         bottomTextArea.appendText("The game is now saved.\n");
         ib.saveGame();
     }

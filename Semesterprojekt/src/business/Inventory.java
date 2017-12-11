@@ -11,8 +11,6 @@ import javafx.collections.ObservableList;
 public class Inventory {
 
     private final int CAPACITY = 5;
-    private final int MAX_WEIGHT = 200;
-    private int currentWeight;
     // ObservableList allows us to connect a javafx listview directly to the inventory
     private ObservableList<IItem> items = FXCollections.observableArrayList();
 
@@ -29,11 +27,11 @@ public class Inventory {
      * @param item
      */
     public boolean addItem(Item item) {
-        // check if theres less than 10 items & less than 200 weight in the inventory
+        // check if theres less than 5 items 
         if (items.size() < CAPACITY) {
             items.add((IItem)item);
             return true;
-        } else { // checks if theres less than 10 items
+        } else { // checks if theres less than 5 items
             System.out.println("Not enough space");
             return false;
         }
@@ -55,7 +53,6 @@ public class Inventory {
      * @param item
      */
     public void removeItem(Item item) {
-        currentWeight -= item.getWeight();
         items.remove(item);
     }
 

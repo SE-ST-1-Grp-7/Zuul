@@ -29,8 +29,7 @@ public abstract class Item extends Entity implements IItem {
             int y,
             Room currentRoom,
             String itemName,
-            String itemDescription,
-            int weight) {
+            String itemDescription) {
 
         // Pass arguments to superclass.
         super(id, x, y, currentRoom);
@@ -38,7 +37,6 @@ public abstract class Item extends Entity implements IItem {
         // Pass path of texture to superclass.
         this.itemName = itemName;
         this.itemDescription = itemDescription;
-        this.weight = weight;
     }
 
     // Apply functionality of use for this class.
@@ -67,15 +65,6 @@ public abstract class Item extends Entity implements IItem {
         return this.itemDescription;
     }
 
-    /**
-     * Getter for item weight.
-     *
-     * @return int, weight of item.
-     */
-    public int getWeight() {
-        return this.weight;
-    }
-
     @Override
     public String toString() {
         return getName();
@@ -97,15 +86,6 @@ public abstract class Item extends Entity implements IItem {
      */
     public void setDescription(String itemDescription) {
         this.itemDescription = itemDescription;
-    }
-
-    /**
-     * Setter for weight of item.
-     *
-     * @param weight int, new weight value of item.
-     */
-    public void setWeight(int weight) {
-        this.weight = weight;
     }
 
     /**

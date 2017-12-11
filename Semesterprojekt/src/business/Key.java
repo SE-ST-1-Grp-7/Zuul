@@ -23,8 +23,8 @@ public class Key extends Item {
         // Arguments for superclass
         super(id, x, y, currentRoom, 
                 "Key",                  // Name of item.
-                "Used to open doors",   // Description of item.
-                1);                      // Weight of item.
+                "Used to open doors");   // Description of item.
+               
          
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
