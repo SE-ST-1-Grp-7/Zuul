@@ -18,30 +18,32 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 /**
- *
- * @author Niclas Johansen
+ * This class manages the highscore and its processes.
+ * 
+ * @author Niclas Johansen & Rasmus Willer
  */
 public class Highscore {
 
     /**
-     * An ArrayList to store the players highScore.
+     * ArrayList to store the players highScore.
      */
     private ArrayList<Score> highScore = new ArrayList();
 
     /**
-     * An add method to add a name and a score to the ArrayList.
+     * Add a new name and score to highscore.
      *
-     * @param name
-     * @param score
+     * @param name      String, player name.
+     * @param score     int, seconds remaining the game was won with.
      */
     public void add(String name, int score) {
+        // Add score.
         highScore.add(new Score(name, score));
+        // Sort after new entry.
         this.sort();
     }
 
     /**
-     * method to sort the highScore so the one with the highest score is
-     * first.
+     * Sort highScore after highest score.
      */
     private void sort() {
         Score comparator = new Score();
@@ -49,50 +51,59 @@ public class Highscore {
     }
 
     /**
-     * Method to return our highScore as an string.
+     * Retrieve highScore as an string.
      *
-     * @return string text
+     * @return      String, complex multiline formattet String with highscore.
      */
     public String displayHighscore() {
         String text = "";
         int i = 1;
+        // Iterate through the highscore and format it to String.
         for (Score score : highScore) {
-            text += String.format("%-14d%-20.6s%-4d\n",i ,score.getName() ,score.getScore() );
+            text += String.format("%-14d%-20.6s%-4d\n",
+                    i,
+                    score.getName(),
+                    score.getScore());
             i++;
         }
+        // Return the formatted String.
         return text;
     }
 
     /**
-     * This method creates a XML file with our highScores and place it in the
-     * root dir.
+     * Creates XML file with highScores and place it in root dir.
      */
     public void createXML() {
         try {
-            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilderFactory dbFactory =
+                    DocumentBuilderFactory.newInstance();
+            
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
-            // Create the <Highscore> element
+            // Create the <Highscore> element.
             Element highscore = doc.createElement("Highscore");
             doc.appendChild(highscore);
             
-            // For each score in the arraylist highScore it creates a person
-            // which is called scoreNode. After it sets the attribute with
-            // the score name and the second attribute with the score.
+            /* For each score in the arraylist highScore it creates a person
+               which is called scoreNode. After it sets the attribute with
+               the score name and the second attribute with the score. */
             for (Score score : highScore) {
                 Element scoreNode = doc.createElement("person");
                 scoreNode.setAttribute("name", score.getName());
-                scoreNode.setAttribute("score", Integer.toString(score.getScore()));
+                scoreNode.setAttribute("score",
+                        Integer.toString(score.getScore()));
                 highscore.appendChild(scoreNode);
-
             }
+            
             // Formats the xml file so it looks nicely clean.
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            TransformerFactory transformerFactory =
+                    TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             DOMSource source = new DOMSource(doc);
-            StreamResult consoleResult = new StreamResult(new File("highscore.xml"));
+            StreamResult consoleResult = new StreamResult(
+                    new File("highscore.xml"));
             transformer.transform(source, consoleResult);
 
         } catch (Exception e) {
@@ -129,20 +140,23 @@ public class Highscore {
                 }
             }
         } catch (Exception e) {
-
+            System.out.println(e);
         }
     }
     /**
-     * This method first loads the existing xml file highscore.xml and then adds
-     * the new score from the new player.
-     * @param playerName
-     * @param seconds 
+     * Loads the existing xml file highscore.xml and adds the new score.
+     * 
+     * @param playerName        String, player name.
+     * @param seconds           int, seconds won with.
      */
     public void saveHighscore(String playerName, int seconds) {
+        // Load file.
         loadXML();
+        // Add new highscore.
         add(playerName, seconds);
+        // Make the updated file.
         createXML();
+        // Last call the display of highscore.
         displayHighscore();
-
     }
 }

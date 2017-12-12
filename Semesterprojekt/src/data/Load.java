@@ -8,7 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
+ * Fetch data from previous save game data.
+ * 
  * @author Rasmus Willer
  */
 public class Load {
@@ -16,10 +17,9 @@ public class Load {
     private ArrayList<ArrayList<String>> data = new ArrayList<>();
     
     /**
-     * Two-dimensionel data read from file -constructor.
+     * 2D data read from file -constructor.
      * 
      * @param filePath  String, path of file to make/write in.
-     * @return          ArrayList<ArrayList<String>>, list with gathered data.
      */
     public Load(String filePath) {
         // File IO try/catch.
@@ -50,7 +50,8 @@ public class Load {
             // Flush and then close file stream.
             fileReader.close();
 
-        } catch (IOException e) { // File read error print.
+        // File IO error catch.
+        } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT LOAD DATA... "
                     + "please check the save directory in the code.");
         }
@@ -59,7 +60,7 @@ public class Load {
     /**
      * Retrieve the data collected from file.
      * 
-     * @return      ArrayList<ArrayList<String>>, 2D list of data.
+     * @return      ArrayList< ArrayList< String > >, 2D list of data.
      */
     public ArrayList<ArrayList<String>> getData() {
         // Return 2D list of collected data from file.

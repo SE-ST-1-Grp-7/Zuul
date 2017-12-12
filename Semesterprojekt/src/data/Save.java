@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 /**
  * Save class, writes data segments to file.
+ * 
  * @author Rasmus Willer
  */
 public class Save {
@@ -22,14 +23,16 @@ public class Save {
      * No-arg constructor for Save class. Makes sure the save folder exist.
      */
     public Save() {
-        makeSaveFolder();   // Create folder if it does not exist.
+        // Create folder if it does not exist.
+        makeSaveFolder();
     }
     
     /**
      * Two-dimensionel data write to file -constructor.
      * 
      * @param filePath  String, path of file to make/write in.
-     * @param data      ArrayList<ArrayList<String>>, list with data to save.
+     * @param data      ArrayList< ArrayList< String > >,
+     *                  list with data to save.
      */
     public Save(String filePath, ArrayList<ArrayList<String>> data) {
         this();
@@ -57,16 +60,15 @@ public class Save {
             // Flush and then close file stream.
             fileWriter.close();
 
-        } catch (IOException e) { // File IO error print.
+        // File IO error catch.
+        } catch (IOException e) {
             System.err.println("BEEP BOOP, COULDNT SAVE DATA... "
                     + "please check the save directory in the code.");
         }
     }
     
-    // METHODS
-    
     /**
-     * Create save folder if it does not exist.
+     * Create save folder if it does not already exist.
      */
     public final void makeSaveFolder() {
         File folder = new File("saveFiles\\");

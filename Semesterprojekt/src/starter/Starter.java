@@ -30,7 +30,5 @@ public class Starter {
         business.resetGame();
         // Start GUI.
         ui.openUI();
-        
-
     }
 }

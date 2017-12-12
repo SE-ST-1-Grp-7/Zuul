@@ -3,36 +3,36 @@ package data;
 import java.util.Comparator;
 
 /**
- *
- * @author Niclas Johansen
+ * 
+ * 
+ * @author Niclas Johansen & Rasmus Willer
  */
-
 public class Score implements Comparator<Score> {
-    
-    private String name; // Instantiate players name
-    private int score; // Instantiate score for player
+    private String name;
+    private int score;
 
     /**
-     * No args construtor.
+     * Blank construtor.
      */
     public Score() {
-
     }
 
     /**
      * Construtor for score including String name and int score.
      *
-     * @param name
-     * @param score
+     * @param name      String, name of player
+     * @param score     int, seconds remaining at point of winning.
      */
     public Score(String name, int score) {
+        // Assign to local attributes.
         this.name = name;
         this.score = score;
     }
 
     /**
      * This method is a accessor method for name.
-     * @return name
+     * 
+     * @return name     String, previous player name.
      */
     public String getName() {
         return name;
@@ -40,48 +40,36 @@ public class Score implements Comparator<Score> {
     
     /**
      * This method is a accessor method for score.
-     * @return score
+     * 
+     * @return score    int, value of seconds remaining at winning point.
      */
     public int getScore() {
         return score;
     }
     
     /**
-     * This method is a mutator method for name. 
-     * @param name 
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-    
-    /**
-     * This method is a mutator method for score. 
-     * @param score 
-     */
-    public void setScore(int score) {
-        this.score = score;
-    }
-    /**
-     * method for comparing scores so we can arrange them in the xml file.
-     * @param score1
-     * @param score2
-     * @return 
+     * Method for comparing scores so we can arrange them in the xml file.
+     * 
+     * @param score1    int, first score to compare.
+     * @param score2    int, second score to compare.
+     * @return          int, if - first score is higher,
+     *                  else if + second score is higher,
+     *                  otherwise the scores are the same.
      */
     @Override
     public int compare(Score score1, Score score2) {
         int a = score1.getScore();
         int b = score2.getScore();
 
+        
         if (a > b) {
             return -1;
-        }
-        else if( a < b){
+            
+        } else if( a < b){
             return +1;
-        }
-        else {
+            
+        } else {
             return 0;
         }
-
     }
-
 }

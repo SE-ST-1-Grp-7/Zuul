@@ -15,6 +15,7 @@ import java.util.HashMap;
  * @author Rasmus Willer
  */
 public class ReadPreset {
+    // New map to contain loaded data.
     HashMap<String, String[][]> data = new HashMap<>();
     
     /**

@@ -5,22 +5,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- *
+ * Data facade of data layer. Access point to data layer.
+ * 
  * @author Niclas Johansen & Rasmus Willer
  */
 public class DataFacade implements IData {
-
     private Highscore highscore;
 
+    /**
+     * Upon instantiation, create new Highscore object.
+     */
     public DataFacade() {
         this.highscore = new Highscore();
     }
     
     
     /**
-     * Method to return our highScore as an string with the toString method.
+     * Override; retrieve highscore as a complex string.
      *
-     * @return string text
+     * @return      String, highscore packed into a single String.
      */
     @Override
     public String displayHighscore() {
@@ -28,11 +31,12 @@ public class DataFacade implements IData {
     }
     
     /**
-     * Override, upon save game. Call the save process along with file path and
+     * Override; upon save game. Call the save process along with file path and
      * parsed data to be written to file.
      * 
      * @param path      String, file path to save file.
-     * @param data      ArrayList<ArrayList<String>>, 2D list with parsed data.
+     * @param data      ArrayList< ArrayList< String > >,
+     *                  2D list with parsed data.
      */
     @Override
     public void saveGame(String path, ArrayList<ArrayList<String>> data) {
@@ -40,7 +44,7 @@ public class DataFacade implements IData {
     }
     
     /**
-     * Override, upon load game. Make a new load object and let it gather data
+     * Override; upon load game. Make a new load object and let it gather data
      * from file, before afterwards calling a getter method to retrieve the
      * data and return it to the business layer through the interface.
      * 
@@ -58,7 +62,7 @@ public class DataFacade implements IData {
         return data;
     }
     /**
-     *  Load the xml file.
+     *  Override; Load the xml file.
      */
     @Override
     public void loadXML(){
@@ -66,9 +70,10 @@ public class DataFacade implements IData {
     }
     
     /**
+     * Override; Call the save highscore method.
      * 
-     * @param playerName
-     * @param seconds 
+     * @param playerName        String, name of player.
+     * @param seconds           int, time left at point of winning.
      */
     @Override
     public void saveHighscore(String playerName, int seconds){
