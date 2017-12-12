@@ -17,7 +17,7 @@ public class Table extends Furniture /*implements Inspectable*/{
      // Path to texture.
     
     /**
-     * Constructor for Table class.
+     * Constructor for Table class. Instantiates entity with parameters.
      * 
      * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
@@ -54,7 +54,7 @@ public class Table extends Furniture /*implements Inspectable*/{
     }
     
     /**
-     * Override, upon interaction with table.
+     * Override; upon interaction with table.
      *
      * @param p     Person, whom is interacting with furniture.
      */
