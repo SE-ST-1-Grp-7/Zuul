@@ -226,6 +226,7 @@ public class Player extends Person {
      */
     public void setImage(String path) {
         this.playerImage = path;
+        super.setEntityImage(playerImage);
         this.getCurrentRoom().setEntity(this);
     }
 
