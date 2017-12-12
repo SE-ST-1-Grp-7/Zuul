@@ -28,7 +28,10 @@ public class Gun extends Item {
 
     @Override
     public boolean use(Player p) {
+        // Remove energy from player.
         p.setEnergy(-69);
+        // Set image to player.
+        p.setImage("/textures/skeleton1.png");
         return true;
     }
 

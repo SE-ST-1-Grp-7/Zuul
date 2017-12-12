@@ -217,6 +217,15 @@ public class Player extends Person {
     public void setName(String playerName) {
         this.playerName = playerName;
     }
+    
+    /**
+     * Under special circumstance, change player image.
+     * 
+     * @param path  String, file path of new image texture.
+     */
+    public void setImage(String path) {
+        this.playerImage = path;
+    }
 
     /**
      * Get the player's inventory.
