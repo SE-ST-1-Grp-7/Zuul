@@ -11,7 +11,7 @@ public class Assignment extends Item {
     private String assignmentImage = "/textures/assignment.png";
 
     /**
-     * Constructor for Assignment class.
+     * Constructor for Assignment class. Instantiates entity with parameters.
      *
      * @param id            String, ID of specific instantiation.
      * @param x             int, horizontal position in room grid.
@@ -38,7 +38,7 @@ public class Assignment extends Item {
     }
 
     /**
-     * Override, upon use of item.
+     * Override; upon use of item.
      *
      * @param p     Player, player is the one using the item.
      * @return      boolean, true if in room, other false.
@@ -57,7 +57,7 @@ public class Assignment extends Item {
     }
     
     /**
-     * tick method: Used on a assignment when grading them. When tick is called
+     * tick method; used on a assignment when grading them. When tick is called
      * 20 points is added to assignment progress with each tick and when 
      * progress is 100, the assignment is graded. 
      * 
@@ -74,12 +74,11 @@ public class Assignment extends Item {
             p.setCurrentAssignment(null);
             return;
         }
-        //if you have more than or equal to 20 energy
 
         p.setAssignmentProgress(p.getAssignmentProgress() + 20);
         p.setEnergy(p.getEnergy() - 5);
-        //we remove energy and add assignment progress 5 times
-        /*if the progress is 100 we set the progress to 0 and add 1 to the
-            gradedAssignments and removes it from the inventory*/
+        /* We remove energy and add assignment progress 5 times.
+           If the progress is 100 we set the progress to 0 and add 1 to the
+            gradedAssignments and removes it from the inventory. */
     }
 }

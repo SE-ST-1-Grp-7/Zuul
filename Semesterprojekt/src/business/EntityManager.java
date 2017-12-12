@@ -30,7 +30,8 @@ public class EntityManager {
      * @param rm    RoomManager, used to assign entities to a specific room.
      */
     public EntityManager(RoomManager rm) {
-        this.rm = rm;                   // Assign room manager object to class.
+        // Assign room manager object to class.
+        this.rm = rm;
     }
 
     /**
@@ -63,8 +64,8 @@ public class EntityManager {
             int y,
             String name,
             String IDnum) {
-        // Call instantiation of entity based on ID number.
-        // If player name is Peter, instantiate easteregg edition objects.
+        /* Call instantiation of entity based on ID number.
+           If player name is Peter, instantiate easteregg edition objects. */
         if (this.playerName.equalsIgnoreCase("Peter")) {
             senpaiTypes(y, x, name, IDnum);
         // Else instantiate normal edition objects.
@@ -90,7 +91,6 @@ public class EntityManager {
     public void showFurniture() {
         for (Furniture d : furniturelist) {
             d.getCurrentRoom().setEntity(d);
-
         }
     }
 
@@ -635,6 +635,7 @@ public class EntityManager {
                         0,
                         "/textures/pooltable1.png"));
                 break;
+                
             // Table pooltable.
             case "ID88":
                 furniturelist.add(new Table(id,
@@ -880,10 +881,10 @@ public class EntityManager {
      * Senpai-edition. Instantiate entity objects based on ID number and add
      * them to their respective entity list.
      *
-     * @param i int, y-coordinate of grid position.
-     * @param j int, x-coordinate of grid position.
-     * @param name String, name of room for entity to 'spawn' in.
-     * @param id String, ID of the type of entity to be created.
+     * @param i         int, y-coordinate of grid position.
+     * @param j         int, x-coordinate of grid position.
+     * @param name      String, name of room for entity to 'spawn' in.
+     * @param id        String, ID of the type of entity to be created.
      */
     public void senpaiTypes(int i,
             int j,
@@ -1037,12 +1038,13 @@ public class EntityManager {
     /**
      * Method for gathering the data that must be saved during saving.
      *
-     * @return HashMap< String, ArrayList < ArrayList < String > > >,
-     *         key is path to file, value is data.
+     * @return      HashMap< String, ArrayList < ArrayList < String > > >,
+     *              key is path to file, value is data.
      */
     public HashMap parseForSave() {
         // Instantiate the HashMap.
-        HashMap<String, ArrayList<ArrayList<String>>> savePackage = new HashMap<>();
+        HashMap<String, ArrayList<ArrayList<String>>> savePackage =
+                new HashMap<>();
 
         // Place collected data about player in HashMap.
         savePackage.put("saveFiles\\SavePlayersTest.txt",
@@ -1067,7 +1069,7 @@ public class EntityManager {
     /**
      * Parse data for saving items in the game.
      *
-     * @return ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveItems() {
         // 2D list to contain the data.
@@ -1097,7 +1099,7 @@ public class EntityManager {
     /**
      * Parse data for saving player's inventory status.
      *
-     * @return ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveInventory() {
         // 2D list to contain the data.
@@ -1116,7 +1118,7 @@ public class EntityManager {
     /**
      * Parse data for saving player's status.
      *
-     * @return ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> savePlayers() {
         // 2D list to contain the data.
@@ -1159,7 +1161,7 @@ public class EntityManager {
     /**
      * Parse data for saving student's status.
      *
-     * @return ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveStudents() {
         // 2D list to contain the data.
@@ -1214,7 +1216,7 @@ public class EntityManager {
      * Load items from collected data. Iterate through load data and instantiate
      * items based on item name and parameters.
      *
-     * @param data ArrayList< ArrayList < String > >, 2D list with load data.
+     * @param data  ArrayList< ArrayList < String > >, 2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
         // Set item allocations in rooms to null.
@@ -1244,7 +1246,7 @@ public class EntityManager {
      * Load inventory from data collected from file. Iterate through the data
      * and instantiate items according to item name and parameters.
      *
-     * @param data ArrayList< ArrayList < String > >, 2D list with load data.
+     * @param data  ArrayList< ArrayList < String > >, 2D list with load data.
      */
     public void loadInventory(ArrayList<ArrayList<String>> data) {
         try {
@@ -1325,7 +1327,7 @@ public class EntityManager {
      * Update player with load data. Parse retrieved data and assign the new
      * values.
      *
-     * @param data ArrayList< ArrayList < String > >, 2D list with loaded data.
+     * @param data  ArrayList< ArrayList < String > >, 2D list with loaded data.
      */
     public void loadPlayers(ArrayList<ArrayList<String>> data) {      
         // Iterate through the data.
@@ -1387,7 +1389,7 @@ public class EntityManager {
     /**
      * Retrieve list with save files's path.
      *
-     * @return ArrayList< String >, list with save files.
+     * @return      ArrayList< String >, list with save files.
      */
     public ArrayList<String> getSaveFiles() {
         ArrayList<String> saveFiles = new ArrayList<>();

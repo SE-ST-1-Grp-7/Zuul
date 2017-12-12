@@ -19,7 +19,7 @@ public abstract class Entity {
     private String id;
 
     /**
-     * Constructor of Entity class.
+     * Constructor of Entity class. Instantiates entity with parameters.
      *
      * @param id            String, ID of specific instantiation.
      * @param x             int, horizontal position in room grid.
@@ -35,6 +35,7 @@ public abstract class Entity {
     }
 
     // GETTERS & SETTERS
+    
     /**
      * Retrieve int value of X grid position in room.
      *
@@ -126,7 +127,7 @@ public abstract class Entity {
     }
 
     /**
-     * get String with the path to the entity image.
+     * Get String with the path to the entity image.
      *
      * @return      String, with image path.
      */
@@ -135,7 +136,7 @@ public abstract class Entity {
     }
 
     /**
-     * set method used for setting image of entity.
+     * Set method used for setting image of entity.
      *
      * @param entityImage   String, path to image.
      */

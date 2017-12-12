@@ -12,7 +12,7 @@ public abstract class Furniture extends Entity {
     private String furnitureDescription;
     
     /**
-     * Constructor for Furniture class.
+     * Constructor for Furniture class. Instantiates entity with parameters.
      * 
      * @param id                    String, ID of specific instantiation.
      * @param x                     int, horizontal position in room grid.

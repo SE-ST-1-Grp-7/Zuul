@@ -5,10 +5,10 @@ package business;
  * 
  * @author Robin & Rasmus Willer
  */
-public class Bookcase extends Furniture /*implements Interactable*/{
+public class Bookcase extends Furniture {
 
     /**
-     * Constructor for Chair class.
+     * Constructor for Chair class. Instantiates entity with parameters.
      * 
      * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal postition in room grid.
@@ -36,12 +36,9 @@ public class Bookcase extends Furniture /*implements Interactable*/{
     }
     
     /**
-     * Override, upon interact with bookcase.
+     * Override; upon interact with bookcase.
      */
     @Override
     public void onInteract(Person p) {
-        System.out.println("this is a bookcase!");
-        System.out.println("you can rumage through its contents");
-        
     }
 }

@@ -12,7 +12,7 @@ public class Coffee extends Item {
     private final String coffeeImage = "/textures/coffee1.png";
 
     /**
-     * Constructor for Coffee class.
+     * Constructor for Coffee class. Instantiates entity with parameters.
      *
      * @param id            String, ID of specific instantiation.
      * @param x             int, horizontal position in room grid.
@@ -40,7 +40,7 @@ public class Coffee extends Item {
     }
 
     /**
-     * Override, upon use of coffee.
+     * Override; upon use of coffee.
      *
      * @param p     Player, player is the one using the item.
      * @return      boolean, if true restored energy, otherwise false and

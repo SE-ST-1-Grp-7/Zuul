@@ -22,10 +22,13 @@ public class Player extends Person {
     private String playerName;
     private boolean interactHappend;
 
-    /*two variables for checking when the player interacted with a student/tutor
-    - they are in Person.java because the onInteract method on Student and Tutor needs a Person*/
-    private boolean playerAskedStudent; // this is used to check if the player asked/interacted with a student
-    private boolean playerAskedTutor; // this is used to check if the player asked/interacted with a tutor
+    /* Two variables for checking when the player interacted with a student/
+       tutor if they are in Person.java because the onInteract method on Student
+       and Tutor needs a Person*/
+    // Used to check if player asked student.
+    private boolean playerAskedStudent;
+    // used to check if player asked tutor.
+    private boolean playerAskedTutor;
 
     /**
      * Constructor for player. Passes all relevant arguments to Superclass and
@@ -56,10 +59,14 @@ public class Player extends Person {
 
         // PLAYER STATS
         this.playerName = name;
-        this.energy = 200; // Assign energy level at the start.
-        this.energyCap = 200; // Assign energy capacity.
-        inventory = new Inventory(); // Instantiate inventory.
-        this.gradedAssignments = 0; // Amount of graded assignments starts at 0.
+        // Assign energy level at the start.
+        this.energy = 200;
+        // Assign energy capacity.
+        this.energyCap = 200;
+        // Instantiate inventory.
+        inventory = new Inventory();
+        // Amount of graded assignements starts at 0.
+        this.gradedAssignments = 0;
         // Progress of grading an assignment starts at 0.
         this.assignmentProgress = 0;
         this.hasKey = false;
@@ -110,7 +117,7 @@ public class Player extends Person {
     /**
      * Move in given direction.
      *
-     * @param direction String, lowercase written direction for movement.
+     * @param direction     String, lowercase written direction for movement.
      */
     public void move(String direction) {
         // Get second parsed command word and assign it to String variable.
@@ -137,21 +144,23 @@ public class Player extends Person {
                 move(getX(), getY() - 1);
                 break;
         }
-//        System.out.println(currentRoom.getLongDescription());
     }
 
     /**
      * Place item referenced by tempItem into the room.
      */
     public void placeItem() {
-        if (tempItem != null) { // if tempItem exists
+        // If tempItem exists.
+        if (tempItem != null) {
             tempItem.setCurrentRoom(getCurrentRoom());
             
+            // Place it.
             getCurrentRoom().getEntities()
-                    [tempItem.getY()][tempItem.getX()] = tempItem; // place it
+                    [tempItem.getY()][tempItem.getX()] = tempItem;
             
             getEntityManager().getItemList().add(tempItem);
-            dont = true; // dont set previous field to null
+            // Don't set previous to null.
+            dont = true;
         }
     }
 
@@ -162,16 +171,24 @@ public class Player extends Person {
      * @param newY      int, new Y coordinate in room.
      */
     public void move(int newX, int newY) {
-
-        if (!checkCollision(newX, newY)) { // c = x && theres no collision occurring
-            placeItem(); // places tempItem if it exists
-            if (getCurrentRoom().hasLoot(newX, newY)) { // if theres loot && inventory isnt full, then loot it
-                if (inventory.addItem((Item) getCurrentRoom().getEntities()[newY][newX])) { // if addItem was successful
+        // If no collision.
+        if (!checkCollision(newX, newY)) {
+            // Place tempItem if exist.
+            placeItem();
+            // If there is loot.
+            if (getCurrentRoom().hasLoot(newX, newY)) {
+                // If item can be added to inventory.
+                if (inventory.addItem((Item)
+                        getCurrentRoom().getEntities()[newY][newX])) {
+                // else set tempItem.
                 } else { // if not
-                    tempItem = (Item) getCurrentRoom().getEntities()[newY][newX]; // set temp item to be whatevers in pos x & y
+                    tempItem = (Item)
+                            getCurrentRoom().getEntities()[newY][newX];
                 }
             }
-            getCurrentRoom().getEntities()[newY][newX] = this; // move the player to another location
+            // Move player to this location.
+            getCurrentRoom().getEntities()[newY][newX] = this;
+            
             if (!dont) {
                 getCurrentRoom().getEntities()[getY()][getX()] = null; // reset current position
             } else {

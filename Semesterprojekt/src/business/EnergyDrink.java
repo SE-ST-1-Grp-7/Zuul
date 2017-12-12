@@ -12,7 +12,7 @@ public class EnergyDrink extends Item {
     private final String energydrinkImage = "/textures/energydrink.png";
     
     /**
-     * Constructor for EnergyDrink class.
+     * Constructor for EnergyDrink class. Instantiates entity with parameters.
      * 
      * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
@@ -41,7 +41,7 @@ public class EnergyDrink extends Item {
     }
     
     /**
-     * Override, upon use of energy drink.
+     * Override; upon use of energy drink.
      * 
      * @param p     Player, player is the one using the item.
      * @return      boolean, if true restore energy, otherwise false and do

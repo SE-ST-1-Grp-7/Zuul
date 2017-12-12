@@ -10,14 +10,20 @@ import javafx.collections.ObservableList;
  * @author Jonas Bjørstorp & Frederik Bauer
  */
 public class Inventory {
-
     private final int CAPACITY = 5;
-    // ObservableList allows us to connect a javafx listview directly to the inventory
+    /* ObservableList allows connection to javafx listview directly to
+       inventory. */
     private ObservableList<IItem> items = FXCollections.observableArrayList();
     
+    /**
+     * Retrieve the inventory capacity.
+     * 
+     * @return      int, capacity of inventory.
+     */
     public int getCapacity(){
         return CAPACITY;
     }
+    
     /**
      * Adds an item to the inventory
      *
@@ -29,14 +35,16 @@ public class Inventory {
         if (items.size() < CAPACITY) {
             items.add((IItem)item);
             return true;
-        } else { // checks if theres less than 5 items
+            
+        // Checks if there's less than 5 items.
+        } else {
             System.out.println("Not enough space");
             return false;
         }
     }
 
     /**
-     * Remove an item from the inventory
+     * Remove an item from inventory.
      *
      * @param item      Item, item to be removed.
      */
@@ -45,7 +53,7 @@ public class Inventory {
     }
 
     /**
-     * getter for the inventory
+     * Getter for the inventory.
      *
      * @return      ObservableList< IItem >, returned list of inventory.
      */

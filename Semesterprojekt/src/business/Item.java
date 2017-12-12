@@ -13,7 +13,7 @@ public abstract class Item extends Entity implements IItem {
     private String itemDescription; // Description of item.
 
     /**
-     * Constructor for Item class.
+     * Constructor for Item class. Instantiates entity with parameters.
      *
      * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
@@ -41,7 +41,7 @@ public abstract class Item extends Entity implements IItem {
     public abstract boolean use(Player p);
 
     /**
-     * Getter for name of item.
+     * Override; getter for name of item.
      *
      * @return      String, name of item.
      */
@@ -51,7 +51,7 @@ public abstract class Item extends Entity implements IItem {
     }
     
     /**
-     * To string method. Used to display text in GUI.
+     * Override; to string method. Used to display text in GUI.
      * 
      * @return      String, return name of item.
      */
@@ -75,5 +75,4 @@ public abstract class Item extends Entity implements IItem {
             }
         }
     }
-
 }

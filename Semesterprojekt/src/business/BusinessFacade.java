@@ -11,7 +11,9 @@ import java.util.Set;
 import javafx.collections.ObservableList;
 
 /**
- *
+ * Business facade of business layer. Other layers communicate through the
+ * business layer through this class.
+ * 
  * @author Niclas Johansen & J & Rasmus Willer
  */
 public class BusinessFacade implements IBusiness {
@@ -25,7 +27,8 @@ public class BusinessFacade implements IBusiness {
     private int seconds = startSeconds;
 
     /**
-     * No-arg constructor; call game reset, to start game from fresh.
+     * No-arg constructor. Lets the facade be instantiated before trying to
+     * reset the game.
      */
     public BusinessFacade() {
     }
@@ -152,6 +155,9 @@ public class BusinessFacade implements IBusiness {
      * complete and new values can be assigned. Data is collected file after
      * file and when all done, passed to entity manager for parsing and
      * implementing.
+     * 
+     * @return      boolean, if true, there was save data, otherwise false and
+     *              no stored save data.
      */
     @Override
     public boolean loadGame() {
@@ -192,6 +198,8 @@ public class BusinessFacade implements IBusiness {
                     entityManager.getPlayer().getCurrentRoom());
             // Refresh time remaining with loaded value saved under player.
             seconds = entityManager.getPlayer().getTimeLeft();
+            
+        // If load package is empty, set variable to false.
         } else {
             status = false;
         }
@@ -247,8 +255,9 @@ public class BusinessFacade implements IBusiness {
         }
     }
     /**
-     * Override: Checks if the player has lost the game.
-     * @return Boolean, whether or not the game is over.
+     * Override; Checks if the player has lost the game.
+     * 
+     * @return      boolean, whether or not the game is over.
      */
     @Override
     public boolean isGameOver() {
@@ -267,18 +276,24 @@ public class BusinessFacade implements IBusiness {
             return;
         }
         
-        // For all students, call check idleMove.
+        // For all students, call idle movement.
         for (Student s : entityManager.getStudentList()) {
             s.idleMove();
         }
+        
+        /*  If player has a current assignment in progress, then tick assignment
+            process. */
         if(entityManager.getPlayer().getCurrentAssignment() != null) {
-            entityManager.getPlayer().getCurrentAssignment().tick(entityManager.getPlayer());
+            entityManager.getPlayer().getCurrentAssignment().tick(
+                    entityManager.getPlayer());
         }
+        
         // Reduce player's current energy by 1 each second.
         entityManager.getPlayer().setEnergy(
                 entityManager.getPlayer().getEnergy() - 1);         
         // Reduce seconds by 1
         seconds--;
+        
         // If the game is won save players name and seconds it took.
         if(entityManager.getPlayer().getGradedAssignments() >= 10){
         data.saveHighscore(entityManager.getPlayer().getName(), seconds);
@@ -305,12 +320,13 @@ public class BusinessFacade implements IBusiness {
     @Override
     public boolean itemUse(IItem i) {
         if (((Item)i).use(entityManager.getPlayer())) {
-        entityManager.getPlayer().inventory().removeItem((Item) i);
-        return true;
-    } else {
-    return false;
+            entityManager.getPlayer().inventory().removeItem((Item) i);
+            return true;
+            
+        } else {
+            return false;
+        }
     }
-}
 
     /**
      * Override; upon item drop. Drops a chosen item from player's inventory.
@@ -324,7 +340,6 @@ public class BusinessFacade implements IBusiness {
                 (Item) i, entityManager.getPlayer());
     }
 
-   
     /**
      * Override; retrieve player's current room location.
      * 
@@ -354,11 +369,12 @@ public class BusinessFacade implements IBusiness {
     public int amountOfGradedAssignments() {
         return entityManager.getPlayer().getGradedAssignments();
     }
- /**
-  * Override; set player's name
-  * 
-  * @param name     String, desired name of player
-  */
+
+    /**
+     * Override; set player's name
+     * 
+     * @param name     String, desired name of player
+     */
     @Override
     public void playerSetName(String name) {
         entityManager.getPlayer().setName(name);
@@ -375,11 +391,10 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * Override; 
+     * Override; check if item is an assignment.
      * 
-     * @param item,   IItem, item to check
-     * 
-     * @return boolean, return true if item is a instanceof Assignment object 
+     * @param item      IItem, item to check.
+     * @return          boolean, return true if item is a instanceof Assignment.
      */
     @Override
     public boolean isAssignment(IItem item) {
@@ -387,9 +402,9 @@ public class BusinessFacade implements IBusiness {
     }
     
     /**
-     * Override; path to get the minimapImage
+     * Override; path to get the minimapImage.
      * 
-     * @return string, with minimap path 
+     * @return      String, path of minimap image.
      */
     @Override
     public String minimapImage(){
@@ -400,7 +415,7 @@ public class BusinessFacade implements IBusiness {
      * Override; get the individuel progress of each assignment
      * when the player is grading it.
      * 
-     * @return int, progress of assignment
+     * @return      int, progress of assignment.
      */
     @Override
     public int playerAssignmentProgress() {
@@ -408,10 +423,10 @@ public class BusinessFacade implements IBusiness {
     }
     
     /**
-     * Override; check if player is grading a assignment 
+     * Override; check if player is grading an assignment.
      * 
-     * @return boolean, true if player is grading a assignment, 
-     * if not return false.
+     * @return      boolean, true if player is grading a assignment, 
+     *              if not return false.
      */
     @Override
     public boolean playerHasAssignment() {
@@ -421,27 +436,42 @@ public class BusinessFacade implements IBusiness {
             return false;
         }
     }
-    
-    // Retrieve the saved player name.
+
+    /**
+     * Override; retrieve the saved player name.
+     * 
+     * @return      String, loaded player name.
+     */
     @Override
     public String getLoadName() {
         String path = entityManager.getSaveFiles().get(0);
         return data.retrieveName(path);
     }
 
+    /**
+     * Override; retrieve status of interaction happened.
+     * 
+     * @return      boolean, status if interaction.
+     */
     @Override
     public boolean getInteractionHappend() {
         return entityManager.getPlayer().getInteractionHappend();
     }
 
+    /**
+     * Override; set interaction status.
+     * 
+     * @param b     boolean, status to set.
+     */
     @Override
     public void setInteractionHappend(boolean b) {
         entityManager.getPlayer().setInteractionHappend(b);
     }
 
     /**
-     * getter for playerAskedStudent
-     * @return true if a student was asked
+     * Override; get status for player has asked student.
+     * 
+     * @return      boolean, true if a student was asked, otherwise false.
      */
     @Override
     public boolean getPlayerAskedStudent() {
@@ -449,8 +479,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * setter for playerAskedStudent
-     * @param playerAskedStudent 
+     * Override; set status for player has asked student.
+     * 
+     * @param playerAskedStudent    boolean, status to set.
      */
     @Override
     public void setPlayerAskedStudent(boolean playerAskedStudent) {
@@ -458,8 +489,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * getter for playerAskedTutor
-     * @return true if a tutor was asked
+     * Override; get status for if player asked tutor.
+     * 
+     * @return      boolean, true if a tutor was asked, otherwise false.
      */
     @Override
     public boolean getPlayerAskedTutor() {
@@ -467,8 +499,9 @@ public class BusinessFacade implements IBusiness {
     }
 
     /**
-     * setter for playerAskedTutor
-     * @param playerAskedTutor 
+     * Override; set status for player has asked tutor.
+     * 
+     * @param playerAskedTutor  boolean, status to set.
      */
     @Override
     public void setPlayerAskedTutor(boolean playerAskedTutor) {

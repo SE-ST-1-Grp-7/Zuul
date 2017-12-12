@@ -10,7 +10,8 @@ public abstract class Person extends Entity {
     private EntityManager em;
     
     /**
-     * Person constructor, instantiate NPCs.
+     * Person constructor, instantiate NPCs. Instantiates entity with
+     * parameters.
      * 
      * @param id            String, ID of specific instantiation version.
      * @param x             int, horizontal position in room grid.
@@ -71,5 +72,3 @@ public abstract class Person extends Entity {
         return this.em;
     }    
 }
-
-        

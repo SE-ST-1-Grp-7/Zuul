@@ -9,7 +9,7 @@ public class Key extends Item {
     private String imagePath = "/textures/key1.png";
     
     /**
-     * Constructor for Key class.
+     * Constructor for Key class. Instantiates entity with parameters.
      * 
      * @param id                String, ID of specific instantiation.
      * @param x                 int, horizontal position in room grid.
