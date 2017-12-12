@@ -189,12 +189,16 @@ public class Player extends Person {
             // Move player to this location.
             getCurrentRoom().getEntities()[newY][newX] = this;
             
+            // If don't is false, then remove entity from room grid location.
             if (!dont) {
-                getCurrentRoom().getEntities()[getY()][getX()] = null; // reset current position
+                getCurrentRoom().getEntities()[getY()][getX()] = null;
+                
+            // Else set don't to false and tempItem to null.
             } else {
                 dont = false;
                 tempItem = null;
             }
+            
             setX(newX);
             setY(newY);
         }
@@ -210,8 +214,7 @@ public class Player extends Person {
     public void onInteract(Person p) {
         setEnergy(getEnergy() - 40);
         this.interactHappend = true;
-        // this gets called when an "evil" student interacts with the player
-        // needs to pop up window/something to get input from the player
+        // This gets called when an "evil" student interacts with the player.
     }
     
     // GETTERS & SETTERS
@@ -439,7 +442,7 @@ public class Player extends Person {
     /**
      * getter for checking if the player interacted with a tutor
      *
-     * @return true if player asked a tutor
+     * @return      boolean, if true has asked a tutor.
      */
     public boolean getPlayerAskedTutor() {
         return playerAskedTutor;

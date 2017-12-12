@@ -56,29 +56,36 @@ public class Student extends Person {
                  (Math.pow(getEntityManager().getPlayer().getY()
                          - this.getY(),2 )));
         
+        // If student is within reach of player, then interact.
         if(distanceToPlayer <= 1) {
             getEntityManager().getPlayer().onInteract(this);
             setHasQuestionToPlayer(false);
+            
+        // Else chase.
         } else {
+            // Go right.
             if(this.getX() < getEntityManager().getPlayer().getX()){
                 if (!checkCollision(getX() + 1, getY())) {
-                        move((getX()+1),(getY()));
-                    }
-            }
-            if(this.getY() < getEntityManager().getPlayer().getY()){
+                    move((getX()+1),(getY()));
+                }
+            
+            // Go down.
+            } else if(this.getY() < getEntityManager().getPlayer().getY()){
                 if (!checkCollision(getX(), getY() + 1)) {
-                        move((getX()),(getY()+1));
-                    }
-            }
-            if(this.getX() > getEntityManager().getPlayer().getX()){
+                    move((getX()),(getY()+1));
+                }
+                
+            // Go left.
+            } else if(this.getX() > getEntityManager().getPlayer().getX()){
                 if (!checkCollision(getX() - 1, getY())) {
-                        move((getX()-1),(getY()));
-                    }
-            }
-            if(this.getY() > getEntityManager().getPlayer().getY()){
+                    move((getX()-1),(getY()));
+                }
+                
+            // Go up.
+            } else if(this.getY() > getEntityManager().getPlayer().getY()){
                 if (!checkCollision(getX(), getY() - 1)) {
-                        move((getX()),(getY()-1));
-                    }
+                    move((getX()),(getY()-1));
+                }
             }
         }
     }
@@ -100,40 +107,49 @@ public class Student extends Person {
             // Random direction movement.
             switch (direction) {
                 case "left":
-
-                    if (getCurrentRoom().getEntities()[getY()][getX() - 1] instanceof Door) {
-                        getCurrentRoom().getEntities()[getY()][getX() - 1].onInteract(this);
+                    if (getCurrentRoom().getEntities()[getY()][getX() - 1]
+                            instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()][getX() - 1].
+                                onInteract(this);
+                        
                     } else if (!checkCollision(getX() - 1, getY())) {
                         move(getX() - 1, getY());
                     }
                     break;
                     
                 case "right":
-
-                    if (getCurrentRoom().getEntities()[getY()][getX() + 1] instanceof Door) {
-                        getCurrentRoom().getEntities()[getY()][getX() + 1].onInteract(this);
+                    if (getCurrentRoom().getEntities()[getY()][getX() + 1]
+                            instanceof Door) {
+                        getCurrentRoom().getEntities()[getY()][getX() + 1].
+                                onInteract(this);
+                        
                     } else if (!checkCollision(getX() + 1, getY())) {
                         move(getX() + 1, getY());
                     }
                     break;
                     
                 case "up":
-                    if (getCurrentRoom().getEntities()[getY() - 1][getX()] instanceof Door) {
-                        getCurrentRoom().getEntities()[getY() - 1][getX()].onInteract(this);
+                    if (getCurrentRoom().getEntities()[getY() - 1][getX()]
+                            instanceof Door) {
+                        getCurrentRoom().getEntities()[getY() - 1][getX()].
+                                onInteract(this);
+                        
                     } else if (!checkCollision(getX(), getY() - 1)) {
                         move(getX(), getY() - 1);
                     }
                     break;
                     
                 case "down":
-                    if (getCurrentRoom().getEntities()[getY() + 1][getX() + 1] instanceof Door) {
-                        getCurrentRoom().getEntities()[getY() + 1][getX() + 1].onInteract(this);
+                    if (getCurrentRoom().getEntities()[getY() + 1][getX() + 1]
+                            instanceof Door) {
+                        getCurrentRoom().getEntities()[getY() + 1][getX() + 1].
+                                onInteract(this);
+                        
                     } else if (!checkCollision(getX(), getY() + 1)) {
                         move(getX(), getY() + 1);
                     }
                     break;
             }
-
         }
     }
 

@@ -3,7 +3,7 @@ package business;
 import java.util.HashMap;
 
 /**
- * Manager of rooms.
+ * Manager of rooms and instantiates them.
  * 
  * @author Rasmus Willer & Søren Bendtsen & Jonas Bjørstorp
  */

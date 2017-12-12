@@ -1,17 +1,14 @@
 package business;
 
-
-// Importing standard libraries for managing datastructures.
-import java.util.Set;
 import java.util.HashMap;
 
 /**
- *
+ * Room class holds information on connections to other rooms, tiles and
+ * entities in room grid.
+ * 
  * @author Rasmus Willer & Jonas
  */
 public class Room {
-
-    // instantiates room coordinates to set and get.
     // Declare attributes -section.
     private String name;
     private Tile[][] tileArray = new Tile[10][10];
