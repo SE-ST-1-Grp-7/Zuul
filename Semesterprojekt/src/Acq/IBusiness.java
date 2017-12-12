@@ -75,28 +75,34 @@ public interface IBusiness {
     // Get amount of seconds left.
     int getSeconds();
     
-    //check if item is an assignment
+    //check if item is an assignment.
     boolean isAssignment(IItem item);
     
-    // Retrieve path to minimap image 
+    // Retrieve path to minimap image.
     String minimapImage();
     
-    // Retrieve the progress of grading an assignment
+    // Retrieve the progress of grading an assignment.
     int playerAssignmentProgress();
     
-    // Check if player is grading an assignment
+    // Check if player is grading an assignment.
     boolean playerHasAssignment();
-  
+    
+    // Check if interaction has happened.
     boolean getInteractionHappend();
     
+    // Set interaction happened.
     void setInteractionHappend(boolean b);
     
+    // Check if player asked student.
     boolean getPlayerAskedStudent();
     
+    // Set player have asked student.
     void setPlayerAskedStudent(boolean playerAskedStudent);
     
+    // Check if player has asked tutor.
     boolean getPlayerAskedTutor();
     
+    // Set player has asked tutor.
     void setPlayerAskedTutor(boolean playerAskedTutor);
 
     // Retrieve the saved player name.

@@ -32,7 +32,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
- *
+ * GUI, event & handling management.
+ * 
  * @author J
  */
 public class FXMLDocumentController implements Initializable {
@@ -84,39 +85,59 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private TextField nameField;
 
+    // Switch case for hotkeys.
     private EventHandler<KeyEvent> movementhandler = (KeyEvent event) -> {
         switch (event.getCode()) {
+            // Move right.
             case D:
                 ib.playerMove("right");
                 break;
+            
+            // Move left.
             case A:
                 ib.playerMove("left");
                 break;
+            
+            // Move up.
             case W:
                 ib.playerMove("up");
                 break;
+                
+            // Move down.
             case S:
                 ib.playerMove("down");
                 break;
+                
+            // Interact with what the player is facing.
             case E:
                 ib.playerInteract();
                 break;
+                
+            // Use the 1st item in inventory.
             case DIGIT1:
                 listView.getSelectionModel().clearAndSelect(0);
                 useItem((IItem) listView.getSelectionModel().getSelectedItem());
                 break;
+                
+            // Use the 2nd item in inventory.
             case DIGIT2:
                 listView.getSelectionModel().clearAndSelect(1);
                 useItem((IItem) listView.getSelectionModel().getSelectedItem());
                 break;
+                
+            // Use the 3rd item in inventory.
             case DIGIT3:
                 listView.getSelectionModel().clearAndSelect(2);
                 useItem((IItem) listView.getSelectionModel().getSelectedItem());
                 break;
+                
+            // Use the 4th item in inventory.
             case DIGIT4:
                 listView.getSelectionModel().clearAndSelect(3);
                 useItem((IItem) listView.getSelectionModel().getSelectedItem());
                 break;
+                
+            // Use the 5th item in inventory.
             case DIGIT5:
                 listView.getSelectionModel().clearAndSelect(4);
                 useItem((IItem) listView.getSelectionModel().getSelectedItem());
@@ -127,9 +148,10 @@ public class FXMLDocumentController implements Initializable {
     private ImageView minimapViewer;
 
     /**
+     * New game button in GUI. Requires the entered name on screen to be
+     * accepted before a new game is made.
      *
-     *
-     * @param event
+     * @param event     ActionEvent, upon button used.
      */
     @FXML
     private void newGameButton(ActionEvent event) {
@@ -144,9 +166,13 @@ public class FXMLDocumentController implements Initializable {
                     "Your name must be shorter than or equal to 8 characters\n"
                     + "and more than or equal to 1 characters ");
         }
-
     }
 
+    /**
+     * Call for reset of game to new. 
+     * 
+     * @param playerName    String, player name.
+     */
     private void game(String playerName) {
         loop.stop();
         ib.resetGame();
@@ -172,7 +198,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * fills a 2d ImageView array with images and then adds them to the gridpane
+     * Initialize tooltips and game loop.
      *
      * @param url
      * @param rb
@@ -188,7 +214,7 @@ public class FXMLDocumentController implements Initializable {
         Tooltip newGametip = new Tooltip("Start game");
         Tooltip dropItem = new Tooltip("drop the item");
         Tooltip useItem = new Tooltip("use the item");
-        //Creating tooltips on buttons
+        // Set tooltips on buttons
         Tooltip.install(exitButton, exittip);
         Tooltip.install(saveButton, savetip);
         Tooltip.install(loadButton, loadtip);
@@ -198,7 +224,10 @@ public class FXMLDocumentController implements Initializable {
         Tooltip.install(useButton, useItem);
         canvasId.getGraphicsContext2D().drawImage(
                 new Image("assets/start1.png"), 0, 0);
+        
         timeLabel.setText("TIME LEFT");
+        
+        // Game loop.
         loop = new AnimationTimer() {
             @Override
             public void handle(long currentNanoTime) {
@@ -227,7 +256,8 @@ public class FXMLDocumentController implements Initializable {
                 // draw room 60 times per second
                 canvasId.getGraphicsContext2D().clearRect(0, 0, 640, 640);
                 drawImages(canvasId.getGraphicsContext2D());
-                roomViewer.setText("Current Room: " + ib.playerCurrentRoomName());
+                roomViewer.setText("Current Room: " +
+                        ib.playerCurrentRoomName());
                 energyViewer.setText("Energy: " + ib.playerEnergy());
                 gradedAssignmentViewer.setText(ib.amountOfGradedAssignments()
                         + "/10 assignments graded");
@@ -244,19 +274,23 @@ public class FXMLDocumentController implements Initializable {
                 }
                 // When student interacts with you write text and draw image.
                 if (ib.getInteractionHappend()) {
-                    canvasId.getGraphicsContext2D().drawImage(new Image("assets/question-student.png"), 0, 0);
+                    canvasId.getGraphicsContext2D().drawImage(
+                            new Image("assets/question-student.png"), 0, 0);
                     bottomTextArea.appendText("Me: Ouch!!\n");
-                    bottomTextArea.appendText("Student: Professor, professor i  got 10 questions for you!!\n");
+                    bottomTextArea.appendText("Student: Professor, professor i "
+                            + "got 10 questions for you!!\n");
                     ib.setInteractionHappend(false);
                 }
                 
-                //if the player interacts with a student - write text and set playerAskedStudent back to false
+                /* If the player interacts with a student, write text and set
+                   playerAskedStudent back to false. */
                 if(ib.getPlayerAskedStudent()){
                     bottomTextArea.appendText("Me: Hello student\n");
                     ib.setPlayerAskedStudent(false);
                 }
                 
-                //if the player interacts with a tutor - write text and set playerAskedTutor back to false
+                /* If the player interacts with a tutor, write text and set
+                   playerAskedTutor back to false. */
                 if(ib.getPlayerAskedTutor()){
                     bottomTextArea.appendText("Me: Hello tutor\n");
                     ib.setPlayerAskedTutor(false);
@@ -264,14 +298,15 @@ public class FXMLDocumentController implements Initializable {
             }
         };
 
+        // Set minimap image.
         minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
 
     }
 
     /**
+     * Draw tiles and entities to GUI.
      *
-     *
-     * @param gc
+     * @param gc    GraphicsContext, image creation.
      */
     public void drawImages(GraphicsContext gc) {
         for (int i = 0; i < 10; i++) {
@@ -288,11 +323,11 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * returns an image depending on entity image string
+     * Returns an image depending on entity image string.
      *
-     * @param row
-     * @param col
-     * @return
+     * @param row       int, row of grid position of entity.
+     * @param col       int, column of grid position of entity.
+     * @return          Image, the created image object.
      */
     public Image choosePic(int row, int col) {
         // This will cause all entity images to be loaded repeatedly for now.
@@ -301,9 +336,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * exits game
+     * Exit game button in GUI.
      *
-     * @param event
+     * @param event     ActionEvent, upon button used.
      */
     @FXML
     private void exitButton(ActionEvent event) {
@@ -311,9 +346,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Load data from files if there is any previous save data.
+     * Load game button in GUI. Load data from files if there is any previous
+     * save data.
      *
-     * @param event ActionEvent, when button is pushed.
+     * @param event     ActionEvent, when button is pushed.
      */
     @FXML
     private void loadButton(ActionEvent event) {
@@ -334,24 +370,27 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * saves the game
+     * Save game button in GUI. If game is not over calls for collection of game
+     * data and save to file.
      *
-     * @param event
+     * @param event     ActionEvent, upon button is used.
      */
     @FXML
     private void saveButton(ActionEvent event) {
+        // If game is over, ignore request.
         if(ib.isGameOver()) {
             bottomTextArea.appendText("\nu cant save ur ded lmao");
             return;
         }
+        // Otherwise call save process.
         bottomTextArea.appendText("The game is now saved.\n");
         ib.saveGame();
     }
 
     /**
-     * displays highscore
+     * Displays highscore button in GUI.
      *
-     * @param event
+     * @param event     ActionEvent, upon button is used.
      */
     @FXML
     private void highscoreButton(ActionEvent event) {
@@ -377,13 +416,12 @@ public class FXMLDocumentController implements Initializable {
         alert.getButtonTypes().set(0, buttonTypeClose);
 
         alert.showAndWait();
-
     }
 
     /**
-     * uses the item selected in the listview
+     * Use button in GUI. Uses the item selected in the listview.
      *
-     * @param event
+     * @param event     ActionEvent, upon button is used.
      */
     @FXML
     private void useButton(ActionEvent event) {
@@ -396,6 +434,11 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     * Use item selected in inventory.
+     * 
+     * @param item      IItem, the selected item in inventory.
+     */
     private void useItem(IItem item) {
         if (item == null) {
             bottomTextArea.appendText("No item selected" + "\n");
@@ -408,9 +451,11 @@ public class FXMLDocumentController implements Initializable {
             if (ib.isAssignment(item)) {
                 if (ib.playerEnergy() < 20) {
                     bottomTextArea.appendText("You don't have enough energy\n");
+                    
                 } else if(!ib.playerCurrentRoomName().equals("teacher room")) {
                     bottomTextArea.appendText("You're not in the teacher's room"
                             + "\n");
+                    
                 } else {
                     bottomTextArea.appendText("You're busy grading another " +
                             "assignment" + "\n");
@@ -420,9 +465,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * drops the item selected in the listview
+     * Drop button in GUI. Drops the item selected in the listview.
      *
-     * @param event
+     * @param event     ActionEvent, upon button used.
      */
     @FXML
     private void dropButton(ActionEvent event) {
@@ -431,6 +476,7 @@ public class FXMLDocumentController implements Initializable {
                     + listView.getSelectionModel().getSelectedItem().toString()
                     + "\n");
             ib.itemDrop((IItem) listView.getSelectionModel().getSelectedItem());
+            
         } else {
             bottomTextArea.appendText("You have no selected items to drop."
                     + "\n");
@@ -438,9 +484,9 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
+     * Condition for winning the game.
      *
-     *
-     * @return
+     * @return      boolean, if true player has won the game, otherwise false.
      */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
@@ -460,6 +506,11 @@ public class FXMLDocumentController implements Initializable {
         return false;
     }
 
+    /**
+     * Upon click on name field call clear.
+     * 
+     * @param event     MouseEvent, upon clicking in field.
+     */
     @FXML
     private void nameFieldClick(MouseEvent event) {
         nameField.clear();

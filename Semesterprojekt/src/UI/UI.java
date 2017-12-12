@@ -1,5 +1,7 @@
 package UI;
 
+// IMPORTS
+
 import Acq.IBusiness;
 import Acq.IUI;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * User Interface facade.
  * 
  * @author Søren Bendtsen & Niclas Johansen
  */
@@ -18,28 +21,28 @@ public class UI extends Application implements IUI {
     private static UI ui;
     
     /**
+     * Retrieve UI.
      * 
-     * 
-     * @return 
+     * @return      UI, user interface to get.
      */
     public static UI getUI() {
         return ui;
     }
     
     /**
+     * Retrieve business interface.
      * 
-     * 
-     * @return 
+     * @return      IBusiness, business interface to get.
      */
     public IBusiness getBusiness() {
         return this.ib;
     }
 
     /**
+     * Override; load FXML and create GUI.
      * 
-     * 
-     * @param primaryStage
-     * @throws IOException 
+     * @param primaryStage      Stage, GUI stage.
+     * @throws IOException      throws, if fxml file is missing.
      */
     @Override
     public void start(Stage primaryStage) throws IOException {
@@ -53,13 +56,12 @@ public class UI extends Application implements IUI {
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
-
     }
 
     /**
+     * Override; inject business interface to UI.
      * 
-     * 
-     * @param businessFacade 
+     * @param businessFacade    IBusiness, business access point.
      */
     @Override
     public void injectBusiness(IBusiness businessFacade) {
@@ -67,7 +69,7 @@ public class UI extends Application implements IUI {
     }
 
     /**
-     * 
+     * Override; launch GUI.
      */
     @Override
     public void openUI() {
