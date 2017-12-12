@@ -68,21 +68,24 @@ public class Student extends Person {
                 if (!checkCollision(getX() + 1, getY())) {
                     move((getX()+1),(getY()));
                 }
+            }
             
             // Go down.
-            } else if(this.getY() < getEntityManager().getPlayer().getY()){
+            if(this.getY() < getEntityManager().getPlayer().getY()){
                 if (!checkCollision(getX(), getY() + 1)) {
                     move((getX()),(getY()+1));
                 }
-                
+            }
+            
             // Go left.
-            } else if(this.getX() > getEntityManager().getPlayer().getX()){
+            if(this.getX() > getEntityManager().getPlayer().getX()){
                 if (!checkCollision(getX() - 1, getY())) {
                     move((getX()-1),(getY()));
                 }
-                
+            }
+            
             // Go up.
-            } else if(this.getY() > getEntityManager().getPlayer().getY()){
+            if(this.getY() > getEntityManager().getPlayer().getY()){
                 if (!checkCollision(getX(), getY() - 1)) {
                     move((getX()),(getY()-1));
                 }
