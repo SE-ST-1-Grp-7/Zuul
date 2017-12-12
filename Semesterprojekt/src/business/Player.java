@@ -49,7 +49,8 @@ public class Player extends Person {
         super(id,
                 x,
                 y,
-                currentRoom, em);
+                currentRoom,
+                em);
         // Pass image path to Superclass.
         super.setEntityImage(playerImage);
 
@@ -225,6 +226,7 @@ public class Player extends Person {
      */
     public void setImage(String path) {
         this.playerImage = path;
+        this.getCurrentRoom().setEntity(this);
     }
 
     /**
