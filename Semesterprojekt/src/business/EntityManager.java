@@ -1302,7 +1302,7 @@ public class EntityManager {
                             break;
                             
                         // If gun, add to inventory list.
-                        case "Sawed-off":
+                        case "Shotgun":
                             Gun g = new Gun("ID111",
                                     0,
                                     0,
