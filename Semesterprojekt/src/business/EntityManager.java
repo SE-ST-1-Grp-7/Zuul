@@ -1047,19 +1047,19 @@ public class EntityManager {
                 new HashMap<>();
 
         // Place collected data about player in HashMap.
-        savePackage.put("saveFiles\\SavePlayersTest.txt",
+        savePackage.put("saveFiles\\SavePlayers.txt",
                 savePlayers());
         
         // Place collected data about students in HashMap.
-        savePackage.put("saveFiles\\SaveStudentTest.txt",
+        savePackage.put("saveFiles\\SaveStudent.txt",
                 saveStudents());
 
         // Place collected data about inventory in HashMap.
-        savePackage.put("saveFiles\\SaveInventoryTest.txt",
+        savePackage.put("saveFiles\\SaveInventory.txt",
                 saveInventory());
 
         // Place collected data about items in HashMap.
-        savePackage.put("saveFiles\\SaveItemsTest.txt",
+        savePackage.put("saveFiles\\SaveItems.txt",
                 saveItems());
 
         // Return the HashMap with all the data collections to be saved.
@@ -1395,10 +1395,10 @@ public class EntityManager {
         ArrayList<String> saveFiles = new ArrayList<>();
         // The order of this list is important!
         // ParseLoading method follows the order.
-        saveFiles.add("saveFiles\\SavePlayersTest.txt");
-        saveFiles.add("saveFiles\\SaveStudentTest.txt");
-        saveFiles.add("saveFiles\\SaveInventoryTest.txt");
-        saveFiles.add("saveFiles\\SaveItemsTest.txt");
+        saveFiles.add("saveFiles\\SavePlayers.txt");
+        saveFiles.add("saveFiles\\SaveStudent.txt");
+        saveFiles.add("saveFiles\\SaveInventory.txt");
+        saveFiles.add("saveFiles\\SaveItems.txt");
         // Return list with file paths.
         return saveFiles;
     }
