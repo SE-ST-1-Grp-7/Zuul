@@ -31,9 +31,7 @@ public class EnergyDrink extends Item {
                 // Placed in this room.
                 currentRoom,
                 // Name of item.
-                "Energy drink",
-                // Description of item.
-                "A can of Monster. Yum!");
+                "Energy drink");
 
                 
         // Pass path of texture to superclass.

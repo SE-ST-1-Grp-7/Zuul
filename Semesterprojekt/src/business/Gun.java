@@ -28,9 +28,7 @@ public class Gun extends Item {
                 y,
                 currentRoom,
                 // Name of item.
-                "Shotgun",
-                // Description of item.
-                "A sawed-off shotgun!");
+                "Shotgun");
 
         // Pass path of texture to superclass.
         super.setEntityImage(gunImage);

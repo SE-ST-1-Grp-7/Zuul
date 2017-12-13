@@ -10,7 +10,6 @@ import Acq.IItem;
 public abstract class Item extends Entity implements IItem {
 
     private String itemName; // Name of item.
-    private String itemDescription; // Description of item.
 
     /**
      * Constructor for Item class. Instantiates entity with parameters.
@@ -20,21 +19,18 @@ public abstract class Item extends Entity implements IItem {
      * @param y                 int, vertical position in room grid.
      * @param currentRoom       Room, item is currently in this room.
      * @param itemName          String, name of item.
-     * @param itemDescription   String, description of item.
      */
     public Item(String id,
             int x,
             int y,
             Room currentRoom,
-            String itemName,
-            String itemDescription) {
+            String itemName) {
 
         // Pass arguments to superclass.
         super(id, x, y, currentRoom);
 
         // Pass path of texture to superclass.
         this.itemName = itemName;
-        this.itemDescription = itemDescription;
     }
 
     // Apply functionality of use for this class.

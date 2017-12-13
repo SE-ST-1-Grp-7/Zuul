@@ -27,9 +27,7 @@ public class Key extends Item {
                 y,
                 currentRoom,
                 // Name of item.
-                "Key",
-                // Description of item.
-                "Used to open doors");
+                "Key");
          
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);

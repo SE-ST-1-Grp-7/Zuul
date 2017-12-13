@@ -31,9 +31,7 @@ public class Coffee extends Item {
                 // Placed in this room.
                 currentRoom,
                 // Name of item.
-                "Coffee",
-                // Description of item.
-                "A cup of coffee. Yum!");
+                "Coffee");
 
         // Pass path of texture to superclass.
         super.setEntityImage(coffeeImage);
