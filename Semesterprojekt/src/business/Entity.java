@@ -9,8 +9,6 @@ package business;
 public abstract class Entity {
     // X and Y grid position in room.
     private int x, y;
-    // Pixel width and height of entity.
-    private int width, height = 64;
     // Currently in this room.
     private Room currentRoom;
     // Path of texture of entity.
@@ -70,42 +68,6 @@ public abstract class Entity {
      */
     public void setY(int y) {
         this.y = y;
-    }
-
-    /**
-     * Retrieve int value of width of entity.
-     *
-     * @return      int, width to retrieve.
-     */
-    public int getWidth() {
-        return width;
-    }
-
-    /**
-     * Set int value of width of entity.
-     *
-     * @param width     int, new width of entity.
-     */
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    /**
-     * Retrieve int value of height of entity.
-     *
-     * @return      int, height to retrieve.
-     */
-    public int getHeight() {
-        return height;
-    }
-
-    /**
-     * Set int value of height of entity.
-     *
-     * @param height    int, new height of entity.
-     */
-    public void setHeight(int height) {
-        this.height = height;
     }
 
     /**

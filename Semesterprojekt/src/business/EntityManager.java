@@ -513,7 +513,7 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false, 0, "/textures/table1.png"));
+                         "/textures/table1.png"));
                 break;
 
             // Bookcase, left end, facing south.
@@ -631,8 +631,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/pooltable1.png"));
                 break;
                 
@@ -642,8 +640,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/pooltable2.png"));
                 break;
 
@@ -713,8 +709,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/blackboard2.png"));
                 break;
                 
@@ -733,8 +727,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/teachertable1.png"));
                 break;
                 
@@ -744,8 +736,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/teachertable2.png"));
                 break;
                 
@@ -755,8 +745,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/teachertable3.png"));
                 break;
                 
@@ -792,8 +780,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/dinnertable1.png"));
                 break;
                 
@@ -803,8 +789,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/dinnertable2.png"));
                 break;
                 
@@ -815,8 +799,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/dinnertable3.png"));
                 break;
                 
@@ -826,8 +808,6 @@ public class EntityManager {
                         j,
                         i,
                         rm.getRoom(name),
-                        false,
-                        0,
                         "/textures/dinnertable4.png"));
                 break;
 

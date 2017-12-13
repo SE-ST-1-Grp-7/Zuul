@@ -61,20 +61,6 @@ public class Room {
             }
         }
     }
-
-    /**
-     * Return if there is item in a certain grid position.
-     * 
-     * @param x     int, X coordinate in room grid.
-     * @param y     int, Y coordinate in room grid.
-     * @return      boolean, true if there is an item, otherwise false.
-     */
-    public boolean hasLoot(int x, int y) {
-        if (entityArray[y][x] != null) {
-            return entityArray[y][x] instanceof Item;
-        }
-        return false;
-    }
     
     /**
      * Remove entity from its current location.
