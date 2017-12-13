@@ -270,7 +270,7 @@ public class BusinessFacade implements IBusiness {
      */
     @Override
     public void loop() {
-        // If energy reached zero, exit game.
+        // If energy or seconds reach zero, exit game.
         if(entityManager.getPlayer().getEnergy() <= 0 || seconds <= 0) {
             gameOver = true;
             return;
