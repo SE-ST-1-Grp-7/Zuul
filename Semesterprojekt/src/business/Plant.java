@@ -29,17 +29,14 @@ public class Plant extends Furniture {
         super(id,
                 x,
                 y,
-                currentRoom,
-                // Item name.
-                "Plant",
-                // Item description.
-                "Looks so lovely");
+                currentRoom);
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
     
     /**
      * Override; upon interaction with furniture. Does nothing.
+     * Can be used in the future for implementing furniture functionality.
      * 
      * @param p    Person, whom is interacting.
      */

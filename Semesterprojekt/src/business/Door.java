@@ -32,9 +32,7 @@ public class Door extends Furniture {
         super(id,
                 x,
                 y,
-                currentRoom,
-                "Door",
-                "This is a door, maybe you should open it");
+                currentRoom);
         super.setEntityImage(imagePath);
         this.isLocked = isLocked;
     }

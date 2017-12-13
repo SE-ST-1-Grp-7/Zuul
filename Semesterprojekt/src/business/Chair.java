@@ -27,17 +27,15 @@ public class Chair extends Furniture {
                 x,
                 y,
                 // Currently in this room.
-                currentRoom,
-                // Item name.
-                "Chair",
-                // Item description.
-                "Nice to sit on");
+                currentRoom);
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
     
     /**
      * Override; upon interaction with furniture.
+     * Can be used in the future for implementing furniture functionality.
+     * 
      * @param p     Player, effect of interacting with this.
      */
     @Override

@@ -26,17 +26,16 @@ public class Bookcase extends Furniture {
                 x,
                 y,
                 // Placed in this room.
-                currentRoom,
-                // Item name.
-                "Bookcase",
-                // Item description
-                "full of stuff");
+                currentRoom);
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
     }
     
     /**
      * Override; upon interact with bookcase.
+     * Can be used in the future for implementing furniture functionality.
+     * 
+     * @param p     Person, persno interacting with furniture.
      */
     @Override
     public void onInteract(Person p) {

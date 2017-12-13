@@ -39,11 +39,7 @@ public class Table extends Furniture /*implements Inspectable*/{
         super(id,
                 x,
                 y,
-                currentRoom,
-                // Item name.
-                "Table",
-                // Item description.
-                "It might contain items!");
+                currentRoom);
         // Pass path of texture to superclass.
         super.setEntityImage(imagePath);
         
@@ -55,6 +51,7 @@ public class Table extends Furniture /*implements Inspectable*/{
     
     /**
      * Override; upon interaction with table.
+     * Can be used in the future for implementing furniture functionality.
      *
      * @param p     Person, whom is interacting with furniture.
      */
