@@ -161,23 +161,4 @@ public class Door extends Furniture {
         }
     }
     
-    /**
-     * Override; Retreive x coordinate for door object.
-     * 
-     * @return int, horizontal position in room grid.
-     */
-    @Override
-    public int getX() {
-        return super.getX();
-    }
-    
-    /**
-     * Override; Retreive y coordinate for door object.
-     * 
-     * @return int, vertical position in room grid.
-     */
-    @Override
-    public int getY() {
-        return super.getY();
-    }
 }

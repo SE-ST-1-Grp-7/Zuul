@@ -19,7 +19,6 @@ public class Player extends Person {
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
     private int timeLeft;
-    private String playerName;
     private boolean interactHappend;
 
     /* Two variables for checking when the player interacted with a student/
@@ -58,7 +57,7 @@ public class Player extends Person {
         super.setEntityImage(playerImage);
 
         // PLAYER STATS
-        this.playerName = name;
+        super.setName(name);
         // Assign energy level at the start.
         this.energy = 200;
         // Assign energy capacity.
@@ -175,20 +174,8 @@ public class Player extends Person {
         if (!checkCollision(newX, newY)) {
             // Place tempItem if exist.
             placeItem();
-            // If there is loot.
-            if (getCurrentRoom().hasLoot(newX, newY)) {
-                // If item can be added to inventory.
-                if (inventory.addItem((Item)
-                        getCurrentRoom().getEntities()[newY][newX])) {
-                // else set tempItem.
-                } else { // if not
-                    tempItem = (Item)
-                            getCurrentRoom().getEntities()[newY][newX];
-                }
-            }
             // Move player to this location.
-            getCurrentRoom().getEntities()[newY][newX] = this;
-            
+            getCurrentRoom().getEntities()[newY][newX] = this;            
             // If don't is false, then remove entity from room grid location.
             if (!dont) {
                 getCurrentRoom().getEntities()[getY()][getX()] = null;
@@ -218,26 +205,6 @@ public class Player extends Person {
     }
     
     // GETTERS & SETTERS
-    
-    /**
-     * Override; retrieve player name.
-     * 
-     * @return      String, name of player retrieved.
-     */
-    @Override
-    public String getName() {
-        return playerName;
-    }
-
-    /**
-     * Override; set player name.
-     * 
-     * @param playerName    String, name to be set as player name.
-     */
-    @Override
-    public void setName(String playerName) {
-        this.playerName = playerName;
-    }
     
     /**
      * Under special circumstance, change player image.
