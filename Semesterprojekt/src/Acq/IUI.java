@@ -3,7 +3,7 @@ package Acq;
 /**
  * Interface for User Interface layer.
  * 
- * @author J & Niclas Johansen
+ * @author Jonas Bjørnstorp & Niclas Johansen
  */
 public interface IUI {
     // Set business interface.

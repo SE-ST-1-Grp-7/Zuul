@@ -35,7 +35,7 @@ public class Bookcase extends Furniture {
      * Override; upon interact with bookcase.
      * Can be used in the future for implementing furniture functionality.
      * 
-     * @param p     Person, persno interacting with furniture.
+     * @param p     Person, person interacting with furniture.
      */
     @Override
     public void onInteract(Person p) {

@@ -34,7 +34,7 @@ import javafx.scene.layout.Pane;
 /**
  * GUI, event & handling management.
  * 
- * @author J
+ * @author Niclas Johansen, Jonas Bjørstorp, Rasmus Willer, Magnus Mortensen & Robin Petersen
  */
 public class FXMLDocumentController implements Initializable {
     // business facade
@@ -81,7 +81,6 @@ public class FXMLDocumentController implements Initializable {
     private Label energyViewer;
     @FXML
     private Label gradedAssignmentViewer;
-    private Button tryAgainButton;
     @FXML
     private TextField nameField;
 

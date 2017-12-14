@@ -3,7 +3,7 @@ package Acq;
 /**
  * Interface access for items.
  * 
- * @author J
+ * @author Jonas Bjørnstorp
  */
 public interface IItem {
     // Retrieve name of item.

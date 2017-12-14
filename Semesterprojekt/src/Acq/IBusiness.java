@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 /**
  * IBusiness interface.
  *
- * @author J, Rasmus Willer & Niclas Johansen
+ * @author Jonas Bjørstorp, Magnus Mortensen, Søren Bendtsen, Rasmus Willer & Niclas Johansen
  */
 public interface IBusiness {
     

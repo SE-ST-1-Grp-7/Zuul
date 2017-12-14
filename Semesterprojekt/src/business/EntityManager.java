@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * Entity Manager class. Keeps track of all the entities currently in the game.
  *
- * @author Rasmus Willer & Søren Bendtsen
+ * @author Jonas Bjørstorp, Søren Bendtsen, Niclas Johansen, Magnus Mortensen & Rasmus Willer
  */
 public class EntityManager {
 

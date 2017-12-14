@@ -14,7 +14,7 @@ import javafx.collections.ObservableList;
  * Business facade of business layer. Other layers communicate through the
  * business layer through this class.
  * 
- * @author Niclas Johansen & J & Rasmus Willer
+ * @author Niclas Johansen, Jonas Bjørnstorp, Robin Petersen, Søren Bendtsen & Rasmus Willer
  */
 public class BusinessFacade implements IBusiness {
 

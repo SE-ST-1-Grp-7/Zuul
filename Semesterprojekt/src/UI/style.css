@@ -1,7 +1,10 @@
-/*@font-face {
+/*
+* @author: Niclas Johansen
+*/
+@font-face {
     font-family: 'Bangers';
     src: url("/assets/Bangers-Regular.ttf");
-}*/
+}
 
 .text {
     -fx-font-family: "Bangers";

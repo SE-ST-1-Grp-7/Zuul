@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * Interface for data layer.
  * 
- * @author J, Niclas Johansen & Rasmus Willer
+ * @author Niclas Johansen, Søren Bendtsen, & Rasmus Willer
  */
 public interface IData {
     // Display the highscore

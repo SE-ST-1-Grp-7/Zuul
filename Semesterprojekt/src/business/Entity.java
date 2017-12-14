@@ -4,7 +4,7 @@ package business;
  * Super class of all elements placed in the game that are not a fixed part of
  * the world.
  *
- * @author Group 7
+ * @author Rasmus Willer
  */
 public abstract class Entity {
     // X and Y grid position in room.

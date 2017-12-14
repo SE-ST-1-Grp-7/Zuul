@@ -4,7 +4,7 @@ package business;
  * Why is there a gun at school, luckily it only shoots the one trying to use
  * it.
  * 
- * @author J & Rasmus Willer
+ * @author Jonas, Robin, Søren, Niclas & Rasmus Willer
  */
 public class Gun extends Item {
     private String gunImage = "/textures/shotgun.png";
