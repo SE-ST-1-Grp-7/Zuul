@@ -156,7 +156,5 @@ public class Highscore {
         add(playerName, seconds);
         // Make the updated file.
         createXML();
-        // Last call the display of highscore.
-        displayHighscore();
     }
 }

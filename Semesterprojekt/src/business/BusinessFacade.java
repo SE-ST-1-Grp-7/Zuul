@@ -294,10 +294,6 @@ public class BusinessFacade implements IBusiness {
         // Reduce seconds by 1
         seconds--;
         
-        // If the game is won save players name and seconds it took.
-        if(entityManager.getPlayer().getGradedAssignments() >= 10){
-        data.saveHighscore(entityManager.getPlayer().getName(), seconds);
-        }
     }
     
     /**
