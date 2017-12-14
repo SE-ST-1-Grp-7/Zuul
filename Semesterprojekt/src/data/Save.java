@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * Save class, writes data segments to file.
  * 
- * @author Rasmus Willer
+ * @author Rasmus Willer, Robin Petersen & Søren Bendtsen
  */
 public class Save {
     

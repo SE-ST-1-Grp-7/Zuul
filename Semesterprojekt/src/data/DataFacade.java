@@ -7,7 +7,7 @@ import java.util.HashMap;
 /**
  * Data facade of data layer. Access point to data layer.
  * 
- * @author Niclas Johansen & Rasmus Willer
+ * @author Niclas Johansen, Søren Bendtsen & Rasmus Willer
  */
 public class DataFacade implements IData {
     private Highscore highscore;

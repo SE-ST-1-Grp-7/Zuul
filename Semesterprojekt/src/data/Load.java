@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Fetch data from previous save game data.
  * 
- * @author Rasmus Willer
+ * @author Rasmus Willer & Søren Bendtsen
  */
 public class Load {
     // 2D list the collected data will be placed in.

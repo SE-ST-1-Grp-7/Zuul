@@ -4,7 +4,7 @@ package business;
 /**
  * Subclass of furniture, Table class.
  * 
- * @author Robin & Rasmus Willer
+ * @author Robin, Søren & Rasmus Willer
  */
 public class Table extends Furniture /*implements Inspectable*/{
     

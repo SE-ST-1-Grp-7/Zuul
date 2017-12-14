@@ -5,7 +5,7 @@ import java.util.HashMap;
 /**
  * Manager of rooms and instantiates them.
  * 
- * @author Rasmus Willer & Søren Bendtsen & Jonas Bjørstorp
+ * @author Rasmus Willer, Søren Bendtsen & Jonas Bjørstorp
  */
 public class RoomManager {
     private Room currentRoom;
