@@ -14,7 +14,7 @@ public class Player extends Person {
     private int assignmentProgress; // Progress of grading an assignment.
     private Assignment currentAssignment;
     private Item tempItem; // Temporary holder for item to be dropped.
-    private boolean dont = false; // Avoid tempItem overlap with other items.
+    private boolean dontNullPrevField = false; // Avoid tempItem overlap with other items.
     private String playerImage = "/textures/player.png"; // Image path.
     private String facing; // Direction for object to be interacted with.
     private boolean hasKey;
@@ -159,7 +159,7 @@ public class Player extends Person {
             
             getEntityManager().getItemList().add(tempItem);
             // Don't set previous to null.
-            dont = true;
+            dontNullPrevField = true;
         }
     }
 
@@ -177,12 +177,12 @@ public class Player extends Person {
             // Move player to this location.
             getCurrentRoom().getEntities()[newY][newX] = this;            
             // If don't is false, then remove entity from room grid location.
-            if (!dont) {
+            if (!dontNullPrevField) {
                 getCurrentRoom().getEntities()[getY()][getX()] = null;
                 
             // Else set don't to false and tempItem to null.
             } else {
-                dont = false;
+                dontNullPrevField = false;
                 tempItem = null;
             }
             
