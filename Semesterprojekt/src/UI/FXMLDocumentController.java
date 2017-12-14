@@ -490,7 +490,6 @@ public class FXMLDocumentController implements Initializable {
      */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
-            ib.loadXML();
             bottomTextArea.clear();
             ib.saveHighscore();
             bottomTextArea.appendText("You have won the game, you are the "
