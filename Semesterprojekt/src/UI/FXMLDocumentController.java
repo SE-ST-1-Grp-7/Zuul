@@ -406,7 +406,7 @@ public class FXMLDocumentController implements Initializable {
         alert.setGraphic(null);
         alert.setTitle("HIGHSCORES");
         alert.setHeaderText("WHO'S BEST?" );
-        alert.setContentText( "The highscore list for World of SDU\n" +
+        alert.setContentText( "The highscore list for Professor Game\n" +
                 "---------------------------------\n" +
                 "NO.\t\tNAME\t\t SCORE\n" +
                 ib.displayHighscore());
@@ -490,6 +490,7 @@ public class FXMLDocumentController implements Initializable {
      */
     private boolean wincodition() {
         if (ib.amountOfGradedAssignments() >= 10) {
+            ib.loadXML();
             bottomTextArea.clear();
             ib.saveHighscore();
             bottomTextArea.appendText("You have won the game, you are the "
@@ -497,7 +498,7 @@ public class FXMLDocumentController implements Initializable {
             // draw win screen image
             canvasId.getGraphicsContext2D().drawImage(
                     new Image("assets/win2.png"), 0, 0);
-            bottomTextArea.appendText("The highscore list for World of SDU\n");
+            bottomTextArea.appendText("The highscore list for Professor Game\n");
             bottomTextArea.appendText("---------------------------------\n");
             bottomTextArea.appendText("NO.\t\tNAME\t\t SCORE\n");
             bottomTextArea.appendText(ib.displayHighscore());
