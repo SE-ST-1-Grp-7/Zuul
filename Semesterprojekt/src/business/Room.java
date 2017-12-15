@@ -6,7 +6,9 @@ import java.util.HashMap;
  * Room class holds information on connections to other rooms, tiles and
  * entities in room grid.
  * 
- * @author Rasmus Willer, Robin & Jonas
+ * @author Rasmus Willer
+ * @author Robin
+ * @author Jonas
  */
 public class Room {
     // Declare attributes -section.

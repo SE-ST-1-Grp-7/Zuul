@@ -32,9 +32,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 /**
- * GUI, event & handling management.
+ * GUI, event and handling management.
  * 
- * @author Niclas Johansen, Jonas Bjørstorp, Rasmus Willer, Magnus Mortensen & Robin Petersen
+ * @author Niclas Johansen
+ * @author Jonas Bjørstorp
+ * @author Rasmus Willer
+ * @author Magnus Mortensen
+ * @author Robin Petersen
  */
 public class FXMLDocumentController implements Initializable {
     // business facade
@@ -203,10 +207,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Initialize tooltips and game loop.
+     * Override; initialize tooltips and game loop.
      *
-     * @param url
-     * @param rb
+     * @param url   URL, used to resolve relative path to root object.
+     * @param rb    ResourceBoundle, used to localize root object.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -3,7 +3,10 @@ package business;
 /**
  * Subclass of Item, Adderall class.
  * 
- * @author Jonas Bjørnstorp, Magnus Mortensen, Robin Petersen & Rasmus Willer
+ * @author Jonas Bjørnstorp
+ * @author Magnus Mortensen
+ * @author Robin Petersen
+ * @author Rasmus Willer
  */
 public class Adderall extends Item{
     private final int ENERGY_RESTORE = 70; // Energy restore value upon use.

@@ -3,7 +3,11 @@ package business;
 /**
  * Subclass of Item, Key class.
  * 
- * @author Søren, Robin, Magnus, Niclas & Rasmus Willer
+ * @author Søren
+ * @author Robin
+ * @author Magnus
+ * @author Niclas
+ * @author Rasmus Willer
  */
 public class Key extends Item {
     private String imagePath = "/textures/key1.png";

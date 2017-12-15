@@ -9,7 +9,11 @@ import java.util.HashMap;
 /**
  * Entity Manager class. Keeps track of all the entities currently in the game.
  *
- * @author Jonas Bjørstorp, Søren Bendtsen, Niclas Johansen, Magnus Mortensen & Rasmus Willer
+ * @author Jonas Bjørstorp
+ * @author Søren Bendtsen
+ * @author Niclas Johansen
+ * @author Magnus Mortensen
+ * @author Rasmus Willer
  */
 public class EntityManager {
 
@@ -38,8 +42,8 @@ public class EntityManager {
      * Set up entities according to starting a new game.
      * 
      * @param playerName    String, select entities based on player name.
-     * @param csvData       HashMap< String, String[][] >, key is the name of
-     *                      the room, value is entity data in a 10x10 grid.
+     * @param csvData       HashMap&lt;String, String[][]&gt;, key is the name
+     *                      of the room, value is entity data in a 10x10 grid.
      */
     public void newGameEnts(String playerName,
             HashMap<String, String[][]> csvData) {
@@ -127,7 +131,7 @@ public class EntityManager {
     /**
      * Get student list.
      *
-     * @return      ArrayList< Student >, student list to retrieve.
+     * @return      ArrayList&lt;Student&gt;, student list to retrieve.
      */
     public ArrayList<Student> getStudentList() {
         return studentlist;
@@ -136,7 +140,7 @@ public class EntityManager {
     /**
      * Get furniture list.
      *
-     * @return      ArrayList< Furniture >, furniture list to retrieve.
+     * @return      ArrayList&lt;Furniture&gt;, furniture list to retrieve.
      */
     public ArrayList<Furniture> getFurnitureList() {
         return furniturelist;
@@ -145,7 +149,7 @@ public class EntityManager {
     /**
      * Get item list.
      *
-     * @return      ArrayList< Item >, item list to retrieve.
+     * @return      ArrayList&lt;Item&gt;, item list to retrieve.
      */
     public ArrayList<Item> getItemList() {
         return itemlist;
@@ -1018,8 +1022,8 @@ public class EntityManager {
     /**
      * Method for gathering the data that must be saved during saving.
      *
-     * @return      HashMap< String, ArrayList < ArrayList < String > > >,
-     *              key is path to file, value is data.
+     * @return  HashMap&lt;String, ArrayList&lt;ArrayList&lt;String&gt;&gt;&gt;,
+     *          key is path to file, value is data.
      */
     public HashMap parseForSave() {
         // Instantiate the HashMap.
@@ -1049,7 +1053,8 @@ public class EntityManager {
     /**
      * Parse data for saving items in the game.
      *
-     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveItems() {
         // 2D list to contain the data.
@@ -1079,7 +1084,8 @@ public class EntityManager {
     /**
      * Parse data for saving player's inventory status.
      *
-     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveInventory() {
         // 2D list to contain the data.
@@ -1098,7 +1104,8 @@ public class EntityManager {
     /**
      * Parse data for saving player's status.
      *
-     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with save data.
      */
     public ArrayList<ArrayList<String>> savePlayers() {
         // 2D list to contain the data.
@@ -1141,7 +1148,8 @@ public class EntityManager {
     /**
      * Parse data for saving student's status.
      *
-     * @return      ArrayList< ArrayList < String > >, 2D list with save data.
+     * @return      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with save data.
      */
     public ArrayList<ArrayList<String>> saveStudents() {
         // 2D list to contain the data.
@@ -1171,7 +1179,8 @@ public class EntityManager {
     /**
      * Directing loading data to the different entity load methods.
      *
-     * @param loadPackage HashMap< String, ArrayList < ArrayList < String > > >,
+     * @param loadPackage HashMap&lt;String, ArrayList&lt;ArrayList&lt;
+     *                    String&gt;&gt;&gt;,
      *                    key is file path, value is 2D list with data.
      */
     public void parseLoading(HashMap<String, ArrayList<ArrayList<String>>> loadPackage) {
@@ -1196,7 +1205,8 @@ public class EntityManager {
      * Load items from collected data. Iterate through load data and instantiate
      * items based on item name and parameters.
      *
-     * @param data  ArrayList< ArrayList < String > >, 2D list with load data.
+     * @param data  ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with load data.
      */
     public void loadItems(ArrayList<ArrayList<String>> data) {
         // Set item allocations in rooms to null.
@@ -1226,7 +1236,8 @@ public class EntityManager {
      * Load inventory from data collected from file. Iterate through the data
      * and instantiate items according to item name and parameters.
      *
-     * @param data  ArrayList< ArrayList < String > >, 2D list with load data.
+     * @param data  ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with load data.
      */
     public void loadInventory(ArrayList<ArrayList<String>> data) {
         try {
@@ -1304,10 +1315,11 @@ public class EntityManager {
     }
 
     /**
-     * Update player with load data. Parse retrieved data and assign the new
+     * Create player from load data. Parse retrieved data and assign the new
      * values.
      *
-     * @param data  ArrayList< ArrayList < String > >, 2D list with loaded data.
+     * @param data  ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with loaded data.
      */
     public void loadPlayers(ArrayList<ArrayList<String>> data) {      
         // Iterate through the data.
@@ -1343,6 +1355,12 @@ public class EntityManager {
         this.rm.setCurrentRoom(player.getCurrentRoom());
     }
 
+    /**
+     * Create students from load data.
+     * 
+     * @param data  ArrayList&lt;ArrayList&lt;String&gt;&gt;,
+     *              2D list with loaded data.
+     */
     public void loadStudents(ArrayList<ArrayList<String>> data) {
         // Remove old students from rooms.
         for (Student student: studentlist) {
@@ -1369,7 +1387,7 @@ public class EntityManager {
     /**
      * Retrieve list with save files's path.
      *
-     * @return      ArrayList< String >, list with save files.
+     * @return      ArrayList&lt;String&gt;, list with save files.
      */
     public ArrayList<String> getSaveFiles() {
         ArrayList<String> saveFiles = new ArrayList<>();

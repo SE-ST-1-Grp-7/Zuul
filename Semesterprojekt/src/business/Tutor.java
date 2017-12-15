@@ -3,7 +3,9 @@ package business;
 /**
  * Tutor class, friendly NPC based on student.
  * 
- * @author Robin, Niclas & Rasmus Willer
+ * @author Robin
+ * @author Niclas
+ * @author Rasmus Willer
  */
 public class Tutor extends Student {
     // Attribute for if player have interacted with tutor previously.

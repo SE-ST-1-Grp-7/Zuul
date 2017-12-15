@@ -7,7 +7,8 @@ import javafx.collections.ObservableList;
 /**
  * Inventory of player, containing items picked up by the player.
  * 
- * @author Jonas Bjørstorp & Robin Petersen
+ * @author Jonas Bjørstorp
+ * @author Robin Petersen
  */
 public class Inventory {
     private final int CAPACITY = 5;
@@ -55,7 +56,7 @@ public class Inventory {
     /**
      * Getter for the inventory.
      *
-     * @return      ObservableList< IItem >, returned list of inventory.
+     * @return      ObservableList&lt;IItem&gt;, returned list of inventory.
      */
     public ObservableList<IItem> getInventory() {
         return items;

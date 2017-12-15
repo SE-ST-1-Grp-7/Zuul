@@ -5,7 +5,11 @@ import java.util.Random;
 /**
  * Student class, NPC in the game.
  *
- * @author Robin, Niclas, Jonas, Rasmus Willer & Magnus Mortensen
+ * @author Robin
+ * @author Niclas
+ * @author Jonas
+ * @author Rasmus Willer
+ * @author Magnus Mortensen
  */
 public class Student extends Person {
 

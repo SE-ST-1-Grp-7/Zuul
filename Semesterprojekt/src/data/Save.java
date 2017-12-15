@@ -13,7 +13,9 @@ import java.util.ArrayList;
 /**
  * Save class, writes data segments to file.
  * 
- * @author Rasmus Willer, Robin Petersen & Søren Bendtsen
+ * @author Rasmus Willer
+ * @author Robin Petersen
+ * @author Søren Bendtsen
  */
 public class Save {
     
@@ -31,7 +33,7 @@ public class Save {
      * Two-dimensionel data write to file -constructor.
      * 
      * @param filePath  String, path of file to make/write in.
-     * @param data      ArrayList< ArrayList< String > >,
+     * @param data      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
      *                  list with data to save.
      */
     public Save(String filePath, ArrayList<ArrayList<String>> data) {

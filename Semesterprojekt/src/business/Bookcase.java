@@ -3,7 +3,8 @@ package business;
 /**
  * Subclass of furniture, Bookcase class.
  * 
- * @author Robin & Rasmus Willer
+ * @author Robin
+ * @author Rasmus Willer
  */
 public class Bookcase extends Furniture {
 

@@ -1,8 +1,11 @@
 package business;
 
-/** Person class - superclass of Student & Player
+/** Person class - superclass of Student and Player
  *
- * @author Niclas Johansen, Robin, Jonas & Rasmus Willer
+ * @author Niclas Johansen
+ * @author Robin
+ * @author Jonas
+ * @author Rasmus Willer
  */
 public abstract class Person extends Entity {
     // Define default values for size of person.

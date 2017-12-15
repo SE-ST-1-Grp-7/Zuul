@@ -5,7 +5,8 @@ import java.util.Comparator;
 /**
  * 
  * 
- * @author Niclas Johansen & Rasmus Willer
+ * @author Niclas Johansen
+ * @author Rasmus Willer
  */
 public class Score implements Comparator<Score> {
     private String name;

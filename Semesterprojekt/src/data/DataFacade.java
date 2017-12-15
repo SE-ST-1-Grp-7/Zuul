@@ -7,7 +7,9 @@ import java.util.HashMap;
 /**
  * Data facade of data layer. Access point to data layer.
  * 
- * @author Niclas Johansen, Søren Bendtsen & Rasmus Willer
+ * @author Niclas Johansen
+ * @author Søren Bendtsen
+ * @author Rasmus Willer
  */
 public class DataFacade implements IData {
     private Highscore highscore;
@@ -35,7 +37,7 @@ public class DataFacade implements IData {
      * parsed data to be written to file.
      * 
      * @param path      String, file path to save file.
-     * @param data      ArrayList< ArrayList< String > >,
+     * @param data      ArrayList&lt;ArrayList&lt;String&gt;&gt;,
      *                  2D list with parsed data.
      */
     @Override
@@ -49,7 +51,7 @@ public class DataFacade implements IData {
      * data and return it to the business layer through the interface.
      * 
      * @param filePath      String, file path to save file.
-     * @return              ArrayList<ArrayList<String>>, 
+     * @return              ArrayList&lt;ArrayList&lt;String&gt;&gt;, 
      *                      2D list to contain save data.
      */
     @Override
@@ -103,7 +105,7 @@ public class DataFacade implements IData {
      * requested.
      * 
      * @param path      String, file path of CSV file.
-     * @return          HashMap< String, String[][] >, key is name of room,
+     * @return          HashMap&lt;String, String[][]&gt;, key is name of room,
      *                  value is 10x10 grid data.
      */
     @Override

@@ -5,7 +5,10 @@ import Acq.IItem;
 /**
  * Subclass of Entity, Item class.
  *
- * @author Jonas Bjørstorp, Robin Petersen, Magnus Mortensen & Rasmus Willer
+ * @author Jonas Bjørstorp
+ * @author Robin Petersen
+ * @author Magnus Mortensen
+ * @author Rasmus Willer
  */
 public abstract class Item extends Entity implements IItem {
 

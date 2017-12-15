@@ -5,7 +5,9 @@ import java.util.HashMap;
 /**
  * Manager of rooms and instantiates them.
  * 
- * @author Rasmus Willer, Søren Bendtsen & Jonas Bjørstorp
+ * @author Rasmus Willer
+ * @author Søren Bendtsen
+ * @author Jonas Bjørstorp
  */
 public class RoomManager {
     private Room currentRoom;
@@ -17,8 +19,8 @@ public class RoomManager {
      * Constructor for RoomManager. Tile data is given as parameter and the
      * rooms are instantiated and tiles are added to the rooms.
      * 
-     * @param tileMap   HashMap< String, String[][] >, key is name of the room,
-     *                  value is data in the 10x10 room grid.
+     * @param tileMap   HashMap&lt;String, String[][]&gt;, key is name of the
+     *                  room, value is data in the 10x10 room grid.
      */
     public RoomManager(HashMap<String, String[][]> tileMap) {
         // Assign tile data to local collection.

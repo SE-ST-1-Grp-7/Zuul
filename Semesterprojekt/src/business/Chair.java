@@ -3,7 +3,8 @@ package business;
 /**
  * Subclass of furniture, Chair class.
  * 
- * @author Robin & Rasmus Willer
+ * @author Robin
+ * @author Rasmus Willer
  */
 public class Chair extends Furniture {
 

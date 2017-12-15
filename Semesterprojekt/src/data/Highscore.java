@@ -20,7 +20,8 @@ import org.w3c.dom.NodeList;
 /**
  * This class manages the highscore and its processes.
  * 
- * @author Niclas Johansen & Rasmus Willer
+ * @author Niclas Johansen
+ * @author Rasmus Willer
  */
 public class Highscore {
 

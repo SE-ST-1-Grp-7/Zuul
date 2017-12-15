@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 /**
  * User Interface facade.
  * 
- * @author Jonas Bjørnstorp & Niclas Johansen
+ * @author Jonas Bjørnstorp
+ * @author Niclas Johansen
  */
 public class UI extends Application implements IUI {
     private IBusiness ib;

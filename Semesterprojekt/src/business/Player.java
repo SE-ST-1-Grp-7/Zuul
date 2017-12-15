@@ -3,7 +3,11 @@ package business;
 /**
  * Player class, the main character of the game and controllable.
  *
- * @author Niclas Johansen, Jonas Bjørstorp, Søren Bendtsen, Magnus Mortensen & Rasmus Willer
+ * @author Niclas Johansen
+ * @author Jonas Bjørstorp
+ * @author Søren Bendtsen
+ * @author Magnus Mortensen
+ * @author Rasmus Willer
  */
 public class Player extends Person {
 

@@ -3,7 +3,11 @@ package business;
 /**
  * Subclass of Item, EnergyDrink class.
  * 
- * @author Jonas Bjørstorp, Søren Bendtsen, Niclas Johansen, Magnus Mortensen & Rasmus Willer
+ * @author Jonas Bjørstorp
+ * @author Søren Bendtsen
+ * @author Niclas Johansen
+ * @author Magnus Mortensen
+ * @author Rasmus Willer
  */
 public class EnergyDrink extends Item {
     // Energy restore upon use.

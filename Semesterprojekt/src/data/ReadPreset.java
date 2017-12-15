@@ -99,7 +99,7 @@ public class ReadPreset {
     /**
      * Retrieve collected data.
      * 
-     * @return      HashMap< String, String[][] >, key is name of room it's
+     * @return      HashMap&lt;String, String[][]&gt;, key is name of room it's
      *              destined for, value is data for the 10x10 room grid.
      */
     public HashMap<String, String[][]> getData() {

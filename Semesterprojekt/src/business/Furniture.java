@@ -5,7 +5,8 @@ package business;
  * Does not currently implement more than its super class, but keeps the option
  * for future functionality implementation open.
  * 
- * @author Robin & Rasmus Willer
+ * @author Robin
+ * @author Rasmus Willer
  */
 public abstract class Furniture extends Entity {
     /**

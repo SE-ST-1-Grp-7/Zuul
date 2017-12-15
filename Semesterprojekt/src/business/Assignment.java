@@ -3,7 +3,12 @@ package business;
 /**
  * Subclass of Item, Assignment class.
  *
- * @author Jonas, Magnus, Niclas, Robin, Søren & Rasmus Willer
+ * @author Jonas
+ * @author Magnus
+ * @author Niclas
+ * @author Robin
+ * @author Søren
+ * @author Rasmus Willer
  */
 public class Assignment extends Item {
 

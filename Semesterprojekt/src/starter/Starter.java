@@ -9,12 +9,13 @@ import business.BusinessFacade;
 import UI.UI;
 import data.DataFacade;
 
-
 /**
  * Starting point of the project. The starter class instantiates the
  * architecture layers and initialize the game.
  * 
- * @author Jonas, Niclas & Rasmus Willer
+ * @author Jonas
+ * @author Niclas
+ * @author Rasmus Willer
  */
 public class Starter {
     public static void main(String[] args) {
