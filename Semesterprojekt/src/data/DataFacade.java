@@ -61,8 +61,9 @@ public class DataFacade implements IData {
         // Return the retrieved data.
         return data;
     }
+    
     /**
-     *  Override; Load the xml file.
+     *  Override; load the xml file.
      */
     @Override
     public void loadXML(){
@@ -70,7 +71,7 @@ public class DataFacade implements IData {
     }
     
     /**
-     * Override; Call the save highscore method.
+     * Override; call the save highscore method.
      * 
      * @param playerName        String, name of player.
      * @param seconds           int, time left at point of winning.

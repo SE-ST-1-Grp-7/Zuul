@@ -78,7 +78,7 @@ public class BusinessFacade implements IBusiness {
     }
     
     /**
-     * Initialize game, especially regarding entities.
+     * Override; initialize game, especially regarding entities.
      * 
      * @param playerName    String, selected name of player.
      */
@@ -254,6 +254,7 @@ public class BusinessFacade implements IBusiness {
             return "testSquare.png";
         }
     }
+    
     /**
      * Override; Checks if the player has lost the game.
      * 
@@ -310,8 +311,9 @@ public class BusinessFacade implements IBusiness {
      * Override; upon item use. Call any effects to player and remove item from
      * the game.
      * 
-     * @param i IItem, item to be used
-     * @return  boolean, 
+     * @param i     IItem, item to be used
+     * @return      boolean, true if there was a defined IItem, otherwise false
+     *              and the object was null.
      */
     @Override
     public boolean itemUse(IItem i) {

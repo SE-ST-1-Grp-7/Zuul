@@ -6,6 +6,10 @@ package Acq;
  * @author Jonas Bjørnstorp
  */
 public interface IItem {
-    // Retrieve name of item.
+    /**
+     * Retrieve name of item.
+     * 
+     * @return  String, name of item.
+     */
     String getName();
 }
