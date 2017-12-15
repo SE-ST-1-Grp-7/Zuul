@@ -305,7 +305,6 @@ public class FXMLDocumentController implements Initializable {
 
         // Set minimap image.
         minimapViewer.setImage(new Image("/assets/Minimap/minimap.png"));
-
     }
 
     /**
