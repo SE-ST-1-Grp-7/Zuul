@@ -9,6 +9,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 /**
@@ -52,8 +53,10 @@ public class UI extends Application implements IUI {
         Parent p = loader.load();
 
         Scene scene = new Scene(p);
-        scene.getStylesheets().add(
-                "https://fonts.googleapis.com/css?family=Bangers");
+        
+        // Loads the font Bangers
+        Font.loadFont(getClass().getResourceAsStream("/assets/Bangers-Regular.ttf"), 16);
+        
         primaryStage.setScene(scene);
         primaryStage.setResizable(true);
         primaryStage.show();
